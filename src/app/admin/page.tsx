@@ -1,17 +1,15 @@
-import { createClient } from "@/lib/supabase/server";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
 
 export default async function AdminPage() {
-    const supabase = await createClient()
+    const { user } = await requireAdmin();
 
-    const {
-        data: { user },
-    } = await supabase.auth.getUser();
-
-    return <main>
+    return (
+    <main>
         <h1>Mariudesign Admin</h1>
 
         <p>
-            Logged in as: {user?.email}
+            Logged in as: {user.email}
         </p>
     </main>
+    )
 }
