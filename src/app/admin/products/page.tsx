@@ -24,6 +24,6 @@ export default async function ProductsPage() {
         `)
         .order("created_at", {
             ascending: false,
-        })
+        });
     
 }
