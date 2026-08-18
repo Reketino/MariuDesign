@@ -25,5 +25,11 @@ export default async function ProductsPage() {
         .order("created_at", {
             ascending: false,
         });
+
+        if (error) {
+            throw new Error(
+                `Failed to load products: ${error.message}`,
+            )
+        }
     
 }
