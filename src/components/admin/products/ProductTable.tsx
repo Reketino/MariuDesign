@@ -47,4 +47,11 @@ function getStatusClasses(status: string) {
 export default function ProductTable({
     products,
 }: ProductTableProps) {
+    if (products.length === 0) {
+        return(
+            <section className="">
+                
+            </section>
+        )
+    }
 }
