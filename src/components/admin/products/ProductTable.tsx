@@ -50,7 +50,9 @@ export default function ProductTable({
     if (products.length === 0) {
         return(
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60">
+                <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
 
+                </div>
             </section>
         )
     }
