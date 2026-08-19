@@ -49,8 +49,8 @@ export default function ProductTable({
 }: ProductTableProps) {
     if (products.length === 0) {
         return(
-            <section className="">
-                
+            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60">
+
             </section>
         )
     }
