@@ -52,7 +52,9 @@ export default function ProductTable({
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60">
                 <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900">
-                        
+                       <span className="text-xl text-zinc-500">
+                        +
+                        </span> 
                     </div>
 
                 </div>
