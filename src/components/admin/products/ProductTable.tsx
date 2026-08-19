@@ -38,5 +38,8 @@ function getStatusClasses(status: string) {
 
         case "archived":
             return "bg-red-500/10 text-red-400 ring-1 ring-inset ring-red-500/20";
+
+        default:
+            return "bg-zinc-800 text-zinc-400 ring-1 ring-inset ring-zinc-700";
     }
 }
