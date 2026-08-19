@@ -57,8 +57,24 @@ export default function ProductTable({
                         </span> 
                     </div>
 
+                    <h2 className="mt-5 text-lg font-semibold text-white">
+                        No products yet
+                    </h2>
+
+
+                    <p className="mt-2 max-w-md text-sm leading-6 text-zinc-500">
+                        You have not added any 3D models to your store yet.
+                        Create your first product to get started.
+                    </p>
+
+                    <Link
+                        href="/admin/products/new"
+                        className="mt-6 inline-flex rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    >
+                        Add your first product
+                    </Link>
                 </div>
             </section>
-        )
+        );
     }
 }
