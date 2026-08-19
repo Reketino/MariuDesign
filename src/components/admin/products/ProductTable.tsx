@@ -43,3 +43,8 @@ function getStatusClasses(status: string) {
             return "bg-zinc-800 text-zinc-400 ring-1 ring-inset ring-zinc-700";
     }
 }
+
+export default function ProductTable({
+    products,
+}: ProductTableProps) {
+}
