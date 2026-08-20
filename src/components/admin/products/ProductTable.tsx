@@ -141,6 +141,12 @@ export default function ProductTable({
                                             {product.status}
                                         </span>
                                     </td>
+
+                                    <td className="px-6 py-5">
+                                        <span className="text-sm text-zinc-500">
+                                            {formatDate(product.created_at)}
+                                        </span>
+                                    </td>
                                 </tr>
                             )
                         })}
