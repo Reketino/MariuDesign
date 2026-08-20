@@ -77,4 +77,10 @@ export default function ProductTable({
             </section>
         );
     }
+
+    return (
+        <section className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
+
+        </section>
+    )
 }
