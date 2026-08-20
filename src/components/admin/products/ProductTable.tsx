@@ -113,7 +113,12 @@ export default function ProductTable({
                             );
                             
                             return (
-                                
+                                <tr
+                                key={product.id}
+                                className="transition hover:bg-zinc-900"
+                                >
+                                    
+                                </tr>
                             )
                         })}
                     </tbody>
