@@ -77,4 +77,83 @@ export default function ProductTable({
             </section>
         );
     }
+
+    return (
+        <section className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
+            <div className="overflow-x-auto">
+                <table className="w-full min-w-200 text-left">
+                    <thead className="border-b border-zinc-800 bg-zinc-900">
+                        <tr>
+                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                Product
+                            </th>
+
+                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                Category
+                            </th>
+
+                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                Status
+                            </th>
+                            
+                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                Created
+                            </th>
+
+                            <th className="px-6 py-4 text-right font-medium uppercase tracking-wider text-zinc-500">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody className="divide-y divide-zinc-800">
+                        {products.map((product) => {
+                            const category = getCategory(
+                                product.categories,
+                            );
+                            
+                            return (
+                                <tr
+                                key={product.id}
+                                className="transition hover:bg-zinc-900"
+                                >
+                                    <td className="px-6 py-5">
+                                        <div>
+                                            <p className="font-medium text-white">
+                                                {product.title}
+                                            </p>
+
+                                            <p className="mt-1 text-sm text-zinc-500">
+                                                /{product.slug}
+                                            </p>
+                                        </div>
+                                    </td>
+
+                                    <td className="px-6 py-5">
+                                        <span className="text-sm text-zinc-400">
+                                            {category?.name ?? "Uncategorized"}
+                                        </span>
+                                    </td>
+
+                                    <td className="px-6 py-5">
+                                        <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium capitalize
+                                            ${getStatusClasses(product.status,)}`}>
+                                            {product.status}
+                                        </span>
+                                    </td>
+
+                                    <td className="px-6 py-5">
+                                        <span className="text-sm text-zinc-500">
+                                            {formatDate(product.created_at)}
+                                        </span>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    )
 }
