@@ -87,6 +87,23 @@ export default function ProductTable({
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
                                 Product
                             </th>
+
+                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                Product
+                            </th>
+
+                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                Product
+                            </th>
+                            
+                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                Product
+                            </th>
+
+                            <th className="px-6 py-4 text-right font-medium uppercase tracking-wider text-zinc-500">
+                                Actions
+                            </th>
+
                         </tr>
                     </thead>
                 </table>
