@@ -128,6 +128,12 @@ export default function ProductTable({
                                             </p>
                                         </div>
                                     </td>
+
+                                    <td className="px-6 py-5">
+                                        <span className="text-sm text-zinc-400">
+                                            {category?.name ?? "Uncategorized"}
+                                        </span>
+                                    </td>
                                 </tr>
                             )
                         })}
