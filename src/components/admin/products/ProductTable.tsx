@@ -89,15 +89,15 @@ export default function ProductTable({
                             </th>
 
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
-                                Product
+                                Category
                             </th>
 
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
-                                Product
+                                Status
                             </th>
                             
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
-                                Product
+                                Created
                             </th>
 
                             <th className="px-6 py-4 text-right font-medium uppercase tracking-wider text-zinc-500">
