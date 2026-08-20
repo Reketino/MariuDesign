@@ -117,7 +117,13 @@ export default function ProductTable({
                                 key={product.id}
                                 className="transition hover:bg-zinc-900"
                                 >
-                                    
+                                    <td className="px-6 py-5">
+                                        <div>
+                                            <p className="font-medium text-white">
+                                                {product.title}
+                                            </p>
+                                        </div>
+                                    </td>
                                 </tr>
                             )
                         })}
