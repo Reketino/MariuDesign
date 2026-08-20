@@ -122,6 +122,10 @@ export default function ProductTable({
                                             <p className="font-medium text-white">
                                                 {product.title}
                                             </p>
+
+                                            <p className="mt-1 text-sm text-zinc-500">
+                                                /{product.slug}
+                                            </p>
                                         </div>
                                     </td>
                                 </tr>
