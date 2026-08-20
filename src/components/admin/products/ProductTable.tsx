@@ -103,9 +103,20 @@ export default function ProductTable({
                             <th className="px-6 py-4 text-right font-medium uppercase tracking-wider text-zinc-500">
                                 Actions
                             </th>
-
                         </tr>
                     </thead>
+
+                    <tbody className="divide-y divide-zinc-800">
+                        {products.map((product) => {
+                            const category = getCategory(
+                                product.categories,
+                            );
+                            
+                            return (
+                                
+                            )
+                        })}
+                    </tbody>
                 </table>
             </div>
 
