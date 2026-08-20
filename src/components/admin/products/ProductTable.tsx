@@ -134,6 +134,13 @@ export default function ProductTable({
                                             {category?.name ?? "Uncategorized"}
                                         </span>
                                     </td>
+
+                                    <td className="px-6 py-5">
+                                        <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium capitalize
+                                            ${getStatusClasses(product.status,)}`}>
+                                            {product.status}
+                                        </span>
+                                    </td>
                                 </tr>
                             )
                         })}
