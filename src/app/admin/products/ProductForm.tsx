@@ -106,7 +106,12 @@ export default function ProductForm({
                     />
 
                     <div>
-                        
+                        <label
+                        htmlFor="slug"
+                        className="block text-sm font-medium text-zinc-300"
+                        >
+                            Slug
+                        </label>
                     </div>
                 </div>
             </div>
