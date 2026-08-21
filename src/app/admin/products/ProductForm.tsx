@@ -165,7 +165,41 @@ export default function ProductForm({
                 </p>
             </header>
 
-            
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                <div>
+                    <label
+                    htmlFor="category"
+                    className="block text-sm font-medium text-zinc-300"
+                    >
+                        Category
+                    </label>
+
+                    <select
+                    id="category"
+                    name="category"
+                    value={categoryId}
+                    onChange={(event) => 
+                        setCategoryId(event.target.value)
+                    }
+                    className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
+                    >
+                        <option value="">
+                            Uncategorized
+                        </option>
+
+                        {categories.map((category) => (
+                            <option
+                            key={category.id}
+                            value={category.id}
+                            >
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
+               </div>
+
+               
+            </div>
             </section>
             
         </form>
