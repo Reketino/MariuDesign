@@ -104,6 +104,7 @@ export default function ProductForm({
                     required
                     className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500"
                     />
+                    </div>
 
                     <div>
                         <label
@@ -126,11 +127,45 @@ export default function ProductForm({
                         />
 
                         <p className="mt-2 text-xs text-zinc-600">
-                            Used in the prroduct URL.
+                            Used in the product URL.
                         </p>
                     </div>
+
+                    <div>
+                        <label
+                        htmlFor="description"
+                        className="block text-sm font-medium text-zinc-300"
+                        >
+                            Description
+                        </label>
+
+                        <textarea
+                        id="description"
+                        name="description"
+                        value={description}
+                        onChange={(event) => 
+                            setDescription(event.target.value)
+                        }
+                        rows={6}
+                        placeholder="Describe the model, what it is used for, printing recommendations, and other relevant information."
+                        className="mt-2 block w-full resize-y rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500"
+                        />
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+            <header>
+                <h2 className="text-lg font-semibold text-white">
+                    Store settings
+                </h2>
+
+                <p className="mt-1 text-sm text-zinc-500">
+                    Configure how the product appears in your store.
+                </p>
+            </header>
+
+            
             </section>
             
         </form>
