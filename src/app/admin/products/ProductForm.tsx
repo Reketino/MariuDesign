@@ -198,7 +198,26 @@ export default function ProductForm({
                     </select>
                </div>
 
-               
+             <div>
+                <label
+                htmlFor="status"
+                className="block text-sm font-medium text-zinc-300"
+                >
+                    Status
+                </label>
+
+                <select
+                id="status"
+                name="status"
+                value={status}
+                onChange={(event) =>
+                    setStatus(event.target.value)
+                }
+                className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
+                >
+        
+                </select>    
+            </div>  
             </div>
             </section>
             
