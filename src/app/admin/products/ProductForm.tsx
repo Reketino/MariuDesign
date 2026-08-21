@@ -215,7 +215,11 @@ export default function ProductForm({
                 }
                 className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
                 >
-        
+                    <option value="draft">
+                        Draft
+                    </option>
+
+                    
                 </select>    
             </div>  
             </div>
