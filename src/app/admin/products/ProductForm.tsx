@@ -219,7 +219,9 @@ export default function ProductForm({
                         Draft
                     </option>
 
-                    
+                    <option value="published">
+                    Published
+                    </option> 
                 </select>    
             </div>  
             </div>
