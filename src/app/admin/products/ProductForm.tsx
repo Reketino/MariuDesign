@@ -73,6 +73,17 @@ export default function ProductForm({
         onSubmit={handleSubmit}
         className="space-y-8"
         >
+            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+            <header>
+                <h2 className="text-lg font-semibold text-white">
+                    Product information
+                </h2>
+
+                <p className="mt-1 text-sm text-zinc-500">
+                    Add the basic information for your 3D model here Reite
+                </p>
+            </header>
+            </section>
             
         </form>
     )
