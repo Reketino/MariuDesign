@@ -80,9 +80,21 @@ export default function ProductForm({
                 </h2>
 
                 <p className="mt-1 text-sm text-zinc-500">
-                    Add the basic information for your 3D model here Reite
+                    Add the basic information for your 3D model here Reite.
                 </p>
             </header>
+
+            <div className="mt-6 space-y-6">
+                <div>
+                    <label
+                    htmlFor="title"
+                    className="block text-sm font-medium text-zinc-300"
+                    >
+                        Title
+                    </label>
+                    
+                </div>
+            </div>
             </section>
             
         </form>
