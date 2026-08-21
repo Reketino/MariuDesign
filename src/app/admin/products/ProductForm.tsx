@@ -92,7 +92,22 @@ export default function ProductForm({
                     >
                         Title
                     </label>
-                    
+
+                    <input
+                    id="title"
+                    name="title"
+                    value={title}
+                    onChange={(event) => 
+                        handleTitleChange(event.target.value)
+                    }
+                    placeholder="Example: MTB stand"
+                    required
+                    className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500"
+                    />
+
+                    <div>
+                        
+                    </div>
                 </div>
             </div>
             </section>
