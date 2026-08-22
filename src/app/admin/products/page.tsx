@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import ProductTable from "@/components/admin/products/ProductTable";
+
 import { createClient } from "@/lib/supabase/server";
 
 export default async function ProductsPage() {
@@ -27,9 +29,7 @@ export default async function ProductsPage() {
         });
 
         if (error) {
-            throw new Error(
-                `Failed to load products: ${error.message}`,
-            )
+            throw new Error("Failed to load products");
         }
 
         return (
@@ -56,6 +56,8 @@ export default async function ProductsPage() {
                     Add product 📦
                 </Link>
             </header>
+
+            <ProductTable products={products ?? []} />
             </section>
         );
 }
