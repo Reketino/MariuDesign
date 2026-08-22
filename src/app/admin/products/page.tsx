@@ -29,9 +29,7 @@ export default async function ProductsPage() {
         });
 
         if (error) {
-            throw new Error(
-                `Failed to load products: ${error.message}`,
-            )
+            throw new Error("Failed to load products");
         }
 
         return (
