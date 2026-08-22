@@ -9,6 +9,10 @@ type ProductTableProps = {
 function getCategory(
     categories: Product["categories"],
 ): ProductCategory | null {
+    if (!categories) {
+        return null;
+    }
+
     return categories[0] ?? null;
 }
 
