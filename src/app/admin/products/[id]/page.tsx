@@ -9,3 +9,11 @@ type EditProductPageProps = {
         id: string;
     }>;
 };
+
+export default async function EditProductPage({
+    params,
+}: EditProductPageProps) {
+    const { id } = await params
+
+    const supabase = await createClient();
+}
