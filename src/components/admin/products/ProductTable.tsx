@@ -21,9 +21,9 @@ function formatDate(date: string) {
 }
 
 function getStatusClasses(status: string) {
-    switch(status.toLowerCase()) {
-        case "published": 
-        return "bg-emerald-500/10 text-emerald-400 ring-1 ring-inset ring-emerald-500/20";
+    switch (status.toLowerCase()) {
+        case "published":
+            return "bg-emerald-500/10 text-emerald-400 ring-1 ring-inset ring-emerald-500/20";
 
         case "draft":
             return "bg-zinc-800 text-zinc-400 ring-1 ring-inset ring-zinc-700";
@@ -40,13 +40,13 @@ export default function ProductTable({
     products,
 }: ProductTableProps) {
     if (products.length === 0) {
-        return(
+        return (
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60">
                 <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900">
-                       <span className="text-xl text-zinc-500">
-                        +
-                        </span> 
+                        <span className="text-xl text-zinc-500">
+                            +
+                        </span>
                     </div>
 
                     <h2 className="mt-5 text-lg font-semibold text-white">
@@ -87,7 +87,7 @@ export default function ProductTable({
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
                                 Status
                             </th>
-                            
+
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
                                 Created
                             </th>
@@ -103,11 +103,11 @@ export default function ProductTable({
                             const category = getCategory(
                                 product.categories,
                             );
-                            
+
                             return (
                                 <tr
-                                key={product.id}
-                                className="transition hover:bg-zinc-900"
+                                    key={product.id}
+                                    className="transition hover:bg-zinc-900"
                                 >
                                     <td className="px-6 py-5">
                                         <div>
@@ -142,11 +142,11 @@ export default function ProductTable({
 
                                     <td className="px-6 py-5 text-right">
                                         <Link
-                                        href={`/admin/products/${product.id}`}
-                                        className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                            href={`/admin/products/${product.id}`}
+                                            className="text-sm font-medium text-zinc-400 transition hover:text-white"
                                         >
                                             Edit
-                                    </Link>
+                                        </Link>
                                     </td>
                                 </tr>
                             );
