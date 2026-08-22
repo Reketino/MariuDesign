@@ -56,6 +56,8 @@ export default async function ProductsPage() {
                     Add product 📦
                 </Link>
             </header>
+
+            <ProductTable products={products ?? []} />
             </section>
         );
 }

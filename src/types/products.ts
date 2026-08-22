@@ -13,5 +13,5 @@ export type Product = {
     license: string | null;
     created_at: string;
     category_id: string | null;
-    categories: ProductCategory | ProductCategory | null;
+    categories: ProductCategory[];
 };
