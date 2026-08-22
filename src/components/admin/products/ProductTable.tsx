@@ -9,15 +9,7 @@ type ProductTableProps = {
 function getCategory(
     categories: Product["categories"],
 ): ProductCategory | null {
-    if (!categories) {
-        return null;
-    }
-
-    if (Array.isArray(categories)) {
-        return categories[0] ?? null;
-    }
-
-    return categories;
+    return categories[0] ?? null;
 }
 
 function formatDate(date: string) {
