@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import ProductTable from "@/components/admin/products/ProductTable";
+
 import { createClient } from "@/lib/supabase/server";
 
 export default async function ProductsPage() {
