@@ -3,24 +3,39 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import type { ProductCategory } from "@/types/products";
+import type { 
+    ProductCategory,
+    ProductFormData,
+} from "@/types/products";
 import { createClient } from "@/lib/supabase/client";
 
 type ProductFormProps = {
     categories: ProductCategory[];
+    product?: ProductFormData;
 }
 
 export default function ProductForm({
     categories,
+    product,
 }: ProductFormProps) {
     const router = useRouter();
 
-    const [title, setTitle] = useState("");
-    const [slug, setSlug] = useState("");
-    const [description, setDescription] = useState("");
-    const [categoryId, setCategoryId] = useState("");
-    const [status, setStatus] = useState("draft");
-    const [license, setLicense] = useState("");
+    const isEditing = Boolean(product);
+
+    const [title, setTitle] = useState(product?.title ?? "");
+    const [slug, setSlug] = useState(product?.slug ?? "");
+    const [description, setDescription] = useState(
+        product?.description ?? "",
+    );
+    const [categoryId, setCategoryId] = useState( 
+        product?.category_id ?? "",
+    );
+    const [status, setStatus] = useState(
+        product?.status ?? "draft",
+    );
+    const [license, setLicense] = useState(
+        product?.license ?? "",
+    );
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -49,16 +64,25 @@ export default function ProductForm({
 
         const supabase = createClient();
 
-        const { error } = await supabase
-            .from("products")
-            .insert({
-                title,
-                slug,
-                description: description || null,
-                category_id: categoryId || null,
-                status,
-                license: license || null,
-            });
+        const productData = {
+            title,
+            slug,
+            description: description || null,
+            category_id: categoryId || null,
+            status,
+            license: license || null,
+        };
+
+        const query = product
+        ? supabase
+        .from("products")
+        .update(productData)
+        .eq("id", product.id)
+        : supabase
+        .from("products")
+        .insert(productData)
+
+        const { error } = await query;
 
         if (error) {
             setError(error.message);
@@ -78,7 +102,9 @@ export default function ProductForm({
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
                 <header>
                     <h2 className="text-lg font-semibold text-white">
-                        Product information for MariuDesign
+                       {isEditing
+                       ? "Edit product information"
+                       : "Product information for MariuDesign"}
                     </h2>
 
                     <p className="mt-1 text-sm text-zinc-500">
@@ -266,15 +292,6 @@ export default function ProductForm({
                             Choose how customers are allowed to use your 3D model.
                         </p>
                     </div>
-                    <input
-                        id="license"
-                        name="license"
-                        type="text"
-                        value={license}
-                        onChange={(event) =>
-                            setLicense(event.target.value)
-                        }
-                    />
                 </div>
             </section>
 
@@ -300,9 +317,15 @@ export default function ProductForm({
                     disabled={loading}
                     className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                    {loading ? "Creating product..." : "Create product"}
+                    {loading 
+                    ? isEditing 
+                    ? "Saving changes..."
+                    : "Creating product..." 
+                    : isEditing
+                    ? "Save changes"
+                    :"Create product"}
                 </button>
             </div>
         </form>
-    )
+    );
 }

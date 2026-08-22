@@ -15,3 +15,13 @@ export type Product = {
     category_id: string | null;
     categories: ProductCategory[] | null;
 };
+
+export type ProductFormData = {
+    id: string;
+    title: string;
+    slug: string;
+    description: string | null;
+    status: string;
+    license: string | null;
+    category_id: string | null;
+}
