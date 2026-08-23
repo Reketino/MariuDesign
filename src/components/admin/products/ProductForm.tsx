@@ -40,6 +40,7 @@ export default function ProductForm({
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [deleting, setDeleting] = useState(false);
 
     function createSlug(value: string) {
         return value
@@ -121,6 +122,22 @@ export default function ProductForm({
 
         setError("");
         setDeleting(true);
+
+        const supabase = createClient();
+
+        const { error } = await supabase
+            .from("products")
+            .delete()
+            .eq("id", product.id);
+
+        if (error) {
+            setError(error.message);
+            setDeleting(false);
+            return;
+        }
+
+        router.push("/admin/products");
+        router.refresh();
     }
 
     return (
@@ -333,6 +350,20 @@ export default function ProductForm({
                 </div>
             )}
 
+            <div className="flex items-center justify-between gap-3">
+                {isEditing ? (
+                    <button
+                    type="button"
+                    onClick={handleDelete}
+                    disabled={loading || deleting}
+                    className="rounded-lg border border-red-500/30 px-4 py-2.5 text-sm font-medium text-red-400 transition hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        {deleting ? "Deleting..." : "Delete product"}
+                    </button>
+                ) : (     
+                <div />
+            )}
+
             <div className="flex items-center justify-end gap-3">
                 <button
                     type="button"
@@ -354,6 +385,7 @@ export default function ProductForm({
                     ? "Save changes"
                     :"Create product"}
                 </button>
+            </div>
             </div>
         </form>
     );
