@@ -94,6 +94,12 @@ export default function ProductForm({
                 status,
                 license: license || null,
             });
+
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
         }
 
 
