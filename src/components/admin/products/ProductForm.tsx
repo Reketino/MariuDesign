@@ -118,6 +118,9 @@ export default function ProductForm({
         if (!confirmed) {
             return;
         }
+
+        setError("");
+        setDeleting(true);
     }
 
     return (
