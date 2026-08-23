@@ -106,6 +106,12 @@ export default function ProductForm({
         router.refresh();
     }
 
+    async function handleDelete() {
+        if (!product) {
+            return;
+        }
+    }
+
     return (
         <form
             onSubmit={handleSubmit}
