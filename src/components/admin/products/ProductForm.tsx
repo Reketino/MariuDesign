@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { useRouter } from "next/navigation";
 
 import type { 
@@ -64,34 +65,62 @@ export default function ProductForm({
 
         const supabase = createClient();
 
-        const productData = {
-            title,
-            slug,
-            description: description || null,
-            category_id: categoryId || null,
-            status,
-            license: license || null,
-        };
+        if (isEditing && product) {
+            const { error } = await supabase
+            .from("products")
+            .update({
+                title,
+                slug,
+                description: description || null,
+                category_id: categoryId || null,
+                status,
+                license: license || null,
+            })
+            .eq("id", product.id);
 
-        const query = product
-        ? supabase
-        .from("products")
-        .update(productData)
-        .eq("id", product.id)
-        : supabase
-        .from("products")
-        .insert(productData)
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
+        } else {
+            const { error } = await supabase
+            .from("products")
+            .insert({
+                title,
+                slug,
+                description: description || null,
+                category_id: categoryId || null,
+                status,
+                license: license || null,
+            });
 
-        const { error } = await query;
-
-        if (error) {
-            setError(error.message);
-            setLoading(false);
-            return;
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
         }
 
         router.push("/admin/products");
         router.refresh();
+    }
+
+    async function handleDelete() {
+        if (!product) {
+            return;
+        }
+
+        const confirmed = window.confirm(
+            `Are you sure Reite you want to delete this "${product.title}"? Be aware this action cannot be undone!.`,
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        setError("");
+        setDeleting(true);
     }
 
     return (
