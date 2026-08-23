@@ -77,6 +77,12 @@ export default function ProductForm({
                 license: license || null,
             })
             .eq("id", product.id);
+
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
         }
 
 
