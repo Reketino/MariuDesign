@@ -65,31 +65,20 @@ export default function ProductForm({
 
         const supabase = createClient();
 
-        const productData = {
-            title,
-            slug,
-            description: description || null,
-            category_id: categoryId || null,
-            status,
-            license: license || null,
-        };
-
-        const query = product
-        ? supabase
-        .from("products")
-        .update(productData)
-        .eq("id", product.id)
-        : supabase
-        .from("products")
-        .insert(productData)
-
-        const { error } = await query;
-
-        if (error) {
-            setError(error.message);
-            setLoading(false);
-            return;
+        if (isEditing && product) {
+            const { error } = await supabase
+            .from("products")
+            .update({
+                title,
+                slug,
+                description: description || null,
+                category_id: categoryId || null,
+                status,
+                license: license || null,
+            })
+            .eq("id", product.id);
         }
+
 
         router.push("/admin/products");
         router.refresh();
