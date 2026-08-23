@@ -83,6 +83,17 @@ export default function ProductForm({
                 setLoading(false);
                 return;
             }
+        } else {
+            const { error } = await supabase
+            .from("products")
+            .insert({
+                title,
+                slug,
+                description: description || null,
+                category_id: categoryId || null,
+                status,
+                license: license || null,
+            });
         }
 
 
