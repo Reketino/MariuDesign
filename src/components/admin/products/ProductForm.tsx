@@ -102,7 +102,6 @@ export default function ProductForm({
             }
         }
 
-
         router.push("/admin/products");
         router.refresh();
     }
