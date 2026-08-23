@@ -110,6 +110,10 @@ export default function ProductForm({
         if (!product) {
             return;
         }
+
+        const confirmed = window.confirm(
+            `Are you sure Reite you want to delete this "${product.title}"? Be aware this action cannot be undone!.`,
+        );
     }
 
     return (
