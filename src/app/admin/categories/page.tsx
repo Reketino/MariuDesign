@@ -9,7 +9,7 @@ export default async function CategoriesPage() {
         .from("categories")
         .select("id, name, slug")
         .order("name");
-   
+
     if (error) {
         throw new Error("Failed to load categories")
     }
@@ -46,7 +46,7 @@ export default async function CategoriesPage() {
                             <thead className="border-b border-zinc-800 bg-zinc-900">
                                 <tr>
                                     <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
-                                        Category 
+                                        Category
                                     </th>
 
                                     <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
@@ -62,8 +62,8 @@ export default async function CategoriesPage() {
                             <tbody className="divide-y divide-zinc-800">
                                 {categories.map((category) => (
                                     <tr
-                                    key={category.id}
-                                    className="transition hover:bg-zinc-900"
+                                        key={category.id}
+                                        className="transition hover:bg-zinc-900"
                                     >
                                         <td className="px-6 py-5">
                                             <p className="font-medium text-white">
@@ -79,8 +79,8 @@ export default async function CategoriesPage() {
 
                                         <td className="px-6 py-5 text-right">
                                             <Link
-                                            href={`/admin/categories/${category.id}`}
-                                            className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                                href={`/admin/categories/${category.id}`}
+                                                className="text-sm font-medium text-zinc-400 transition hover:text-white"
                                             >
                                                 Edit
                                             </Link>
@@ -97,21 +97,21 @@ export default async function CategoriesPage() {
                         <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900">
                             <span className="text-xl text-zinc-500">
                                 +
-                            </span>  
+                            </span>
                         </div>
 
                         <h2 className="mt-5 text-lg font-semibold text-white">
-                            No categories yet 
+                            No categories yet
                         </h2>
 
                         <p className="mt-2 max-w-md text-sm leading-6 text-zinc-500">
                             Create your first category to start organizing
-                            your 3D models.  
+                            your 3D models.
                         </p>
 
                         <Link
-                        href="/admin/categories/new"
-                        className="mt-6 inline-flex rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                            href="/admin/categories/new"
+                            className="mt-6 inline-flex rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
                         >
                             Add your first category
                         </Link>
