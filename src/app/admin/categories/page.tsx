@@ -99,6 +99,22 @@ export default async function CategoriesPage() {
                                 +
                             </span>  
                         </div>
+
+                        <h2 className="mt-5 text-lg font-semibold text-white">
+                            No categories yet 
+                        </h2>
+
+                        <p className="mt-2 max-w-md text-sm leading-6 text-zinc-500">
+                            Create your first category to start organizing
+                            your 3D models.  
+                        </p>
+
+                        <Link
+                        href="/admin/categories/new"
+                        className="mt-6 inline-flex rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                        >
+                            Add your first category
+                        </Link>
                     </div>
                 </section>
             )}
