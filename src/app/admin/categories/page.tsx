@@ -76,6 +76,15 @@ export default async function CategoriesPage() {
                                                 /{category.slug}
                                             </p>
                                         </td>
+
+                                        <td className="px-6 py-5 text-right">
+                                            <Link
+                                            href={`/admin/categories/${category.id}`}
+                                            className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                            >
+                                                Edit
+                                            </Link>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
