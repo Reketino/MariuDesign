@@ -10,4 +10,13 @@ export default async function CategoriesPage() {
         .select("id, name, slug")
         .order("name");
     }
-}
+
+    if (error) {
+        throw new Error("Failed to load categories")
+    }
+
+    return (
+        <section className="space-y-8">
+
+        </section>
+    )
