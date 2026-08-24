@@ -58,6 +58,20 @@ export default async function CategoriesPage() {
                                     </th>
                                 </tr>
                             </thead>
+
+                            <tbody className="divide-y divide-zinc-800">
+                                {categories.map((category) => (
+                                    <tr
+                                    key={category.id}
+                                    className="transition hover:bg-zinc-900">
+                                        <td className="px-6 py-5">
+                                            <p className="font-medium text-white">
+                                                {category.name}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                     </div>
                 </section>
