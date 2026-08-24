@@ -38,6 +38,30 @@ export default async function CategoriesPage() {
                     Add category
                 </Link>
             </header>
+
+            {categories && categories.length > 0 ? (
+                <section className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
+                    <div className="overflow-x-auto">
+                        <table className="w-full min-w-175 text-left">
+                            <thead className="border-b border-zinc-800 bg-zinc-900">
+                                <tr>
+                                    <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                        Category 
+                                    </th>
+
+                                    <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                        Slug
+                                    </th>
+
+                                    <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </section>
+            )}
         </section>
     )
 }
