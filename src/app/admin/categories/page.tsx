@@ -63,10 +63,17 @@ export default async function CategoriesPage() {
                                 {categories.map((category) => (
                                     <tr
                                     key={category.id}
-                                    className="transition hover:bg-zinc-900">
+                                    className="transition hover:bg-zinc-900"
+                                    >
                                         <td className="px-6 py-5">
                                             <p className="font-medium text-white">
                                                 {category.name}
+                                            </p>
+                                        </td>
+
+                                        <td className="px-6 py-5">
+                                            <p className="text-sm text-zinc-500">
+                                                /{category.slug}
                                             </p>
                                         </td>
                                     </tr>
