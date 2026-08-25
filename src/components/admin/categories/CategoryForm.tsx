@@ -22,4 +22,9 @@ export default function CategoryForm() {
             .replace(/\s+/g, "-")
             .replace(/-+/g, "-")
     }
+
+    function handleNameChange(value: string) {
+        setName(value);
+        setSlug(createSlug(value));
+    }
 }
