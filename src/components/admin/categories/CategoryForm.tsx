@@ -27,4 +27,16 @@ export default function CategoryForm() {
         setName(value);
         setSlug(createSlug(value));
     }
+
+    async function handleSubmit(
+        event: React.SubmitEvent<HTMLFormElement>,
+    ) {
+        event.preventDefault();
+
+        setError("");
+        setLoading(true);
+
+        const supabase = createClient();
+        
+    }
 }
