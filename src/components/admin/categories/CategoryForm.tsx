@@ -13,4 +13,13 @@ export default function CategoryForm() {
     const [slug, setSlug] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
+    function createSlug(value: string) {
+        return value
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, "")
+            .replace(/\s+/g, "-")
+            .replace(/-+/g, "-")
+    }
 }
