@@ -45,7 +45,11 @@ export default function CategoryForm() {
                 slug,
             });
 
-        
+        if (error) {
+            setError(error.message);
+            setLoading(false);
+            return;
+        }
 
     }
 }
