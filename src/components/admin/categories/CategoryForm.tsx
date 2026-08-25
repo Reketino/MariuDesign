@@ -37,6 +37,15 @@ export default function CategoryForm() {
         setLoading(true);
 
         const supabase = createClient();
+
+        const { error } = await supabase
+            .from("categories")
+            .insert({
+                name,
+                slug,
+            });
+
         
+
     }
 }
