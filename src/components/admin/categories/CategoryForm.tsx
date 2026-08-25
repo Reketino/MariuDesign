@@ -70,6 +70,17 @@ export default function CategoryForm() {
                     Add the basic information for your category
                 </p>
             </header>
+
+            <div className="mt-6 space-y-6">
+                <div>
+                    <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-zinc-300"
+                    >
+                        Name
+                    </label>
+                </div>
+            </div>
             </section>
         </form>
     )
