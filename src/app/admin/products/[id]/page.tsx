@@ -13,35 +13,35 @@ type EditProductPageProps = {
 export default async function EditProductPage({
     params,
 }: EditProductPageProps) {
-    const { id } = await params
+    const { id } = await params;
 
     const supabase = await createClient();
 
     const [
-        { data: product, error: ProductError },
+        { data: product, error: productError },
         { data: categories, error: categoriesError },
     ] = await Promise.all([
         supabase
-        .from("products")
-        .select(`
-            id,
-            title,
-            slug,
-            description,
-            status,
-            license,
-            category_id
+            .from("products")
+            .select(`
+                id,
+                title,
+                slug,
+                description,
+                status,
+                license,
+                category_id
             `)
-        .eq("id", id)
-        .single(),
+            .eq("id", id)
+            .single(),
 
         supabase
-        .from("categories")
-        .select("id, name, slug")
-        .order("name"),
+            .from("categories")
+            .select("id, name, slug")
+            .order("name"),
     ]);
 
-    if (ProductError || !product) {
+    if (productError || !product) {
         throw new Error("Product not found");
     }
 
@@ -53,10 +53,10 @@ export default async function EditProductPage({
         <section className="space-y-8">
             <header>
                 <Link
-                href="/admin/products"
-                className="text-sm text-zinc-500 transition hover:text-white"
+                    href="/admin/products"
+                    className="text-sm text-zinc-500 transition hover:text-white"
                 >
-                    ← Back to products 
+                    ← Back to products
                 </Link>
 
                 <p className="mt-6 text-sm font-medium text-zinc-500">
@@ -73,8 +73,8 @@ export default async function EditProductPage({
             </header>
 
             <ProductForm
-            categories={categories ?? []}
-            product={product}
+                categories={categories ?? []}
+                product={product}
             />
         </section>
     );

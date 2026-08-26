@@ -15,7 +15,7 @@ type Category = {
 
 type CategoryFormProps = {
     category?: Category;
-}
+};
 
 export default function CategoryForm({
     category
@@ -56,6 +56,26 @@ export default function CategoryForm({
 
         const supabase = createClient();
 
+        if (isEditing && category) {
+            const { error } = await supabase
+                .from("categories")
+                .update({
+                    name,
+                    slug,
+                })
+                .eq("id", category.id);
+
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
+
+            router.push("/admin/categories");
+            router.refresh();
+
+            return;
+        }
         const { error } = await supabase
             .from("categories")
             .insert({
@@ -176,5 +196,5 @@ export default function CategoryForm({
                 </button>
             </div>
         </form>
-    )
+    );
 }
