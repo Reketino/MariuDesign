@@ -6,11 +6,18 @@ import { useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
 
+
+type Category = {
+    id: string;
+    name: string;
+    slug: string;
+};
+
 export default function CategoryForm() {
     const router = useRouter();
 
     const isEditing = Boolean(category);
-    
+
     const [name, setName] = useState("");
     const [slug, setSlug] = useState("");
     const [error, setError] = useState("");
