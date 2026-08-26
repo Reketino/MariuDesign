@@ -25,7 +25,10 @@ export default function CategoryForm() {
 
     function handleNameChange(value: string) {
         setName(value);
-        setSlug(createSlug(value));
+
+        if (!isEditing) {
+            setSlug(createSlug(value));
+        }
     }
 
     async function handleSubmit(
