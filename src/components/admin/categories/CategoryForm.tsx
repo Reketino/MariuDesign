@@ -6,11 +6,26 @@ import { useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
 
-export default function CategoryForm() {
+
+type Category = {
+    id: string;
+    name: string;
+    slug: string;
+};
+
+type CategoryFormProps = {
+    category?: Category;
+}
+
+export default function CategoryForm({
+    category
+}: CategoryFormProps) {
     const router = useRouter();
 
-    const [name, setName] = useState("");
-    const [slug, setSlug] = useState("");
+    const isEditing = Boolean(category);
+
+    const [name, setName] = useState(category?.name ?? "");
+    const [slug, setSlug] = useState(category?.slug ?? "");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -25,7 +40,10 @@ export default function CategoryForm() {
 
     function handleNameChange(value: string) {
         setName(value);
-        setSlug(createSlug(value));
+
+        if (!isEditing) {
+            setSlug(createSlug(value));
+        }
     }
 
     async function handleSubmit(
@@ -63,11 +81,15 @@ export default function CategoryForm() {
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
                 <header>
                     <h2 className="text-lg font-semibold text-white">
-                        Category information
+                        {isEditing
+                            ? "Edit category information"
+                            : "Category information"}
                     </h2>
 
                     <p className="mt-1 text-sm text-zinc-500">
-                        Add the basic information for your category
+                        {isEditing
+                            ? "Update the information for this category."
+                            : "Add the basic information for your category."}
                     </p>
                 </header>
 
@@ -144,7 +166,13 @@ export default function CategoryForm() {
                     disabled={loading}
                     className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                    {loading ? "Creating category..." : "Create category"}
+                    {loading
+                        ? isEditing
+                            ? "Saving changes..."
+                            : "Creating category..."
+                        : isEditing
+                            ? "Save changes"
+                            : "Create category"}
                 </button>
             </div>
         </form>
