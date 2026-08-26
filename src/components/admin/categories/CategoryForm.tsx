@@ -25,7 +25,7 @@ export default function CategoryForm({
     const isEditing = Boolean(category);
 
     const [name, setName] = useState(category?.name ?? "");
-    const [slug, setSlug] = useState(category?.slug ??"");
+    const [slug, setSlug] = useState(category?.slug ?? "");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -82,7 +82,7 @@ export default function CategoryForm({
                 <header>
                     <h2 className="text-lg font-semibold text-white">
                         {isEditing
-                            ?"Edit category information"
+                            ? "Edit category information"
                             : "Category information"}
                     </h2>
 
@@ -166,13 +166,13 @@ export default function CategoryForm({
                     disabled={loading}
                     className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                {loading 
-                    ? isEditing 
-                        ? "Saving changes..." 
-                        : "Creating category..."
-                    : isEditing
-                    ? "Save changes"
-                    : "Create category"}
+                    {loading
+                        ? isEditing
+                            ? "Saving changes..."
+                            : "Creating category..."
+                        : isEditing
+                            ? "Save changes"
+                            : "Create category"}
                 </button>
             </div>
         </form>
