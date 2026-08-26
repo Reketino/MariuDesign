@@ -17,7 +17,9 @@ type CategoryFormProps = {
     category?: Category;
 }
 
-export default function CategoryForm() {
+export default function CategoryForm({
+    category
+}: CategoryFormProps) {
     const router = useRouter();
 
     const isEditing = Boolean(category);
