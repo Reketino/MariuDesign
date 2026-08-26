@@ -81,7 +81,9 @@ export default function CategoryForm({
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
                 <header>
                     <h2 className="text-lg font-semibold text-white">
-                        Category information
+                        {isEditing
+                            ?"Edit category information"
+                            : "Category information"}
                     </h2>
 
                     <p className="mt-1 text-sm text-zinc-500">
