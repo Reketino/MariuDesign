@@ -166,7 +166,13 @@ export default function CategoryForm({
                     disabled={loading}
                     className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                    {loading ? "Creating category..." : "Create category"}
+                {loading 
+                    ? isEditing 
+                        ? "Saving changes..." 
+                        : "Creating category..."
+                    : isEditing
+                    ? "Save changes"
+                    : "Create category"}
                 </button>
             </div>
         </form>
