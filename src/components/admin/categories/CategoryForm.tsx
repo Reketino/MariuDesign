@@ -87,7 +87,9 @@ export default function CategoryForm({
                     </h2>
 
                     <p className="mt-1 text-sm text-zinc-500">
-                        Add the basic information for your category
+                        {isEditing
+                            ? "Update the information for this category."
+                            : "Add the basic information for your category."}
                     </p>
                 </header>
 
