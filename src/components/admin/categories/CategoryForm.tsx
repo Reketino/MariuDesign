@@ -9,6 +9,8 @@ import { createClient } from "@/lib/supabase/client";
 export default function CategoryForm() {
     const router = useRouter();
 
+    const isEditing = Boolean(category);
+    
     const [name, setName] = useState("");
     const [slug, setSlug] = useState("");
     const [error, setError] = useState("");
