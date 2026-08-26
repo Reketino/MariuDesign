@@ -24,8 +24,8 @@ export default function CategoryForm({
 
     const isEditing = Boolean(category);
 
-    const [name, setName] = useState("");
-    const [slug, setSlug] = useState("");
+    const [name, setName] = useState(category?.name ?? "");
+    const [slug, setSlug] = useState(category?.slug ??"");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
