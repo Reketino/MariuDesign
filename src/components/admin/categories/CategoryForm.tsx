@@ -13,6 +13,10 @@ type Category = {
     slug: string;
 };
 
+type CategoryFormProps = {
+    category?: Category;
+}
+
 export default function CategoryForm() {
     const router = useRouter();
 
