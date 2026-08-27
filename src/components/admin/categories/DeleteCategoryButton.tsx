@@ -44,6 +44,7 @@ export default function DeleteCategoryButton({
             setLoading(false);
             return;
         }
-        
+
+        router.refresh();
     }
 }
