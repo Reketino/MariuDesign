@@ -20,5 +20,14 @@ export default function DeleteCategoryButton({
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    
+    async function handleDelete() {
+        const confirmed = window.confirm(
+            `Are you sure you want to delete "${categoryName}"?`
+        );
+
+        if (!confirmed) {
+            return;
+        }
+        
+    }
 }
