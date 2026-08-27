@@ -72,20 +72,20 @@ export default function CategoryForm({
             }
 
         } else {
-    
-        const { error } = await supabase
-            .from("categories")
-            .insert({
-                name,
-                slug,
-            });
 
-        if (error) {
-            setError(error.message);
-            setLoading(false);
-            return;
+            const { error } = await supabase
+                .from("categories")
+                .insert({
+                    name,
+                    slug,
+                });
+
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
         }
-    }
         router.push("/admin/categories");
         router.refresh();
     }
