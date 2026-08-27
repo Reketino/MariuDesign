@@ -71,11 +71,8 @@ export default function CategoryForm({
                 return;
             }
 
-            router.push("/admin/categories");
-            router.refresh();
-
-            return;
-        }
+        } else {
+    
         const { error } = await supabase
             .from("categories")
             .insert({
@@ -88,7 +85,7 @@ export default function CategoryForm({
             setLoading(false);
             return;
         }
-
+    }
         router.push("/admin/categories");
         router.refresh();
     }
