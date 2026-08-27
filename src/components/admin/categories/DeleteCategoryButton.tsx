@@ -28,6 +28,11 @@ export default function DeleteCategoryButton({
         if (!confirmed) {
             return;
         }
+
+        setError("");
+        setLoading(true);
+
+        const supabase = createClient();
         
     }
 }
