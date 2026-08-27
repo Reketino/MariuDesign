@@ -18,7 +18,7 @@ type CategoryFormProps = {
 };
 
 export default function CategoryForm({
-    category
+    category,
 }: CategoryFormProps) {
     const router = useRouter();
 
