@@ -18,7 +18,7 @@ type CategoryFormProps = {
 };
 
 export default function CategoryForm({
-    category
+    category,
 }: CategoryFormProps) {
     const router = useRouter();
 
@@ -71,24 +71,21 @@ export default function CategoryForm({
                 return;
             }
 
-            router.push("/admin/categories");
-            router.refresh();
+        } else {
 
-            return;
+            const { error } = await supabase
+                .from("categories")
+                .insert({
+                    name,
+                    slug,
+                });
+
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
         }
-        const { error } = await supabase
-            .from("categories")
-            .insert({
-                name,
-                slug,
-            });
-
-        if (error) {
-            setError(error.message);
-            setLoading(false);
-            return;
-        }
-
         router.push("/admin/categories");
         router.refresh();
     }
