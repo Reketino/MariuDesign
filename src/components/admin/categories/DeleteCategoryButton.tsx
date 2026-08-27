@@ -33,6 +33,17 @@ export default function DeleteCategoryButton({
         setLoading(true);
 
         const supabase = createClient();
+
+        const { error } = await supabase
+            .from("categories")
+            .delete()
+            .eq("id", categoryId);
+
+        if (error) {
+            setError(error.message);
+            setLoading(false);
+            return;
+        }
         
     }
 }
