@@ -24,6 +24,10 @@ export default function DeleteCategoryButton({
         const confirmed = window.confirm(
             `Are you sure you want delete "${productTitle}"?`,
         );
+
+        if (!confirmed) {
+            return;
+        }
     }
 }
 
