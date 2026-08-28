@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import DeleteCategoryButton from "@/components/admin/categories/DeleteCategoryButton";
+
 import { createClient } from "@/lib/supabase/server";
 
 export default async function CategoriesPage() {
@@ -77,13 +79,20 @@ export default async function CategoriesPage() {
                                             </p>
                                         </td>
 
-                                        <td className="px-6 py-5 text-right">
+                                        <td className="px-6 py-5">
+                                            <div className="flex items-center justify-end gap-4">
                                             <Link
                                                 href={`/admin/categories/${category.id}`}
                                                 className="text-sm font-medium text-zinc-400 transition hover:text-white"
                                             >
                                                 Edit
                                             </Link>
+
+                                            <DeleteCategoryButton
+                                                categoryId={category.id}
+                                                categoryName={category.name}
+                                            />
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
