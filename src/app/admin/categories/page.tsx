@@ -86,6 +86,11 @@ export default async function CategoriesPage() {
                                             >
                                                 Edit
                                             </Link>
+
+                                            <DeleteCategoryButton
+                                                categoryId={category.id}
+                                                categoryName={category.name}
+                                            />
                                         </td>
                                     </tr>
                                 ))}
