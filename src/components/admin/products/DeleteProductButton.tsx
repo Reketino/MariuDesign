@@ -31,6 +31,21 @@ export default function DeleteCategoryButton({
 
         setError("");
         setLoading(true);
+
+        const supabase = createClient();
+
+        const { error } = await supabase
+            .from("products")
+            .delete()
+            .eq("id", productId)
+
+        if (error) {
+            setError(error.message)
+            setLoading(false);
+            return;
+        }
+
+        
     }
 }
 
