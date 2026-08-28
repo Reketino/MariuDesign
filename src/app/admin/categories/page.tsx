@@ -80,6 +80,7 @@ export default async function CategoriesPage() {
                                         </td>
 
                                         <td className="px-6 py-5">
+                                            <div className="flex items-center justify-end gap-4">
                                             <Link
                                                 href={`/admin/categories/${category.id}`}
                                                 className="text-sm font-medium text-zinc-400 transition hover:text-white"
@@ -91,6 +92,7 @@ export default async function CategoriesPage() {
                                                 categoryId={category.id}
                                                 categoryName={category.name}
                                             />
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
