@@ -79,7 +79,7 @@ export default async function CategoriesPage() {
                                             </p>
                                         </td>
 
-                                        <td className="px-6 py-5 text-right">
+                                        <td className="px-6 py-5">
                                             <Link
                                                 href={`/admin/categories/${category.id}`}
                                                 className="text-sm font-medium text-zinc-400 transition hover:text-white"
