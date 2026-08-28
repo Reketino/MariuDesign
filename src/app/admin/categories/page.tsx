@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import DeleteCategoryButton from "@/components/admin/categories/DeleteCategoryButton";
+
 import { createClient } from "@/lib/supabase/server";
 
 export default async function CategoriesPage() {
