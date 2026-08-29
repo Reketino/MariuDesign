@@ -11,7 +11,7 @@ type DeleteProductButtonProps = {
     productTitle: string;
 };
 
-export default function DeleteCategoryButton({
+export default function DeleteProductButton({
     productId,
     productTitle,
 }: DeleteProductButtonProps) {

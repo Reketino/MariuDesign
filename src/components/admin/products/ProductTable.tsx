@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import DeleteProductButton from "./DeleteProductButton";
+
 import type { Product, ProductCategory } from "@/types/products";
 
 type ProductTableProps = {
