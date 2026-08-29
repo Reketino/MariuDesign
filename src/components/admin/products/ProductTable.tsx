@@ -155,6 +155,10 @@ export default function ProductTable({
                                             Edit
                                         </Link>
 
+                                        <DeleteProductButton
+                                            productId={product.id}
+                                            productTitle={product.title}
+                                        />
                                         </div>
                                     </td>
                                 </tr>
