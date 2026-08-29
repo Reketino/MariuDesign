@@ -148,17 +148,17 @@ export default function ProductTable({
 
                                     <td className="px-6 py-5">
                                         <div className="flex items-center justify-end gap-4">
-                                        <Link
-                                            href={`/admin/products/${product.id}`}
-                                            className="text-sm font-medium text-zinc-400 transition hover:text-white"
-                                        >
-                                            Edit
-                                        </Link>
+                                            <Link
+                                                href={`/admin/products/${product.id}`}
+                                                className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                            >
+                                                Edit
+                                            </Link>
 
-                                        <DeleteProductButton
-                                            productId={product.id}
-                                            productTitle={product.title}
-                                        />
+                                            <DeleteProductButton
+                                                productId={product.id}
+                                                productTitle={product.title}
+                                            />
                                         </div>
                                     </td>
                                 </tr>
