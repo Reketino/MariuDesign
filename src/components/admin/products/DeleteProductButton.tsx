@@ -59,7 +59,17 @@ export default function DeleteCategoryButton({
             >
                 {loading ? "Deleting..." : "Delete"}
             </button>
+
+            {error && (
+                <p
+                role="alert"
+                className="max-w-xs text-right text-xs text-red-400"
+                
+                >
+                    {error}
+                </p>
+            )}
         </div>
-    )
+    );
 }
 
