@@ -22,7 +22,7 @@ export default function DeleteProductButton({
 
     async function handleDelete() {
         const confirmed = window.confirm(
-            `Are you sure you want delete "${productTitle}"?`,
+            `Are you sure you want to delete "${productTitle}"?`,
         );
 
         if (!confirmed) {
