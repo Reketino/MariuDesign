@@ -48,5 +48,18 @@ export default function DeleteCategoryButton({
         setLoading(false);
         router.refresh();
     }
+
+    return (
+        <div className="flex flex-col items-end gap-2">
+            <button
+            type="button"
+            onClick={handleDelete}
+            disabled={loading}
+            className="text-sm font-medium text-red-400 transition hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+                {loading ? "Deleting..." : "Delete"}
+            </button>
+        </div>
+    )
 }
 
