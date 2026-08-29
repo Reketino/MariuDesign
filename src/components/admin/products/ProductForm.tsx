@@ -8,6 +8,7 @@ import type {
     ProductCategory,
     ProductFormData,
 } from "@/types/products";
+
 import { createClient } from "@/lib/supabase/client";
 
 type ProductFormProps = {

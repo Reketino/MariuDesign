@@ -1,6 +1,6 @@
 "use client";
 
-import {  useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
@@ -49,13 +49,13 @@ export default function LoginForm() {
                     </label>
 
                     <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    required 
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        required
                     />
                 </div>
 
@@ -64,13 +64,13 @@ export default function LoginForm() {
                         Password
                     </label>
                     <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    required 
+                        id="password"
+                        name="password"
+                        type="password"
+                        autoComplete="current-password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        required
                     />
                 </div>
 
@@ -81,8 +81,8 @@ export default function LoginForm() {
                 )}
 
                 <button
-                type="submit"
-                disabled={loading}
+                    type="submit"
+                    disabled={loading}
                 >
                     {loading ? "Logging in..." : "Log in"}
                 </button>
