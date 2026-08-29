@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import DeleteProductButton from "./DeleteProductButton";
+
 import type { Product, ProductCategory } from "@/types/products";
 
 type ProductTableProps = {
@@ -77,7 +79,7 @@ export default function ProductTable({
     return (
         <section className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
             <div className="overflow-x-auto">
-                <table className="w-full min-w-[800px] text-left">
+                <table className="w-full min-w-200 text-left">
                     <thead className="border-b border-zinc-800 bg-zinc-900">
                         <tr>
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
@@ -144,13 +146,20 @@ export default function ProductTable({
                                         </span>
                                     </td>
 
-                                    <td className="px-6 py-5 text-right">
-                                        <Link
-                                            href={`/admin/products/${product.id}`}
-                                            className="text-sm font-medium text-zinc-400 transition hover:text-white"
-                                        >
-                                            Edit
-                                        </Link>
+                                    <td className="px-6 py-5">
+                                        <div className="flex items-center justify-end gap-4">
+                                            <Link
+                                                href={`/admin/products/${product.id}`}
+                                                className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                            >
+                                                Edit
+                                            </Link>
+
+                                            <DeleteProductButton
+                                                productId={product.id}
+                                                productTitle={product.title}
+                                            />
+                                        </div>
                                     </td>
                                 </tr>
                             );
