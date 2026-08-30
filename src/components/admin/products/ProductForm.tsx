@@ -86,6 +86,14 @@ export default function ProductForm({
             setImage(null);
             return;
         }
+
+        if (selectedFile.size > MAX_IMAGE_SIZE) {
+            setError("Image is too large. Maximum file size is 5 MB.");
+
+            event.target.value = "";
+            setImage(null);
+            return;
+        }
     }
 
     async function handleSubmit(
