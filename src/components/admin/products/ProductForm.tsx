@@ -16,6 +16,8 @@ type ProductFormProps = {
     product?: ProductFormData;
 }
 
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+
 export default function ProductForm({
     categories,
     product,
