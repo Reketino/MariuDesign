@@ -47,6 +47,8 @@ export default function ProductForm({
         product?.license ?? "",
     );
 
+    const [image, setImage] = useState<File | null>(null)
+
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [deleting, setDeleting] = useState(false);
