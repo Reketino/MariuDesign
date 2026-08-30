@@ -71,7 +71,13 @@ export default function ProductForm({
         event: React.ChangeEvent<HTMLInputElement>,
     ) {
         const selectedFile = event.target.files?.[0] ?? null;
-        
+
+        setError("");
+
+        if (!selectedFile) {
+            setImage(null);
+            return;
+        }
     }
 
     async function handleSubmit(
