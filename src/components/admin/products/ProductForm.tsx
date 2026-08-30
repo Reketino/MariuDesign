@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import type { 
+import type {
     ProductCategory,
     ProductFormData,
 } from "@/types/products";
@@ -37,7 +37,7 @@ export default function ProductForm({
     const [description, setDescription] = useState(
         product?.description ?? "",
     );
-    const [categoryId, setCategoryId] = useState( 
+    const [categoryId, setCategoryId] = useState(
         product?.category_id ?? "",
     );
     const [status, setStatus] = useState(
@@ -81,7 +81,7 @@ export default function ProductForm({
 
         if (!ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
             setError("Invalid image type. Please use JPG, PNG OR WebP.");
-            
+
             event.target.value = "";
             setImage(null);
             return;
@@ -111,30 +111,30 @@ export default function ProductForm({
         const storagePath = `${productId}/${fileName}`;
 
         const { error: uploadError } = await supabase.storage
-        .from("products-images")
-        .upload(storagePath, image, {
-            cacheControl: "3600",
-            upsert: false,
-            contentType: image.type
-        });
+            .from("products-images")
+            .upload(storagePath, image, {
+                cacheControl: "3600",
+                upsert: false,
+                contentType: image.type
+            });
 
         if (uploadError) {
             throw new Error(`Failed to upload product image: ${uploadError.message}`);
         }
 
         const { error: imageError } = await supabase
-        .from("products_images")
-        .insert({
-            productId: productId,
-            storage_path: storagePath,
-            alt_text: title,
-            sort_order: 0,
-        });
+            .from("products_images")
+            .insert({
+                productId: productId,
+                storage_path: storagePath,
+                alt_text: title,
+                sort_order: 0,
+            });
 
         if (imageError) {
             await supabase.storage
-            .from("products-images")
-            .remove([storagePath]);
+                .from("products-images")
+                .remove([storagePath]);
 
             throw new Error(`Failed to save product image: ${imageError.message}`);
         }
@@ -152,16 +152,16 @@ export default function ProductForm({
 
         if (isEditing && product) {
             const { error } = await supabase
-            .from("products")
-            .update({
-                title,
-                slug,
-                description: description || null,
-                category_id: categoryId || null,
-                status,
-                license: license || null,
-            })
-            .eq("id", product.id);
+                .from("products")
+                .update({
+                    title,
+                    slug,
+                    description: description || null,
+                    category_id: categoryId || null,
+                    status,
+                    license: license || null,
+                })
+                .eq("id", product.id);
 
             if (error) {
                 setError(error.message);
@@ -170,15 +170,15 @@ export default function ProductForm({
             }
         } else {
             const { error } = await supabase
-            .from("products")
-            .insert({
-                title,
-                slug,
-                description: description || null,
-                category_id: categoryId || null,
-                status,
-                license: license || null,
-            });
+                .from("products")
+                .insert({
+                    title,
+                    slug,
+                    description: description || null,
+                    category_id: categoryId || null,
+                    status,
+                    license: license || null,
+                });
 
             if (error) {
                 setError(error.message);
@@ -232,9 +232,9 @@ export default function ProductForm({
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
                 <header>
                     <h2 className="text-lg font-semibold text-white">
-                       {isEditing
-                       ? "Edit product information"
-                       : "Product information for MariuDesign"}
+                        {isEditing
+                            ? "Edit product information"
+                            : "Product information for MariuDesign"}
                     </h2>
 
                     <p className="mt-1 text-sm text-zinc-500">
@@ -356,7 +356,8 @@ export default function ProductForm({
                         </select>
                     </div>
 
-                    <div>
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <div>
                         <label
                             htmlFor="status"
                             className="block text-sm font-medium text-zinc-300"
@@ -387,7 +388,7 @@ export default function ProductForm({
                         </select>
                     </div>
 
-                    <div className="sm:col-span-2">
+                    <div>
                         <label
                             htmlFor="license"
                             className=""
@@ -417,12 +418,21 @@ export default function ProductForm({
                                 Commercial use
                             </option>
                         </select>
-
-                        <p className="mt-2 text-xs text-zinc-600">
-                            Choose how customers are allowed to use your 3D model.
-                        </p>
+                    </div>
                     </div>
                 </div>
+            </section>
+
+            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+            <header>
+                <h2 className="text-lg font-semibold text-white">
+                    Product images
+                </h2>
+
+                <p className="mt-1 text-sm text-zinc-500">
+                    Upload the main image for this 3D model.
+                </p>
+            </header>
             </section>
 
             {error && (
@@ -437,39 +447,39 @@ export default function ProductForm({
             <div className="flex items-center justify-between gap-3">
                 {isEditing ? (
                     <button
-                    type="button"
-                    onClick={handleDelete}
-                    disabled={loading || deleting}
-                    className="rounded-lg border border-red-500/30 px-4 py-2.5 text-sm font-medium text-red-400 transition hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
+                        type="button"
+                        onClick={handleDelete}
+                        disabled={loading || deleting}
+                        className="rounded-lg border border-red-500/30 px-4 py-2.5 text-sm font-medium text-red-400 transition hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         {deleting ? "Deleting..." : "Delete product"}
                     </button>
-                ) : (     
-                <div />
-            )}
+                ) : (
+                    <div />
+                )}
 
-            <div className="flex items-center justify-end gap-3">
-                <button
-                    type="button"
-                    onClick={() => router.back()}
-                    className="rounded-lg border border-zinc-700 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white">
-                    Cancel
-                </button>
+                <div className="flex items-center justify-end gap-3">
+                    <button
+                        type="button"
+                        onClick={() => router.back()}
+                        className="rounded-lg border border-zinc-700 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white">
+                        Cancel
+                    </button>
 
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                    {loading 
-                    ? isEditing 
-                    ? "Saving changes..."
-                    : "Creating product..." 
-                    : isEditing
-                    ? "Save changes"
-                    :"Create product"}
-                </button>
-            </div>
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        {loading
+                            ? isEditing
+                                ? "Saving changes..."
+                                : "Creating product..."
+                            : isEditing
+                                ? "Save changes"
+                                : "Create product"}
+                    </button>
+                </div>
             </div>
         </form>
     );
