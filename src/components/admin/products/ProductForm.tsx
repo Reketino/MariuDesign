@@ -98,6 +98,13 @@ export default function ProductForm({
         setImage(selectedFile);
     }
 
+    async function uploadProductImage(
+        supabase: ReturnType<typeof createClient>,
+        productId: string,
+    ) {
+        
+    }
+
     async function handleSubmit(
         event: React.SubmitEvent<HTMLFormElement>,
     ) {
