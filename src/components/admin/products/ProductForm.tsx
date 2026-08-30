@@ -16,6 +16,14 @@ type ProductFormProps = {
     product?: ProductFormData;
 }
 
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+
+const ALLOWED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+]
+
 export default function ProductForm({
     categories,
     product,
@@ -39,6 +47,8 @@ export default function ProductForm({
         product?.license ?? "",
     );
 
+    const [image, setImage] = useState<File | null>(null)
+
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [deleting, setDeleting] = useState(false);
@@ -55,6 +65,79 @@ export default function ProductForm({
     function handleTitleChange(value: string) {
         setTitle(value);
         setSlug(createSlug(value));
+    }
+
+    function handleImageChange(
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) {
+        const selectedFile = event.target.files?.[0] ?? null;
+
+        setError("");
+
+        if (!selectedFile) {
+            setImage(null);
+            return;
+        }
+
+        if (!ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
+            setError("Invalid image type. Please use JPG, PNG OR WebP.");
+            
+            event.target.value = "";
+            setImage(null);
+            return;
+        }
+
+        if (selectedFile.size > MAX_IMAGE_SIZE) {
+            setError("Image is too large. Maximum file size is 5 MB.");
+
+            event.target.value = "";
+            setImage(null);
+            return;
+        }
+
+        setImage(selectedFile);
+    }
+
+    async function uploadProductImage(
+        supabase: ReturnType<typeof createClient>,
+        productId: string,
+    ) {
+        if (!image) {
+            return;
+        }
+
+        const fileExtension = image.name.split(".").pop()?.toLowerCase() ?? "jpg";
+        const fileName = `${crypto.randomUUID()}.${fileExtension}`;
+        const storagePath = `${productId}/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+        .from("products-images")
+        .upload(storagePath, image, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: image.type
+        });
+
+        if (uploadError) {
+            throw new Error(`Failed to upload product image: ${uploadError.message}`);
+        }
+
+        const { error: imageError } = await supabase
+        .from("products_images")
+        .insert({
+            productId: productId,
+            storage_path: storagePath,
+            alt_text: title,
+            sort_order: 0,
+        });
+
+        if (imageError) {
+            await supabase.storage
+            .from("products-images")
+            .remove([storagePath]);
+
+            throw new Error(`Failed to save product image: ${imageError.message}`);
+        }
     }
 
     async function handleSubmit(
