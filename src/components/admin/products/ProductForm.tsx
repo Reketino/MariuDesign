@@ -78,6 +78,14 @@ export default function ProductForm({
             setImage(null);
             return;
         }
+
+        if (!ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
+            setError("Invalid image type. Please use JPG, PNG OR WebP.");
+            
+            event.target.value = "";
+            setImage(null);
+            return;
+        }
     }
 
     async function handleSubmit(
