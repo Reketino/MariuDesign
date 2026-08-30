@@ -102,7 +102,42 @@ export default function ProductForm({
         supabase: ReturnType<typeof createClient>,
         productId: string,
     ) {
-        
+        if (!image) {
+            return;
+        }
+
+        const fileExtension = image.name.split(".").pop()?.toLowerCase() ?? "jpg";
+        const fileName = `${crypto.randomUUID()}.${fileExtension}`;
+        const storagePath = `${productId}/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+        .from("products-images")
+        .upload(storagePath, image, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: image.type
+        });
+
+        if (uploadError) {
+            throw new Error(`Failed to upload product image: ${uploadError.message}`);
+        }
+
+        const { error: imageError } = await supabase
+        .from("products_images")
+        .insert({
+            productId: productId,
+            storage_path: storagePath,
+            alt_text: title,
+            sort_order: 0,
+        });
+
+        if (imageError) {
+            await supabase.storage
+            .from("products-images")
+            .remove([storagePath]);
+
+            throw new Error(`Failed to save product image: ${imageError.message}`);
+        }
     }
 
     async function handleSubmit(
