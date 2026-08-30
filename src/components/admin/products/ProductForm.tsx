@@ -67,6 +67,13 @@ export default function ProductForm({
         setSlug(createSlug(value));
     }
 
+    function handleImageChange(
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) {
+        const selectedFile = event.target.files?.[0] ?? null;
+        
+    }
+
     async function handleSubmit(
         event: React.SubmitEvent<HTMLFormElement>,
     ) {
