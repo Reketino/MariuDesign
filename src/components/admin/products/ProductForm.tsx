@@ -94,6 +94,8 @@ export default function ProductForm({
             setImage(null);
             return;
         }
+
+        setImage(selectedFile);
     }
 
     async function handleSubmit(
