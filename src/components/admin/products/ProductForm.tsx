@@ -123,7 +123,7 @@ export default function ProductForm({
         }
 
         const { error: imageError } = await supabase
-            .from("products_images")
+            .from("product_images")
             .insert({
                 product_id: productId,
                 storage_path: storagePath,
