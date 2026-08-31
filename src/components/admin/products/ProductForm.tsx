@@ -125,7 +125,7 @@ export default function ProductForm({
         const { error: imageError } = await supabase
             .from("products_images")
             .insert({
-                productId: productId,
+                product_id: productId,
                 storage_path: storagePath,
                 alt_text: title,
                 sort_order: 0,
