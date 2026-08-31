@@ -1,4 +1,4 @@
-function createSlug(value: string) {
+export function createSlug(value: string) {
         return value
             .toLowerCase()
             .trim()
