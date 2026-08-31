@@ -111,7 +111,7 @@ export default function ProductForm({
         const storagePath = `${productId}/${fileName}`;
 
         const { error: uploadError } = await supabase.storage
-            .from("products-images")
+            .from("product-images")
             .upload(storagePath, image, {
                 cacheControl: "3600",
                 upsert: false,
