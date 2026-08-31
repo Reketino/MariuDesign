@@ -418,7 +418,7 @@ export default function ProductForm({
                                 Commercial use
                             </option>
                         </select>
-                    </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -433,6 +433,15 @@ export default function ProductForm({
                     Upload the main image for this 3D model.
                 </p>
             </header>
+
+            <div className="mt-6">
+                <label
+                htmlFor="product-image"
+                className="block text-sm font-medium text-zinc-300"
+                >
+                    Image
+                </label>
+            </div>
             </section>
 
             {error && (
