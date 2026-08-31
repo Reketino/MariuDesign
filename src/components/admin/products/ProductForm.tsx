@@ -224,12 +224,12 @@ export default function ProductForm({
             className="space-y-8"
         >
             <ProductBasicInfo
-            title={title}
-            slug={slug}
-            description={description}
-            onTitleChange={handleTitleChange}
-            onSlugChange={setSlug}
-            onDescriptionChange={setDescription}
+                title={title}
+                slug={slug}
+                description={description}
+                onTitleChange={handleTitleChange}
+                onSlugChange={setSlug}
+                onDescriptionChange={setDescription}
             />
 
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
