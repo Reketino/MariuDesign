@@ -4,17 +4,20 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
+import ProductBasicInfo from "./ProductBasicInfo";
 import type {
     ProductCategory,
     ProductFormData,
 } from "@/types/products";
+
+import { createSlug } from "./utils/createSlug";
 
 import { createClient } from "@/lib/supabase/client";
 
 type ProductFormProps = {
     categories: ProductCategory[];
     product?: ProductFormData;
-}
+};
 
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 
@@ -52,15 +55,6 @@ export default function ProductForm({
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [deleting, setDeleting] = useState(false);
-
-    function createSlug(value: string) {
-        return value
-            .toLowerCase()
-            .trim()
-            .replace(/[^a-z0-9\s-]/g, "")
-            .replace(/\s+/g, "-")
-            .replace(/-+/g, "-");
-    }
 
     function handleTitleChange(value: string) {
         setTitle(value);
@@ -111,7 +105,7 @@ export default function ProductForm({
         const storagePath = `${productId}/${fileName}`;
 
         const { error: uploadError } = await supabase.storage
-            .from("products-images")
+            .from("product-images")
             .upload(storagePath, image, {
                 cacheControl: "3600",
                 upsert: false,
@@ -123,9 +117,9 @@ export default function ProductForm({
         }
 
         const { error: imageError } = await supabase
-            .from("products_images")
+            .from("product_images")
             .insert({
-                productId: productId,
+                product_id: productId,
                 storage_path: storagePath,
                 alt_text: title,
                 sort_order: 0,
@@ -229,88 +223,14 @@ export default function ProductForm({
             onSubmit={handleSubmit}
             className="space-y-8"
         >
-            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
-                <header>
-                    <h2 className="text-lg font-semibold text-white">
-                        {isEditing
-                            ? "Edit product information"
-                            : "Product information for MariuDesign"}
-                    </h2>
-
-                    <p className="mt-1 text-sm text-zinc-500">
-                        Add the basic information for your 3D model here Reite.
-                    </p>
-                </header>
-
-                <div className="mt-6 space-y-6">
-                    <div>
-                        <label
-                            htmlFor="title"
-                            className="block text-sm font-medium text-zinc-300"
-                        >
-                            Title
-                        </label>
-
-                        <input
-                            id="title"
-                            name="title"
-                            value={title}
-                            onChange={(event) =>
-                                handleTitleChange(event.target.value)
-                            }
-                            placeholder="Example: Sorting Bucket"
-                            required
-                            className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            htmlFor="slug"
-                            className="block text-sm font-medium text-zinc-300"
-                        >
-                            Slug
-                        </label>
-
-                        <input
-                            id="slug"
-                            name="slug"
-                            type="text"
-                            value={slug}
-                            onChange={(event) =>
-                                setSlug(event.target.value)
-                            }
-                            placeholder="sorting-bucket"
-                            className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500"
-                        />
-
-                        <p className="mt-2 text-xs text-zinc-600">
-                            Used in the product URL.
-                        </p>
-                    </div>
-
-                    <div>
-                        <label
-                            htmlFor="description"
-                            className="block text-sm font-medium text-zinc-300"
-                        >
-                            Description
-                        </label>
-
-                        <textarea
-                            id="description"
-                            name="description"
-                            value={description}
-                            onChange={(event) =>
-                                setDescription(event.target.value)
-                            }
-                            rows={6}
-                            placeholder=" Here Reite, you should describe the model, compatible machinery, intended use, printing recommendations, and included parts."
-                            className="mt-2 block w-full resize-y rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500"
-                        />
-                    </div>
-                </div>
-            </section>
+            <ProductBasicInfo
+                title={title}
+                slug={slug}
+                description={description}
+                onTitleChange={handleTitleChange}
+                onSlugChange={setSlug}
+                onDescriptionChange={setDescription}
+            />
 
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
                 <header>
@@ -358,81 +278,113 @@ export default function ProductForm({
 
                     <div className="grid gap-6 md:grid-cols-2">
                         <div>
-                        <label
-                            htmlFor="status"
-                            className="block text-sm font-medium text-zinc-300"
-                        >
-                            Status
-                        </label>
+                            <label
+                                htmlFor="status"
+                                className="block text-sm font-medium text-zinc-300"
+                            >
+                                Status
+                            </label>
 
-                        <select
-                            id="status"
-                            name="status"
-                            value={status}
-                            onChange={(event) =>
-                                setStatus(event.target.value)
-                            }
-                            className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
-                        >
-                            <option value="draft">
-                                Draft 📝
-                            </option>
+                            <select
+                                id="status"
+                                name="status"
+                                value={status}
+                                onChange={(event) =>
+                                    setStatus(event.target.value)
+                                }
+                                className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
+                            >
+                                <option value="draft">
+                                    Draft 📝
+                                </option>
 
-                            <option value="published">
-                                Published 📰
-                            </option>
+                                <option value="published">
+                                    Published 📰
+                                </option>
 
-                            <option value="archived">
-                                Archived 📁
-                            </option>
-                        </select>
-                    </div>
+                                <option value="archived">
+                                    Archived 📁
+                                </option>
+                            </select>
+                        </div>
 
-                    <div>
-                        <label
-                            htmlFor="license"
-                            className=""
-                        >
-                            License 📜
-                        </label>
+                        <div>
+                            <label
+                                htmlFor="license"
+                                className=""
+                            >
+                                License 📜
+                            </label>
 
-                        <select
-                            id="license"
-                            name="license"
-                            value={license}
-                            onChange={(event) =>
-                                setLicense(event.target.value)
-                            }
-                            required
-                            className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
-                        >
-                            <option value="">
-                                Select a license
-                            </option>
+                            <select
+                                id="license"
+                                name="license"
+                                value={license}
+                                onChange={(event) =>
+                                    setLicense(event.target.value)
+                                }
+                                required
+                                className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
+                            >
+                                <option value="">
+                                    Select a license
+                                </option>
 
-                            <option value="personal">
-                                Personal use
-                            </option>
+                                <option value="personal">
+                                    Personal use
+                                </option>
 
-                            <option value="commercial">
-                                Commercial use
-                            </option>
-                        </select>
-                    </div>
+                                <option value="commercial">
+                                    Commercial use
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
-            <header>
-                <h2 className="text-lg font-semibold text-white">
-                    Product images
-                </h2>
+                <header>
+                    <h2 className="text-lg font-semibold text-white">
+                        Product images
+                    </h2>
 
-                <p className="mt-1 text-sm text-zinc-500">
-                    Upload the main image for this 3D model.
-                </p>
-            </header>
+                    <p className="mt-1 text-sm text-zinc-500">
+                        Upload the main image for this 3D model.
+                    </p>
+                </header>
+
+                <div className="mt-6">
+                    <label
+                        htmlFor="product-image"
+                        className="block text-sm font-medium text-zinc-300"
+                    >
+                        Image
+                    </label>
+
+                    <input
+                        id="product-image"
+                        name="prodduct-image"
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                        onChange={handleImageChange}
+                        className="mt-2 block w-full cursor-pointer rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-zinc-300 outline-none transition file:mr-4 file:rounded-md file:border-0 file:bg-zinc-800 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-zinc-700"
+                    />
+
+                    <p className="mt-2 text-xs text-zinc-600">
+                        JPG, PNG or WebP. Maxium 5 MB.
+                    </p>
+
+                    {image && (
+                        <p className="mt-3 text-sm text-zinc-400">
+                            Selected:{" "}
+
+                            <span className="text-white">
+                                {image.name}
+                            </span>
+                        </p>
+                    )}
+                </div>
             </section>
 
             {error && (
