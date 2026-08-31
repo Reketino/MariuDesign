@@ -449,6 +449,8 @@ export default function ProductForm({
                 accept="image/jpeg,image/png,image/webp"
                 onChange={handleImageChange}
                 className="mt-2 block w-full cursor-pointer rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-zinc-300 outline-none transition file:mr-4 file:rounded-md file:border-0 file:bg-zinc-800 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-zinc-700"
+                />
+                
             </div>
             </section>
 
