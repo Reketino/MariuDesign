@@ -17,8 +17,8 @@ export default function ProductBasicInfo({
     onSlugChange,
     onDescriptionChange,
 }: ProductBasicInfoProps) {
-   return (
-    <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+    return (
+        <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
             <header>
                 <h2 className="text-lg font-semibold text-white">
                     Product information
@@ -98,5 +98,5 @@ export default function ProductBasicInfo({
                 </div>
             </div>
         </section>
-   );
+    );
 }
