@@ -9,6 +9,8 @@ import type {
     ProductFormData,
 } from "@/types/products";
 
+import { createSlug } from "./utils/createSlug";
+
 import { createClient } from "@/lib/supabase/client";
 
 type ProductFormProps = {
