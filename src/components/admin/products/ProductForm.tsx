@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import ProductBasicInfo from "./ProductBasicInfo";
+import ProductStoreSettings from "./ProductStoreSettings";
+
 import type {
     ProductCategory,
     ProductFormData,
