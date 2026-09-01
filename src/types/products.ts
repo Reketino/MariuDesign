@@ -1,27 +1,27 @@
 export type ProductCategory = {
-    id: string;
-    name: string;
-    slug: string;
+  id: string;
+  name: string;
+  slug: string;
 };
 
 export type Product = {
-    id: string;
-    title: string;
-    slug: string;
-    description: string | null;
-    status: string;
-    license: string | null;
-    created_at: string;
-    category_id: string | null;
-    categories: ProductCategory[] | null;
+  id: string;
+  title: string;
+  slug: string;
+  description: string | null;
+  status: string;
+  license: string | null;
+  created_at: string;
+  category_id: string | null;
+  categories: ProductCategory[] | null;
 };
 
 export type ProductFormData = {
-    id: string;
-    title: string;
-    slug: string;
-    description: string | null;
-    status: string;
-    license: string | null;
-    category_id: string | null;
-}
+  id: string;
+  title: string;
+  slug: string;
+  description: string | null;
+  status: string;
+  license: string | null;
+  category_id: string | null;
+};
