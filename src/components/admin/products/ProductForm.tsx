@@ -235,13 +235,13 @@ export default function ProductForm({
             />
 
             <ProductStoreSettings
-            categories={categories}
-            categoryId={categoryId}
-            status={status}
-            license={license}
-            onCategoryChange={setCategoryId}
-            onStatusChange={setStatus}
-            onLicenseChange={setLicense}
+                categories={categories}
+                categoryId={categoryId}
+                status={status}
+                license={license}
+                onCategoryChange={setCategoryId}
+                onStatusChange={setStatus}
+                onLicenseChange={setLicense}
             />
 
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
