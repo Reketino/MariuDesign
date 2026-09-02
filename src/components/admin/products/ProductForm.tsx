@@ -130,7 +130,7 @@ export default function ProductForm({
 
         if (imageError) {
             await supabase.storage
-                .from("products-images")
+                .from("product-images")
                 .remove([storagePath]);
 
             throw new Error(`Failed to save product image: ${imageError.message}`);
