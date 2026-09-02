@@ -5,7 +5,6 @@ type ProductImagesProps = {
     error: string;
     onImageChange: (
         event: React.ChangeEvent<HTMLInputElement>,
-
     ) => void;
 };
 
