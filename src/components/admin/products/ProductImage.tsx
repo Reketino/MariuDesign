@@ -2,7 +2,6 @@
 
 type ProductImagesProps = {
     image: File | null;
-    error: string;
     onImageChange: (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
@@ -10,7 +9,6 @@ type ProductImagesProps = {
 
 export default function ProductImages({
     image,
-    error,
     onImageChange,
 }: ProductImagesProps) {
     return(
@@ -53,15 +51,6 @@ export default function ProductImages({
                     <span className="text-white">
                         {image.name}
                     </span>
-                </p>
-            )}
-
-            {error && (
-                <p
-                    role="alert"
-                    className="mt-3 text-sm text-red-400"
-                >
-                    {error}
                 </p>
             )}
         </div>
