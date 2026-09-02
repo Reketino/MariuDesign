@@ -150,61 +150,59 @@ export default function ProductForm({
         try {
             let productId = product?.id;
 
-        if (isEditing && product) {
-            const { error } = await supabase
-                .from("products")
-                .update({
-                    title,
-                    slug,
-                    description: description || null,
-                    category_id: categoryId || null,
-                    status,
-                    license: license || null,
-                })
-                .eq("id", product.id);
+            if (isEditing && product) {
+                const { error } = await supabase
+                    .from("products")
+                    .update({
+                        title,
+                        slug,
+                        description: description || null,
+                        category_id: categoryId || null,
+                        status,
+                        license: license || null,
+                    })
+                    .eq("id", product.id);
 
-            if (error) {
-                setError(error.message);
-                setLoading(false);
-                return;
+                if (error) {
+                    throw new Error(error.message);
+                }
+            } else {
+                const { data, error } = await supabase
+                    .from("products")
+                    .insert({
+                        title,
+                        slug,
+                        description: description || null,
+                        category_id: categoryId || null,
+                        status,
+                        license: license || null,
+                    })
+                    .select("id")
+                    .single();
+
+                if (error) {
+                    throw new Error(error.message);
+                }
+
+                productId = data.id;
             }
-        } else {
-            const { data, error } = await supabase
-                .from("products")
-                .insert({
-                    title,
-                    slug,
-                    description: description || null,
-                    category_id: categoryId || null,
-                    status,
-                    license: license || null,
-                })
-                .select("id")
-                .single();
 
-            if (error) {
-                throw new Error(error.message);
+            if (productId && image) {
+                await uploadProductImage(supabase, productId);
             }
 
-            productId = data.id;
+            router.push("/admin/products");
+            router.refresh();
+        } catch (error) {
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while saving the product."
+            );
+
+            setLoading(false);
         }
-
-        if (productId && image) {
-            await uploadProductImage(supabase, productId);
-        }
-
-        router.push("/admin/products");
-        router.refresh();
-    } catch (error) {
-        setError(
-            error instanceof Error
-            ? error.message
-            : "Something went wrong while saving the product."
-        );
-
-        setLoading(false);
     }
- }
 
     async function handleDelete() {
         if (!product) {
