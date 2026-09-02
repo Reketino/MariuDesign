@@ -246,8 +246,8 @@ export default function ProductForm({
             />
 
             <ProductImages
-            image={image}
-            onImageChange={handleImageChange}
+                image={image}
+                onImageChange={handleImageChange}
             />
 
             {error && (
