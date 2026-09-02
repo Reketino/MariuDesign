@@ -147,6 +147,9 @@ export default function ProductForm({
 
         const supabase = createClient();
 
+        try {
+            let productId = product?.id;
+
         if (isEditing && product) {
             const { error } = await supabase
                 .from("products")
@@ -166,7 +169,7 @@ export default function ProductForm({
                 return;
             }
         } else {
-            const { error } = await supabase
+            const { data, error } = await supabase
                 .from("products")
                 .insert({
                     title,
@@ -175,18 +178,33 @@ export default function ProductForm({
                     category_id: categoryId || null,
                     status,
                     license: license || null,
-                });
+                })
+                .select("id")
+                .single();
 
             if (error) {
-                setError(error.message);
-                setLoading(false);
-                return;
+                throw new Error(error.message);
             }
+
+            productId = data.id;
+        }
+
+        if (productId && image) {
+            await uploadProductImage(supabase, productId);
         }
 
         router.push("/admin/products");
         router.refresh();
+    } catch (error) {
+        setError(
+            error instanceof Error
+            ? error.message
+            : "Something went wrong while saving the product."
+        );
+
+        setLoading(false);
     }
+ }
 
     async function handleDelete() {
         if (!product) {
