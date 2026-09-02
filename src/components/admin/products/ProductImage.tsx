@@ -8,3 +8,11 @@ type ProductImagesProps = {
     
     ) => void;
 };
+
+export default function ProductImages({
+    image,
+    error,
+    onImageChange,
+}: ProductImagesProps) {
+    
+}
