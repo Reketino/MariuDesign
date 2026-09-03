@@ -33,6 +33,10 @@ function getProductImage(
     );
 }
 
+function getProductImageUrl(storagePath: string) {
+    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${storagePath}`
+}
+
 function formatDate(date: string) {
     return new Intl.DateTimeFormat("en-US", {
         year: "numeric",
