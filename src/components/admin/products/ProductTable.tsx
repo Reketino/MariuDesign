@@ -18,6 +18,20 @@ function getCategory(
     return categories[0] ?? null;
 }
 
+function getProductImage(
+    images: Product["product_images"]
+) {
+    if (!images) {
+        return null;
+    }
+
+    return (
+        images
+        .filter((image) => image.sort_order >= 0)
+        .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null
+    )
+}
+
 function formatDate(date: string) {
     return new Intl.DateTimeFormat("en-US", {
         year: "numeric",
