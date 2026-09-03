@@ -21,6 +21,7 @@ export type Product = {
   created_at: string;
   category_id: string | null;
   categories: ProductCategory[] | null;
+  product_images: ProductImage[] | null;
 };
 
 export type ProductFormData = {
