@@ -124,6 +124,10 @@ export default function ProductTable({
                                 product.categories,
                             );
 
+                            const productImage = getProductImage(
+                                product.product_images,
+                            );
+
                             return (
                                 <tr
                                     key={product.id}
