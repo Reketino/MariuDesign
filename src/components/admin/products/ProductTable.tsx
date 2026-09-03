@@ -34,7 +34,7 @@ function getProductImage(
 }
 
 function getProductImageUrl(storagePath: string) {
-    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${storagePath}`
+    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${storagePath}`;
 }
 
 function formatDate(date: string) {
@@ -133,12 +133,29 @@ export default function ProductTable({
                                 product.product_images,
                             );
 
+                                console.log("PRODUCT:", product.title);
+    console.log("IMAGES:", product.product_images);
+    console.log("IMAGE:", productImage);
+
                             return (
                                 <tr
                                     key={product.id}
                                     className="transition hover:bg-zinc-900"
                                 >
                                     <td className="px-6 py-5">
+                                        <div className="flex items-center gap-4">
+                                            {productImage && (
+                                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950">
+                                                    <Image
+                                                    src={getProductImageUrl(productImage.storage_path)}
+                                                    alt={productImage.alt_text ?? product.title}
+                                                    fill
+                                                    sizes="48px"
+                                                    className="object-cover"
+                                                    />
+                                                    </div>
+                                            )}
+
                                         <div>
                                             <p className="font-medium text-white">
                                                 {product.title}
@@ -147,6 +164,7 @@ export default function ProductTable({
                                             <p className="mt-1 text-sm text-zinc-500">
                                                 /{product.slug}
                                             </p>
+                                        </div>
                                         </div>
                                     </td>
 
