@@ -4,6 +4,13 @@ export type ProductCategory = {
   slug: string;
 };
 
+export type ProductImage = {
+  id: string;
+  storage_path: string;
+  alt_text: string | null;
+  sort_order: number;
+}
+
 export type Product = {
   id: string;
   title: string;
