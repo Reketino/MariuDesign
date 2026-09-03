@@ -9,7 +9,7 @@ export type ProductImage = {
   storage_path: string;
   alt_text: string | null;
   sort_order: number;
-}
+};
 
 export type Product = {
   id: string;
