@@ -18,10 +18,18 @@ export default async function ProductsPage() {
         license,
         created_at,
         category_id,
+        
         categories (
         id,
         name,
         slug
+        ),
+
+        product_images(
+        id,
+        storage_path,
+        alt_text,
+        sort_order
         )
         `)
         .order("created_at", {
