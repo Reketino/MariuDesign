@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import DeleteProductButton from "./DeleteProductButton";
@@ -16,6 +17,24 @@ function getCategory(
     }
 
     return categories[0] ?? null;
+}
+
+function getProductImage(
+    images: Product["product_images"]
+) {
+    if (!images) {
+        return null;
+    }
+
+    return (
+        images
+            .filter((image) => image.sort_order >= 0)
+            .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null
+    );
+}
+
+function getProductImageUrl(storagePath: string) {
+    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${storagePath}`
 }
 
 function formatDate(date: string) {
@@ -108,6 +127,10 @@ export default function ProductTable({
                         {products.map((product) => {
                             const category = getCategory(
                                 product.categories,
+                            );
+
+                            const productImage = getProductImage(
+                                product.product_images,
                             );
 
                             return (

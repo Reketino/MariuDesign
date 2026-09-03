@@ -8,8 +8,8 @@ export default async function ProductsPage() {
     const supabase = await createClient();
 
     const { data: products, error } = await supabase
-    .from("products")
-    .select(`
+        .from("products")
+        .select(`
         id,
         title,
         slug,
@@ -18,22 +18,30 @@ export default async function ProductsPage() {
         license,
         created_at,
         category_id,
+        
         categories (
         id,
         name,
         slug
+        ),
+
+        product_images(
+        id,
+        storage_path,
+        alt_text,
+        sort_order
         )
         `)
         .order("created_at", {
             ascending: false,
         });
 
-        if (error) {
-            throw new Error("Failed to load products");
-        }
+    if (error) {
+        throw new Error("Failed to load products");
+    }
 
-        return (
-            <section className="space-y-8">
+    return (
+        <section className="space-y-8">
             <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <p className="text-sm font-medium text-zinc-500">
@@ -45,7 +53,7 @@ export default async function ProductsPage() {
                     </h1>
 
                     <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-                        Manage the 3D models available in your store. 
+                        Manage the 3D models available in your store.
                     </p>
                 </div>
 
@@ -58,6 +66,6 @@ export default async function ProductsPage() {
             </header>
 
             <ProductTable products={products ?? []} />
-            </section>
-        );
+        </section>
+    );
 }
