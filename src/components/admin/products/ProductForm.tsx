@@ -39,8 +39,8 @@ function getProductImage(
     }
     return (
         images
-        .filter((image) => image.sort_order >= 0)
-        .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null
+            .filter((image) => image.sort_order >= 0)
+            .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null
     );
 }
 
