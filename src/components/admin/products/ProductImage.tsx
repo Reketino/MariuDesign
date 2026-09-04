@@ -1,14 +1,23 @@
 "use client";
 
+import Image from "next/image";
+
+import type { ProductImage } from "@/types/products";
+
 type ProductImagesProps = {
     image: File | null;
+    existingImage: (ProductImage & {
+        url: string;
+    }) | null;
     onImageChange: (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
 };
 
+
 export default function ProductImages({
     image,
+    existingImage,
     onImageChange,
 }: ProductImagesProps) {
     return (
@@ -22,6 +31,27 @@ export default function ProductImages({
                     Upload the main image for this 3D model.
                 </p>
             </header>
+
+             {existingImage && !image && (
+                <div className="mt-6">
+                    <p className="mb-3 text-sm font-medium text-zinc-300">
+                        Current image
+                    </p>
+
+                    <div className="relative h-48 w-48 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950">
+                        <Image
+                            src={existingImage.url}
+                            alt={
+                                existingImage.alt_text ??
+                                "Product image"
+                            }
+                            fill
+                            sizes="192px"
+                            className="object-cover"
+                        />
+                    </div>
+                </div>
+            )}
 
             <div className="mt-6">
                 <label

@@ -30,7 +30,13 @@ export default async function EditProductPage({
                 description,
                 status,
                 license,
-                category_id
+                category_id,
+                product_images (
+                    id,
+                    storage_path,
+                    alt_text,
+                    sort_order
+                )
             `)
             .eq("id", id)
             .single(),

@@ -11,6 +11,7 @@ import ProductImages from "./ProductImage";
 import type {
     ProductCategory,
     ProductFormData,
+    ProductImage,
 } from "@/types/products";
 
 import { createSlug } from "./utils/createSlug";
@@ -29,6 +30,23 @@ const ALLOWED_IMAGE_TYPES = [
     "image/png",
     "image/webp",
 ]
+
+function getProductImage(
+    images: ProductImage[] | null,
+): ProductImage | null {
+    if (!images) {
+        return null;
+    }
+    return (
+        images
+            .filter((image) => image.sort_order >= 0)
+            .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null
+    );
+}
+
+function getProductImageUrl(storagePath: string) {
+    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${storagePath}`;
+}
 
 export default function ProductForm({
     categories,
@@ -58,6 +76,10 @@ export default function ProductForm({
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [deleting, setDeleting] = useState(false);
+
+    const existingImage = getProductImage(
+        product?.product_images ?? null,
+    );
 
     function handleTitleChange(value: string) {
         setTitle(value);
@@ -263,6 +285,16 @@ export default function ProductForm({
 
             <ProductImages
                 image={image}
+                existingImage={
+                    existingImage
+                        ? {
+                            ...existingImage,
+                            url: getProductImageUrl(
+                                existingImage.storage_path,
+                            ),
+                        }
+                        : null
+                }
                 onImageChange={handleImageChange}
             />
 

@@ -32,4 +32,5 @@ export type ProductFormData = {
   status: string;
   license: string | null;
   category_id: string | null;
+  product_images: ProductImage[] | null;
 };
