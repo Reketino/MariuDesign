@@ -31,6 +31,19 @@ const ALLOWED_IMAGE_TYPES = [
     "image/webp",
 ]
 
+function getProductImage(
+    images: ProductImage[] | null,
+): ProductImage | null {
+    if (!images) {
+        return null;
+    }
+    return (
+        images
+        .filter((image) => image.sort_order >= 0)
+        .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null
+    );
+}
+
 export default function ProductForm({
     categories,
     product,
