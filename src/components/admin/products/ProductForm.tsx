@@ -76,7 +76,7 @@ export default function ProductForm({
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [deleting, setDeleting] = useState(false);
-    
+
     const existingImage = getProductImage(
         product?.product_images ?? null,
     );
@@ -285,16 +285,16 @@ export default function ProductForm({
 
             <ProductImages
                 image={image}
-    existingImage={
-        existingImage
-            ? {
-                ...existingImage,
-                url: getProductImageUrl(
-                    existingImage.storage_path,
-                ),
-            }
-            : null
-    }
+                existingImage={
+                    existingImage
+                        ? {
+                            ...existingImage,
+                            url: getProductImageUrl(
+                                existingImage.storage_path,
+                            ),
+                        }
+                        : null
+                }
                 onImageChange={handleImageChange}
             />
 
