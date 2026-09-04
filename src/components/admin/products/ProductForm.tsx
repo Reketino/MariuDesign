@@ -76,6 +76,10 @@ export default function ProductForm({
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [deleting, setDeleting] = useState(false);
+    
+    const existingImage = getProductImage(
+        product?.product_images ?? null,
+    );
 
     function handleTitleChange(value: string) {
         setTitle(value);
