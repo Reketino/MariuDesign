@@ -281,6 +281,15 @@ export default function ProductForm({
 
             <ProductImages
                 image={image}
+                existingImage={
+                    ? {
+                        ...existingImage,
+                        url: getProductImageUrl(
+                            existingImage.storage_path,
+                        ),
+                    }
+                    : null
+                }
                 onImageChange={handleImageChange}
             />
 
