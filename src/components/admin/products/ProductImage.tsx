@@ -32,7 +32,7 @@ export default function ProductImages({
                 </p>
             </header>
 
-             {existingImage && !image && (
+            {existingImage && !image && (
                 <div className="mt-6">
                     <p className="mb-3 text-sm font-medium text-zinc-300">
                         Current image
