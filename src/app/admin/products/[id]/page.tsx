@@ -32,10 +32,10 @@ export default async function EditProductPage({
                 license,
                 category_id
                 product_images (
-                id,
-                storage_path,
-                alt_text,
-                sort_order
+                    id,
+                    storage_path,
+                    alt_text,
+                    sort_order
                 )
             `)
             .eq("id", id)
