@@ -11,6 +11,7 @@ import ProductImages from "./ProductImage";
 import type {
     ProductCategory,
     ProductFormData,
+    ProductImage,
 } from "@/types/products";
 
 import { createSlug } from "./utils/createSlug";
