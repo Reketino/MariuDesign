@@ -117,10 +117,7 @@ export default function ProductForm({
         setImage(selectedFile);
     }
 
-    async function uploadProductImage(
-        supabase: ReturnType<typeof createClient>,
-        productId: string,
-    ) {
+    async function uploadProductImage(productId: string) {
         if (!image) {
             return;
         }
