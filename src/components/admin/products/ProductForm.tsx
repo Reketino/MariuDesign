@@ -53,6 +53,7 @@ export default function ProductForm({
     product,
 }: ProductFormProps) {
     const router = useRouter();
+    const supabase = createClient();
 
     const isEditing = Boolean(product);
 
@@ -130,8 +131,8 @@ export default function ProductForm({
             .from("product-images")
             .upload(storagePath, image, {
                 cacheControl: "3600",
+                 contentType: image.type,
                 upsert: false,
-                contentType: image.type
             });
 
         if (uploadError) {
