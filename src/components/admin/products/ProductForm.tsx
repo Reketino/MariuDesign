@@ -53,6 +53,7 @@ export default function ProductForm({
     product,
 }: ProductFormProps) {
     const router = useRouter();
+    const supabase = createClient();
 
     const isEditing = Boolean(product);
 
@@ -117,47 +118,80 @@ export default function ProductForm({
         setImage(selectedFile);
     }
 
-    async function uploadProductImage(
-        supabase: ReturnType<typeof createClient>,
-        productId: string,
-    ) {
+    async function uploadProductImage(productId: string) {
         if (!image) {
             return;
         }
 
         const fileExtension = image.name.split(".").pop()?.toLowerCase() ?? "jpg";
-        const fileName = `${crypto.randomUUID()}.${fileExtension}`;
-        const storagePath = `${productId}/${fileName}`;
+
+        const storagePath = `${productId}/${crypto.randomUUID()}.${fileExtension}`;
 
         const { error: uploadError } = await supabase.storage
             .from("product-images")
             .upload(storagePath, image, {
                 cacheControl: "3600",
+                 contentType: image.type,
                 upsert: false,
-                contentType: image.type
             });
 
         if (uploadError) {
             throw new Error(`Failed to upload product image: ${uploadError.message}`);
         }
 
-        const { error: imageError } = await supabase
+        const currentImage = getProductImage(
+            product?.product_images ?? null,
+        );
+
+      if (currentImage) {
+        const { error: updateError } = await supabase
             .from("product_images")
-            .insert({
-                product_id: productId,
+            .update({
                 storage_path: storagePath,
                 alt_text: title,
-                sort_order: 0,
-            });
+                sort_order: currentImage.sort_order,
+            })
+            .eq("id", currentImage.id);
 
-        if (imageError) {
+        if (updateError) {
             await supabase.storage
                 .from("product-images")
                 .remove([storagePath]);
 
-            throw new Error(`Failed to save product image: ${imageError.message}`);
+            throw new Error("Failed to update product image");
         }
+
+        const { error: deleteStorageError } = await supabase.storage
+            .from("product-images")
+            .remove([currentImage.storage_path]);
+
+        if (deleteStorageError) {
+            console.error(
+                "Failed to remove old product image:",
+                deleteStorageError,
+            );
+        }
+
+        return;
     }
+
+    const { error: insertError } = await supabase
+        .from("product_images")
+        .insert({
+            product_id: productId,
+            storage_path: storagePath,
+            alt_text: title,
+            sort_order: 0,
+        });
+
+    if (insertError) {
+        await supabase.storage
+            .from("product-images")
+            .remove([storagePath]);
+
+        throw new Error("Failed to save product image");
+    }
+}
 
     async function handleSubmit(
         event: React.SubmitEvent<HTMLFormElement>,
@@ -166,9 +200,7 @@ export default function ProductForm({
 
         setError("");
         setLoading(true);
-
-        const supabase = createClient();
-
+        
         try {
             let productId = product?.id;
 
@@ -210,7 +242,7 @@ export default function ProductForm({
             }
 
             if (productId && image) {
-                await uploadProductImage(supabase, productId);
+                await uploadProductImage(productId);
             }
 
             router.push("/admin/products");
