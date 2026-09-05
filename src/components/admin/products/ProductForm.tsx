@@ -123,8 +123,8 @@ export default function ProductForm({
         }
 
         const fileExtension = image.name.split(".").pop()?.toLowerCase() ?? "jpg";
-        const fileName = `${crypto.randomUUID()}.${fileExtension}`;
-        const storagePath = `${productId}/${fileName}`;
+
+        const storagePath = `${productId}/${crypto.randomUUID()}.${fileExtension}`;
 
         const { error: uploadError } = await supabase.storage
             .from("product-images")
