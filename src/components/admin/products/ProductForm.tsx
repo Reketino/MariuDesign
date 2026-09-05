@@ -139,6 +139,10 @@ export default function ProductForm({
             throw new Error(`Failed to upload product image: ${uploadError.message}`);
         }
 
+        const currentImage = getProductImage(
+            product?.product_images ?? null,
+        )
+
         const { error: imageError } = await supabase
             .from("product_images")
             .insert({
