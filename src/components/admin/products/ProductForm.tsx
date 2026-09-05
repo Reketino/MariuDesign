@@ -141,25 +141,57 @@ export default function ProductForm({
 
         const currentImage = getProductImage(
             product?.product_images ?? null,
-        )
+        );
 
-        const { error: imageError } = await supabase
+      if (currentImage) {
+        const { error: updateError } = await supabase
             .from("product_images")
-            .insert({
-                product_id: productId,
+            .update({
                 storage_path: storagePath,
                 alt_text: title,
-                sort_order: 0,
-            });
+                sort_order: currentImage.sort_order,
+            })
+            .eq("id", currentImage.id);
 
-        if (imageError) {
+        if (updateError) {
             await supabase.storage
                 .from("product-images")
                 .remove([storagePath]);
 
-            throw new Error(`Failed to save product image: ${imageError.message}`);
+            throw new Error("Failed to update product image");
         }
+
+        const { error: deleteStorageError } = await supabase.storage
+            .from("product-images")
+            .remove([currentImage.storage_path]);
+
+        if (deleteStorageError) {
+            console.error(
+                "Failed to remove old product image:",
+                deleteStorageError,
+            );
+        }
+
+        return;
     }
+
+    const { error: insertError } = await supabase
+        .from("product_images")
+        .insert({
+            product_id: productId,
+            storage_path: storagePath,
+            alt_text: title,
+            sort_order: 0,
+        });
+
+    if (insertError) {
+        await supabase.storage
+            .from("product-images")
+            .remove([storagePath]);
+
+        throw new Error("Failed to save product image");
+    }
+}
 
     async function handleSubmit(
         event: React.SubmitEvent<HTMLFormElement>,
