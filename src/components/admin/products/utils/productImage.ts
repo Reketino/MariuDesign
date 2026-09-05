@@ -1,0 +1,1 @@
+import type { ProductImage } from "@/types/products";
