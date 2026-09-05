@@ -200,9 +200,7 @@ export default function ProductForm({
 
         setError("");
         setLoading(true);
-
-        const supabase = createClient();
-
+        
         try {
             let productId = product?.id;
 
