@@ -244,7 +244,7 @@ export default function ProductForm({
             }
 
             if (productId && image) {
-                await uploadProductImage(supabase, productId);
+                await uploadProductImage(productId);
             }
 
             router.push("/admin/products");
