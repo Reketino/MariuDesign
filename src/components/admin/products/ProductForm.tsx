@@ -11,8 +11,12 @@ import ProductImages from "./ProductImage";
 import type {
     ProductCategory,
     ProductFormData,
-    ProductImage,
 } from "@/types/products";
+
+import {
+    getProductImage,
+    getProductImageUrl,
+} from "./utils/productImage";
 
 import { createSlug } from "./utils/createSlug";
 
@@ -30,23 +34,6 @@ const ALLOWED_IMAGE_TYPES = [
     "image/png",
     "image/webp",
 ]
-
-function getProductImage(
-    images: ProductImage[] | null,
-): ProductImage | null {
-    if (!images) {
-        return null;
-    }
-    return (
-        images
-            .filter((image) => image.sort_order >= 0)
-            .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null
-    );
-}
-
-function getProductImageUrl(storagePath: string) {
-    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${storagePath}`;
-}
 
 export default function ProductForm({
     categories,
@@ -200,7 +187,7 @@ export default function ProductForm({
 
         setError("");
         setLoading(true);
-        
+
         try {
             let productId = product?.id;
 
@@ -273,8 +260,6 @@ export default function ProductForm({
 
         setError("");
         setDeleting(true);
-
-        const supabase = createClient();
 
         const { error } = await supabase
             .from("products")
