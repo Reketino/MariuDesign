@@ -19,6 +19,9 @@ import {
 } from "./utils/productImage";
 
 import { createSlug } from "./utils/createSlug";
+import { validateProductImage } from "./utils/validateProductImage";
+import { uploadProductImage } from "./utils/productImageService";
+import { saveProduct } from "./utils/productsService";
 
 import { createClient } from "@/lib/supabase/client";
 
@@ -26,14 +29,6 @@ type ProductFormProps = {
     categories: ProductCategory[];
     product?: ProductFormData;
 };
-
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
-
-const ALLOWED_IMAGE_TYPES = [
-    "image/jpeg",
-    "image/png",
-    "image/webp",
-]
 
 export default function ProductForm({
     categories,
@@ -77,7 +72,7 @@ export default function ProductForm({
     function handleImageChange(
         event: React.ChangeEvent<HTMLInputElement>,
     ) {
-        const selectedFile = event.target.files?.[0] ?? null;
+        const selectedFile = event.target.files?.[0] ?? null
 
         setError("");
 
@@ -86,17 +81,10 @@ export default function ProductForm({
             return;
         }
 
-        if (!ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
-            setError("Invalid image type. Please use JPG, PNG OR WebP.");
+        const validationError = validateProductImage(selectedFile);
 
-            event.target.value = "";
-            setImage(null);
-            return;
-        }
-
-        if (selectedFile.size > MAX_IMAGE_SIZE) {
-            setError("Image is too large. Maximum file size is 5 MB.");
-
+        if (validationError) {
+            setError(validationError);
             event.target.value = "";
             setImage(null);
             return;
@@ -104,81 +92,6 @@ export default function ProductForm({
 
         setImage(selectedFile);
     }
-
-    async function uploadProductImage(productId: string) {
-        if (!image) {
-            return;
-        }
-
-        const fileExtension = image.name.split(".").pop()?.toLowerCase() ?? "jpg";
-
-        const storagePath = `${productId}/${crypto.randomUUID()}.${fileExtension}`;
-
-        const { error: uploadError } = await supabase.storage
-            .from("product-images")
-            .upload(storagePath, image, {
-                cacheControl: "3600",
-                 contentType: image.type,
-                upsert: false,
-            });
-
-        if (uploadError) {
-            throw new Error(`Failed to upload product image: ${uploadError.message}`);
-        }
-
-        const currentImage = getProductImage(
-            product?.product_images ?? null,
-        );
-
-      if (currentImage) {
-        const { error: updateError } = await supabase
-            .from("product_images")
-            .update({
-                storage_path: storagePath,
-                alt_text: title,
-                sort_order: currentImage.sort_order,
-            })
-            .eq("id", currentImage.id);
-
-        if (updateError) {
-            await supabase.storage
-                .from("product-images")
-                .remove([storagePath]);
-
-            throw new Error("Failed to update product image");
-        }
-
-        const { error: deleteStorageError } = await supabase.storage
-            .from("product-images")
-            .remove([currentImage.storage_path]);
-
-        if (deleteStorageError) {
-            console.error(
-                "Failed to remove old product image:",
-                deleteStorageError,
-            );
-        }
-
-        return;
-    }
-
-    const { error: insertError } = await supabase
-        .from("product_images")
-        .insert({
-            product_id: productId,
-            storage_path: storagePath,
-            alt_text: title,
-            sort_order: 0,
-        });
-
-    if (insertError) {
-        await supabase.storage
-            .from("product-images")
-            .remove([storagePath]);
-
-        throw new Error("Failed to save product image");
-    }
-}
 
     async function handleSubmit(
         event: React.SubmitEvent<HTMLFormElement>,
@@ -189,47 +102,27 @@ export default function ProductForm({
         setLoading(true);
 
         try {
-            let productId = product?.id;
-
-            if (isEditing && product) {
-                const { error } = await supabase
-                    .from("products")
-                    .update({
-                        title,
-                        slug,
-                        description: description || null,
-                        category_id: categoryId || null,
-                        status,
-                        license: license || null,
-                    })
-                    .eq("id", product.id);
-
-                if (error) {
-                    throw new Error(error.message);
+            const productId = await saveProduct({
+                supabase,
+                productId: product?.id,
+                values: {
+                title,
+                slug,
+                description,
+                category_id: categoryId,
+                status,
+                license,
                 }
-            } else {
-                const { data, error } = await supabase
-                    .from("products")
-                    .insert({
-                        title,
-                        slug,
-                        description: description || null,
-                        category_id: categoryId || null,
-                        status,
-                        license: license || null,
-                    })
-                    .select("id")
-                    .single();
+            })
 
-                if (error) {
-                    throw new Error(error.message);
-                }
-
-                productId = data.id;
-            }
-
-            if (productId && image) {
-                await uploadProductImage(productId);
+            if (image) {
+                await uploadProductImage({
+                    supabase,
+                    productId,
+                    image,
+                    title,
+                    existingImage,
+                });
             }
 
             router.push("/admin/products");
