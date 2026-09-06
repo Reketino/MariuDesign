@@ -20,6 +20,7 @@ import {
 
 import { createSlug } from "./utils/createSlug";
 import { validateProductImage } from "./utils/validateProductImage";
+import { uploadProductImage } from "./utils/productImageService";
 
 import { createClient } from "@/lib/supabase/client";
 
