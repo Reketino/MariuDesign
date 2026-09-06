@@ -21,6 +21,7 @@ import {
 import { createSlug } from "./utils/createSlug";
 import { validateProductImage } from "./utils/validateProductImage";
 import { uploadProductImage } from "./utils/productImageService";
+import { saveProduct } from "./utils/productsService";
 
 import { createClient } from "@/lib/supabase/client";
 
