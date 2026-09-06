@@ -102,46 +102,20 @@ export default function ProductForm({
         setLoading(true);
 
         try {
-            let productId = product?.id;
-
-            if (isEditing && product) {
-                const { error } = await supabase
-                    .from("products")
-                    .update({
-                        title,
-                        slug,
-                        description: description || null,
-                        category_id: categoryId || null,
-                        status,
-                        license: license || null,
-                    })
-                    .eq("id", product.id);
-
-                if (error) {
-                    throw new Error(error.message);
+            const productId = await saveProduct({
+                supabase,
+                productId: product?.id,
+                values: {
+                title,
+                slug,
+                description,
+                category_id: categoryId,
+                status,
+                license,
                 }
-            } else {
-                const { data, error } = await supabase
-                    .from("products")
-                    .insert({
-                        title,
-                        slug,
-                        description: description || null,
-                        category_id: categoryId || null,
-                        status,
-                        license: license || null,
-                    })
-                    .select("id")
-                    .single();
+            })
 
-                if (error) {
-                    throw new Error(error.message);
-                }
-
-                productId = data.id;
-            }
-
-            if (productId && image) {
+            if (image) {
                 await uploadProductImage({
                     supabase,
                     productId,
