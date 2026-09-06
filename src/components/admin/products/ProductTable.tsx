@@ -133,39 +133,38 @@ export default function ProductTable({
                                 product.product_images,
                             );
 
-                                console.log("PRODUCT:", product.title);
-    console.log("IMAGES:", product.product_images);
-    console.log("IMAGE:", productImage);
-
                             return (
                                 <tr
                                     key={product.id}
                                     className="transition hover:bg-zinc-900"
                                 >
                                     <td className="px-6 py-5">
-                                        <div className="flex items-center gap-4">
+                                        <Link
+                                            href={`/admin/products/${product.id}`}
+                                            className="group flex items-center gap-4"
+                                        >
                                             {productImage && (
                                                 <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950">
                                                     <Image
-                                                    src={getProductImageUrl(productImage.storage_path)}
-                                                    alt={productImage.alt_text ?? product.title}
-                                                    fill
-                                                    sizes="48px"
-                                                    className="object-cover"
+                                                        src={getProductImageUrl(productImage.storage_path)}
+                                                        alt={productImage.alt_text ?? product.title}
+                                                        fill
+                                                        sizes="48px"
+                                                        className="object-cover transition group-hover:scale-105"
                                                     />
-                                                    </div>
+                                                </div>
                                             )}
 
-                                        <div>
-                                            <p className="font-medium text-white">
-                                                {product.title}
-                                            </p>
+                                            <div>
+                                                <p className="font-medium text-white transition group-hover:text-zinc-300">
+                                                    {product.title}
+                                                </p>
 
-                                            <p className="mt-1 text-sm text-zinc-500">
-                                                /{product.slug}
-                                            </p>
-                                        </div>
-                                        </div>
+                                                <p className="mt-1 text-sm text-zinc-500">
+                                                    /{product.slug}
+                                                </p>
+                                            </div>
+                                        </Link>
                                     </td>
 
                                     <td className="px-6 py-5">
