@@ -1,85 +1,114 @@
 import type { ProductImage } from "@/types/products";
 
-type UploadProductImageParams = {
-    supabase: ReturnType<typeof import("@/lib/supabase/client").createClient>;
-    productId: string;
-    image: File;
-    title: string;
-    existingImage: ProductImage | null;
+type UploadProductImagesParams = {
+  supabase: ReturnType<typeof import("@/lib/supabase/client").createClient>;
+  productId: string;
+  images: File[];
+  title: string;
+  existingImages: ProductImage[];
 };
 
-export async function uploadProductImage({
-    supabase,
-    productId,
-    image,
-    title,
-    existingImage,
-}: UploadProductImageParams) {
-    const fileExtension =
-        image.name.split(".").pop()?.toLowerCase() ?? "jpg";
+export async function uploadProductImages({
+  supabase,
+  productId,
+  images,
+  title,
+  existingImages,
+}: UploadProductImagesParams): Promise<void> {
+  if (images.length === 0) {
+    return;
+  }
 
-    const storagePath = `${productId}/${crypto.randomUUID()}.${fileExtension}`;
+  const nextSortOrder = existingImages.length;
 
-    const { error: uploadError } = await supabase.storage
-        .from("product-images")
-        .upload(storagePath, image, {
-            cacheControl: "3600",
-            contentType: image.type,
-            upsert: false,
-        });
+  for (const [index, image] of images.entries()) {
+    const storagePath = await uploadImageToStorage({
+      supabase,
+      productId,
+      image,
+    });
 
-    if (uploadError) {
-        throw new Error(
-            `Failed to upload product image: ${uploadError.message}`,
-        );
+    try {
+      await createProductImage({
+        supabase,
+        productId,
+        storagePath,
+        title,
+        sortOrder: nextSortOrder + index,
+      });
+    } catch (error) {
+      await removeStorageFile(supabase, storagePath);
+      throw error;
     }
+  }
+}
 
-    if (existingImage) {
-        const { error: updateError } = await supabase
-            .from("product_images")
-            .update({
-                storage_path: storagePath,
-                alt_text: title,
-                sort_order: existingImage.sort_order,
-            })
-            .eq("id", existingImage.id);
+type UploadImageToStorageParams = {
+  supabase: ReturnType<typeof import("@/lib/supabase/client").createClient>;
+  productId: string;
+  image: File;
+};
 
-        if (updateError) {
-            await supabase.storage
-                .from("product-images")
-                .remove([storagePath]);
+async function uploadImageToStorage({
+  supabase,
+  productId,
+  image,
+}: UploadImageToStorageParams): Promise<string> {
+  const fileExtension = image.name.split(".").pop()?.toLowerCase() ?? "jpg";
 
-            throw new Error("Failed to update product image");
-        }
+  const storagePath = `${productId}/${crypto.randomUUID()}.${fileExtension}`;
 
-        const { error: deleteStorageError } = await supabase.storage
-            .from("product-images")
-            .remove([existingImage.storage_path]);
+  const { error } = await supabase.storage
+    .from("product-images")
+    .upload(storagePath, image, {
+      cacheControl: "3600",
+      contentType: image.type,
+      upsert: false,
+    });
 
-        if (deleteStorageError) {
-            console.error(
-                "Failed to remove old product image:",
-                deleteStorageError,
-            );
-        }
+  if (error) {
+    throw new Error(`Failed to upload product image: ${error.message}`);
+  }
 
-        return;
-    }
+  return storagePath;
+}
 
-    const { error: insertError } = await supabase
-        .from("product_images")
-        .insert({
-            product_id: productId,
-            storage_path: storagePath,
-            alt_text: title,
-            sort_order: 0,
-        });
+type CreateProductImageParams = {
+  supabase: ReturnType<typeof import("@/lib/supabase/client").createClient>;
+  productId: string;
+  storagePath: string;
+  title: string;
+  sortOrder: number;
+};
 
-    if (insertError) {
-        await supabase.storage
-            .from("product-images")
-            .remove([storagePath]);
+async function createProductImage({
+  supabase,
+  productId,
+  storagePath,
+  title,
+  sortOrder,
+}: CreateProductImageParams): Promise<void> {
+  const { error } = await supabase.from("product_images").insert({
+    product_id: productId,
+    storage_path: storagePath,
+    alt_text: title,
+    sort_order: sortOrder,
+  });
 
-        throw new Error("Failed to save product image");
-    }
+  if (error) {
+    throw new Error(`Failed to save product image: ${error.message}`);
+  }
+}
+
+async function removeStorageFile(
+  supabase: ReturnType<typeof import("@/lib/supabase/client").createClient>,
+  storagePath: string,
+): Promise<void> {
+  const { error } = await supabase.storage
+    .from("product-images")
+    .remove([storagePath]);
+
+  if (error) {
+    console.error("Failed to remove product image from storage:", error);
+  }
 }

@@ -14,14 +14,17 @@ import type {
 } from "@/types/products";
 
 import {
-    getProductImage,
+    getProductImages,
     getProductImageUrl,
 } from "./utils/productImage";
 
 import { createSlug } from "./utils/createSlug";
 import { validateProductImage } from "./utils/validateProductImage";
-import { uploadProductImage } from "./utils/productImageService";
-import { saveProduct } from "./utils/productsService";
+import { uploadProductImages } from "./utils/productImageService";
+import {
+    deleteProduct,
+    saveProduct
+} from "./utils/productService";
 
 import { createClient } from "@/lib/supabase/client";
 
@@ -54,13 +57,13 @@ export default function ProductForm({
         product?.license ?? "",
     );
 
-    const [image, setImage] = useState<File | null>(null)
+    const [images, setImages] = useState<File[]>([]);
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [deleting, setDeleting] = useState(false);
 
-    const existingImage = getProductImage(
+    const existingImages = getProductImages(
         product?.product_images ?? null,
     );
 
@@ -72,71 +75,73 @@ export default function ProductForm({
     function handleImageChange(
         event: React.ChangeEvent<HTMLInputElement>,
     ) {
-        const selectedFile = event.target.files?.[0] ?? null
+        const selectedFiles = Array.from(event.target.files ?? []);
 
         setError("");
 
-        if (!selectedFile) {
-            setImage(null);
+        if (selectedFiles.length === 0) {
+            setImages([]);
             return;
         }
 
-        const validationError = validateProductImage(selectedFile);
+        for (const file of selectedFiles) {
+            const validationError = validateProductImage(file);
 
-        if (validationError) {
-            setError(validationError);
-            event.target.value = "";
-            setImage(null);
-            return;
+            if (validationError) {
+                setError(`${file.name}: ${validationError}`);
+                event.target.value = "";
+                setImages([]);
+                return;
+            }
         }
 
-        setImage(selectedFile);
+        setImages(selectedFiles);
     }
 
     async function handleSubmit(
-        event: React.SubmitEvent<HTMLFormElement>,
-    ) {
-        event.preventDefault();
+    event: React.SubmitEvent<HTMLFormElement>,
+) {
+    event.preventDefault();
 
-        setError("");
-        setLoading(true);
+    setError("");
+    setLoading(true);
 
-        try {
-            const productId = await saveProduct({
-                supabase,
-                productId: product?.id,
-                values: {
+    try {
+        const productId = await saveProduct({
+            supabase,
+            productId: product?.id,
+            values: {
                 title,
                 slug,
                 description,
                 category_id: categoryId,
                 status,
                 license,
-                }
-            })
+            },
+        });
 
-            if (image) {
-                await uploadProductImage({
-                    supabase,
-                    productId,
-                    image,
-                    title,
-                    existingImage,
-                });
-            }
-
-            router.push("/admin/products");
-            router.refresh();
-        } catch (error) {
-            setError(
-                error instanceof Error
-                    ? error.message
-                    : "Something went wrong while saving the product."
-            );
-
-            setLoading(false);
+        if (images.length > 0) {
+            await uploadProductImages({
+                supabase,
+                productId,
+                images,
+                title,
+                existingImages,
+            });
         }
+
+        router.push("/admin/products");
+        router.refresh();
+    } catch (error) {
+        setError(
+            error instanceof Error
+                ? error.message
+                : "Something went wrong while saving the product.",
+        );
+
+        setLoading(false);
     }
+}
 
     async function handleDelete() {
         if (!product) {
@@ -144,7 +149,7 @@ export default function ProductForm({
         }
 
         const confirmed = window.confirm(
-            `Are you sure Reite you want to delete this "${product.title}"? Be aware this action cannot be undone!.`,
+            `Are you sure you want to delete "${product.title}"? Be aware this action cannot be undone.`,
         );
 
         if (!confirmed) {
@@ -154,19 +159,23 @@ export default function ProductForm({
         setError("");
         setDeleting(true);
 
-        const { error } = await supabase
-            .from("products")
-            .delete()
-            .eq("id", product.id);
+        try {
+            await deleteProduct({
+                supabase,
+                productId: product.id,
+            });
 
-        if (error) {
-            setError(error.message);
+            router.push("/admin/products");
+            router.refresh();
+        } catch (error) {
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while deleting the product.",
+            );
+
             setDeleting(false);
-            return;
         }
-
-        router.push("/admin/products");
-        router.refresh();
     }
 
     return (
@@ -194,17 +203,11 @@ export default function ProductForm({
             />
 
             <ProductImages
-                image={image}
-                existingImage={
-                    existingImage
-                        ? {
-                            ...existingImage,
-                            url: getProductImageUrl(
-                                existingImage.storage_path,
-                            ),
-                        }
-                        : null
-                }
+                images={images}
+                existingImages={existingImages.map((image) => ({
+                    ...image,
+                    url: getProductImageUrl(image.storage_path),
+                }))}
                 onImageChange={handleImageChange}
             />
 
