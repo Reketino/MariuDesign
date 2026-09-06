@@ -78,7 +78,7 @@ export default function ProductForm({
     function handleImageChange(
         event: React.ChangeEvent<HTMLInputElement>,
     ) {
-        const selectedFile = event.target.files?.[0] ?? null;
+        const selectedFile = event.target.files?.[0] ?? null
 
         setError("");
 
@@ -87,17 +87,10 @@ export default function ProductForm({
             return;
         }
 
-        if (!ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
-            setError("Invalid image type. Please use JPG, PNG OR WebP.");
+        const validationError = validateProductImage(selectedFile);
 
-            event.target.value = "";
-            setImage(null);
-            return;
-        }
-
-        if (selectedFile.size > MAX_IMAGE_SIZE) {
-            setError("Image is too large. Maximum file size is 5 MB.");
-
+        if (validationError) {
+            setError(validationError);
             event.target.value = "";
             setImage(null);
             return;
