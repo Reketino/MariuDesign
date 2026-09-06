@@ -19,6 +19,7 @@ import {
 } from "./utils/productImage";
 
 import { createSlug } from "./utils/createSlug";
+import { validateProductImage } from "./utils/validateProductImage";
 
 import { createClient } from "@/lib/supabase/client";
 
