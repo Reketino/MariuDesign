@@ -14,6 +14,7 @@ type ProductImagesProps = {
     onImageChange: (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
+    onDeleteImage: (image: ExistingProductImage) => void;
 };
 
 export default function ProductImages({
