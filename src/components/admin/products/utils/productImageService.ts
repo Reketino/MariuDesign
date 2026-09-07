@@ -49,30 +49,153 @@ type DeleteProductImageParams = {
 };
 
 export async function deleteProductImage({
-  supabase,
-  image,
+    supabase,
+    image,
 }: DeleteProductImageParams): Promise<void> {
-  const { error: deleteDatabaseError } = await supabase
-    .from("product_images")
-    .delete()
-    .eq("id", image.id)
-    .eq("product_id", image.product_id);
+    const { data, error: deleteDatabaseError } = await supabase
+        .from("product_images")
+        .delete()
+        .eq("id", image.id)
+        .eq("product_id", image.product_id)
+        .select("id")
+        .maybeSingle();
 
-  if (deleteDatabaseError) {
-    throw new Error(
-      `Failed to delete product image: ${deleteDatabaseError.message}`,
-    );
-  }
-  const { error: deleteStorageError } = await supabase.storage
-    .from("product-images")
-    .remove([image.storage_path]);
+    if (deleteDatabaseError) {
+        throw new Error(
+            `Failed to delete product image: ${deleteDatabaseError.message}`,
+        );
+    }
 
-  if (deleteStorageError) {
-    console.error(
-      "Product image was removed from the database, but could not be removed from storage:",
-      deleteStorageError,
+    if (!data) {
+        throw new Error(
+            "Product image could not be deleted. The image may not exist or you may not have permission to delete it.",
+        );
+    }
+
+    const { data: remainingImages, error: fetchError } = await supabase
+        .from("product_images")
+        .select("id")
+        .eq("product_id", image.product_id)
+        .order("sort_order", { ascending: true })
+        .order("id", { ascending: true });
+
+    if (fetchError) {
+        throw new Error(
+            `Product image was deleted, but the remaining image order could not be loaded: ${fetchError.message}`,
+        );
+    }
+
+    for (const [index, remainingImage] of remainingImages.entries()) {
+        const { error: updateError } = await supabase
+            .from("product_images")
+            .update({
+                sort_order: index,
+            })
+            .eq("id", remainingImage.id)
+            .eq("product_id", image.product_id);
+
+        if (updateError) {
+            throw new Error(
+                `Product image was deleted, but the image order could not be updated: ${updateError.message}`,
+            );
+        }
+    }
+
+    const { error: deleteStorageError } = await supabase.storage
+        .from("product-images")
+        .remove([image.storage_path]);
+
+    if (deleteStorageError) {
+        console.error(
+            "Product image was removed from the database, but could not be removed from storage:",
+            deleteStorageError,
+        );
+    }
+}
+
+type SetProductImageAsMainParams = {
+    supabase: ReturnType<
+        typeof import("@/lib/supabase/client").createClient
+    >;
+    productId: string;
+    imageId: string;
+};
+
+export async function setProductImageAsMain({
+    supabase,
+    productId,
+    imageId,
+}: SetProductImageAsMainParams): Promise<void> {
+    const { data: images, error: fetchError } = await supabase
+        .from("product_images")
+        .select("id, sort_order")
+        .eq("product_id", productId)
+        .order("sort_order", { ascending: true })
+        .order("id", { ascending: true });
+
+    if (fetchError) {
+        throw new Error(
+            `Failed to load product images: ${fetchError.message}`,
+        );
+    }
+
+    const imageExists = images.some(
+        (image) => image.id === imageId,
     );
-  }
+
+    if (!imageExists) {
+        throw new Error(
+            "The selected product image could not be found.",
+        );
+    }
+
+    const { error: temporaryUpdateError } = await supabase
+        .from("product_images")
+        .update({
+            sort_order: -1,
+        })
+        .eq("id", imageId)
+        .eq("product_id", productId);
+
+    if (temporaryUpdateError) {
+        throw new Error(
+            `Failed to prepare the main image: ${temporaryUpdateError.message}`,
+        );
+    }
+
+    const remainingImages = images.filter(
+        (image) => image.id !== imageId,
+    );
+
+    for (const [index, image] of remainingImages.entries()) {
+        const { error: updateError } = await supabase
+            .from("product_images")
+            .update({
+                sort_order: index + 1,
+            })
+            .eq("id", image.id)
+            .eq("product_id", productId);
+
+        if (updateError) {
+            throw new Error(
+                `Failed to update product image order: ${updateError.message}`,
+            );
+        }
+    }
+
+    const { error: mainImageError } = await supabase
+        .from("product_images")
+        .update({
+            sort_order: 0,
+        })
+        .eq("id", imageId)
+        .eq("product_id", productId);
+
+    if (mainImageError) {
+        throw new Error(
+            `Failed to set the main product image: ${mainImageError.message}`,
+        );
+    }
 }
 
 type UploadImageToStorageParams = {

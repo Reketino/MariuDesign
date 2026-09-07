@@ -11,6 +11,7 @@ import ProductImages from "./ProductImage";
 import type {
     ProductCategory,
     ProductFormData,
+    ProductImage,
 } from "@/types/products";
 
 import {
@@ -20,7 +21,11 @@ import {
 
 import { createSlug } from "./utils/createSlug";
 import { validateProductImage } from "./utils/validateProductImage";
-import { uploadProductImages } from "./utils/productImageService";
+import {
+    deleteProductImage,
+    setProductImageAsMain,
+    uploadProductImages
+} from "./utils/productImageService";
 import {
     deleteProduct,
     saveProduct
@@ -99,49 +104,79 @@ export default function ProductForm({
     }
 
     async function handleSubmit(
-    event: React.SubmitEvent<HTMLFormElement>,
-) {
-    event.preventDefault();
+        event: React.SubmitEvent<HTMLFormElement>,
+    ) {
+        event.preventDefault();
 
-    setError("");
-    setLoading(true);
+        setError("");
+        setLoading(true);
 
-    try {
-        const productId = await saveProduct({
-            supabase,
-            productId: product?.id,
-            values: {
-                title,
-                slug,
-                description,
-                category_id: categoryId,
-                status,
-                license,
-            },
-        });
-
-        if (images.length > 0) {
-            await uploadProductImages({
+        try {
+            const productId = await saveProduct({
                 supabase,
-                productId,
-                images,
-                title,
-                existingImages,
+                productId: product?.id,
+                values: {
+                    title,
+                    slug,
+                    description,
+                    category_id: categoryId,
+                    status,
+                    license,
+                },
             });
-        }
 
-        router.push("/admin/products");
-        router.refresh();
-    } catch (error) {
-        setError(
-            error instanceof Error
-                ? error.message
-                : "Something went wrong while saving the product.",
+            if (images.length > 0) {
+                await uploadProductImages({
+                    supabase,
+                    productId,
+                    images,
+                    title,
+                    existingImages,
+                });
+            }
+
+            router.push("/admin/products");
+            router.refresh();
+        } catch (error) {
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while saving the product.",
+            );
+
+            setLoading(false);
+        }
+    }
+
+    async function handleDeleteImage(image: ProductImage) {
+        const confirmed = window.confirm(
+            "Are you sure you want to delete this image?",
         );
 
-        setLoading(false);
+        if (!confirmed) {
+            return;
+        }
+
+        setError("");
+        setLoading(true);
+
+        try {
+            await deleteProductImage({
+                supabase,
+                image,
+            });
+
+            router.refresh();
+        } catch (error) {
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while deleting the product image.",
+            );
+        } finally {
+            setLoading(false);
+        }
     }
-}
 
     async function handleDelete() {
         if (!product) {
@@ -209,6 +244,7 @@ export default function ProductForm({
                     url: getProductImageUrl(image.storage_path),
                 }))}
                 onImageChange={handleImageChange}
+                onDeleteImage={handleDeleteImage}
             />
 
             {error && (
