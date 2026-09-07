@@ -44,10 +44,8 @@ export async function uploadProductImages({
 }
 
 type DeleteProductImageParams = {
-    supabase: ReturnType<
-        typeof import("@/lib/supabase/client").createClient
-    >;
-    image: ProductImage;
+  supabase: ReturnType<typeof import("@/lib/supabase/client").createClient>;
+  image: ProductImage;
 };
 
 type UploadImageToStorageParams = {
