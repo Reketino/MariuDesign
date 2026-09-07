@@ -21,6 +21,7 @@ export default function ProductImages({
     images,
     existingImages,
     onImageChange,
+    onDeleteImage,
 }: ProductImagesProps) {
     return (
         <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
@@ -59,16 +60,26 @@ export default function ProductImages({
                                     />
                                 </div>
 
-                                <div className="flex items-center justify-between px-3 py-2">
-                                    <span className="text-xs text-zinc-400">
-                                        {index === 0
-                                            ? "Main image"
-                                            : `Image ${index + 1}`}
-                                    </span>
+                                <div className="flex items-center justify-between gap-3 px-3 py-2">
+                                    <div>
+                                        <span className="text-xs text-zinc-400">
+                                            {index === 0
+                                                ? "Main image"
+                                                : `Image ${index + 1}`}
+                                        </span>
 
-                                    <span className="text-xs text-zinc-600">
-                                        #{image.sort_order}
-                                    </span>
+                                        <span className="ml-2 text-xs text-zinc-600">
+                                            #{image.sort_order}
+                                        </span>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => onDeleteImage(image)}
+                                        className="text-xs font-medium text-red-400 transition hover:text-red-300"
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </article>
                         ))}
