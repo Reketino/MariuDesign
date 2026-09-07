@@ -48,6 +48,24 @@ type DeleteProductImageParams = {
   image: ProductImage;
 };
 
+export async function deleteProductImage({
+  supabase,
+  image,
+}: DeleteProductImageParams): Promise<void> {
+      const { error: deleteDatabaseError } = await supabase
+        .from("product_images")
+        .delete()
+        .eq("id", image.id)
+        .eq("product_id", image.product_id);
+
+    if (deleteDatabaseError) {
+        throw new Error(
+            `Failed to delete product image: ${deleteDatabaseError.message}`,
+        );
+    }
+
+}
+
 type UploadImageToStorageParams = {
   supabase: ReturnType<typeof import("@/lib/supabase/client").createClient>;
   productId: string;
