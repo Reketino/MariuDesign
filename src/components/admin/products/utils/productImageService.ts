@@ -63,16 +63,16 @@ export async function deleteProductImage({
       `Failed to delete product image: ${deleteDatabaseError.message}`,
     );
   }
-     const { error: deleteStorageError } = await supabase.storage
-        .from("product-images")
-        .remove([image.storage_path]);
+  const { error: deleteStorageError } = await supabase.storage
+    .from("product-images")
+    .remove([image.storage_path]);
 
-    if (deleteStorageError) {
-        console.error(
-            "Product image was removed from the database, but could not be removed from storage:",
-            deleteStorageError,
-        );
-    }
+  if (deleteStorageError) {
+    console.error(
+      "Product image was removed from the database, but could not be removed from storage:",
+      deleteStorageError,
+    );
+  }
 }
 
 type UploadImageToStorageParams = {
