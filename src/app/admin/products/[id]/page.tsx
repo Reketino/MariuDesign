@@ -33,6 +33,7 @@ export default async function EditProductPage({
                 category_id,
                 product_images (
                     id,
+                    product_id,
                     storage_path,
                     alt_text,
                     sort_order
