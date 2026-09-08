@@ -75,6 +75,18 @@ export default function ProductImages({
                                         </span>
                                     </div>
 
+                                    <div className="flex items-center gap-3">
+                                        {index !== 0 && (
+                                            <button
+                                            type="button"
+                                            onClick={() => onSetMainImage(image)}
+                                            className="text-xs font-medium text-zinc-400 transition hover:text-white"
+                                            >
+                                                Set as main
+                                            </button>
+                                        )}
+                                    </div>
+
                                     <button
                                         type="button"
                                         onClick={() => onDeleteImage(image)}
