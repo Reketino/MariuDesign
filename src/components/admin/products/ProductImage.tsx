@@ -15,6 +15,7 @@ type ProductImagesProps = {
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
     onDeleteImage: (image: ExistingProductImage) => void;
+    onSetMainImage: (image: ExistingProductImage) => void;
 };
 
 export default function ProductImages({
@@ -22,6 +23,7 @@ export default function ProductImages({
     existingImages,
     onImageChange,
     onDeleteImage,
+    onSetMainImage,
 }: ProductImagesProps) {
     return (
         <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
@@ -73,13 +75,26 @@ export default function ProductImages({
                                         </span>
                                     </div>
 
-                                    <button
-                                        type="button"
-                                        onClick={() => onDeleteImage(image)}
-                                        className="text-xs font-medium text-red-400 transition hover:text-red-300"
-                                    >
-                                        Delete
-                                    </button>
+                                    <div className="flex items-center gap-3">
+                                        {index !== 0 && (
+                                            <button
+                                                type="button"
+                                                onClick={() => onSetMainImage(image)}
+                                                className="text-xs font-medium text-zinc-400 transition hover:text-white"
+                                            >
+                                                Set as main
+                                            </button>
+                                        )}
+
+
+                                        <button
+                                            type="button"
+                                            onClick={() => onDeleteImage(image)}
+                                            className="text-xs font-medium text-red-400 transition hover:text-red-300"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
                         ))}
