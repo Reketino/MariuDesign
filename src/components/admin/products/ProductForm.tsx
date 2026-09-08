@@ -272,6 +272,7 @@ export default function ProductForm({
                 }))}
                 onImageChange={handleImageChange}
                 onDeleteImage={handleDeleteImage}
+                onSetMainImage={handleSetMainImage}
             />
 
             {error && (
