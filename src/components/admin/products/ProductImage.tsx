@@ -23,6 +23,7 @@ export default function ProductImages({
     existingImages,
     onImageChange,
     onDeleteImage,
+    onSetMainImage,
 }: ProductImagesProps) {
     return (
         <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
