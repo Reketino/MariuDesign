@@ -85,15 +85,16 @@ export default function ProductImages({
                                                 Set as main
                                             </button>
                                         )}
-                                    </div>
 
-                                    <button
-                                        type="button"
-                                        onClick={() => onDeleteImage(image)}
-                                        className="text-xs font-medium text-red-400 transition hover:text-red-300"
-                                    >
-                                        Delete
-                                    </button>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => onDeleteImage(image)}
+                                            className="text-xs font-medium text-red-400 transition hover:text-red-300"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </article>
                         ))}
