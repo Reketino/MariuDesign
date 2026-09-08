@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import type { ProductImage } from "@/types/products";
 
@@ -16,6 +17,9 @@ type ProductImagesProps = {
     ) => void;
     onDeleteImage: (image: ExistingProductImage) => void;
     onSetMainImage: (image: ExistingProductImage) => void;
+    onReorderImages: (
+        images: ExistingProductImage[],
+    ) => Promise<void>;
 };
 
 export default function ProductImages({
@@ -24,7 +28,107 @@ export default function ProductImages({
     onImageChange,
     onDeleteImage,
     onSetMainImage,
+    onReorderImages,
 }: ProductImagesProps) {
+    const [orderedImages, setOrderedImages] =
+        useState<ExistingProductImage[]>(existingImages);
+
+    const [draggedImageId, setDraggedImageId] = useState<string | null>(
+        null,
+    );
+
+    const [dragOverImageId, setDragOverImageId] = useState<string | null>(
+        null,
+    );
+
+    useEffect(() => {
+        setOrderedImages(existingImages);
+    }, [existingImages]);
+
+    function handleDragStart(
+        event: React.DragEvent<HTMLElement>,
+        imageId: string,
+    ) {
+        setDraggedImageId(imageId);
+
+        event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData("text/plain", imageId);
+    }
+
+    function handleDragOver(
+        event: React.DragEvent<HTMLElement>,
+        imageId: string,
+    ) {
+        event.preventDefault();
+
+        if (!draggedImageId || draggedImageId === imageId) {
+            return;
+        }
+
+        event.dataTransfer.dropEffect = "move";
+        setDragOverImageId(imageId);
+    }
+
+    async function handleDrop(
+        event: React.DragEvent<HTMLElement>,
+        targetImageId: string,
+    ) {
+        event.preventDefault();
+
+        const sourceImageId =
+            event.dataTransfer.getData("text/plain") ||
+            draggedImageId;
+
+        setDragOverImageId(null);
+        setDraggedImageId(null);
+
+        if (
+            !sourceImageId ||
+            sourceImageId === targetImageId
+        ) {
+            return;
+        }
+
+        const sourceIndex = orderedImages.findIndex(
+            (image) => image.id === sourceImageId,
+        );
+
+        const targetIndex = orderedImages.findIndex(
+            (image) => image.id === targetImageId,
+        );
+
+        if (sourceIndex === -1 || targetIndex === -1) {
+            return;
+        }
+
+        const previousImages = orderedImages;
+        const nextImages = [...orderedImages];
+
+        const [movedImage] = nextImages.splice(sourceIndex, 1);
+
+        nextImages.splice(targetIndex, 0, movedImage);
+
+        const normalizedImages = nextImages.map(
+            (image, index) => ({
+                ...image,
+                sort_order: index,
+            }),
+        );
+
+        setOrderedImages(normalizedImages);
+
+        try {
+            await onReorderImages(normalizedImages);
+        } catch {
+            setOrderedImages(previousImages);
+        }
+    }
+
+    function handleDragEnd() {
+        setDraggedImageId(null);
+        setDragOverImageId(null);
+    }
+
     return (
         <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
             <header>
@@ -37,19 +141,38 @@ export default function ProductImages({
                 </p>
             </header>
 
-            {existingImages.length > 0 && (
+            {orderedImages.length > 0 && (
                 <div className="mt-6">
                     <p className="mb-3 text-sm font-medium text-zinc-300">
                         Current images
                     </p>
 
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-                        {existingImages.map((image, index) => (
+                        {orderedImages.map((image, index) => (
                             <article
                                 key={image.id}
-                                className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950"
+                                draggable
+                                onDragStart={(event) =>
+                                    handleDragStart(event, image.id)
+                                }
+                                onDragOver={(event) =>
+                                    handleDragOver(event, image.id)
+                                }
+                                onDrop={(event) =>
+                                    handleDrop(event, image.id)
+                                }
+                                onDragEnd={handleDragEnd}
+                                className={[
+                                    "overflow-hidden rounded-xl border bg-zinc-950 transition",
+                                    draggedImageId === image.id
+                                        ? "border-zinc-500 opacity-50"
+                                        : "border-zinc-800",
+                                    dragOverImageId === image.id
+                                        ? "border-white"
+                                        : "",
+                                ].join(" ")}
                             >
-                                <div className="relative aspect-square">
+                                <div className="relative aspect-square cursor-grab active:cursor-grabbing">
                                     <Image
                                         src={image.url}
                                         alt={
@@ -79,17 +202,20 @@ export default function ProductImages({
                                         {index !== 0 && (
                                             <button
                                                 type="button"
-                                                onClick={() => onSetMainImage(image)}
+                                                onClick={() =>
+                                                    onSetMainImage(image)
+                                                }
                                                 className="text-xs font-medium text-zinc-400 transition hover:text-white"
                                             >
                                                 Set as main
                                             </button>
                                         )}
 
-
                                         <button
                                             type="button"
-                                            onClick={() => onDeleteImage(image)}
+                                            onClick={() =>
+                                                onDeleteImage(image)
+                                            }
                                             className="text-xs font-medium text-red-400 transition hover:text-red-300"
                                         >
                                             Delete
@@ -99,6 +225,10 @@ export default function ProductImages({
                             </article>
                         ))}
                     </div>
+
+                    <p className="mt-3 text-xs text-zinc-600">
+                        Drag and drop images to change their order.
+                    </p>
                 </div>
             )}
 
