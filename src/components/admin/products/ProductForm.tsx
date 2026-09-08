@@ -23,8 +23,9 @@ import { createSlug } from "./utils/createSlug";
 import { validateProductImage } from "./utils/validateProductImage";
 import {
     deleteProductImage,
+    reorderProductImages,
     setProductImageAsMain,
-    uploadProductImages
+    uploadProductImages,
 } from "./utils/productImageService";
 import {
     deleteProduct,
@@ -205,6 +206,39 @@ export default function ProductForm({
         }
     }
 
+    async function handleReorderImages(
+        reorderedImages: ProductImage[],
+    ) {
+        if (!product) {
+            return;
+        }
+
+        setError("");
+        setLoading(true);
+
+        try {
+            await reorderProductImages({
+                supabase,
+                productId: product.id,
+                imageIds: reorderedImages.map(
+                    (image) => image.id,
+                ),
+            });
+
+            router.refresh();
+        } catch (error) {
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while reordering the product images.",
+            );
+
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    }
+
     async function handleDelete() {
         if (!product) {
             return;
@@ -273,6 +307,7 @@ export default function ProductForm({
                 onImageChange={handleImageChange}
                 onDeleteImage={handleDeleteImage}
                 onSetMainImage={handleSetMainImage}
+                onReorderImages={handleReorderImages}
             />
 
             {error && (
