@@ -179,31 +179,31 @@ export default function ProductForm({
     }
 
     async function handleSetMainImage(image: ProductImage) {
-    if (!product) {
-        return;
+        if (!product) {
+            return;
+        }
+
+        setError("");
+        setLoading(true);
+
+        try {
+            await setProductImageAsMain({
+                supabase,
+                productId: product.id,
+                imageId: image.id,
+            });
+
+            router.refresh();
+        } catch (error) {
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while setting the main product image.",
+            );
+        } finally {
+            setLoading(false);
+        }
     }
-
-    setError("");
-    setLoading(true);
-
-    try {
-        await setProductImageAsMain({
-            supabase,
-            productId: product.id,
-            imageId: image.id,
-        });
-
-        router.refresh();
-    } catch (error) {
-        setError(
-            error instanceof Error
-                ? error.message
-                : "Something went wrong while setting the main product image.",
-        );
-    } finally {
-        setLoading(false);
-    }
-}
 
     async function handleDelete() {
         if (!product) {
