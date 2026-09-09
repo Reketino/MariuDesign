@@ -51,6 +51,7 @@ export default function ProductForm({
 
     const [title, setTitle] = useState(product?.title ?? "");
     const [slug, setSlug] = useState(product?.slug ?? "");
+    const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
     const [description, setDescription] = useState(
         product?.description ?? "",
     );
@@ -76,7 +77,10 @@ export default function ProductForm({
 
     function handleTitleChange(value: string) {
         setTitle(value);
-        setSlug(createSlug(value));
+        
+        if (!slugManuallyEdited) {
+            setSlug(createSlug(value));
+        }
     }
 
     function handleImageChange(
@@ -116,7 +120,7 @@ export default function ProductForm({
             slug,
             categoryId,
             status,
-            license
+            license,
         });
 
         if (validationError) {
@@ -298,7 +302,10 @@ export default function ProductForm({
                 slug={slug}
                 description={description}
                 onTitleChange={handleTitleChange}
-                onSlugChange={setSlug}
+                onSlugChange={(value) => {
+                    setSlug(value);
+                    setSlugManuallyEdited(true);
+                }}
                 onDescriptionChange={setDescription}
             />
 
