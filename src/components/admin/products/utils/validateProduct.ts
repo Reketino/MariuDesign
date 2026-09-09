@@ -17,15 +17,15 @@ export function validateProduct(
         return "Product slug is required.";
     }
 
-       if (!values.title.trim()) {
+       if (!values.categoryId) {
         return "Product category is required.";
     }
 
-       if (!values.title.trim()) {
+       if (!values.status) {
         return "Product status is required.";
     }
 
-       if (!values.title.trim()) {
+       if (!values.license.trim()) {
         return "Product license is required.";
     }
 }
