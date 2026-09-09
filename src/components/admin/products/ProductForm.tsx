@@ -31,6 +31,7 @@ import {
     deleteProduct,
     saveProduct
 } from "./utils/productService";
+import { validateProduct } from "./utils/validateProduct";
 
 import { createClient } from "@/lib/supabase/client";
 
@@ -108,8 +109,21 @@ export default function ProductForm({
         event: React.SubmitEvent<HTMLFormElement>,
     ) {
         event.preventDefault();
-
         setError("");
+
+        const validationError = validateProduct({
+            title,
+            slug,
+            categoryId,
+            status,
+            license
+        });
+
+        if (validationError) {
+            setError(validationError);
+            return;
+        }
+
         setLoading(true);
 
         try {
