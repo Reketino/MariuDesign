@@ -6,6 +6,8 @@ type ProductValidationValues = {
   license: string;
 };
 
+const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
 export function validateProduct(
   values: ProductValidationValues,
 ): string | null {
@@ -15,6 +17,14 @@ export function validateProduct(
 
   if (!values.slug.trim()) {
     return "Product slug is required.";
+  }
+
+  if (values.slug !== values.slug.toLowerCase()) {
+    return "Product slug must use lowercase letters.";
+  }
+
+  if (!SLUG_PATTERN.test(values.slug)) {
+    return "Product slug must use lowercase letters.";
   }
 
   if (!values.categoryId) {
