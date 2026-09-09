@@ -28,4 +28,6 @@ export function validateProduct(
   if (!values.license.trim()) {
     return "Product license is required.";
   }
+
+  return null;
 }
