@@ -118,6 +118,11 @@ export default function ProductForm({
             status,
             license
         });
+
+        if (validationError) {
+            setError(validationError);
+            return;
+        }
         
         setLoading(true);
 
