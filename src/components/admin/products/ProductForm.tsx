@@ -109,8 +109,16 @@ export default function ProductForm({
         event: React.SubmitEvent<HTMLFormElement>,
     ) {
         event.preventDefault();
-
         setError("");
+
+        const validationError = validateProduct({
+            title,
+            slug,
+            categoryId,
+            status,
+            license
+        });
+        
         setLoading(true);
 
         try {
