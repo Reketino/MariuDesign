@@ -123,7 +123,7 @@ export default function ProductForm({
             setError(validationError);
             return;
         }
-        
+
         setLoading(true);
 
         try {
