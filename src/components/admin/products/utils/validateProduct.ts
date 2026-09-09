@@ -7,25 +7,25 @@ type ProductValidationValues = {
 };
 
 export function validateProduct(
-    values: ProductValidationValues,
+  values: ProductValidationValues,
 ): string | null {
-    if (!values.title.trim()) {
-        return "Product title is required.";
-    }
+  if (!values.title.trim()) {
+    return "Product title is required.";
+  }
 
-       if (!values.slug.trim()) {
-        return "Product slug is required.";
-    }
+  if (!values.slug.trim()) {
+    return "Product slug is required.";
+  }
 
-       if (!values.categoryId) {
-        return "Product category is required.";
-    }
+  if (!values.categoryId) {
+    return "Product category is required.";
+  }
 
-       if (!values.status) {
-        return "Product status is required.";
-    }
+  if (!values.status) {
+    return "Product status is required.";
+  }
 
-       if (!values.license.trim()) {
-        return "Product license is required.";
-    }
+  if (!values.license.trim()) {
+    return "Product license is required.";
+  }
 }
