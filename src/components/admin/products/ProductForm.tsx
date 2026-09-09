@@ -31,6 +31,7 @@ import {
     deleteProduct,
     saveProduct
 } from "./utils/productService";
+import { validateProduct } from "./utils/validateProduct";
 
 import { createClient } from "@/lib/supabase/client";
 
