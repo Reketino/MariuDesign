@@ -20,4 +20,10 @@ type ProductPageData = {
         slug: string;
     }[] | null;
     product_images: ProductImage[] | null;
-}
+};
+
+type ProductPageProps = {
+    params: Promise<{
+        slug: string;
+    }>;
+};
