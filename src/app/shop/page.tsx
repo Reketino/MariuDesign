@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { getSupabaseServerClient } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 
 import type { ProductImage } from "@/types/products";
 
@@ -18,3 +18,7 @@ type ShopProduct = {
     }[] | null;
     products_images: ProductImage[] | null;
 };
+
+export default async function ShopPage() {
+    const supabase = await createClient();
+}
