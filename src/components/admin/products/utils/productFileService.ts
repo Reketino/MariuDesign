@@ -46,4 +46,6 @@ export async function UploadProductFile({
     version,
 }: UploadProductFileParams): Promise<void> {
     validateFile(file);
+
+    const extensions = getFileExtension(file.name);
 }
