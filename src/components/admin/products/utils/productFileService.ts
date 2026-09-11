@@ -5,4 +5,10 @@ type UploadProductFileParams = {
     productId: string;
     file: File;
     version: string;
-}
+};
+
+type DeleteProductFileParams = {
+    supabase: SupabaseClient;
+    fileId: string;
+    storagePath: string;
+};
