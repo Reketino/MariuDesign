@@ -38,3 +38,12 @@ function validateFile(file: File): void {
         );
     }
 }
+
+export async function UploadProductFile({
+    supabase,
+    productId,
+    file,
+    version,
+}: UploadProductFileParams): Promise<void> {
+    validateFile(file);
+}
