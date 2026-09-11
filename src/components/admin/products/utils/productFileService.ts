@@ -48,4 +48,7 @@ export async function UploadProductFile({
     validateFile(file);
 
     const extensions = getFileExtension(file.name);
+
+    const storagePath =
+    `products/${productId}/${crypto.randomUUID()}${extensions}`;
 }
