@@ -28,3 +28,13 @@ function getFileExtension(fileName: string): string {
 
     return fileName.slice(lastDot).toLowerCase();
 }
+
+function validateFile(file: File): void {
+    const extensions = getFileExtension(file.name);
+
+    if (!ALLOWED_EXTENSIONS.includes(extensions)) {
+        throw new Error(
+            "Only STL, 3MF, and OBJ files are supported."
+        );
+    }
+}
