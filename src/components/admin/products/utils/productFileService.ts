@@ -18,3 +18,13 @@ const ALLOWED_EXTENSIONS = [
     ".3mf",
     ".obj",
 ];
+
+function getFileExtension(fileName: string): string {
+    const lastDot = fileName.lastIndexOf(".");
+
+    if (lastDot === -1) {
+        return "";
+    }
+
+    return fileName.slice(lastDot).toLowerCase();
+}
