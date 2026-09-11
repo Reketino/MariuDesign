@@ -12,3 +12,9 @@ type DeleteProductFileParams = {
     fileId: string;
     storagePath: string;
 };
+
+const ALLOWED_EXTENSIONS = [
+    ".stl",
+    ".3mf",
+    ".obj",
+];
