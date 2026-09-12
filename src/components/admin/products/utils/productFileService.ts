@@ -55,4 +55,41 @@ export async function UploadProductFile({
   if (uploadError) {
     throw new Error(`Failed to upload ${file.name}: ${uploadError.message}`);
   }
+
+  const { error: databaseError } = await supabase.from("product_files").insert({
+    product_id: productId,
+    file_type: "product",
+    file_name: file.name,
+    storage_path: storagePath,
+    version: version.trim() || "1.0",
+  });
+
+  if (databaseError) {
+    await supabase.storage.from("product-files").remove([storagePath]);
+
+    throw new Error(databaseError.message);
+  }
+}
+
+export async function deleteProductFile({
+  supabase,
+  fileId,
+  storagePath,
+}: DeleteProductFileParams): Promise<void> {
+  const { error: databaseError } = await supabase
+    .from("product_files")
+    .delete()
+    .eq("id", fileId);
+
+  if (databaseError) {
+    throw new Error(databaseError.message);
+  }
+
+  const { error: storageError } = await supabase.storage
+    .from("product-files")
+    .remove([storagePath]);
+
+  if (storageError) {
+    console.error("Failed to remove product file from storage:", storageError);
+  }
 }
