@@ -55,4 +55,14 @@ export async function UploadProductFile({
   if (uploadError) {
     throw new Error(`Failed to upload ${file.name}: ${uploadError.message}`);
   }
+
+  const { error: databaseError } = await supabase
+   .from("product_files")
+        .insert({
+            product_id: productId,
+            file_type: "product",
+            file_name: file.name,
+            storage_path: storagePath,
+            version: version.trim() || "1.0",
+        });
 }
