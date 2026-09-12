@@ -74,3 +74,14 @@ export async function UploadProductFile({
         throw new Error(databaseError.message);
         }
 }
+
+export async function deleteProductFile({
+  supabase,
+  fileId,
+  storagePath,
+}: DeleteProductFileParams): Promise<void> {
+  const { error: databaseError } = await supabase
+  .from("product_files")
+  .delete()
+  .eq("id",fileId)
+}
