@@ -71,6 +71,6 @@ export async function UploadProductFile({
           .from("product-files")
           .remove([storagePath]);
 
-        
+        throw new Error(databaseError.message);
         }
 }
