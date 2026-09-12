@@ -84,4 +84,8 @@ export async function deleteProductFile({
   .from("product_files")
   .delete()
   .eq("id",fileId)
+
+  if (databaseError) {
+    throw new Error(databaseError.message);
+  }
 }
