@@ -35,3 +35,13 @@ export type ProductFormData = {
   category_id: string | null;
   product_images: ProductImage[] | null;
 };
+
+export type ProductFile = {
+  id: string;
+  product_id: string;
+  file_type: string;
+  file_name: string;
+  storage_path: string;
+  version: string;
+  created_at: string;
+}
