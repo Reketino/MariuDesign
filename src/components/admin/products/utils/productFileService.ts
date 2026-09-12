@@ -88,4 +88,8 @@ export async function deleteProductFile({
   if (databaseError) {
     throw new Error(databaseError.message);
   }
+
+  const { error: storageError } = await supabase.storage
+  .from("product-files")
+  .remove([storagePath]);
 }
