@@ -65,4 +65,12 @@ export async function UploadProductFile({
             storage_path: storagePath,
             version: version.trim() || "1.0",
         });
+
+        if (databaseError) {
+          await supabase.storage
+          .from("product-files")
+          .remove([storagePath]);
+
+        
+        }
 }
