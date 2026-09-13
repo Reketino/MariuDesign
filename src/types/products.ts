@@ -23,6 +23,7 @@ export type Product = {
   category_id: string | null;
   categories: ProductCategory[] | null;
   product_images: ProductImage[] | null;
+  product_files?: ProductFile[] | null;
 };
 
 export type ProductFormData = {
@@ -34,6 +35,7 @@ export type ProductFormData = {
   license: string | null;
   category_id: string | null;
   product_images: ProductImage[] | null;
+  product_files: ProductFile[] | null;
 };
 
 export type ProductFile = {
@@ -44,4 +46,4 @@ export type ProductFile = {
   storage_path: string;
   version: string;
   created_at: string;
-}
+};
