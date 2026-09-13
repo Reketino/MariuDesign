@@ -23,5 +23,20 @@ export default function ProductFiles({
 }: ProductFilesProps) {
      const [deletingFileId, setDeletingFileId] = useState<string | null>(
         null,
-    )
+    );
+
+
+    function handleFileChange(
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) {
+        const files = Array.from(event.target.files ?? []);
+
+        if (files.length === 0) {
+            return;
+        }
+
+        onFilesChange([...selectedFiles, ...files]);
+
+        event.target.value = "";
+    }
 }
