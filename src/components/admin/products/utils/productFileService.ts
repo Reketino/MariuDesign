@@ -33,7 +33,7 @@ function validateFile(file: File): void {
   }
 }
 
-export async function UploadProductFile({
+export async function uploadProductFile({
   supabase,
   productId,
   file,

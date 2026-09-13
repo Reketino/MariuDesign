@@ -7,9 +7,11 @@ import { useRouter } from "next/navigation";
 import ProductBasicInfo from "./ProductBasicInfo";
 import ProductStoreSettings from "./ProductStoreSettings";
 import ProductImages from "./ProductImage";
+import ProductFiles from "./ProductFiles";
 
 import type {
     ProductCategory,
+    ProductFile,
     ProductFormData,
     ProductImage,
 } from "@/types/products";
@@ -21,16 +23,24 @@ import {
 
 import { createSlug } from "./utils/createSlug";
 import { validateProductImage } from "./utils/validateProductImage";
+
 import {
     deleteProductImage,
     reorderProductImages,
     setProductImageAsMain,
     uploadProductImages,
 } from "./utils/productImageService";
+
+import {
+    deleteProductFile,
+    uploadProductFile,
+} from "./utils/productFileService";
+
 import {
     deleteProduct,
-    saveProduct
+    saveProduct,
 } from "./utils/productService";
+
 import { validateProduct } from "./utils/validateProduct";
 
 import { createClient } from "@/lib/supabase/client";
@@ -52,20 +62,30 @@ export default function ProductForm({
     const [title, setTitle] = useState(product?.title ?? "");
     const [slug, setSlug] = useState(product?.slug ?? "");
     const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
+
     const [description, setDescription] = useState(
         product?.description ?? "",
     );
+
     const [categoryId, setCategoryId] = useState(
         product?.category_id ?? "",
     );
+
     const [status, setStatus] = useState(
         product?.status ?? "draft",
     );
+
     const [license, setLicense] = useState(
         product?.license ?? "",
     );
 
     const [images, setImages] = useState<File[]>([]);
+
+    const [files, setFiles] = useState<File[]>([]);
+
+    const [version, setVersion] = useState(
+        product?.product_files?.[0]?.version ?? "1.0",
+    );
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -75,9 +95,11 @@ export default function ProductForm({
         product?.product_images ?? null,
     );
 
+    const existingFiles = product?.product_files ?? [];
+
     function handleTitleChange(value: string) {
         setTitle(value);
-        
+
         if (!slugManuallyEdited) {
             setSlug(createSlug(value));
         }
@@ -107,6 +129,11 @@ export default function ProductForm({
         }
 
         setImages(selectedFiles);
+    }
+
+    function handleFilesChange(selectedFiles: File[]) {
+        setError("");
+        setFiles(selectedFiles);
     }
 
     async function handleSubmit(
@@ -151,6 +178,15 @@ export default function ProductForm({
                     images,
                     title,
                     existingImages,
+                });
+            }
+
+            for (const file of files) {
+                await uploadProductFile({
+                    supabase,
+                    productId,
+                    file,
+                    version,
                 });
             }
 
@@ -257,6 +293,37 @@ export default function ProductForm({
         }
     }
 
+    async function handleDeleteFile(file: ProductFile) {
+        const confirmed = window.confirm(
+            `Are you sure you want to delete "${file.file_name}"?`,
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        setError("");
+        setLoading(true);
+
+        try {
+            await deleteProductFile({
+                supabase,
+                fileId: file.id,
+                storagePath: file.storage_path,
+            });
+
+            router.refresh();
+        } catch (error) {
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while deleting the product file.",
+            );
+        } finally {
+            setLoading(false);
+        }
+    }
+
     async function handleDelete() {
         if (!product) {
             return;
@@ -331,6 +398,15 @@ export default function ProductForm({
                 onReorderImages={handleReorderImages}
             />
 
+            <ProductFiles
+                existingFiles={existingFiles}
+                selectedFiles={files}
+                version={version}
+                onFilesChange={handleFilesChange}
+                onVersionChange={setVersion}
+                onDeleteExistingFile={handleDeleteFile}
+            />
+
             {error && (
                 <div
                     role="alert"
@@ -358,7 +434,8 @@ export default function ProductForm({
                     <button
                         type="button"
                         onClick={() => router.back()}
-                        className="rounded-lg border border-zinc-700 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white">
+                        className="rounded-lg border border-zinc-700 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+                    >
                         Cancel
                     </button>
 

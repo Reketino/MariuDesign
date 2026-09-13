@@ -37,6 +37,15 @@ export default async function EditProductPage({
                     storage_path,
                     alt_text,
                     sort_order
+                ),
+                product_files (
+                id, 
+                product_id,
+                file_type,
+                file_name,
+                storage_path,
+                version,
+                created_at
                 )
             `)
             .eq("id", id)
@@ -80,8 +89,8 @@ export default async function EditProductPage({
             </header>
 
             <ProductForm
-                categories={categories ?? []}
                 product={product}
+                categories={categories}
             />
         </section>
     );
