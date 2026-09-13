@@ -68,6 +68,25 @@ export default function ProductFiles({
                 </p>
             </header>
 
+              <div className="mt-6">
+                <label
+                    htmlFor="product-version"
+                    className="block text-sm font-medium text-zinc-300"
+                >
+                    Version
+                </label>
+
+                <input
+                    id="product-version"
+                    type="text"
+                    value={version}
+                    onChange={(event) =>
+                        onVersionChange(event.target.value)
+                    }
+                    placeholder="1.0"
+                    className="mt-2 w-full rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2.5 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-600"
+                />
+            </div>
             </section>
 )
 }
