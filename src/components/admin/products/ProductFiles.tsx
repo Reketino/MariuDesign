@@ -154,6 +154,48 @@ export default function ProductFiles({
                 </div>
             )}
 
+             {existingFiles.length > 0 && (
+                <div className="mt-8">
+                    <h3 className="text-sm font-medium text-zinc-300">
+                        Uploaded files
+                    </h3>
+
+                    <ul className="mt-3 divide-y divide-zinc-800 rounded-lg border border-zinc-800">
+                        {existingFiles.map((file) => (
+                            <li
+                                key={file.id}
+                                className="flex items-center justify-between gap-4 px-4 py-3"
+                            >
+                                <div className="min-w-0">
+                                    <p className="truncate text-sm text-zinc-300">
+                                        {file.file_name}
+                                    </p>
+
+                                    <p className="mt-1 text-xs text-zinc-600">
+                                        Version {file.version}
+                                    </p>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        handleDeleteExistingFile(file)
+                                    }
+                                    disabled={
+                                        deletingFileId === file.id
+                                    }
+                                    className="shrink-0 text-sm text-zinc-500 transition hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                    {deletingFileId === file.id
+                                        ? "Deleting..."
+                                        : "Delete"}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
 
             </section>
 )
