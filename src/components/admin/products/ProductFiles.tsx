@@ -21,7 +21,7 @@ export default function ProductFiles({
     onVersionChange,
     onDeleteExistingFile,
 }: ProductFilesProps) {
-     const [deletingFileId, setDeletingFileId] = useState<string | null>(
+    const [deletingFileId, setDeletingFileId] = useState<string | null>(
         null,
     );
 
@@ -45,7 +45,7 @@ export default function ProductFiles({
         );
     }
 
-      async function handleDeleteExistingFile(file: ProductFile) {
+    async function handleDeleteExistingFile(file: ProductFile) {
         setDeletingFileId(file.id);
 
         try {
@@ -56,7 +56,7 @@ export default function ProductFiles({
     }
 
 
-   return (
+    return (
         <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
             <header>
                 <h2 className="text-base font-medium text-white">
@@ -68,7 +68,7 @@ export default function ProductFiles({
                 </p>
             </header>
 
-              <div className="mt-6">
+            <div className="mt-6">
                 <label
                     htmlFor="product-version"
                     className="block text-sm font-medium text-zinc-300"
@@ -88,7 +88,7 @@ export default function ProductFiles({
                 />
             </div>
 
-             <div className="mt-6">
+            <div className="mt-6">
                 <label
                     htmlFor="product-files"
                     className="flex cursor-pointer items-center justify-center rounded-lg border border-dashed border-zinc-700 bg-zinc-950 px-6 py-8 text-center transition hover:border-zinc-500 hover:bg-zinc-900"
@@ -114,7 +114,7 @@ export default function ProductFiles({
                 />
             </div>
 
-                        {selectedFiles.length > 0 && (
+            {selectedFiles.length > 0 && (
                 <div className="mt-6">
                     <h3 className="text-sm font-medium text-zinc-300">
                         Files to upload
@@ -154,7 +154,7 @@ export default function ProductFiles({
                 </div>
             )}
 
-             {existingFiles.length > 0 && (
+            {existingFiles.length > 0 && (
                 <div className="mt-8">
                     <h3 className="text-sm font-medium text-zinc-300">
                         Uploaded files
@@ -197,6 +197,6 @@ export default function ProductFiles({
             )}
 
 
-            </section>
-)
+        </section>
+    )
 }
