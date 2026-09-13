@@ -113,7 +113,48 @@ export default function ProductFiles({
                     className="sr-only"
                 />
             </div>
-            
+
+                        {selectedFiles.length > 0 && (
+                <div className="mt-6">
+                    <h3 className="text-sm font-medium text-zinc-300">
+                        Files to upload
+                    </h3>
+
+                    <ul className="mt-3 divide-y divide-zinc-800 rounded-lg border border-zinc-800">
+                        {selectedFiles.map((file, index) => (
+                            <li
+                                key={`${file.name}-${index}`}
+                                className="flex items-center justify-between gap-4 px-4 py-3"
+                            >
+                                <div className="min-w-0">
+                                    <p className="truncate text-sm text-zinc-300">
+                                        {file.name}
+                                    </p>
+
+                                    <p className="mt-1 text-xs text-zinc-600">
+                                        {(file.size / 1024 / 1024).toFixed(
+                                            2,
+                                        )}{" "}
+                                        MB
+                                    </p>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        removeSelectedFile(index)
+                                    }
+                                    className="shrink-0 text-sm text-zinc-500 transition hover:text-white"
+                                >
+                                    Remove
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+
             </section>
 )
 }
