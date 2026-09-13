@@ -12,3 +12,16 @@ type ProductFilesProps = {
     onVersionChange: (version: string) => void;
     onDeleteExistingFile: (file: ProductFile) => Promise<void>;
 };
+
+export default function ProductFiles({
+    existingFiles,
+    selectedFiles,
+    version,
+    onFilesChange,
+    onVersionChange,
+    onDeleteExistingFile,
+}: ProductFilesProps) {
+     const [deletingFileId, setDeletingFileId] = useState<string | null>(
+        null,
+    )
+}
