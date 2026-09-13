@@ -87,6 +87,33 @@ export default function ProductFiles({
                     className="mt-2 w-full rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2.5 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-600"
                 />
             </div>
+
+             <div className="mt-6">
+                <label
+                    htmlFor="product-files"
+                    className="flex cursor-pointer items-center justify-center rounded-lg border border-dashed border-zinc-700 bg-zinc-950 px-6 py-8 text-center transition hover:border-zinc-500 hover:bg-zinc-900"
+                >
+                    <div>
+                        <p className="text-sm font-medium text-zinc-300">
+                            Choose 3D model files
+                        </p>
+
+                        <p className="mt-1 text-xs text-zinc-600">
+                            STL, 3MF, or OBJ
+                        </p>
+                    </div>
+                </label>
+
+                <input
+                    id="product-files"
+                    type="file"
+                    multiple
+                    accept=".stl,.3mf,.obj"
+                    onChange={handleFileChange}
+                    className="sr-only"
+                />
+            </div>
+            
             </section>
 )
 }
