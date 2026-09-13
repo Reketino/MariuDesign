@@ -24,7 +24,7 @@ export default function ProductFiles({
      const [deletingFileId, setDeletingFileId] = useState<string | null>(
         null,
     );
-    
+
     function handleFileChange(
         event: React.ChangeEvent<HTMLInputElement>,
     ) {
@@ -43,5 +43,15 @@ export default function ProductFiles({
         onFilesChange(
             selectedFiles.filter((_, fileIndex) => fileIndex !== index),
         );
+    }
+
+      async function handleDeleteExistingFile(file: ProductFile) {
+        setDeletingFileId(file.id);
+
+        try {
+            await onDeleteExistingFile(file);
+        } finally {
+            setDeletingFileId(null);
+        }
     }
 }
