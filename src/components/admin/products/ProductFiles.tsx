@@ -24,8 +24,7 @@ export default function ProductFiles({
      const [deletingFileId, setDeletingFileId] = useState<string | null>(
         null,
     );
-
-
+    
     function handleFileChange(
         event: React.ChangeEvent<HTMLInputElement>,
     ) {
@@ -38,5 +37,11 @@ export default function ProductFiles({
         onFilesChange([...selectedFiles, ...files]);
 
         event.target.value = "";
+    }
+
+    function removeSelectedFile(index: number) {
+        onFilesChange(
+            selectedFiles.filter((_, fileIndex) => fileIndex !== index),
+        );
     }
 }
