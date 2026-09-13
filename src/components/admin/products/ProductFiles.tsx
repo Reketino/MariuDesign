@@ -195,8 +195,6 @@ export default function ProductFiles({
                     </ul>
                 </div>
             )}
-
-
         </section>
     )
 }
