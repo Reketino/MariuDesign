@@ -54,4 +54,20 @@ export default function ProductFiles({
             setDeletingFileId(null);
         }
     }
+
+
+   return (
+        <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
+            <header>
+                <h2 className="text-base font-medium text-white">
+                    Product files
+                </h2>
+
+                <p className="mt-1 text-sm text-zinc-500">
+                    Upload the 3D model files customers will receive.
+                </p>
+            </header>
+
+            </section>
+)
 }
