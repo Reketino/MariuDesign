@@ -5,7 +5,10 @@ import { createClient } from "@/lib/supabase/server";
 
 import type { ProductImage } from "@/types/products";
 
-import { getProductImageUrl } from "@/components/admin/products/utils/productImage";
+import { 
+     getProductImage, 
+    getProductImageUrl,
+} from "@/components/admin/products/utils/productImage";
 
 type ShopProduct = {
     id: string;
@@ -46,6 +49,13 @@ export default async function ShopPage() {
                 storage_path,
                 alt_text,
                 sort_order
+            ),
+            product_prices (
+            id,
+            product_id,
+            currency,
+            amount,
+            created_at
             )
         `)
         .eq("status", "published")
