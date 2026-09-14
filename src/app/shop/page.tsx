@@ -174,6 +174,7 @@ export default async function ShopPage() {
                                         </div>
 
                                         <div className="p-5">
+                                            <div className="flex items-start justify-between gap-4">
                                             {category && (
                                                 <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
                                                     {category.name}
@@ -202,6 +203,7 @@ export default async function ShopPage() {
                                             <span className="text-sm font-medium text-zinc-300 transition group-hover:text-white">
                                                 View product
                                             </span>
+                                        </div>
                                         </div>
                                     </Link>
                                 </article>
