@@ -193,6 +193,12 @@ export default async function ShopPage() {
                                                 </p>
                                             )}
                                         </div>
+
+                                        <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
+                                            <span className="text-sm text-zinc-500">
+                                                Digital download
+                                            </span> 
+                                        </div>
                                     </Link>
                                 </article>
                             );
