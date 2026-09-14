@@ -176,36 +176,36 @@ export default async function ShopPage() {
                                         <div className="p-5">
                                             <div className="flex items-start justify-between gap-4">
                                                 <div className="min-w-0">
-                                            {category && (
-                                                <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
-                                                    {category.name}
-                                                </p>
-                                            )}
+                                                    {category && (
+                                                        <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                                                            {category.name}
+                                                        </p>
+                                                    )}
 
-                                            <h2 className="mt-2 text-lg font-medium text-white">
-                                                {product.title}
-                                            </h2>
+                                                    <h2 className="mt-2 text-lg font-medium text-white">
+                                                        {product.title}
+                                                    </h2>
+                                                </div>
+
+                                                {price && (
+                                                    <p className="shrink-0 text-sm font-medium text-white">
+                                                        {Number(
+                                                            price.amount,
+                                                        ).toFixed(2)}{" "}
+                                                        {price.currency}
+                                                    </p>
+                                                )}
                                             </div>
 
-                                            {price && (
-                                                <p className="shrink-0 text-sm font-medium text-white">
-                                                    {Number(
-                                                        price.amount,
-                                                    ).toFixed(2)}{" "}
-                                                    {price.currency}
-                                                </p>
-                                            )}
-                                        </div>
+                                            <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
+                                                <span className="text-sm text-zinc-500">
+                                                    Digital download
+                                                </span>
 
-                                        <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
-                                            <span className="text-sm text-zinc-500">
-                                                Digital download
-                                            </span>
-
-                                            <span className="text-sm font-medium text-zinc-300 transition group-hover:text-white">
-                                                View product
-                                            </span>
-                                        </div>
+                                                <span className="text-sm font-medium text-zinc-300 transition group-hover:text-white">
+                                                    View product
+                                                </span>
+                                            </div>
                                         </div>
                                     </Link>
                                 </article>
