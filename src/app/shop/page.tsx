@@ -5,7 +5,10 @@ import { createClient } from "@/lib/supabase/server";
 
 import type { ProductImage } from "@/types/products";
 
-import { getProductImageUrl } from "@/components/admin/products/utils/productImage";
+import {
+    getProductImage,
+    getProductImageUrl,
+} from "@/components/admin/products/utils/productImage";
 
 type ShopProduct = {
     id: string;
@@ -17,6 +20,13 @@ type ShopProduct = {
         slug: string;
     }[] | null;
     product_images: ProductImage[] | null;
+    product_prices: {
+        id: string;
+        product_id: string;
+        currency: string;
+        amount: number;
+        created_at: string;
+    }[] | null;
 };
 
 export default async function ShopPage() {
@@ -39,6 +49,13 @@ export default async function ShopPage() {
                 storage_path,
                 alt_text,
                 sort_order
+            ),
+            product_prices (
+            id,
+            product_id,
+            currency,
+            amount,
+            created_at
             )
         `)
         .eq("status", "published")
@@ -116,20 +133,15 @@ export default async function ShopPage() {
                 ) : (
                     <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {shopProducts.map((product) => {
-                            const productImage =
-                                product.product_images
-                                    ?.filter(
-                                        (image) =>
-                                            image.sort_order >= 0,
-                                    )
-                                    .sort(
-                                        (a, b) =>
-                                            a.sort_order -
-                                            b.sort_order,
-                                    )[0] ?? null;
+                            const productImage = getProductImage(
+                                product.product_images,
+                            );
 
                             const category =
                                 product.categories?.[0] ?? null;
+
+                            const price =
+                                product.product_prices?.[0] ?? null;
 
                             return (
                                 <article
@@ -162,19 +174,38 @@ export default async function ShopPage() {
                                         </div>
 
                                         <div className="p-5">
-                                            {category && (
-                                                <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
-                                                    {category.name}
-                                                </p>
-                                            )}
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="min-w-0">
+                                                    {category && (
+                                                        <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                                                            {category.name}
+                                                        </p>
+                                                    )}
 
-                                            <h2 className="mt-2 text-lg font-medium text-white">
-                                                {product.title}
-                                            </h2>
+                                                    <h2 className="mt-2 text-lg font-medium text-white">
+                                                        {product.title}
+                                                    </h2>
+                                                </div>
 
-                                            <p className="mt-2 text-sm text-zinc-500">
-                                                View product
-                                            </p>
+                                                {price && (
+                                                    <p className="shrink-0 text-sm font-medium text-white">
+                                                        {Number(
+                                                            price.amount,
+                                                        ).toFixed(2)}{" "}
+                                                        {price.currency}
+                                                    </p>
+                                                )}
+                                            </div>
+
+                                            <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
+                                                <span className="text-sm text-zinc-500">
+                                                    Digital download
+                                                </span>
+
+                                                <span className="text-sm font-medium text-zinc-300 transition group-hover:text-white">
+                                                    View product
+                                                </span>
+                                            </div>
                                         </div>
                                     </Link>
                                 </article>
