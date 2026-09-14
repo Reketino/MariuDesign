@@ -133,20 +133,15 @@ export default async function ShopPage() {
                 ) : (
                     <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {shopProducts.map((product) => {
-                            const productImage =
-                                product.product_images
-                                    ?.filter(
-                                        (image) =>
-                                            image.sort_order >= 0,
-                                    )
-                                    .sort(
-                                        (a, b) =>
-                                            a.sort_order -
-                                            b.sort_order,
-                                    )[0] ?? null;
+                            const productImage = getProductImage(
+                                product.product_images,
+                            );
 
                             const category =
                                 product.categories?.[0] ?? null;
+
+                            const price =
+                                product.product_prices?.[0] ?? null;
 
                             return (
                                 <article
