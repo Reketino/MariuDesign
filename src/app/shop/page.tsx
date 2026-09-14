@@ -175,6 +175,7 @@ export default async function ShopPage() {
 
                                         <div className="p-5">
                                             <div className="flex items-start justify-between gap-4">
+                                                <div className="min-w-0">
                                             {category && (
                                                 <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
                                                     {category.name}
@@ -184,6 +185,7 @@ export default async function ShopPage() {
                                             <h2 className="mt-2 text-lg font-medium text-white">
                                                 {product.title}
                                             </h2>
+                                            </div>
 
                                             {price && (
                                                 <p className="shrink-0 text-sm font-medium text-white">
