@@ -5,8 +5,8 @@ import { createClient } from "@/lib/supabase/server";
 
 import type { ProductImage } from "@/types/products";
 
-import { 
-     getProductImage, 
+import {
+    getProductImage,
     getProductImageUrl,
 } from "@/components/admin/products/utils/productImage";
 
@@ -197,7 +197,7 @@ export default async function ShopPage() {
                                         <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
                                             <span className="text-sm text-zinc-500">
                                                 Digital download
-                                            </span> 
+                                            </span>
 
                                             <span className="text-sm font-medium text-zinc-300 transition group-hover:text-white">
                                                 View product
