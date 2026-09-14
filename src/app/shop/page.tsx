@@ -198,6 +198,10 @@ export default async function ShopPage() {
                                             <span className="text-sm text-zinc-500">
                                                 Digital download
                                             </span> 
+
+                                            <span className="text-sm font-medium text-zinc-300 transition group-hover:text-white">
+                                                View product
+                                            </span>
                                         </div>
                                     </Link>
                                 </article>
