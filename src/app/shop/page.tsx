@@ -184,9 +184,14 @@ export default async function ShopPage() {
                                                 {product.title}
                                             </h2>
 
-                                            <p className="mt-2 text-sm text-zinc-500">
-                                                View product
-                                            </p>
+                                            {price && (
+                                                <p className="shrink-0 text-sm font-medium text-white">
+                                                    {Number(
+                                                        price.amount,
+                                                    ).toFixed(2)}{" "}
+                                                    {price.currency}
+                                                </p>
+                                            )}
                                         </div>
                                     </Link>
                                 </article>
