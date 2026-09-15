@@ -41,3 +41,113 @@ type ProductDetails = {
     }[] | null;
     product_files: ProductFile[] | null;
 };
+
+export default async function ProductPage({
+    params,
+}: ProductPageProps) {
+    const { slug } = await params;
+
+    const supabase = await createClient();
+
+    const { data: product, error } = await supabase
+        .from("products")
+        .select(`
+        id,
+        title,
+        slug,
+        description,
+        license,
+        categories (
+            id,
+            name,
+            slug
+        ),
+        product_images (
+            id,
+            product_id,
+            storage_path,
+            alt_text,
+            sort_order
+        ),
+        product_prices (
+            id,
+            product_id,
+            currency,
+            amount,
+            created_at
+        ),
+        product_files (
+        id,
+        product_id,
+        file_type,
+        file_name,
+        storage_path,
+        version,
+        created_at
+        )
+        `)
+        .eq("slug", slug)
+        .eq("status", "published")
+        .single();
+
+    if (error || !product) {
+        notFound();
+    }
+
+    const productDetails = product as ProductDetails;
+
+    const images = getProductImages(
+        productDetails.product_images,
+    );
+
+    const mainImage = images[0] ?? null;
+
+    const category =
+        productDetails.categories?.[0] ?? null;
+
+    const price =
+        productDetails.product_prices?.[0] ?? null;
+
+    const ProductFiles =
+        productDetails.product_files ?? [];
+
+    return (
+        <main className="min-h-screen bg-zinc-950 text-zinc-100">
+            <header className="border-b border-zinc-800">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+                    <Link
+                    href="/"
+                    className="text-lg font-semibold tracking-tight"
+                    >
+                        Mariudesign
+                    </Link>
+
+                    <nav
+                    aria-label="Main navigation"
+                    className="flex items-center gap-6"
+                    >
+                        <Link
+                        href="/"
+                        className="text-sm text-zinc-400 transition hover:text-white">
+                            Home
+                        </Link>
+
+                        <Link
+                        href="/shop"
+                        className="text-sm text-zinc-400 transition hover:text-white"
+                        >
+                            Shop
+                        </Link>
+
+                        <Link
+                        href="/login"
+                        className="text-sm text-zinc-400 transition hover:text-white"
+                        >
+                            Log in
+                        </Link>
+                    </nav>
+                </div>
+            </header>
+        </main>
+    )
+}
