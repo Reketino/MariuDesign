@@ -116,32 +116,32 @@ export default async function ProductPage({
             <header className="border-b border-zinc-800">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
                     <Link
-                    href="/"
-                    className="text-lg font-semibold tracking-tight"
+                        href="/"
+                        className="text-lg font-semibold tracking-tight"
                     >
                         Mariudesign
                     </Link>
 
                     <nav
-                    aria-label="Main navigation"
-                    className="flex items-center gap-6"
+                        aria-label="Main navigation"
+                        className="flex items-center gap-6"
                     >
                         <Link
-                        href="/"
-                        className="text-sm text-zinc-400 transition hover:text-white">
+                            href="/"
+                            className="text-sm text-zinc-400 transition hover:text-white">
                             Home
                         </Link>
 
                         <Link
-                        href="/shop"
-                        className="text-sm text-zinc-400 transition hover:text-white"
+                            href="/shop"
+                            className="text-sm text-zinc-400 transition hover:text-white"
                         >
                             Shop
                         </Link>
 
                         <Link
-                        href="/login"
-                        className="text-sm text-zinc-400 transition hover:text-white"
+                            href="/login"
+                            className="text-sm text-zinc-400 transition hover:text-white"
                         >
                             Log in
                         </Link>
