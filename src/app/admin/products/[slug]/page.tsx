@@ -94,11 +94,22 @@ export default async function ProductPage({
             notFound();
         }
 
-        const ProductDetails = product as ProductDetails;
+        const productDetails = product as ProductDetails;
 
         const images = getProductImages(
-            ProductDetails.product_images,
+            productDetails.product_images,
         );
 
         const mainImage = images[0] ?? null;
+
+        const category =
+        productDetails.categories?.[0] ?? null;
+
+        const price =
+        productDetails.product_prices?.[0] ?? null;
+
+        const ProductFiles =
+        productDetails.product_files ?? [];
+
+        
 }
