@@ -93,4 +93,12 @@ export default async function ProductPage({
         if (error || !product) {
             notFound();
         }
+
+        const ProductDetails = product as ProductDetails;
+
+        const images = getProductImages(
+            ProductDetails.product_images,
+        );
+
+        const mainImage = images[0] ?? null;
 }
