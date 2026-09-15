@@ -90,4 +90,7 @@ export default async function ProductPage({
         .eq("status", "published")
         .single();
     
+        if (error || !product) {
+            notFound();
+        }
 }
