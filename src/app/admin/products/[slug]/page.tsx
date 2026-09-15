@@ -41,3 +41,9 @@ type ProductDetails = {
     }[] | null;
     product_files: ProductFile[] | null;
 };
+
+export default async function ProductPage({
+    params,
+}: ProductPageProps) {
+    
+}
