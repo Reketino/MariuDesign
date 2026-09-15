@@ -50,8 +50,8 @@ export default async function ProductPage({
     const supabase = await createClient();
 
     const { data: product, error } = await supabase
-    .from("products")
-    .select(`
+        .from("products")
+        .select(`
         id,
         title,
         slug,
@@ -89,31 +89,31 @@ export default async function ProductPage({
         .eq("slug", slug)
         .eq("status", "published")
         .single();
-    
-        if (error || !product) {
-            notFound();
-        }
 
-        const productDetails = product as ProductDetails;
+    if (error || !product) {
+        notFound();
+    }
 
-        const images = getProductImages(
-            productDetails.product_images,
-        );
+    const productDetails = product as ProductDetails;
 
-        const mainImage = images[0] ?? null;
+    const images = getProductImages(
+        productDetails.product_images,
+    );
 
-        const category =
+    const mainImage = images[0] ?? null;
+
+    const category =
         productDetails.categories?.[0] ?? null;
 
-        const price =
+    const price =
         productDetails.product_prices?.[0] ?? null;
 
-        const ProductFiles =
+    const ProductFiles =
         productDetails.product_files ?? [];
 
-        return (
-            <main className="min-h-screen bg-zinc-950 text-zinc-100">
-                
-            </main>
-        )
+    return (
+        <main className="min-h-screen bg-zinc-950 text-zinc-100">
+
+        </main>
+    )
 }
