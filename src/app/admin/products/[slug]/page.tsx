@@ -111,5 +111,9 @@ export default async function ProductPage({
         const ProductFiles =
         productDetails.product_files ?? [];
 
-        
+        return (
+            <main className="min-h-screen bg-zinc-950 text-zinc-100">
+                
+            </main>
+        )
 }
