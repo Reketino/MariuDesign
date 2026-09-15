@@ -48,5 +48,46 @@ export default async function ProductPage({
     const { slug } = await params;
 
     const supabase = await createClient();
+
+    const { data: product, error } = await supabase
+    .from("products")
+    .select(`
+        id,
+        title,
+        slug,
+        description,
+        license,
+        categories (
+            id,
+            name,
+            slug
+        ),
+        product_images (
+            id,
+            product_id,
+            storage_path,
+            alt_text,
+            sort_order
+        ),
+        product_prices (
+            id,
+            product_id,
+            currency,
+            amount,
+            created_at
+        ),
+        product_files (
+        id,
+        product_id,
+        file_type,
+        file_name,
+        storage_path,
+        version,
+        created_at
+        )
+        `)
+        .eq("slug", slug)
+        .eq("status", "published")
+        .single();
     
 }
