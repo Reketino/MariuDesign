@@ -121,6 +121,31 @@ export default async function ProductPage({
                     >
                         Mariudesign
                     </Link>
+
+                    <nav
+                    aria-label="Main navigation"
+                    className="flex items-center gap-6"
+                    >
+                        <Link
+                        href="/"
+                        className="text-sm text-zinc-400 transition hover:text-white">
+                            Home
+                        </Link>
+
+                        <Link
+                        href="/shop"
+                        className="text-sm text-zinc-400 transition hover:text-white"
+                        >
+                            Shop
+                        </Link>
+
+                        <Link
+                        href="/login"
+                        className="text-sm text-zinc-400 transition hover:text-white"
+                        >
+                            Log in
+                        </Link>
+                    </nav>
                 </div>
             </header>
         </main>
