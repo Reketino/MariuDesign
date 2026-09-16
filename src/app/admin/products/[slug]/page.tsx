@@ -242,6 +242,19 @@ export default async function ProductPage({
                         <h2 className="text-sm font-medium text-white">
                             Digital download
                         </h2>
+
+                        <dl className="mt-4 space-y-3 text-sm">
+                            <div className="flex justify-between gap-4">
+                                <dt className="text-zinc-500">
+                                    Files
+                                </dt>
+
+                                <dd className="text-right text-zinc-300">
+                                    {ProductFiles.length}
+                                </dd>
+                            </div>
+                            
+                        </dl>
                         </div>
                     </section>
                 </div>
