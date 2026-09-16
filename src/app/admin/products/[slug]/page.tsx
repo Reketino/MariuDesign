@@ -207,6 +207,14 @@ export default async function ProductPage({
                             </div>
                         )}
                     </section>
+
+                    <section>
+                        {category && (
+                            <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                                {category.name}
+                            </p>
+                        )}
+                    </section>
                 </div>
             </section>
         </main>
