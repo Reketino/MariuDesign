@@ -253,7 +253,12 @@ export default async function ProductPage({
                                     {ProductFiles.length}
                                 </dd>
                             </div>
-                            
+
+                            <div className="flex justify-between gap-4">
+                                <dt className="text-zinc-500">
+                                    Formats
+                                </dt>
+                            </div>
                         </dl>
                         </div>
                     </section>
