@@ -237,6 +237,12 @@ export default async function ProductPage({
                                 </p>
                             </div>
                         )}
+
+                        <div className="mt-8 rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
+                        <h2 className="text-sm font-medium text-white">
+                            Digital download
+                        </h2>
+                        </div>
                     </section>
                 </div>
             </section>
