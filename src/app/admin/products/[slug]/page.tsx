@@ -190,6 +190,18 @@ export default async function ProductPage({
                                     key={image.id}
                                     className="relative aspect-square overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900"
                                     >
+                                        <Image
+                                        src={getProductImageUrl(
+                                            image.storage_path,
+                                        )}
+                                        alt={
+                                            image.alt_text ??
+                                            productDetails.title
+                                        }
+                                        fill
+                                        sizes="(min-width: 1024px) 12vw, 25vw"
+                                        className="object-cover"
+                                        />
                                     </div>
                                 ))}
                             </div>
