@@ -182,6 +182,18 @@ export default async function ProductPage({
                                 </div>
                             )}
                         </div>
+
+                        {images.length > 1 && (
+                            <div className="mt-4 grid grid-cols-4 gap-3">
+                                {images.map((image) => (
+                                    <div
+                                    key={image.id}
+                                    className="relative aspect-square overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900"
+                                    >
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </section>
                 </div>
             </section>
