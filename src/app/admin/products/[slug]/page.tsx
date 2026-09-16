@@ -226,7 +226,17 @@ export default async function ProductPage({
                             </p>
                         )}
 
-                        
+                        {productDetails.description && (
+                            <div className="mt-8 border-t border-zinc-800 pt-8">
+                                <h2 className="text-sm font-medium text-white">
+                                    About this design
+                                </h2>
+
+                                <p className="mt-3 whitespace-pre-line text-base leading-7 text-zinc-400">
+                                    {productDetails.description}
+                                </p>
+                            </div>
+                        )}
                     </section>
                 </div>
             </section>
