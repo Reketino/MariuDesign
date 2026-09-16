@@ -214,6 +214,10 @@ export default async function ProductPage({
                                 {category.name}
                             </p>
                         )}
+
+                        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                            {productDetails.title}
+                        </h1>
                     </section>
                 </div>
             </section>
