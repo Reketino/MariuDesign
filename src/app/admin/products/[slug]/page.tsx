@@ -218,6 +218,15 @@ export default async function ProductPage({
                         <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                             {productDetails.title}
                         </h1>
+
+                        {price && (
+                            <p className="mt-6 text-2xl font-medium text-white">
+                                {Number(price.amount).toFixed(2)}{" "}
+                                {price.currency}
+                            </p>
+                        )}
+
+                        
                     </section>
                 </div>
             </section>
