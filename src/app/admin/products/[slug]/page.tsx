@@ -148,6 +148,17 @@ export default async function ProductPage({
                     </nav>
                 </div>
             </header>
+
+            <section className="mx-auto max-w-7xl px-6 py-12 lg:py-20">
+                <div className="mb-8">
+                    <Link
+                    href="/shop"
+                    className="text-sm text-zinc-500 transition hover:text-zinc-500"
+                    >
+                        ← Back to shop
+                    </Link>
+                </div>
+            </section>
         </main>
     )
 }
