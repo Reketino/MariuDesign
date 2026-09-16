@@ -148,6 +148,117 @@ export default async function ProductPage({
                     </nav>
                 </div>
             </header>
+
+            <section className="mx-auto max-w-7xl px-6 py-12 lg:py-20">
+                <div className="mb-8">
+                    <Link
+                    href="/shop"
+                    className="text-sm text-zinc-500 transition hover:text-zinc-500"
+                    >
+                        ← Back to shop
+                    </Link>
+                </div>
+
+                <div className="grid gap-12 lg:grid-cols-2 lg: itgems-start">
+                    <section aria-label="Product images">
+                        <div className="relative aspect-square overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900">
+                            {mainImage ? (
+                                <Image
+                                src={getProductImageUrl(
+                                    mainImage.storage_path,
+                                )}
+                                alt={
+                                    mainImage.alt_text ??
+                                    productDetails.title
+                                }
+                                fill
+                                priority
+                                sizes="(min-width: 1024px) 50vw, 100vw"
+                                className="object-cover"
+                                />
+                            ): (
+                                <div className="flex h-full items-center justify-center text-sm text-zinc-600">
+                                    No image avaliable
+                                </div>
+                            )}
+                        </div>
+
+                        {images.length > 1 && (
+                            <div className="mt-4 grid grid-cols-4 gap-3">
+                                {images.map((image) => (
+                                    <div
+                                    key={image.id}
+                                    className="relative aspect-square overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900"
+                                    >
+                                        <Image
+                                        src={getProductImageUrl(
+                                            image.storage_path,
+                                        )}
+                                        alt={
+                                            image.alt_text ??
+                                            productDetails.title
+                                        }
+                                        fill
+                                        sizes="(min-width: 1024px) 12vw, 25vw"
+                                        className="object-cover"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </section>
+
+                    <section>
+                        {category && (
+                            <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                                {category.name}
+                            </p>
+                        )}
+
+                        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                            {productDetails.title}
+                        </h1>
+
+                        {price && (
+                            <p className="mt-6 text-2xl font-medium text-white">
+                                {Number(price.amount).toFixed(2)}{" "}
+                                {price.currency}
+                            </p>
+                        )}
+
+                        {productDetails.description && (
+                            <div className="mt-8 border-t border-zinc-800 pt-8">
+                                <h2 className="text-sm font-medium text-white">
+                                    About this design
+                                </h2>
+
+                                <p className="mt-3 whitespace-pre-line text-base leading-7 text-zinc-400">
+                                    {productDetails.description}
+                                </p>
+                            </div>
+                        )}
+
+                        <div className="mt-8 rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
+                        <h2 className="text-sm font-medium text-white">
+                            Digital download
+                        </h2>
+
+                        <dl className="mt-4 space-y-3 text-sm">
+                            <div className="flex justify-between gap-4">
+                                <dt className="text-zinc-500">
+                                    Files
+                                </dt>
+
+                                <dd className="text-right text-zinc-300">
+                                    {ProductFiles.length}
+                                </dd>
+                            </div>
+                            
+                        </dl>
+                        </div>
+                    </section>
+                </div>
+            </section>
         </main>
     )
 }
