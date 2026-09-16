@@ -158,6 +158,32 @@ export default async function ProductPage({
                         ← Back to shop
                     </Link>
                 </div>
+
+                <div className="grid gap-12 lg:grid-cols-2 lg: itgems-start">
+                    <section aria-label="Product images">
+                        <div className="relative aspect-square overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900">
+                            {mainImage ? (
+                                <Image
+                                src={getProductImageUrl(
+                                    mainImage.storage_path,
+                                )}
+                                alt={
+                                    mainImage.alt_text ??
+                                    productDetails.title
+                                }
+                                fill
+                                priority
+                                sizes="(min-width: 1024px) 50vw, 100vw"
+                                className="object-cover"
+                                />
+                            ): (
+                                <div className="flex h-full items-center justify-center text-sm text-zinc-600">
+                                    No image avaliable
+                                </div>
+                            )}
+                        </div>
+                    </section>
+                </div>
             </section>
         </main>
     )
