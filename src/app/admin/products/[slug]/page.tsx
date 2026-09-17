@@ -152,8 +152,8 @@ export default async function ProductPage({
             <section className="mx-auto max-w-7xl px-6 py-12 lg:py-20">
                 <div className="mb-8">
                     <Link
-                    href="/shop"
-                    className="text-sm text-zinc-500 transition hover:text-zinc-500"
+                        href="/shop"
+                        className="text-sm text-zinc-500 transition hover:text-zinc-500"
                     >
                         ← Back to shop
                     </Link>
@@ -164,19 +164,19 @@ export default async function ProductPage({
                         <div className="relative aspect-square overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900">
                             {mainImage ? (
                                 <Image
-                                src={getProductImageUrl(
-                                    mainImage.storage_path,
-                                )}
-                                alt={
-                                    mainImage.alt_text ??
-                                    productDetails.title
-                                }
-                                fill
-                                priority
-                                sizes="(min-width: 1024px) 50vw, 100vw"
-                                className="object-cover"
+                                    src={getProductImageUrl(
+                                        mainImage.storage_path,
+                                    )}
+                                    alt={
+                                        mainImage.alt_text ??
+                                        productDetails.title
+                                    }
+                                    fill
+                                    priority
+                                    sizes="(min-width: 1024px) 50vw, 100vw"
+                                    className="object-cover"
                                 />
-                            ): (
+                            ) : (
                                 <div className="flex h-full items-center justify-center text-sm text-zinc-600">
                                     No image avaliable
                                 </div>
@@ -187,20 +187,20 @@ export default async function ProductPage({
                             <div className="mt-4 grid grid-cols-4 gap-3">
                                 {images.map((image) => (
                                     <div
-                                    key={image.id}
-                                    className="relative aspect-square overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900"
+                                        key={image.id}
+                                        className="relative aspect-square overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900"
                                     >
                                         <Image
-                                        src={getProductImageUrl(
-                                            image.storage_path,
-                                        )}
-                                        alt={
-                                            image.alt_text ??
-                                            productDetails.title
-                                        }
-                                        fill
-                                        sizes="(min-width: 1024px) 12vw, 25vw"
-                                        className="object-cover"
+                                            src={getProductImageUrl(
+                                                image.storage_path,
+                                            )}
+                                            alt={
+                                                image.alt_text ??
+                                                productDetails.title
+                                            }
+                                            fill
+                                            sizes="(min-width: 1024px) 12vw, 25vw"
+                                            className="object-cover"
                                         />
                                     </div>
                                 ))}
@@ -239,28 +239,71 @@ export default async function ProductPage({
                         )}
 
                         <div className="mt-8 rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
-                        <h2 className="text-sm font-medium text-white">
-                            Digital download
-                        </h2>
+                            <h2 className="text-sm font-medium text-white">
+                                Digital download
+                            </h2>
 
-                        <dl className="mt-4 space-y-3 text-sm">
-                            <div className="flex justify-between gap-4">
-                                <dt className="text-zinc-500">
-                                    Files
-                                </dt>
+                            <dl className="mt-4 space-y-3 text-sm">
+                                <div className="flex justify-between gap-4">
+                                    <dt className="text-zinc-500">
+                                        Files
+                                    </dt>
 
-                                <dd className="text-right text-zinc-300">
-                                    {ProductFiles.length}
-                                </dd>
-                            </div>
+                                    <dd className="text-right text-zinc-300">
+                                        {ProductFiles.length}
+                                    </dd>
+                                </div>
 
-                            <div className="flex justify-between gap-4">
-                                <dt className="text-zinc-500">
-                                    Formats
-                                </dt>
-                            </div>
-                        </dl>
+                                <div className="flex justify-between gap-4">
+                                    <dt className="text-zinc-500">
+                                        Formats
+                                    </dt>
+
+                                    <dd className="text-right text-zinc-300">
+                                        {ProductFiles.length > 0
+                                            ? Array.from(
+                                                new Set(
+                                                    ProductFiles.map(
+                                                        (file) =>
+                                                            file.file_name
+                                                                .split(
+                                                                    ".",
+                                                                )
+                                                                .pop()
+                                                                ?.toUpperCase(),
+                                                    ),
+                                                ),
+                                            ).join(", ")
+                                            : "Not avaliable"
+                                        }
+                                    </dd>
+                                </div>
+
+                                {productDetails.license && (
+                                    <div className="flex justify-between gap-4">
+                                        <dt className="text-zinc-500">
+                                            License
+                                        </dt>
+
+                                        <dd className="text-right capitalize text-zinc-300">
+                                            {productDetails.license}
+                                        </dd>
+                                    </div>
+                                )}
+                            </dl>
                         </div>
+
+                        <button
+                        type="button"
+                        disabled
+                        className="mt-6 w-full rounded-xl bg-white px-6 py-4 text-sm font-medium text-zinc-950 opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Download model
+                        </button>
+
+                        <p className="mt-3 text-center text-xs text-zinc-600">
+                            Purchasing and downloads will be avaliable soon
+                        </p>
                     </section>
                 </div>
             </section>
