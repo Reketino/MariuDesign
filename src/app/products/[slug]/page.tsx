@@ -19,7 +19,16 @@ type ProductPageData = {
         name: string;
         slug: string;
     }[] | null;
+
     product_images: ProductImage[] | null;
+
+    product_prices: {
+        id: string;
+        product_id: string;
+        currency: string;
+        amount: number;
+        created_at: string;
+    }[] | null;
 };
 
 type ProductPageProps = {
@@ -72,6 +81,7 @@ export default async function ProductPage({
 
     const mainImage = images[0] ?? null;
     const category = productData.categories?.[0] ?? null;
+    const price = productData.product_prices?.[0] ?? null;
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
@@ -173,6 +183,15 @@ export default async function ProductPage({
                             {productData.title}
                         </h1>
 
+
+                        {price && (
+                            <p className="mt-6 text-2xl font-semibold text-white">
+                                {Number(price.amount).toFixed(2)}{" "}
+                                {price.currency}
+                            </p>
+                        )}
+
+
                         {productData.description && (
                             <div className="mt-6">
                                 <p className="whitespace-pre-line text-base leading-8 text-zinc-400">
@@ -204,6 +223,16 @@ export default async function ProductPage({
                                         </dd>
                                     </div>
                                 )}
+
+                                <div className="flex items-center justify-between gap-6">
+                                    <dt className="text-sm text-zinc-500">
+                                        Format
+                                    </dt>
+
+                                    <dd className="text-sm text-zinc-300">
+                                        Digital download
+                                    </dd>
+                                </div>
                             </dl>
                         </div>
 
