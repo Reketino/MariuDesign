@@ -67,9 +67,7 @@ export async function uploadProductFile({
   });
 
   if (databaseError) {
-        await supabase.storage
-            .from(STORAGE_BUCKET)
-            .remove([storagePath]);
+    await supabase.storage.from(STORAGE_BUCKET).remove([storagePath]);
 
     throw new Error(databaseError.message);
   }
@@ -90,8 +88,8 @@ export async function deleteProductFile({
   }
 
   const { error: storageError } = await supabase.storage
-        .from(STORAGE_BUCKET)
-        .remove([storagePath]);
+    .from(STORAGE_BUCKET)
+    .remove([storagePath]);
 
   if (storageError) {
     console.error("Failed to remove product file from storage:", storageError);
