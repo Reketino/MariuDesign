@@ -22,7 +22,7 @@ type ProductPageData = {
 
     product_images: ProductImage[] | null;
 
-        product_prices: {
+    product_prices: {
         id: string;
         product_id: string;
         currency: string;
@@ -224,7 +224,7 @@ export default async function ProductPage({
                                     </div>
                                 )}
 
-                                 <div className="flex items-center justify-between gap-6">
+                                <div className="flex items-center justify-between gap-6">
                                     <dt className="text-sm text-zinc-500">
                                         Format
                                     </dt>
