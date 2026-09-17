@@ -13,6 +13,8 @@ type DeleteProductFileParams = {
   storagePath: string;
 };
 
+const STORAGE_BUCKET = "product_files";
+
 const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj"];
 
 function getFileExtension(fileName: string): string {
