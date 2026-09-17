@@ -72,6 +72,7 @@ export default async function ProductPage({
 
     const mainImage = images[0] ?? null;
     const category = productData.categories?.[0] ?? null;
+    const price = productData.product_prices?.[0] ?? null;
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
