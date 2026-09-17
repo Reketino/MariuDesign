@@ -19,7 +19,7 @@ type ProductPageData = {
         name: string;
         slug: string;
     }[] | null;
-    
+
     product_images: ProductImage[] | null;
 
         product_prices: {
@@ -223,6 +223,16 @@ export default async function ProductPage({
                                         </dd>
                                     </div>
                                 )}
+
+                                 <div className="flex items-center justify-between gap-6">
+                                    <dt className="text-sm text-zinc-500">
+                                        Format
+                                    </dt>
+
+                                    <dd className="text-sm text-zinc-300">
+                                        Digital download
+                                    </dd>
+                                </div>
                             </dl>
                         </div>
 
