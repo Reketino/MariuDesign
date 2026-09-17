@@ -67,7 +67,9 @@ export async function uploadProductFile({
   });
 
   if (databaseError) {
-    await supabase.storage.from("product-files").remove([storagePath]);
+        await supabase.storage
+            .from(STORAGE_BUCKET)
+            .remove([storagePath]);
 
     throw new Error(databaseError.message);
   }
