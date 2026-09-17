@@ -19,7 +19,16 @@ type ProductPageData = {
         name: string;
         slug: string;
     }[] | null;
+    
     product_images: ProductImage[] | null;
+
+        product_prices: {
+        id: string;
+        product_id: string;
+        currency: string;
+        amount: number;
+        created_at: string;
+    }[] | null;
 };
 
 type ProductPageProps = {
