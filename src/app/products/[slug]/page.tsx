@@ -173,6 +173,15 @@ export default async function ProductPage({
                             {productData.title}
                         </h1>
 
+
+                        {price && (
+                            <p className="mt-6 text-2xl font-semibold text-white">
+                                {Number(price.amount).toFixed(2)}{" "}
+                                {price.currency}
+                            </p>
+                        )}
+
+
                         {productData.description && (
                             <div className="mt-6">
                                 <p className="whitespace-pre-line text-base leading-8 text-zinc-400">
