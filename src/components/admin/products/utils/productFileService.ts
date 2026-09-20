@@ -15,7 +15,7 @@ type DeleteProductFileParams = {
 
 const STORAGE_BUCKET = "product_files";
 
-const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj"];
+const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj"] as const;
 
 function getFileExtension(fileName: string): string {
   const lastDot = fileName.lastIndexOf(".");
