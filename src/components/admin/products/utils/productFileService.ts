@@ -48,7 +48,7 @@ export async function uploadProductFile({
   const storagePath = `products/${productId}/${crypto.randomUUID()}${extensions}`;
 
   const { error: uploadError } = await supabase.storage
-    .from("product_files")
+    .from(STORAGE_BUCKET)
     .upload(storagePath, file, {
       upsert: false,
       contentType: file.type || "application/octet-stream",
