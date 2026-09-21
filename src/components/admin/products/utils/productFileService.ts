@@ -1,16 +1,16 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 type UploadProductFileParams = {
-    supabase: SupabaseClient;
-    productId: string;
-    file: File;
-    version: string;
+  supabase: SupabaseClient;
+  productId: string;
+  file: File;
+  version: string;
 };
 
 type DeleteProductFileParams = {
-    supabase: SupabaseClient;
-    fileId: string;
-    storagePath: string;
+  supabase: SupabaseClient;
+  fileId: string;
+  storagePath: string;
 };
 
 const STORAGE_BUCKET = "product_files";
@@ -20,99 +20,84 @@ const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj"] as const;
 type AllowedExtension = (typeof ALLOWED_EXTENSIONS)[number];
 
 function getFileExtension(fileName: string): string {
-    const lastDot = fileName.lastIndexOf(".");
+  const lastDot = fileName.lastIndexOf(".");
 
-    if (lastDot === -1) {
-        return "";
-    }
+  if (lastDot === -1) {
+    return "";
+  }
 
-    return fileName.slice(lastDot).toLowerCase();
+  return fileName.slice(lastDot).toLowerCase();
 }
 
-function isAllowedExtension(
-    extension: string,
-): extension is AllowedExtension {
-    return ALLOWED_EXTENSIONS.includes(
-        extension as AllowedExtension,
-    );
+function isAllowedExtension(extension: string): extension is AllowedExtension {
+  return ALLOWED_EXTENSIONS.includes(extension as AllowedExtension);
 }
 
 function validateFile(file: File): AllowedExtension {
-    const extension = getFileExtension(file.name);
+  const extension = getFileExtension(file.name);
 
-    if (!isAllowedExtension(extension)) {
-        throw new Error(
-            "Only STL, 3MF, and OBJ files are supported.",
-        );
-    }
+  if (!isAllowedExtension(extension)) {
+    throw new Error("Only STL, 3MF, and OBJ files are supported.");
+  }
 
-    return extension;
+  return extension;
 }
 
 export async function uploadProductFile({
-    supabase,
-    productId,
-    file,
-    version,
+  supabase,
+  productId,
+  file,
+  version,
 }: UploadProductFileParams): Promise<void> {
-    const extension = validateFile(file);
+  const extension = validateFile(file);
 
-    const storagePath = `products/${productId}/${crypto.randomUUID()}${extension}`;
+  const storagePath = `products/${productId}/${crypto.randomUUID()}${extension}`;
 
-    const { error: uploadError } = await supabase.storage
-        .from(STORAGE_BUCKET)
-        .upload(storagePath, file, {
-            upsert: false,
-            contentType: file.type || "application/octet-stream",
-        });
+  const { error: uploadError } = await supabase.storage
+    .from(STORAGE_BUCKET)
+    .upload(storagePath, file, {
+      upsert: false,
+      contentType: file.type || "application/octet-stream",
+    });
 
-    if (uploadError) {
-        throw new Error(
-            `Failed to upload ${file.name}: ${uploadError.message}`,
-        );
-    }
+  if (uploadError) {
+    throw new Error(`Failed to upload ${file.name}: ${uploadError.message}`);
+  }
 
-    const { error: databaseError } = await supabase
-        .from("product_files")
-        .insert({
-            product_id: productId,
-            file_type: "product",
-            file_name: file.name,
-            storage_path: storagePath,
-            version: version.trim() || "1.0",
-        });
+  const { error: databaseError } = await supabase.from("product_files").insert({
+    product_id: productId,
+    file_type: "product",
+    file_name: file.name,
+    storage_path: storagePath,
+    version: version.trim() || "1.0",
+  });
 
-    if (databaseError) {
-        await supabase.storage
-            .from(STORAGE_BUCKET)
-            .remove([storagePath]);
+  if (databaseError) {
+    await supabase.storage.from(STORAGE_BUCKET).remove([storagePath]);
 
-        throw new Error(databaseError.message);
-    }
+    throw new Error(databaseError.message);
+  }
 }
 
 export async function deleteProductFile({
-    supabase,
-    fileId,
-    storagePath,
+  supabase,
+  fileId,
+  storagePath,
 }: DeleteProductFileParams): Promise<void> {
-    const { error: databaseError } = await supabase
-        .from("product_files")
-        .delete()
-        .eq("id", fileId);
+  const { error: databaseError } = await supabase
+    .from("product_files")
+    .delete()
+    .eq("id", fileId);
 
-    if (databaseError) {
-        throw new Error(databaseError.message);
-    }
+  if (databaseError) {
+    throw new Error(databaseError.message);
+  }
 
-    const { error: storageError } = await supabase.storage
-        .from(STORAGE_BUCKET)
-        .remove([storagePath]);
+  const { error: storageError } = await supabase.storage
+    .from(STORAGE_BUCKET)
+    .remove([storagePath]);
 
-    if (storageError) {
-        console.error(
-            "Failed to remove product file from storage:",
-            storageError,
-        );
-    }
+  if (storageError) {
+    console.error("Failed to remove product file from storage:", storageError);
+  }
 }
