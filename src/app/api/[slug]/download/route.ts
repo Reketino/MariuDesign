@@ -17,4 +17,27 @@ export async function GET(
     const { slug } = await params;
 
     const supabase = await createClient();
+
+    const { data: product, error: productError } = await supabase
+        .from("products")
+        .select(`
+            id,
+            title,
+            slug,
+            status
+        `)
+        .eq("slug", slug)
+        .eq("status", "published")
+        .single();
+
+    if (productError || !product) {
+        return NextResponse.json(
+            {
+                error: "Product not found.",
+            },
+            {
+                status: 404,
+            },
+        );
+    }
 }
