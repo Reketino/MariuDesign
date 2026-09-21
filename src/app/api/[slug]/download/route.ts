@@ -7,3 +7,12 @@ type RouteContext = {
         slug: string;
     }>;
 };
+
+const STORAGE_BUCKET = "product_files";
+
+export async function GET(
+    _request: Request,
+    { params }: RouteContext,
+) {
+    
+}
