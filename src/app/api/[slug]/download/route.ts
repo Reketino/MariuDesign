@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { createClient } from "@/lib/supabase/server";
+import { error } from "console";
 
 type RouteContext = {
     params: Promise<{
@@ -57,4 +58,16 @@ export async function GET(
         .limit(1)
         .maybeSingle();
 
+        if (fileError) {
+            console.error("Failed to fetch product file:", fileError);
+
+            return NextResponse.json(
+                {
+                    error: "Failed to find product file.",
+                },
+                {
+                    status: 500,
+                },
+            );
+        }
 }
