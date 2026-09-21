@@ -14,5 +14,7 @@ export async function GET(
     _request: Request,
     { params }: RouteContext,
 ) {
-    
+    const { slug } = await params;
+
+    const supabase = await createClient();
 }
