@@ -81,4 +81,9 @@ export async function GET(
                 },
             );
         }
+
+        const { data: signedUrl, error: signedUrlError} =
+        await supabase.storage
+        .from(STORAGE_BUCKET)
+        .createSignedUrl(productFile.storage_path, 60);
 }
