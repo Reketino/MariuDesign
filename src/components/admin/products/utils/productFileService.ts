@@ -17,6 +17,8 @@ const STORAGE_BUCKET = "product_files";
 
 const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj"] as const;
 
+type AllowedExtension = (typeof ALLOWED_EXTENSIONS)[number];
+
 function getFileExtension(fileName: string): string {
   const lastDot = fileName.lastIndexOf(".");
 
@@ -25,6 +27,14 @@ function getFileExtension(fileName: string): string {
   }
 
   return fileName.slice(lastDot).toLowerCase();
+}
+
+function isAllowedExtension(
+  extension: string,
+): extension is AllowedExtension {
+  return ALLOWED_EXTENSIONS.includes(
+    extension as AllowedExtension
+  )
 }
 
 function validateFile(file: File): void {
