@@ -17,6 +17,8 @@ const STORAGE_BUCKET = "product_files";
 
 const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj"] as const;
 
+type AllowedExtension = (typeof ALLOWED_EXTENSIONS)[number];
+
 function getFileExtension(fileName: string): string {
   const lastDot = fileName.lastIndexOf(".");
 
@@ -27,12 +29,18 @@ function getFileExtension(fileName: string): string {
   return fileName.slice(lastDot).toLowerCase();
 }
 
-function validateFile(file: File): void {
-  const extensions = getFileExtension(file.name);
+function isAllowedExtension(extension: string): extension is AllowedExtension {
+  return ALLOWED_EXTENSIONS.includes(extension as AllowedExtension);
+}
 
-  if (!ALLOWED_EXTENSIONS.includes(extensions)) {
+function validateFile(file: File): AllowedExtension {
+  const extension = getFileExtension(file.name);
+
+  if (!isAllowedExtension(extension)) {
     throw new Error("Only STL, 3MF, and OBJ files are supported.");
   }
+
+  return extension;
 }
 
 export async function uploadProductFile({
@@ -41,11 +49,9 @@ export async function uploadProductFile({
   file,
   version,
 }: UploadProductFileParams): Promise<void> {
-  validateFile(file);
+  const extension = validateFile(file);
 
-  const extensions = getFileExtension(file.name);
-
-  const storagePath = `products/${productId}/${crypto.randomUUID()}${extensions}`;
+  const storagePath = `products/${productId}/${crypto.randomUUID()}${extension}`;
 
   const { error: uploadError } = await supabase.storage
     .from(STORAGE_BUCKET)
