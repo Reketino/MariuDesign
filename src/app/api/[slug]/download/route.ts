@@ -70,4 +70,15 @@ export async function GET(
                 },
             );
         }
+
+        if (!productFile) {
+            return NextResponse.json(
+                {
+                    error: "No download file is avaliable for this product."
+                },
+                {
+                    status: 404,
+                },
+            );
+        }
 }
