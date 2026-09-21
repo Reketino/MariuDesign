@@ -40,4 +40,21 @@ export async function GET(
             },
         );
     }
+
+    const { data: productFile, error: fileError } = await supabase
+        .from("product_files")
+        .select(`
+            id,
+            file_name,
+            storage_path,
+            version
+        `)
+        .eq("product_id", product.id)
+        .eq("file_type", "product")
+        .order("created_at", {
+            ascending: false,
+        })
+        .limit(1)
+        .maybeSingle();
+
 }
