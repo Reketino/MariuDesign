@@ -99,9 +99,13 @@ export async function GET(_request: Request, { params }: RouteContext) {
         },
         {
           status: 500
-        }
-      )
-
-
+        },
+      );
     }
+
+    return NextResponse.json({
+      url: signedUrl.signedUrl,
+      fileName: productFile.file_name,
+      version: productFile.version,
+    })
 }
