@@ -93,6 +93,15 @@ export async function GET(_request: Request, { params }: RouteContext) {
         signedUrlError,
       );
 
-      
+      return NextResponse.json(
+        {
+          error: "Failed to create download link.",
+        },
+        {
+          status: 500
+        }
+      )
+
+
     }
 }
