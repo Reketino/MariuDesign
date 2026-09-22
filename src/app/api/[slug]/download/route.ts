@@ -86,4 +86,13 @@ export async function GET(_request: Request, { params }: RouteContext) {
   const { data: signedUrl, error: signedUrlError } = await supabase.storage
     .from(STORAGE_BUCKET)
     .createSignedUrl(productFile.storage_path, 60);
+
+    if (signedUrlError || !signedUrl) {
+      console.error(
+        "Failed to create signed download URL:",
+        signedUrlError,
+      );
+
+      
+    }
 }
