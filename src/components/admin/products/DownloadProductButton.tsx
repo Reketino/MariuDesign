@@ -30,6 +30,13 @@ export default function DownloadProductButton({
             }
             
             const link = document.createElement("a");
+
+            link.href = data.url;
+            link.download = data.fileName;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            
         }
     }
 }
