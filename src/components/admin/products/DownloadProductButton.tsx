@@ -28,8 +28,8 @@ export default function DownloadProductButton({
                     data.error || "Failed to start download.",
                 );
             }
-
             
+            const link = document.createElement("a");
         }
     }
 }
