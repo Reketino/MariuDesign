@@ -87,25 +87,22 @@ export async function GET(_request: Request, { params }: RouteContext) {
     .from(STORAGE_BUCKET)
     .createSignedUrl(productFile.storage_path, 60);
 
-    if (signedUrlError || !signedUrl) {
-      console.error(
-        "Failed to create signed download URL:",
-        signedUrlError,
-      );
+  if (signedUrlError || !signedUrl) {
+    console.error("Failed to create signed download URL:", signedUrlError);
 
-      return NextResponse.json(
-        {
-          error: "Failed to create download link.",
-        },
-        {
-          status: 500
-        },
-      );
-    }
+    return NextResponse.json(
+      {
+        error: "Failed to create download link.",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
 
-    return NextResponse.json({
-      url: signedUrl.signedUrl,
-      fileName: productFile.file_name,
-      version: productFile.version,
-    })
+  return NextResponse.json({
+    url: signedUrl.signedUrl,
+    fileName: productFile.file_name,
+    version: productFile.version,
+  });
 }
