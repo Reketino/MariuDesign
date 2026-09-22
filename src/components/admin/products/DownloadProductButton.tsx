@@ -11,4 +11,9 @@ export default function DownloadProductButton({
 }: DownloadProductButtonProps) {
     const [isDownloading, setIsDownloading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    async function handleDownload() {
+        setIsDownloading(true);
+        setError(null);
+    }
 }
