@@ -55,18 +55,18 @@ export default function DownloadProductButton({
     return (
         <div>
             <button
-            type="button"
-            onClick={handleDownload}
-            disabled={isDownloading}
-            className="w-full rounded-lg bg-white px-5 py-3.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+                type="button"
+                onClick={handleDownload}
+                disabled={isDownloading}
+                className="w-full rounded-lg bg-white px-5 py-3.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
             >
                 {isDownloading ? "Preparing download..." : "Download model"}
             </button>
 
             {error && (
                 <p
-                role="alert"
-                className="mt-3 text-center text-xs text-red-400"
+                    role="alert"
+                    className="mt-3 text-center text-xs text-red-400"
                 >
                     {error}
                 </p>
