@@ -28,7 +28,7 @@ export default function DownloadProductButton({
                     data.error || "Failed to start download.",
                 );
             }
-            
+
             const link = document.createElement("a");
 
             link.href = data.url;
@@ -41,6 +41,15 @@ export default function DownloadProductButton({
             link.remove();
         } catch (downloadError) {
             console.error("Download failed:", downloadError);
+
+            setError(
+                downloadError instanceof Error
+                    ? downloadError.message
+                    : "Failed to start download.",
+            );
+        } finally {
+            setIsDownloading(false);
         }
     }
-}
+
+    
