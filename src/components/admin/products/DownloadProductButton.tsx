@@ -62,6 +62,15 @@ export default function DownloadProductButton({
             >
                 {isDownloading ? "Preparing download..." : "Download model"}
             </button>
+
+            {error && (
+                <p
+                role="alert"
+                className="mt-3 text-center text-xs text-red-400"
+                >
+                    {error}
+                </p>
+            )}
         </div>
     )
 }
