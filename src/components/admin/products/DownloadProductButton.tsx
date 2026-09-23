@@ -39,6 +39,8 @@ export default function DownloadProductButton({
             document.body.appendChild(link);
             link.click();
             link.remove();
+        } catch (downloadError) {
+            console.error("Download failed:", downloadError);
         }
     }
 }
