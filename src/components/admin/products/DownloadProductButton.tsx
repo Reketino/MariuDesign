@@ -28,7 +28,7 @@ export default function DownloadProductButton({
                     data.error || "Failed to start download.",
                 );
             }
-            
+
             const link = document.createElement("a");
 
             link.href = data.url;
@@ -36,7 +36,41 @@ export default function DownloadProductButton({
             link.target = "_blank";
             link.rel = "noopener noreferrer";
 
-            
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } catch (downloadError) {
+            console.error("Download failed:", downloadError);
+
+            setError(
+                downloadError instanceof Error
+                    ? downloadError.message
+                    : "Failed to start download.",
+            );
+        } finally {
+            setIsDownloading(false);
         }
     }
+
+    return (
+        <div>
+            <button
+                type="button"
+                onClick={handleDownload}
+                disabled={isDownloading}
+                className="w-full rounded-lg bg-white px-5 py-3.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+                {isDownloading ? "Preparing download..." : "Download model"}
+            </button>
+
+            {error && (
+                <p
+                    role="alert"
+                    className="mt-3 text-center text-xs text-red-400"
+                >
+                    {error}
+                </p>
+            )}
+        </div>
+    )
 }

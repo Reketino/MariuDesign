@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 import { createClient } from "@/lib/supabase/server";
-import { error } from "console";
 
 type RouteContext = {
   params: Promise<{

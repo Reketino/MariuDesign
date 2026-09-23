@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { ProductImage } from "@/types/products";
 
 import { getProductImageUrl } from "@/components/admin/products/utils/productImage";
+import DownloadProductButton from "@/components/admin/products/DownloadProductButton";
 
 type ProductPageData = {
     id: string;
@@ -237,16 +238,10 @@ export default async function ProductPage({
                         </div>
 
                         <div className="mt-10">
-                            <button
-                                type="button"
-                                disabled
-                                className="w-full rounded-lg bg-white px-5 py-3.5 text-sm font-medium text-zinc-950 opacity-50"
-                            >
-                                Download model
-                            </button>
+                            <DownloadProductButton slug={productData.slug} />
 
-                            <p className="mt-3 text-center text-xs text-zinc-600">
-                                Downloads will be available soon.
+                            <p className="mt-3 text-center text-xs text-zinc-500">
+                                Secure digital download.
                             </p>
                         </div>
                     </article>
