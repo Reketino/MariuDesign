@@ -36,7 +36,9 @@ export default function DownloadProductButton({
             link.target = "_blank";
             link.rel = "noopener noreferrer";
 
-            
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         }
     }
 }
