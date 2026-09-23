@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { ProductImage } from "@/types/products";
 
 import { getProductImageUrl } from "@/components/admin/products/utils/productImage";
+import DownloadProductButton from "@/components/admin/products/DownloadProductButton";
 
 type ProductPageData = {
     id: string;
