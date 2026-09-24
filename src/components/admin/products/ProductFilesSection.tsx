@@ -20,5 +20,18 @@ export default function ProductFileSection({
         null,
     );
 
+    async function handleDelete(file: ProductFile) {
+        const confirmed = window.confirm(
+            `Delete "${file.file_name}"?`,
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        setIsDeleting(file.id);
+        
+    }
+
     
 }
