@@ -83,7 +83,31 @@ return (
                 this product.
             </p>
         </div>
-        
+
+        {ProductFiles.length === 0 ? (
+            <div className="px-6 py-10 text-center">
+                <p className="text-sm text-zinc-500">
+                    No product files uploaded yet.
+                </p>
+            </div>
+        ) : (
+            <ul className="divide-y divide-zinc-800">
+                {ProductFiles.map((file) => (
+                    <li
+                    key={file.id}
+                    className="flex items-center justify-between gap-6 px-6 py-5"
+                    >
+                        <div className="min-w-0">
+                            <p className="truncate text-sm font-medium text-white">
+                                {file.file_name}
+                            </p>
+                            
+                        </div>
+                    </li>
+                ))}
+            </ul>  
+        )
+        }
 
     </section>
 )
