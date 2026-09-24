@@ -33,5 +33,28 @@ export default function ProductFileSection({
         
     }
 
+    try {
+        const response = await fetch(
+            `/api/admin/products/${productId}/files/${file.id}`,
+            {
+                method: "Delete",
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.error || "Failed to delete file."
+            );
+        }
+
+        setProductFiles((currentFiles) => 
+        currentFiles.filter(
+            (currentFile) =>
+                currentFile.id !== file.id
+        ),
+        );
+    }
     
 }
