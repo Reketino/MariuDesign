@@ -55,6 +55,19 @@ export default function ProductFileSection({
                 currentFile.id !== file.id
         ),
         );
+    } catch (error) {
+        console.error(
+            "Failed to delete product file:",
+            error,
+        );
+
+        window.alert(
+            error instanceof Error
+            ? error.message
+            : "Failed to delete file."
+        );
+    } finally {
+        setIsDeleting(null);
     }
     
 }
