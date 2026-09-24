@@ -101,7 +101,20 @@ return (
                             <p className="truncate text-sm font-medium text-white">
                                 {file.file_name}
                             </p>
-                            
+
+                            <div className="mt-1 flex flex-wrap items-center gap-3 text-xs text-zinc-500">
+                                <span>
+                                    Version {file.Version}
+                                </span>
+
+                                <span aria-hidden="true">
+                                    •
+                                </span>
+
+                                <span>
+                                    {file.file_type}
+                                </span>
+                            </div>
                         </div>
                     </li>
                 ))}
