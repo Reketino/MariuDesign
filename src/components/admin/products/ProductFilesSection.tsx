@@ -4,7 +4,21 @@ import { useState } from "react";
 
 import type { ProductFile } from "@/types/products";
 
-type ProductFileSectionProp = {
+type ProductFileSectionProps = {
     productId: string;
     files: ProductFile[];
+}
+
+export default function ProductFileSection({
+    productId,
+    files,
+}: ProductFileSectionProps) {
+    const [ProductFiles, setProductFiles] =
+    useState<ProductFile[]>(files);
+
+    const [isDeleting, setIsDeleting] = useState<string | null>(
+        null,
+    );
+
+    
 }
