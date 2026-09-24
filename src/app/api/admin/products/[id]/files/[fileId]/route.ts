@@ -10,3 +10,8 @@ type RouteContext = {
         fileId: string;
     }>;
 };
+
+export async function DELETE(
+    _request: Request,
+    { params }: RouteContext,
+) {}
