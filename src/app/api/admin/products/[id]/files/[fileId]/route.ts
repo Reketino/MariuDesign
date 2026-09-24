@@ -14,4 +14,7 @@ type RouteContext = {
 export async function DELETE(
     _request: Request,
     { params }: RouteContext,
-) {}
+) {
+    const { id: poductId, fileId } = await params;
+    
+}
