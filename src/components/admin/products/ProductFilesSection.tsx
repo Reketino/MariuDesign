@@ -69,5 +69,21 @@ export default function ProductFileSection({
     } finally {
         setIsDeleting(null);
     }
-    
 }
+
+return (
+    <section className="rounded-xl border border-zinc-800 bg-zinc-900/40">
+        <div className="border-b border-zinc-800 px-6 py-5">
+            <h2 className="text-base font-medium text-white">
+                Product files
+            </h2>
+
+            <p className="mt-1 text-sm text-zinc-500">
+                Manage the downloadable files for 
+                this product.
+            </p>
+        </div>
+        
+
+    </section>
+)
