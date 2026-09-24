@@ -116,6 +116,21 @@ return (
                                 </span>
                             </div>
                         </div>
+
+                        <button
+                        type="button"
+                        onClick={() =>
+                            handleDelete(file)
+                        }
+                        disabled={
+                            isDeleting === file.id
+                        }
+                        className="shrink-0 text-sm font-medium text-red-400 transition hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            {isDeleting === file.id
+                            ? "Deleting..."
+                            : "Delete"}
+                        </button>
                     </li>
                 ))}
             </ul>  
