@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import ProductForm from "@/components/admin/products/ProductForm";
+import ProductFilesSection from "@/components/admin/products/ProductFilesSection";
 
 import { createClient } from "@/lib/supabase/server";
 
@@ -91,6 +92,11 @@ export default async function EditProductPage({
             <ProductForm
                 product={product}
                 categories={categories}
+            />
+
+            <ProductFilesSection
+            productId={product.id}
+            files={product.product_files ?? []}
             />
         </section>
     );
