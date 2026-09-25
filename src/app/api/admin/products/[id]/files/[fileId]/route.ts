@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
-import { createClient } from "@/lib/supabase/server";
-
 import { deleteProductFile } from "@/components/admin/products/utils/productFileService";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
+import { createClient } from "@/lib/supabase/server";
 
 
 type RouteContext = {
