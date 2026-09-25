@@ -18,43 +18,9 @@ export async function DELETE(
 ) {
     const { id: productId, fileId } = await params;
 
+    await requireAdmin();
+
     const supabase = await createClient();
-
-    const {
-        data: { user }, 
-    } = await supabase.auth.getUser();
-
-    if (!user) {
-        return NextResponse.json(
-            {
-                error: "Unauthorized",
-            },
-            {
-                status: 401,
-            },
-        );
-    }
-
-    const { data: profile, error: profileError } =
-    await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-    if (
-        profileError || 
-        profile?.role !== "admin"
-    ) {
-        return NextResponse.json(
-            {
-                error: "Forbidden"
-            },
-            {
-                status: 403,
-            }
-        );
-    }
 
     const { data: productFile, error: fileError } =
     await supabase
