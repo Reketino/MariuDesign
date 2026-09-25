@@ -316,6 +316,13 @@ export default function ProductForm({
 
             const data = await response.json();
 
+            if (!response.ok) {
+                throw new Error(
+                    data.errorr || "Failed to delete product file.",
+                );
+            }
+
+            router.refresh
         } catch (error) {
             setError(
                 error instanceof Error
