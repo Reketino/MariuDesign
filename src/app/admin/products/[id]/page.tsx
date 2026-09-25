@@ -95,8 +95,8 @@ export default async function EditProductPage({
             />
 
             <ProductFilesSection
-            productId={product.id}
-            files={product.product_files ?? []}
+                productId={product.id}
+                files={product.product_files ?? []}
             />
         </section>
     );
