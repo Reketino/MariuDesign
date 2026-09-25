@@ -314,7 +314,8 @@ export default function ProductForm({
                 },
             );
 
-            
+            const data = await response.json();
+
         } catch (error) {
             setError(
                 error instanceof Error
