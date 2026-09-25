@@ -31,10 +31,7 @@ import {
     uploadProductImages,
 } from "./utils/productImageService";
 
-import {
-    deleteProductFile,
-    uploadProductFile,
-} from "./utils/productFileService";
+import { uploadProductFile } from "./utils/productFileService";
 
 import {
     deleteProduct,
