@@ -53,7 +53,7 @@ export async function DELETE(_request: Request, { params }: RouteContext) {
       success: true,
     });
   } catch (error) {
-    console.error("Failed to delete product:", error);
+    console.error("Failed to delete product file:", error);
 
     return NextResponse.json(
       {
