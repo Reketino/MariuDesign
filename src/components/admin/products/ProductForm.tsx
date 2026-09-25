@@ -299,17 +299,22 @@ export default function ProductForm({
             return;
         }
 
+        if (!product) {
+            return;
+        }
+
         setError("");
         setLoading(true);
 
         try {
-            await deleteProductFile({
-                supabase,
-                fileId: file.id,
-                storagePath: file.storage_path,
-            });
+            const response = await fetch(
+                `/api/admin/products/${product.id}/files/${file.id}`,
+                {
+                    method: "DELETE"
+                },
+            );
 
-            router.refresh();
+            
         } catch (error) {
             setError(
                 error instanceof Error
