@@ -7,4 +7,11 @@ type RouteContext = {
     params: Promise<{
         slug: string;
     }>;
+};
+
+export async function POST(
+    _request: Request,
+    { params }: RouteContext,
+) {
+
 }
