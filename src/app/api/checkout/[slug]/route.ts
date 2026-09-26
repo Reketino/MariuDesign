@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { stripe } from "@/lib/stripe/server";
 import { createClient } from "@/lib/supabase/server";
+import { error } from "console";
 
 type RouteContext = {
     params: Promise<{
@@ -21,4 +22,17 @@ export async function POST(
         user,
     },
     } = await supabase.auth.getUser();
+
+    if (!user) {
+        return NextResponse.json(
+            {
+                error: "You must be logged in to purchase a product.",
+            },
+            {
+                status: 401,
+            },
+        );
+    }
+
+    
 }
