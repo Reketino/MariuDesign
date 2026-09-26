@@ -34,5 +34,21 @@ export async function POST(
         );
     }
 
-    
+        const { data: product, error: productError } = await supabase
+        .from("products")
+        .select(`
+            id,
+            title,
+            slug,
+            status,
+            product_prices (
+                id,
+                currency,
+                amount
+            )
+        `)
+        .eq("slug", slug)
+        .eq("status", "published")
+        .single();
+
 }
