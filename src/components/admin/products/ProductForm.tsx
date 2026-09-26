@@ -318,11 +318,11 @@ export default function ProductForm({
 
             if (!response.ok) {
                 throw new Error(
-                    data.errorr || "Failed to delete product file.",
+                    data.error || "Failed to delete product file.",
                 );
             }
 
-            router.refresh
+            router.refresh();
         } catch (error) {
             setError(
                 error instanceof Error
