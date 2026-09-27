@@ -51,4 +51,91 @@ export async function POST(
         .eq("status", "published")
         .single();
 
+        if (productError || !product) {
+            return NextResponse.json(
+                {
+                    error: "Product not found.",
+                },
+                {
+                    status: 404,
+                },
+            );
+        }
+
+        const price = product.product_prices?.[0];
+
+        if (!price) {
+            return NextResponse.json(
+                {
+                    error: "This product does not have a price."
+                },
+                {
+                    status: 400,
+                },
+            );
+        }
+
+        const amount = Number(price.amount)
+
+        if (!Number.isFinite(amount) || amount <= 0) {
+            return NextResponse.json(
+                {
+                    error: "Invalid product price.",
+                },
+                {
+                    status: 400,
+                },
+            );
+        }
+
+        const currency = price.currency.toLowerCase();
+
+        const { data: order, error: orderError } = await supabase
+        .from("orders")
+        .insert({
+            user_id: user.id,
+            status: "pending",
+            currency: price.currency,
+            total_amount: amount
+        })
+        .select("id")
+        .single();
+
+        if (orderError || !order) {
+            console.error(
+                "Failed to create order:",
+                orderError,
+            );
+
+            return NextResponse.json(
+                {
+                    error: "Failed to create order.",
+                },
+                {
+                    status: 500,
+                },
+            );
+        }
+
+        const { error: orderItemError } = await supabase
+        .from("order_items")
+        .insert({
+            order_id: order.id,
+            product_id: product.id,
+            price: amount,
+            currency: price.currency,
+        });
+
+        if (orderItemError) {
+            console.error(
+                "Failed to create order item:",
+                orderItemError,
+            );
+
+            await supabase 
+            .from("orders")
+            .delete()
+            .eq("id", order.id);
+        }
+
 }
