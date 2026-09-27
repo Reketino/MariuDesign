@@ -131,6 +131,11 @@ export async function POST(
                 "Failed to create order item:",
                 orderItemError,
             );
+
+            await supabase 
+            .from("orders")
+            .delete()
+            .eq("id", order.id);
         }
 
 }
