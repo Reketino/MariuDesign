@@ -63,4 +63,16 @@ export async function POST(
         }
 
         const price = product.product_prices?.[0];
+
+        if (!price) {
+            return NextResponse.json(
+                {
+                    error: "This product does not have a price."
+                },
+                {
+                    status: 400,
+                },
+            );
+        }
+        
 }
