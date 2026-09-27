@@ -74,5 +74,17 @@ export async function POST(
                 },
             );
         }
-        
+
+        const amount = Number(price.amount)
+
+        if (!Number.isFinite(amount) || amount <= 0) {
+            return NextResponse.json(
+                {
+                    error: "Invalid product price.",
+                },
+                {
+                    status: 400,
+                },
+            );
+        }
 }
