@@ -100,4 +100,11 @@ export async function POST(
         })
         .select("id")
         .single();
+
+        if (orderError || !order) {
+            console.error(
+                "Failed to create order:",
+                orderError,
+            );
+        }
 }
