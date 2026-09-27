@@ -87,4 +87,17 @@ export async function POST(
                 },
             );
         }
+
+        const currency = price.currency.toLowerCase();
+
+        const { data: order, error: orderError } = await supabase
+        .from("orders")
+        .insert({
+            user_id: user.id,
+            status: "pending",
+            currency: price.currency,
+            total_amount: amount
+        })
+        .select("id")
+        .single();
 }
