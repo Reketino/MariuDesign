@@ -136,6 +136,16 @@ export async function POST(
             .from("orders")
             .delete()
             .eq("id", order.id);
+
+            return NextResponse.json(
+                {
+                    error: "Failed to create order item.",
+                },
+                {
+                    status: 500,
+                },
+            );
         }
 
+        
 }
