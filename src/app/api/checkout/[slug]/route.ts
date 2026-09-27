@@ -116,4 +116,15 @@ export async function POST(
                 },
             );
         }
+
+        const { error: orderItemError } = await supabase
+        .from("order_items")
+        .insert({
+            order_id: order.id,
+            product_id: product.id,
+            price: amount,
+            currency: price.currency,
+        });
+
+        
 }
