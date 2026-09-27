@@ -51,4 +51,15 @@ export async function POST(
         .eq("status", "published")
         .single();
 
+        if (productError || !product) {
+            return NextResponse.json(
+                {
+                    error: "Product not found.",
+                },
+                {
+                    status: 404,
+                }
+            )
+        }
+
 }
