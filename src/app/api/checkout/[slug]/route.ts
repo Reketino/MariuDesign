@@ -126,5 +126,11 @@ export async function POST(
             currency: price.currency,
         });
 
-        
+        if (orderItemError) {
+            console.error(
+                "Failed to create order item:",
+                orderItemError,
+            );
+        }
+
 }
