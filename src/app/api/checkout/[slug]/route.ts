@@ -58,8 +58,9 @@ export async function POST(
                 },
                 {
                     status: 404,
-                }
-            )
+                },
+            );
         }
 
+        const price = product.product_prices?.[0];
 }
