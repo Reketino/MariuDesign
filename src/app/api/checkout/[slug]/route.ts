@@ -186,7 +186,7 @@ export async function POST(
         const { error: updateError } = await supabase
         .from("orders")
         .update({
-            stripe_checkout_sessoin_id: session.id
+            stripe_checkout_session_id: session.id
         })
         .eq("id", order.id);
 
