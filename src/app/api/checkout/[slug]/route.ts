@@ -169,6 +169,12 @@ export async function POST(
                 },
             ],
             
+            metadata: {
+                order_id: order.id,
+                product_id: product.id,
+                user_id: user.id,
+            },
+            
         })
         }
 }
