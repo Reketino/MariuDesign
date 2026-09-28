@@ -147,5 +147,81 @@ export async function POST(
             );
         }
 
+        try {
+            const siteUrl = 
+            process.env.NEXT_PUBLIC_SITE_URL ??
+            "http://localhost:3000";
         
+
+        const session = await stripe.checkout.sessions.create({
+            mode: "payment",
+
+            line_items: [
+                {
+                    price_data: {
+                        currency,
+                        product_data: {
+                            name: product.title,
+                        },
+                        unit_amount: Math.round(amount * 100),
+                    },
+                    quantity: 1,
+                },
+            ],
+            
+            metadata: {
+                order_id: order.id,
+                product_id: product.id,
+                user_id: user.id,
+            },
+
+            success_url: 
+            `${siteUrl}/checkout/success` +
+            `?session_id={CHECKOUT_SESSION_ID}`,
+
+            cancel_url:
+            `${siteUrl}/products/${product.slug}`,
+        });
+
+        const { error: updateError } = await supabase
+        .from("orders")
+        .update({
+            stripe_checkout_sessoin_id: session.id
+        })
+        .eq("id", order.id);
+
+        if (updateError) {
+            console.error(
+                "failed to save Stripe checkout session:",
+                updateError,
+            );
+
+            return NextResponse.json(
+                {
+                    error: "Failed to prepare checkout.",
+                },
+                {
+                    status: 500,
+                },
+            );
+        }
+
+        return NextResponse.json({
+            url: session.url,
+        });
+        } catch (error) {
+            console.error(
+                "Failed to create Stripe checkout session:",
+                error,
+            );
+
+            return NextResponse.json(
+                {
+                    error: "Failed to create checkout session.",
+                },
+                {
+                    status: 500,
+                },
+            );
+        }
 }
