@@ -199,7 +199,7 @@ export async function POST(
             return NextResponse.json(
                 {
                     error: "Failed to prepare checkout.",
-                }
+                },
                 {
                     status: 500,
                 },
