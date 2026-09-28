@@ -195,7 +195,16 @@ export async function POST(
                 "failed to save Stripe checkout session:",
                 updateError,
             );
-            
+
+            return NextResponse.json(
+                {
+                    error: "Failed to prepare checkout.",
+                }
+                {
+                    status: 500,
+                },
+            );
         }
+        
         }
 }
