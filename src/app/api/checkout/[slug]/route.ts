@@ -214,5 +214,14 @@ export async function POST(
                 "Failed to create Stripe checkout session:",
                 error,
             );
+
+            return NextResponse.json(
+                {
+                    error: "Failed to create checkout session.",
+                },
+                {
+                    status: 500,
+                },
+            );
         }
 }
