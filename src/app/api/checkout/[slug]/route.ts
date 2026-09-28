@@ -157,8 +157,18 @@ export async function POST(
             mode: "payment",
 
             line_items: [
-
-            ]
+                {
+                    price_data: {
+                        currency,
+                        product_data: {
+                            name: product.title,
+                        },
+                        unit_amount: Math.round(amount * 100),
+                    },
+                    quantity: 1,
+                },
+            ],
+            
         })
         }
 }
