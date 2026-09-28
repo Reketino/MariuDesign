@@ -174,6 +174,10 @@ export async function POST(
                 product_id: product.id,
                 user_id: user.id,
             },
+
+            success_url: 
+            `${siteUrl}/checkout/success` +
+            `?session_id={CHECKOUT_SESSION_ID}`,
             
         })
         }
