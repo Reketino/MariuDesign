@@ -182,6 +182,20 @@ export async function POST(
             cancel_url:
             `${siteUrl}/products/${product.slug}`,
         });
-        
+
+        const { error: updateError } = await supabase
+        .from("orders")
+        .update({
+            stripe_checkout_sessoin_id: session.id
+        })
+        .eq("id", order.id);
+
+        if (updateError) {
+            console.error(
+                "failed to save Stripe checkout session:",
+                updateError,
+            );
+            
+        }
         }
 }
