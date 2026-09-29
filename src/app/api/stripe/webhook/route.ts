@@ -102,7 +102,12 @@ export async function POST(request: Request) {
                 .eq("id", orderId)
                 .eq("status", "pending");
 
-                
+                if (error) {
+                    console.error(
+                        "Failed to mark order as paid:",
+                        error,
+                    );
+                }
             }
         }
     }
