@@ -70,4 +70,30 @@ export async function POST(request: Request) {
     }
 
     const supabase = await createClient();
+
+    try {
+        switch (event.type) {
+            case "checkout.session.completed": {
+                const session = event.data.object;
+
+                const orderId = 
+                session.metadata?.order_id;
+
+                if (!orderId) {
+                    console.error(
+                        "Stripe checkout session is missing order_id metadata."
+                    );
+
+                    return NextResponse.json(
+                        {
+                            error: "Missing order metadata.",
+                        },
+                        {
+                            status: 400
+                        }
+                    )
+                }
+            }
+        }
+    }
 }
