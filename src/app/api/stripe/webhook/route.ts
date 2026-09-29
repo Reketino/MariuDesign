@@ -28,5 +28,5 @@ export async function POST(request: Request) {
         );
     }
 
-    
+    let event: Stripe.Event;
 }
