@@ -29,4 +29,17 @@ export async function POST(request: Request) {
     }
 
     let event: Stripe.Event;
+
+    try {
+        event = stripe.webhooks.constructEvent(
+            body,
+            signature,
+            webhookSecret,
+        );
+    } catch (error) {
+        console.error(
+            "Failed to verify Stripe webhook:",
+            error,
+        );
+    }
 }
