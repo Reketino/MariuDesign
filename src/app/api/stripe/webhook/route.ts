@@ -68,4 +68,6 @@ export async function POST(request: Request) {
             },
         );
     }
+
+    const supabase = await createClient();
 }
