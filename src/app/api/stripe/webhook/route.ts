@@ -41,5 +41,14 @@ export async function POST(request: Request) {
             "Failed to verify Stripe webhook:",
             error,
         );
+
+        return NextResponse.json(
+            {
+                error: "Invalid Stripe webhook signature.",
+            },
+            {
+                status: 400,
+            },
+        );
     }
 }
