@@ -5,6 +5,7 @@ import Stripe from "stripe";
 import { stripe } from "@/lib/stripe/server";
 
 import { createClient } from "@/lib/supabase/server";
+import { error } from "console";
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -13,6 +14,22 @@ if (!webhookSecret) {
 }
 
 export async function POST(request: Request) {
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+    if (!webhookSecret) {
+        console.error(
+            "Missing STRIPE_WEBHOOK_SECRET",
+        );
+
+        return NextResponse.json(
+            {
+                error: "Webhook configuration error.",
+            },
+            {
+                status: 500,
+            },
+        );
+    }
     const body = await request.text();
 
     const signature = request.headers.get("stripe-signature");
