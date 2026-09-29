@@ -78,6 +78,14 @@ export async function POST(request: Request) {
 
                 const orderId = 
                 session.metadata?.order_id;
+
+                if (!orderId) {
+                    console.error(
+                        "Stripe checkout session is missing order_id metadata."
+                    );
+
+                    
+                }
             }
         }
     }
