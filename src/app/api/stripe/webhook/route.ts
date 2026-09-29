@@ -70,4 +70,14 @@ export async function POST(request: Request) {
     }
 
     const supabase = await createClient();
+
+    try {
+        switch (event.type) {
+            case "checkout.session.completed": {
+                const session = event.data.object;
+
+                
+            }
+        }
+    }
 }
