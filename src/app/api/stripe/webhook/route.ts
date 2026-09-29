@@ -107,6 +107,15 @@ export async function POST(request: Request) {
                         "Failed to mark order as paid:",
                         error,
                     );
+
+                    return NextResponse.json(
+                        {
+                            error: "Failed to update order.",
+                        },
+                        {
+                            status: 500,
+                        },
+                    );
                 }
             }
         }
