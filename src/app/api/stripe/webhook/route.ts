@@ -89,10 +89,20 @@ export async function POST(request: Request) {
                             error: "Missing order metadata.",
                         },
                         {
-                            status: 400
-                        }
-                    )
+                            status: 400,
+                        },
+                    );
                 }
+
+                const { error } = await supabase
+                .from("orders")
+                .update({
+                    status: "paid",
+                })
+                .eq("id", orderId)
+                .eq("status", "pending");
+
+                
             }
         }
     }
