@@ -76,7 +76,8 @@ export async function POST(request: Request) {
             case "checkout.session.completed": {
                 const session = event.data.object;
 
-                
+                const orderId = 
+                session.metadata?.order_id;
             }
         }
     }
