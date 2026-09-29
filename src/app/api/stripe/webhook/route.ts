@@ -84,7 +84,14 @@ export async function POST(request: Request) {
                         "Stripe checkout session is missing order_id metadata."
                     );
 
-                    
+                    return NextResponse.json(
+                        {
+                            error: "Missing order metadata.",
+                        },
+                        {
+                            status: 400
+                        }
+                    )
                 }
             }
         }
