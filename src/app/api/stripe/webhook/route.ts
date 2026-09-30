@@ -121,7 +121,8 @@ export async function POST(request: Request) {
                 console.log(
                     `Order ${orderId} marked as paid.`,
                 );
-                
+
+                break;
             }
         }
     }
