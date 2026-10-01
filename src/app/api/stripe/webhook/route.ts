@@ -137,6 +137,14 @@ export async function POST(request: Request) {
 
                     break;
                 }
+
+                const { error } = await supabase
+                .from("orders")
+                .update({
+                    status: "failed", 
+                })
+                .eq("id", orderId)
+                .eq("status", "pending");
             }
         }
     }
