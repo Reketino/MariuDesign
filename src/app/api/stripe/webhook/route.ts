@@ -133,7 +133,9 @@ export async function POST(request: Request) {
                 if (!orderId) {
                     console.warn(
                         "Expired Stripe session is missing order_id metadata."
-                    )
+                    );
+
+                    break;
                 }
             }
         }
