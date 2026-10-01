@@ -124,6 +124,55 @@ export async function POST(request: Request) {
 
                 break;
             }
+            case "checkout.session.expired": {
+                const session = event.data.object
+
+                const orderId =
+                session.metadata?.order_id;
+
+                if (!orderId) {
+                    console.warn(
+                        "Expired Stripe session is missing order_id metadata."
+                    );
+
+                    break;
+                }
+
+                const { error } = await supabase
+                .from("orders")
+                .update({
+                    status: "failed", 
+                })
+                .eq("id", orderId)
+                .eq("status", "pending");
+
+                if (error) {
+                    console.error(
+                        "Failed to mark expired order:",
+                        error,
+                    );
+                    
+                    return NextResponse.json(
+                        {
+                            error: "Failed to update expired order.",
+                        },
+                        {
+                            status: 500,
+                        },
+                    );
+                }
+
+                console.log(
+                    `Order ${orderId} marked as failed.`,
+                );
+
+                break;
+            }
+
+            default:
+                console.log(
+                    `Unhandled Stripe event: ${event.type}`,
+                );
         }
     }
 }
