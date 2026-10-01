@@ -174,5 +174,9 @@ export async function POST(request: Request) {
                     `Unhandled Stripe event: ${event.type}`,
                 );
         }
+
+        return NextResponse.json({
+            received: true,
+        });
     }
 }
