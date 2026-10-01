@@ -152,6 +152,14 @@ export async function POST(request: Request) {
                         error,
                     );
                     
+                    return NextResponse.json(
+                        {
+                            error: "Failed to update expired order.",
+                        },
+                        {
+                            status: 500,
+                        },
+                    );
                 }
             }
         }
