@@ -126,6 +126,9 @@ export async function POST(request: Request) {
             }
             case "checkout.session.expired": {
                 const session = event.data.object
+
+                const orderId =
+                session.metadata?.order_id;
             }
         }
     }
