@@ -168,6 +168,11 @@ export async function POST(request: Request) {
 
                 break;
             }
+
+            default:
+                console.log(
+                    `Unhandled Stripe event: ${event.type}`,
+                );
         }
     }
 }
