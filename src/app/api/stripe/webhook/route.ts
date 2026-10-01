@@ -124,6 +124,9 @@ export async function POST(request: Request) {
 
                 break;
             }
+            case "checkout.session.expired": {
+                
+            }
         }
     }
 }
