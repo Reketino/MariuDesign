@@ -5,7 +5,6 @@ import Stripe from "stripe";
 import { stripe } from "@/lib/stripe/server";
 
 import { createClient } from "@/lib/supabase/server";
-import { error } from "console";
 
 
 export async function POST(request: Request) {
