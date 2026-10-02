@@ -10,3 +10,8 @@ if (!supabaseUrl) {
 if (!serviceRoleKey) {
     throw new Error("Missing SUPABASE_SERVICE_ROLE_KEY");
 }
+
+export const supabaseAdmin = createClient(
+    supabaseUrl,
+    serviceRoleKey,
+)
