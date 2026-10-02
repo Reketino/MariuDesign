@@ -7,11 +7,6 @@ import { stripe } from "@/lib/stripe/server";
 import { createClient } from "@/lib/supabase/server";
 import { error } from "console";
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
-if (!webhookSecret) {
-  throw new Error("Missing STRIPE_WEBHOOK_SECRET");
-}
 
 export async function POST(request: Request) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
