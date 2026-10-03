@@ -56,6 +56,23 @@ export async function GET(
         );
     }
 
+    const {data: paidOrder, error: orderError } = await supabaseAdmin
+    .from("orders")
+    .select(
+        `
+        id,
+        status,
+        order_items!inner (
+        product_id
+        )
+        `,
+    )
+    .eq("user_id", user.id)
+    .eq("status", "paid")
+    .eq("order_items.product_id", product.id)
+    .limit(1)
+    .maybeSingle();
+
     const { data: productFile, error: fileError } = await supabase
         .from("product_files")
         .select(`
