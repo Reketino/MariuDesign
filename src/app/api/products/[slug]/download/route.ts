@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { error } from "console";
 
 type RouteContext = {
     params: Promise<{
@@ -20,6 +21,17 @@ export async function GET(
     const supabase = await createClient();
 
     const { data: { user }} = await supabase.auth.getUser();
+
+    if (!user) {
+        return NextResponse.json(
+            {
+                error: "You must be logged in to download this product.",
+            },
+            {
+                status: 401,
+            },
+        );
+    }
 
     const { data: product, error: productError } = await supabase
         .from("products")
