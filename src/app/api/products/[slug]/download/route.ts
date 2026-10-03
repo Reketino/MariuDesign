@@ -89,6 +89,17 @@ export async function GET(
         );
     }
 
+    if (!paidOrder) {
+        return NextResponse.json(
+            {
+                error: "You have not purchased this product."
+            },
+            {
+                status: 403,
+            },
+        );
+    }
+
     const { data: productFile, error: fileError } = await supabase
         .from("product_files")
         .select(`
