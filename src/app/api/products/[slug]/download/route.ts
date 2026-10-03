@@ -79,7 +79,14 @@ export async function GET(
             orderError,
         );
 
-        
+        return NextResponse.json(
+            {
+                error: "Failed to verify product purchase.",
+            },
+            {
+                status: 500,
+            },
+        );
     }
 
     const { data: productFile, error: fileError } = await supabase
