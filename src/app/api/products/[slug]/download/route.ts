@@ -73,6 +73,15 @@ export async function GET(
     .limit(1)
     .maybeSingle();
 
+    if (orderError) {
+        console.error(
+            "Failed to verify product purchase:",
+            orderError,
+        );
+
+        
+    }
+
     const { data: productFile, error: fileError } = await supabase
         .from("product_files")
         .select(`
