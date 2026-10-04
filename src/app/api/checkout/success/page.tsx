@@ -9,3 +9,9 @@ type SuccessPageProps = {
         session_id?: string;
     }>;
 };
+
+export default async function CheckoutSuccessPage({
+    searchParams,
+}: SuccessPageProps) {
+    
+}
