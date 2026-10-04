@@ -8,7 +8,7 @@ if (!supabaseUrl) {
 }
 
 if (!secretKey) {
-  throw new Error("Missing SUPABASE_SERVICE_ROLE_KEY");
+  throw new Error("Missing SUPABASE_SECRET_KEY");
 }
 
 export const supabaseAdmin = createClient(supabaseUrl, secretKey, {
