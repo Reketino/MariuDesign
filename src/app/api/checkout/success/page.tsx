@@ -35,6 +35,8 @@ export default async function CheckoutSuccessPage({
                 </Link>
                 </section>
             </main>
-        )
+        );
     }
+
+    const supabase = await createClient();
 }
