@@ -13,5 +13,5 @@ type SuccessPageProps = {
 export default async function CheckoutSuccessPage({
     searchParams,
 }: SuccessPageProps) {
-    
+    const { session_id: sessionId } = await searchParams;
 }
