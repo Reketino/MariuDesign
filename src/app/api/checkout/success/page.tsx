@@ -22,6 +22,11 @@ export default async function CheckoutSuccessPage({
                 <h1 className="text-2xl font-semibold text-white">
                     Invalid checkout session
                 </h1>
+
+                <p className="mt-3 text-sm leading-6 text-zinc-400">
+                     We could not find a valid Stripe checkout session.
+                </p>
+                
                 </section>
             </main>
         )
