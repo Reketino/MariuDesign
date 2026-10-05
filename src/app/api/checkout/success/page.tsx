@@ -115,6 +115,21 @@ export default async function CheckoutSuccessPage({
                 </Link>
                 </section>
             </main>
-        )
+        );
     }
+
+    const { data: order, error: orderError } = await supabaseAdmin
+    .from("orders")
+    .select(
+        `
+        id,
+        status,
+        total_amount,
+        currency,
+        stripe_checkout_session_id
+        `,
+    )
+    .eq("stripe_checkout_session_id", session.id)
+    .eq("user_id", user.id)
+    .maybeSingle();
 }
