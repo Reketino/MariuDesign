@@ -97,6 +97,22 @@ export default async function CheckoutSuccessPage({
                 <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
                     Mariudesign
                 </p>
+
+                <h1 className="mt-3 text-2xl font-semibold text-white">
+                    Payment is still processing
+                </h1>
+
+                <p className="mt-3 text-sm leading-6 text-zinc-400">
+                    Stripe has not confirmed the payment yet. Please wait a
+                    moment and check your order again.
+                </p>
+
+                <Link
+                href="/shop"
+                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                >
+                    Back to store
+                </Link>
                 </section>
             </main>
         )
