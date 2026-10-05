@@ -132,4 +132,14 @@ export default async function CheckoutSuccessPage({
     .eq("stripe_checkout_session_id", session.id)
     .eq("user_id", user.id)
     .maybeSingle();
+
+    if (orderError) {
+        console.error("Failed to fetch order:", orderError);
+
+        return (
+            <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
+                
+            </main>
+        )
+    }
 }
