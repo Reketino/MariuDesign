@@ -149,6 +149,30 @@ export default async function CheckoutSuccessPage({
                 </p>
                 </section>
             </main>
-        )
+        );
+    }
+
+    if (!order) {
+        return (
+             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
+                <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+                    <h1 className="text-2xl font-semibold text-white">
+                        Payment received
+                    </h1>
+
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">
+                        Your payment was received, but your order is still
+                        being prepared. Please wait a moment and try again.
+                    </p>
+
+                    <Link
+                        href="/shop"
+                        className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    >
+                        Back to store
+                    </Link>
+                </section>
+            </main>
+        );
     }
 }
