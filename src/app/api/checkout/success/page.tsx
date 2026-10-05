@@ -47,10 +47,18 @@ export default async function CheckoutSuccessPage({
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
                 <h1 className="text-2xl font-semibold text-white">
-                    
+                    You need to be logged in to access your purchase.
                 </h1>
+
+                <Link
+                href="/login"
+                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                >
+                    Log in
+                </Link>
                 </section>
             </main>
-        )
+        );
     }
+    
 }
