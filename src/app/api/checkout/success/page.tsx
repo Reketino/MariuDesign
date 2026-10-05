@@ -58,6 +58,14 @@ export default async function CheckoutSuccessPage({
                 </Link>
                 </section>
             </main>
-        )
+        );
+    }
+
+    let session;
+
+    try {
+        session = await stripe.checkout.sessions.retrieve(sessionId);
+    } catch (error) {
+        console.error("Failed to retrieve Stripe chekout session:", error);
     }
 }
