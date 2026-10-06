@@ -185,6 +185,16 @@ export default async function CheckoutSuccessPage({
 
     if (orderItemError || !orderItem) {
         console.error("Failed to fetch order item:", orderItemError);
+
+        return (
+            <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
+                <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+                <h1 className="text-2xl font-semibold text-white">
+                    Payment received
+                </h1>
+                </section>
+            </main>
+        )
     }
 
 }
