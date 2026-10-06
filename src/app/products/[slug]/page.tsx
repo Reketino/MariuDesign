@@ -8,6 +8,7 @@ import type { ProductImage } from "@/types/products";
 
 import { getProductImageUrl } from "@/components/admin/products/utils/productImage";
 import DownloadProductButton from "@/components/admin/products/DownloadProductButton";
+import BuyProductButton from "@/components/products/BuyProductButton";
 
 type ProductPageData = {
     id: string;
@@ -45,27 +46,34 @@ export default async function ProductPage({
 
     const supabase = await createClient();
 
-    const { data: product, error } = await supabase
-        .from("products")
-        .select(`
+const { data: product, error } = await supabase
+    .from("products")
+    .select(`
+        id,
+        title,
+        slug,
+        description,
+        license,
+        categories (
             id,
-            title,
-            slug,
-            description,
-            license,
-            categories (
-                id,
-                name,
-                slug
-            ),
-            product_images (
-                id,
-                product_id,
-                storage_path,
-                alt_text,
-                sort_order
-            )
-        `)
+            name,
+            slug
+        ),
+        product_images (
+            id,
+            product_id,
+            storage_path,
+            alt_text,
+            sort_order
+        ),
+        product_prices (
+            id,
+            product_id,
+            currency,
+            amount,
+            created_at
+        )
+    `)
         .eq("slug", slug)
         .eq("status", "published")
         .single();
@@ -237,7 +245,14 @@ export default async function ProductPage({
                             </dl>
                         </div>
 
-                        <div className="mt-10">
+                        <div className="mt-10 space-y-3">
+                            {price && (
+                                <BuyProductButton
+                                slug={productData.slug}
+                                price={Number(price.amount)}
+                                currency={price.currency}
+                                />
+                            )}
                             <DownloadProductButton slug={productData.slug} />
 
                             <p className="mt-3 text-center text-xs text-zinc-500">
