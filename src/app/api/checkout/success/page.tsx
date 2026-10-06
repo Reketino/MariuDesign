@@ -256,6 +256,25 @@ export default async function CheckoutSuccessPage({
                 </Link>
                 </section>
             </main>
-        )
+        );
     }
+
+    return (
+        <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
+            <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+            <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
+                Mariudesign
+            </p>
+
+            <h1 className="mt-3 text-3xl font-semibold text-white">
+                Payment successful
+            </h1>
+
+            <p className="mt-4 text-sm leading-6 text-zinc-400">
+                Thank you for your purchase. Your digital product is ready
+                to download.
+            </p>
+            </section>
+        </main>
+    )
 }
