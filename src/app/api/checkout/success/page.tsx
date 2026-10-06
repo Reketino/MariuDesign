@@ -309,6 +309,10 @@ export default async function CheckoutSuccessPage({
                 Back to store
             </Link>
 
+            <p className="mt-6 text-xs text-zinc-600">
+                Order: 
+            </p>
+
             </section>
         </main>
     )
