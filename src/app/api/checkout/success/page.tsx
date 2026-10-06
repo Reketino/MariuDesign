@@ -224,6 +224,38 @@ export default async function CheckoutSuccessPage({
                 </p>
                 </section>
             </main>
+        );
+    }
+
+    if (order.status !== "paid") {
+        return (
+            <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-10">
+                <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+                <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
+                    Mariudesign
+                </p>
+
+                <h1 className="mt-3 text-3xl font-semibold text-white">
+                    Payment received
+                </h1>
+
+                <p className="mt-4 text-sm leading-6 text-zinc-400">
+                    Your payment was successful. We are just waiting for
+                    the order confirmation to finish processing. 
+                </p>
+
+                <p className="mt-3 text-xs text-zinc-600">
+                    Order: {order.id}
+                </p>
+
+                <Link
+                href={`/products/${product.slug}`}
+                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                >
+                    View product
+                </Link>
+                </section>
+            </main>
         )
     }
 }
