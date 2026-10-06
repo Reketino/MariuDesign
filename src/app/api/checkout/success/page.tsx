@@ -175,4 +175,16 @@ export default async function CheckoutSuccessPage({
             </main>
         );
     }
+
+    const { data: orderItem, error: orderItemError } = await supabaseAdmin
+        .from("order_items")
+        .select("product_id")
+        .eq("order_id", order.id)
+        .limit(1)
+        .maybeSingle();
+
+    if (orderItemError || !orderItem) {
+        console.error("Failed to fetch order item:", orderItemError);
+    }
+
 }
