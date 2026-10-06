@@ -274,6 +274,27 @@ export default async function CheckoutSuccessPage({
                 Thank you for your purchase. Your digital product is ready
                 to download.
             </p>
+
+            <div className="mt-8 rounded-lg border border-zinc-800 bg-zinc-950/60 p-5 text-left">
+            <p className="text-xs uppercase tracking-widest text-zinc-500">
+                Product
+            </p>
+
+            <p className="mt-2 font-medium text-white">
+                {product.title}
+            </p>
+
+            <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
+                <span className="text-sm text-zinc-500">
+                    Total
+                </span>
+
+                <span className="text-sm font-medium text-white">
+                    {Number(order.total_amount).toFixed(2)}{" "}
+                    {order.currency}
+                </span>
+            </div>
+            </div>
             </section>
         </main>
     )
