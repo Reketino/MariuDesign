@@ -199,7 +199,31 @@ export default async function CheckoutSuccessPage({
                 </p>
                 </section>
             </main>
-        )
+        );
     }
 
+    const { data: product, error: productError} = await supabaseAdmin
+        .from("products")
+        .select("title, slug")
+        .eq("id", orderItem.product_id)
+        .single();
+    
+    if (productError || !product) {
+        console.error("Failed to fetch purchased product:", productError);
+
+        return (
+            <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
+                <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
+                <h1 className="text-2xl font-semibold text-white">
+                    Payment received
+                </h1>
+
+                <p className="mt-3 text-sm leading-6 text-zinc-400">
+                    Your payment was successful, but we could not find the
+                    purchased product.
+                </p>
+                </section>
+            </main>
+        )
+    }
 }
