@@ -310,7 +310,7 @@ export default async function CheckoutSuccessPage({
             </Link>
 
             <p className="mt-6 text-xs text-zinc-600">
-                Order: 
+                Order: {order.id}
             </p>
 
             </section>
