@@ -295,6 +295,20 @@ export default async function CheckoutSuccessPage({
                 </span>
             </div>
             </div>
+
+            <Link
+            href={`/products/${product.slug}`}
+            className="mt-8 flex w-full items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200">
+                Download your product
+            </Link>
+
+            <Link 
+            href="/shop"
+            className="mt-4 inline-flex text-sm text-zinc-500 transition hover:text-white"
+            >
+                Back to store
+            </Link>
+
             </section>
         </main>
     )
