@@ -4,7 +4,7 @@ import Stripe from "stripe";
 
 import { stripe } from "@/lib/stripe/server";
 
-import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export async function POST(request: Request) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -53,8 +53,6 @@ export async function POST(request: Request) {
     );
   }
 
-  const supabase = await createClient();
-
   try {
     switch (event.type) {
       case "checkout.session.completed": {
@@ -77,7 +75,7 @@ export async function POST(request: Request) {
           );
         }
 
-        const { error } = await supabase
+        const { error } = await supabaseAdmin
           .from("orders")
           .update({
             status: "paid",
@@ -113,7 +111,7 @@ export async function POST(request: Request) {
           break;
         }
 
-        const { error } = await supabase
+        const { error } = await supabaseAdmin
           .from("orders")
           .update({
             status: "failed",

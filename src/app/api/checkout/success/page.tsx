@@ -19,20 +19,20 @@ export default async function CheckoutSuccessPage({
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <h1 className="text-2xl font-semibold text-white">
-                    Invalid checkout session
-                </h1>
+                    <h1 className="text-2xl font-semibold text-white">
+                        Invalid checkout session
+                    </h1>
 
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                     We could not find a valid Stripe checkout session.
-                </p>
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">
+                        We could not find a valid Stripe checkout session.
+                    </p>
 
-                <Link
-                href="/shop"
-                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                >
-                    Back to store
-                </Link>
+                    <Link
+                        href="/shop"
+                        className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    >
+                        Back to store
+                    </Link>
                 </section>
             </main>
         );
@@ -40,22 +40,22 @@ export default async function CheckoutSuccessPage({
 
     const supabase = await createClient();
 
-    const { data: { user }} = await supabase.auth.getUser();
+    const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <h1 className="text-2xl font-semibold text-white">
-                    You need to be logged in to access your purchase.
-                </h1>
+                    <h1 className="text-2xl font-semibold text-white">
+                        You need to be logged in to access your purchase.
+                    </h1>
 
-                <Link
-                href="/login"
-                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                >
-                    Log in
-                </Link>
+                    <Link
+                        href="/login"
+                        className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    >
+                        Log in
+                    </Link>
                 </section>
             </main>
         );
@@ -71,20 +71,20 @@ export default async function CheckoutSuccessPage({
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <h1 className="text-2xl font-semibold text-white">
-                    Checkout error
-                </h1>
+                    <h1 className="text-2xl font-semibold text-white">
+                        Checkout error
+                    </h1>
 
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                    We could not verify your Stripe chekout session.
-                </p>
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">
+                        We could not verify your Stripe chekout session.
+                    </p>
 
-                <Link
-                href="/shop"
-                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                >
-                   Back to store 
-                </Link>
+                    <Link
+                        href="/shop"
+                        className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    >
+                        Back to store
+                    </Link>
                 </section>
             </main>
         );
@@ -94,44 +94,44 @@ export default async function CheckoutSuccessPage({
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
-                    Mariudesign
-                </p>
+                    <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
+                        Mariudesign
+                    </p>
 
-                <h1 className="mt-3 text-2xl font-semibold text-white">
-                    Payment is still processing
-                </h1>
+                    <h1 className="mt-3 text-2xl font-semibold text-white">
+                        Payment is still processing
+                    </h1>
 
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                    Stripe has not confirmed the payment yet. Please wait a
-                    moment and check your order again.
-                </p>
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">
+                        Stripe has not confirmed the payment yet. Please wait a
+                        moment and check your order again.
+                    </p>
 
-                <Link
-                href="/shop"
-                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                >
-                    Back to store
-                </Link>
+                    <Link
+                        href="/shop"
+                        className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    >
+                        Back to store
+                    </Link>
                 </section>
             </main>
         );
     }
 
     const { data: order, error: orderError } = await supabaseAdmin
-    .from("orders")
-    .select(
-        `
+        .from("orders")
+        .select(
+            `
         id,
         status,
         total_amount,
         currency,
         stripe_checkout_session_id
         `,
-    )
-    .eq("stripe_checkout_session_id", session.id)
-    .eq("user_id", user.id)
-    .maybeSingle();
+        )
+        .eq("stripe_checkout_session_id", session.id)
+        .eq("user_id", user.id)
+        .maybeSingle();
 
     if (orderError) {
         console.error("Failed to fetch order:", orderError);
@@ -139,14 +139,14 @@ export default async function CheckoutSuccessPage({
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <h1 className="text-2xl font-semibold text-white">
-                    Order lookup failed
-                </h1>
+                    <h1 className="text-2xl font-semibold text-white">
+                        Order lookup failed
+                    </h1>
 
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                    Your payment was received, but we could not find the
-                    corresponding order.
-                </p>
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">
+                        Your payment was received, but we could not find the
+                        corresponding order.
+                    </p>
                 </section>
             </main>
         );
@@ -154,7 +154,7 @@ export default async function CheckoutSuccessPage({
 
     if (!order) {
         return (
-             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
+            <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
                     <h1 className="text-2xl font-semibold text-white">
                         Payment received
@@ -189,39 +189,39 @@ export default async function CheckoutSuccessPage({
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <h1 className="text-2xl font-semibold text-white">
-                    Payment received
-                </h1>
+                    <h1 className="text-2xl font-semibold text-white">
+                        Payment received
+                    </h1>
 
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                    Your payment was successful, but we could not find the
-                    purchased product.
-                </p>
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">
+                        Your payment was successful, but we could not find the
+                        purchased product.
+                    </p>
                 </section>
             </main>
         );
     }
 
-    const { data: product, error: productError} = await supabaseAdmin
+    const { data: product, error: productError } = await supabaseAdmin
         .from("products")
         .select("title, slug")
         .eq("id", orderItem.product_id)
         .single();
-    
+
     if (productError || !product) {
         console.error("Failed to fetch purchased product:", productError);
 
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <h1 className="text-2xl font-semibold text-white">
-                    Payment received
-                </h1>
+                    <h1 className="text-2xl font-semibold text-white">
+                        Payment received
+                    </h1>
 
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                    Your payment was successful, but we could not find the
-                    purchased product.
-                </p>
+                    <p className="mt-3 text-sm leading-6 text-zinc-400">
+                        Your payment was successful, but we could not find the
+                        purchased product.
+                    </p>
                 </section>
             </main>
         );
@@ -231,29 +231,29 @@ export default async function CheckoutSuccessPage({
         return (
             <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-10">
                 <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-                <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
-                    Mariudesign
-                </p>
+                    <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
+                        Mariudesign
+                    </p>
 
-                <h1 className="mt-3 text-3xl font-semibold text-white">
-                    Payment received
-                </h1>
+                    <h1 className="mt-3 text-3xl font-semibold text-white">
+                        Payment received
+                    </h1>
 
-                <p className="mt-4 text-sm leading-6 text-zinc-400">
-                    Your payment was successful. We are just waiting for
-                    the order confirmation to finish processing. 
-                </p>
+                    <p className="mt-4 text-sm leading-6 text-zinc-400">
+                        Your payment was successful. We are just waiting for
+                        the order confirmation to finish processing.
+                    </p>
 
-                <p className="mt-3 text-xs text-zinc-600">
-                    Order: {order.id}
-                </p>
+                    <p className="mt-3 text-xs text-zinc-600">
+                        Order: {order.id}
+                    </p>
 
-                <Link
-                href={`/products/${product.slug}`}
-                className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                >
-                    View product
-                </Link>
+                    <Link
+                        href={`/products/${product.slug}`}
+                        className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    >
+                        View product
+                    </Link>
                 </section>
             </main>
         );
@@ -262,58 +262,58 @@ export default async function CheckoutSuccessPage({
     return (
         <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-zinc-100">
             <section className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center">
-            <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
-                Mariudesign
-            </p>
+                <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
+                    Mariudesign
+                </p>
 
-            <h1 className="mt-3 text-3xl font-semibold text-white">
-                Payment successful
-            </h1>
+                <h1 className="mt-3 text-3xl font-semibold text-white">
+                    Payment successful
+                </h1>
 
-            <p className="mt-4 text-sm leading-6 text-zinc-400">
-                Thank you for your purchase. Your digital product is ready
-                to download.
-            </p>
+                <p className="mt-4 text-sm leading-6 text-zinc-400">
+                    Thank you for your purchase. Your digital product is ready
+                    to download.
+                </p>
 
-            <div className="mt-8 rounded-lg border border-zinc-800 bg-zinc-950/60 p-5 text-left">
-            <p className="text-xs uppercase tracking-widest text-zinc-500">
-                Product
-            </p>
+                <div className="mt-8 rounded-lg border border-zinc-800 bg-zinc-950/60 p-5 text-left">
+                    <p className="text-xs uppercase tracking-widest text-zinc-500">
+                        Product
+                    </p>
 
-            <p className="mt-2 font-medium text-white">
-                {product.title}
-            </p>
+                    <p className="mt-2 font-medium text-white">
+                        {product.title}
+                    </p>
 
-            <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
-                <span className="text-sm text-zinc-500">
-                    Total
-                </span>
+                    <div className="mt-4 flex items-center justify-between border-t border-zinc-800 pt-4">
+                        <span className="text-sm text-zinc-500">
+                            Total
+                        </span>
 
-                <span className="text-sm font-medium text-white">
-                    {Number(order.total_amount).toFixed(2)}{" "}
-                    {order.currency}
-                </span>
-            </div>
-            </div>
+                        <span className="text-sm font-medium text-white">
+                            {Number(order.total_amount).toFixed(2)}{" "}
+                            {order.currency}
+                        </span>
+                    </div>
+                </div>
 
-            <Link
-            href={`/products/${product.slug}`}
-            className="mt-8 flex w-full items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200">
-                Download your product
-            </Link>
+                <Link
+                    href={`/products/${product.slug}`}
+                    className="mt-8 flex w-full items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200">
+                    Download your product
+                </Link>
 
-            <Link 
-            href="/shop"
-            className="mt-4 inline-flex text-sm text-zinc-500 transition hover:text-white"
-            >
-                Back to store
-            </Link>
+                <Link
+                    href="/shop"
+                    className="mt-4 inline-flex text-sm text-zinc-500 transition hover:text-white"
+                >
+                    Back to store
+                </Link>
 
-            <p className="mt-6 text-xs text-zinc-600">
-                Order: {order.id}
-            </p>
+                <p className="mt-6 text-xs text-zinc-600">
+                    Order: {order.id}
+                </p>
 
             </section>
         </main>
-    )
+    );
 }
