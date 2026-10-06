@@ -192,6 +192,11 @@ export default async function CheckoutSuccessPage({
                 <h1 className="text-2xl font-semibold text-white">
                     Payment received
                 </h1>
+
+                <p className="mt-3 text-sm leading-6 text-zinc-400">
+                    Your payment was successful, but we could not find the
+                    purchased product.
+                </p>
                 </section>
             </main>
         )
