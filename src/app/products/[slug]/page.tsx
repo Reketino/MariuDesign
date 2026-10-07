@@ -88,6 +88,22 @@ const { data: product, error } = await supabase
 
     let hasPurchased = false;
 
+    if (user) {
+        const { data: purchase } = await supabase
+        .from("orders")
+        .select(` 
+            id,
+            order_items!inner (
+                product_id
+            )
+            `)
+            .eq("user_id", user.id)
+            .eq("status", "paid")
+            .eq("order_items.product_id", productData.id)
+            .limit(1)
+            .maybeSingle();
+    }
+
     const images = [...(productData.product_images ?? [])]
         .filter((image) => image.sort_order >= 0)
         .sort((a, b) => a.sort_order - b.sort_order);
