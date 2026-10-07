@@ -46,9 +46,9 @@ export default async function ProductPage({
 
     const supabase = await createClient();
 
-const { data: product, error } = await supabase
-    .from("products")
-    .select(`
+    const { data: product, error } = await supabase
+        .from("products")
+        .select(`
         id,
         title,
         slug,
@@ -83,6 +83,28 @@ const { data: product, error } = await supabase
     }
 
     const productData = product as ProductPageData;
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    let hasPurchased = false;
+
+    if (user) {
+        const { data: purchase } = await supabase
+            .from("orders")
+            .select(` 
+            id,
+            order_items!inner (
+                product_id
+            )
+            `)
+            .eq("user_id", user.id)
+            .eq("status", "paid")
+            .eq("order_items.product_id", productData.id)
+            .limit(1)
+            .maybeSingle();
+
+        hasPurchased = Boolean(purchase);
+    }
 
     const images = [...(productData.product_images ?? [])]
         .filter((image) => image.sort_order >= 0)
@@ -246,14 +268,18 @@ const { data: product, error } = await supabase
                         </div>
 
                         <div className="mt-10 space-y-3">
-                            {price && (
-                                <BuyProductButton
-                                slug={productData.slug}
-                                price={Number(price.amount)}
-                                currency={price.currency}
-                                />
+                            {hasPurchased ? (
+                                <DownloadProductButton slug={productData.slug} />
+                            ) : (
+                                price && (
+                                    <BuyProductButton
+                                        slug={productData.slug}
+                                        price={Number(price.amount)}
+                                        currency={price.currency}
+                                    />
+                                )
                             )}
-                            <DownloadProductButton slug={productData.slug} />
+
 
                             <p className="mt-3 text-center text-xs text-zinc-500">
                                 Secure digital download.

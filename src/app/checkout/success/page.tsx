@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+import { stripe } from "@/lib/stripe/server";
+import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
+
 type SuccessPageProps = {
     searchParams: Promise<{
         session_id?: string;
@@ -45,39 +49,24 @@ export default async function CheckoutSuccessPage({
 
             <section className="mx-auto max-w-2xl px-6 py-24 text-center">
                 <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
-                    Order complete
+                    Checkout
                 </p>
 
                 <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white">
-                    Thank you for your purchase.
+                    Invalid checkout session
                 </h1>
 
                 <p className="mt-5 text-lg leading-8 text-zinc-400">
-                    Your payment was successful. Your digital product will be
-                    available for download once the payment has been confirmed.
+                     We could not find a valid Stripe checkout session.
                 </p>
 
-                {session_id && (
-                    <p className="mt-4 break-all text-xs text-zinc-600">
-                        Order session: {session_id}
-                    </p>
-                )}
-
-                <div className="mt-8 flex justify-center gap-4">
+               
                     <Link
                         href="/shop"
                         className="rounded-lg border border-zinc-700 px-5 py-3 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white"
                     >
                         Back to store
                     </Link>
-
-                    <Link
-                        href="/"
-                        className="rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                    >
-                        Home
-                    </Link>
-                </div>
             </section>
         </main>
     );
