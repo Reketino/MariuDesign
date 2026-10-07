@@ -86,6 +86,8 @@ const { data: product, error } = await supabase
 
     const { data: {user } } = await supabase.auth.getUser();
 
+    let hasPurchased = false;
+
     const images = [...(productData.product_images ?? [])]
         .filter((image) => image.sort_order >= 0)
         .sort((a, b) => a.sort_order - b.sort_order);
