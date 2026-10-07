@@ -49,23 +49,16 @@ export default async function CheckoutSuccessPage({
 
             <section className="mx-auto max-w-2xl px-6 py-24 text-center">
                 <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
-                    Order complete
+                    Checkout
                 </p>
 
                 <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white">
-                    Thank you for your purchase.
+                    Invalid checkout session
                 </h1>
 
                 <p className="mt-5 text-lg leading-8 text-zinc-400">
-                    Your payment was successful. Your digital product will be
-                    available for download once the payment has been confirmed.
+                     We could not find a valid Stripe checkout session.
                 </p>
-
-                {session_id && (
-                    <p className="mt-4 break-all text-xs text-zinc-600">
-                        Order session: {session_id}
-                    </p>
-                )}
 
                 <div className="mt-8 flex justify-center gap-4">
                     <Link
