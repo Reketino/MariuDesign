@@ -102,6 +102,8 @@ const { data: product, error } = await supabase
             .eq("order_items.product_id", productData.id)
             .limit(1)
             .maybeSingle();
+
+            hasPurchased = Boolean(purchase);
     }
 
     const images = [...(productData.product_images ?? [])]
