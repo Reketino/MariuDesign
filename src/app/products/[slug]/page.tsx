@@ -271,11 +271,13 @@ const { data: product, error } = await supabase
                             {hasPurchased ? (
                              <DownloadProductButton slug={productData.slug} />
                              ) : (
+                                price && (
                                 <BuyProductButton
                                 slug={productData.slug}
                                 price={Number(price.amount)}
                                 currency={price.currency}
                                 />
+                                )
                             )}
                            
 
