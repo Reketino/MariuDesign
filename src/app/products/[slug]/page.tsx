@@ -268,14 +268,16 @@ const { data: product, error } = await supabase
                         </div>
 
                         <div className="mt-10 space-y-3">
-                            {price && (
+                            {hasPurchased ? (
+                             <DownloadProductButton slug={productData.slug} />
+                             ) : (
                                 <BuyProductButton
                                 slug={productData.slug}
                                 price={Number(price.amount)}
                                 currency={price.currency}
                                 />
                             )}
-                            <DownloadProductButton slug={productData.slug} />
+                           
 
                             <p className="mt-3 text-center text-xs text-zinc-500">
                                 Secure digital download.
