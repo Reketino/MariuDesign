@@ -60,21 +60,13 @@ export default async function CheckoutSuccessPage({
                      We could not find a valid Stripe checkout session.
                 </p>
 
-                <div className="mt-8 flex justify-center gap-4">
+               
                     <Link
                         href="/shop"
                         className="rounded-lg border border-zinc-700 px-5 py-3 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white"
                     >
                         Back to store
                     </Link>
-
-                    <Link
-                        href="/"
-                        className="rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                    >
-                        Home
-                    </Link>
-                </div>
             </section>
         </main>
     );
