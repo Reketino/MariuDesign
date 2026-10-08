@@ -19,6 +19,10 @@ export default function SignupForm() {
     async function handleSubmit(
         event: React.FormEvent<HTMLFormElement>,
     ) {
+        event.preventDefault();
+        
+        setError("");
+        setSuccess("");
         
     }
 }
