@@ -11,7 +11,7 @@ export default function SignupForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    
+
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ export default function SignupForm() {
         event: React.FormEvent<HTMLFormElement>,
     ) {
         event.preventDefault();
-        
+
         setError("");
         setSuccess("");
 
@@ -66,46 +66,85 @@ export default function SignupForm() {
         <form onSubmit={handleSubmit} className="space-y-5">
             <div>
                 <label
-                htmlFor="email"
-                className="mb-2 block text-sm font-medium text-zinc-300"
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-medium text-zinc-300"
                 >
                     Email
                 </label>
 
                 <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="you@example.com"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
-                required
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="you@example.com"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
+                    required
                 />
 
                 <div>
                     <label
-                    htmlFor="password"
-                    className="mb-2 block text-sm font-medium text-zinc-300"
+                        htmlFor="password"
+                        className="mb-2 block text-sm font-medium text-zinc-300"
                     >
                         Password
                     </label>
 
                     <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="new-password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    placeholder="••••••••"
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
-                    required
+                        id="password"
+                        name="password"
+                        type="password"
+                        autoComplete="new-password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        placeholder="••••••••"
+                        className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
+                        required
                     />
                 </div>
-                
+                <div>
+                    <label
+                        htmlFor="confirm-password"
+                        className="mb-2 block text-sm font-medium text-zinc-300"
+                    >
+                        Confirm password
+                    </label>
+
+                    <input
+                        id="confirm-password"
+                        name="confirm-password"
+                        type="password"
+                        autoComplete="new-password"
+                        value={confirmPassword}
+                        onChange={(event) =>
+                            setConfirmPassword(event.target.value)
+                        }
+                        placeholder="••••••••"
+                        className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
+                        required
+                    />
+                </div>
             </div>
+
+            {error && (
+                <div
+                    role="alert"
+                    className="rounded-lg border border-red-900/50 bg-red-950/30 px-4 py-3 text-sm text-red-300"
+                >
+                    {error}
+                </div>
+            )}
+
+            <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-lg bg-white px-4 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+                {loading ? "Logging in..." : "Log in"}
+            </button>
+
         </form>
     )
 }
