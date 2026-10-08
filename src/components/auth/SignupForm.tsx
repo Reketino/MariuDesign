@@ -61,4 +61,17 @@ export default function SignupForm() {
 
         setLoading(false);
     }
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+                <label
+                htmlFor="email"
+                className="mb-2 block text-sm font-medium text-zinc-300"
+                >
+                    Email
+                </label>
+            </div>
+        </form>
+    )
 }
