@@ -54,6 +54,11 @@ export default function SignupForm() {
             router.refresh();
             return;
         }
-        
+
+        setSuccess(
+            "Account created. Please check your email to confirrm account."
+        );
+
+        setLoading(false);
     }
 }
