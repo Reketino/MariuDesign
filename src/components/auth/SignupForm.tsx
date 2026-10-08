@@ -23,6 +23,16 @@ export default function SignupForm() {
         
         setError("");
         setSuccess("");
+
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError("password do not match.");
+            return;
+        }
         
     }
 }
