@@ -33,6 +33,15 @@ export default function SignupForm() {
             setError("password do not match.");
             return;
         }
+
+        setLoading(true);
+
+        const supabase = createClient();
+
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password
+        });
         
     }
 }
