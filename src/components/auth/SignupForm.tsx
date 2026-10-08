@@ -91,7 +91,20 @@ export default function SignupForm() {
                     >
                         Password
                     </label>
+
+                    <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    placeholder="••••••••"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
+                    required
+                    />
                 </div>
+                
             </div>
         </form>
     )
