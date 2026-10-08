@@ -48,6 +48,12 @@ export default function SignupForm() {
             setLoading(false);
             return;
         }
+
+        if (data.session) {
+            router.push("/shop");
+            router.refresh();
+            return;
+        }
         
     }
 }
