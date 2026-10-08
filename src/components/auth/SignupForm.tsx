@@ -42,6 +42,12 @@ export default function SignupForm() {
             email,
             password
         });
+
+        if (error) {
+            setError(error.message);
+            setLoading(false);
+            return;
+        }
         
     }
 }
