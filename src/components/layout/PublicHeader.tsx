@@ -30,15 +30,15 @@ export default async function PublicHeader() {
 
                     {user ? (
                         <Link
-                        href="/account"
-                        className="text-sm text-zinc-400 transition hover:text-white"
+                            href="/account"
+                            className="text-sm text-zinc-400 transition hover:text-white"
                         >
                             Account
                         </Link>
                     ) : (
                         <Link
-                        href="/login"
-                        className="text-sm text-zinc-400 transition hover:text-white"
+                            href="/login"
+                            className="text-sm text-zinc-400 transition hover:text-white"
                         >
                             Log in
                         </Link>
@@ -46,5 +46,5 @@ export default async function PublicHeader() {
                 </nav>
             </div>
         </header>
-    )
+    );
 }
