@@ -27,6 +27,22 @@ export default async function PublicHeader() {
                     >
                         Store
                     </Link>
+
+                    {user ? (
+                        <Link
+                        href="/account"
+                        className="text-sm text-zinc-400 transition hover:text-white"
+                        >
+                            Account
+                        </Link>
+                    ) : (
+                        <Link
+                        href="/login"
+                        className="text-sm text-zinc-400 transition hover:text-white"
+                        >
+                            Log in
+                        </Link>
+                    )}
                 </nav>
             </div>
         </header>
