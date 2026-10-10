@@ -39,4 +39,6 @@ export default async function AccountPage() {
             console.error("Failed to fetch account orders:", error)
         }
 
+        const purchases = orders?.filter((order) => order.status === "paid") ?? [];
+
 }
