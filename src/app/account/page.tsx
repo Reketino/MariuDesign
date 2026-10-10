@@ -74,8 +74,21 @@ export default async function AccountPage() {
                             <LogoutButton />
                         </div>
                     </section>
-                </div>
 
+                    <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                                Purchases
+                            </p>
+
+                            <h2 className="mt-2 text-xl font-semibold text-white">
+                                Your products
+                            </h2>
+                        </div>
+                    </div>
+                    </section>
+                </div>
             </section>
         </main>
     )
