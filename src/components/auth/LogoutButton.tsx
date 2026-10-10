@@ -9,11 +9,31 @@ export default function LogoutButton() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
-    async function LogoutButton() {
+    async function handleLogout() {
         setLoading(true);
 
         const supabase = createClient();
 
         const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            console.error("Failed to log out:", error);
+            setLoading(false);
+            return;
+        }
+
+        router.push("/shop")
+        router.refresh();
+
+        return (
+            <button
+                type="button"
+                onClick={handleLogout}
+                disabled={loading}
+                className="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+            >
+                {loading ? "Logging out..." : "Log out"}
+            </button>
+        )
     }
 }
