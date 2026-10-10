@@ -59,7 +59,23 @@ export default async function AccountPage() {
                             Manage your purchases and access your digital products.
                         </p>
                     </div>
-                    
+
+                    <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_2fr]">
+                        <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
+                        <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                            Account details
+                        </p>
+
+                        <p className="mt-4 break-all text-sm text-white">
+                            {user.email}
+                        </p>
+
+                        <div className="mt-6">
+                            <LogoutButton />
+                        </div>
+                        </section>
+                    </div>
+
                 </section>
             </main>
         )
