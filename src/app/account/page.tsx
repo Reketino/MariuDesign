@@ -41,4 +41,10 @@ export default async function AccountPage() {
 
         const purchases = orders?.filter((order) => order.status === "paid") ?? [];
 
+        return (
+            <main className="min-h-screen bg-zinc-950 text-zinc-100">
+                <PublicHeader />
+            </main>
+        )
+
 }
