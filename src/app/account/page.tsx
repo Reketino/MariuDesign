@@ -44,6 +44,23 @@ export default async function AccountPage() {
         return (
             <main className="min-h-screen bg-zinc-950 text-zinc-100">
                 <PublicHeader />
+
+                <section className="mx-auto max-w-5xl px-6 py-12 lg:py-16">
+                    <div>
+                        <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                            Account
+                        </p>
+
+                        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white">
+                            Your account
+                        </h1>
+
+                        <p className="mt-3 text-zinc-400">
+                            Manage your purchases and access your digital products.
+                        </p>
+                    </div>
+                    
+                </section>
             </main>
         )
 
