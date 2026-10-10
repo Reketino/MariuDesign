@@ -22,6 +22,8 @@ export default function LogoutButton() {
             return;
         }
 
+    }
+
         router.push("/shop")
         router.refresh();
 
@@ -34,6 +36,5 @@ export default function LogoutButton() {
             >
                 {loading ? "Logging out..." : "Log out"}
             </button>
-        )
-    }
+        );
 }
