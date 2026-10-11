@@ -154,6 +154,10 @@ export default async function AccountPage() {
                                                 )}
                                             </p>
                                         </div>
+
+                                        <DownloadProductButton
+                                        slug={product.slug}
+                                        />
                                     </div>
                                 </article>
                             )
