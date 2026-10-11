@@ -76,98 +76,97 @@ export default async function AccountPage() {
                     </section>
 
                     <section className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
-                                Purchases
-                            </p>
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                                    Purchases
+                                </p>
 
-                            <h2 className="mt-2 text-xl font-semibold text-white">
-                                Your products
-                            </h2>
+                                <h2 className="mt-2 text-xl font-semibold text-white">
+                                    Your products
+                                </h2>
+                            </div>
+
+                            <span className="text-sm text-zinc-500">
+                                {purchases.length}{" "}
+                                {purchases.length === 1
+                                    ? "purchase"
+                                    : "purchases"}
+                            </span>
                         </div>
 
-                        <span className="text-sm text-zinc-500">
-                            {purchases.length}{" "}
-                            {purchases.length === 1
-                            ? "purchase"
-                            : "purchases"}
-                        </span>
-                    </div>
-                    
-                    {purchases.length === 0 ? (
-                        <div className="mt-8 rounded-lg border border-dashed border-zinc-800 p-8 text-center">
-                            <p className="text-sm text-zinc-500">
-                                You have not purchased any products yet.
-                            </p>
+                        {purchases.length === 0 ? (
+                            <div className="mt-8 rounded-lg border border-dashed border-zinc-800 p-8 text-center">
+                                <p className="text-sm text-zinc-500">
+                                    You have not purchased any products yet.
+                                </p>
 
-                            <Link 
-                            href="/shop"
-                            className="mt-4 inline-flex text-sm font-medium text-white transition hover:text-zinc-300"
-                            >
-                                Browse the store
-                            </Link>
-                        </div>
-                    ) : (
-                        <div className="mt-6 space-y-4">
-                           {purchases.map((order) => {
-                            const item = order.order_items?.[0];
-
-                            const product = Array.isArray(
-                                item?.products,
-                            )
-
-                            ? item.products[0]
-                            : item?.products
-
-                            if (!product) {
-                                return null;
-                            }
-
-                            return (
-                                <article
-                                key={order.id}
-                                className="rounded-lg border border-zinc-800 bg-zinc-950/60 p-5"
+                                <Link
+                                    href="/shop"
+                                    className="mt-4 inline-flex text-sm font-medium text-white transition hover:text-zinc-300"
                                 >
-                                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                                        <div>
-                                            <Link
-                                            href={`/products/${product.slug}`}
-                                            className="font-medium text-white transition hover:text-zinc-300"
-                                            >
-                                                {product.title}
-                                            </Link>
+                                    Browse the store
+                                </Link>
+                            </div>
+                        ) : (
+                            <div className="mt-6 space-y-4">
+                                {purchases.map((order) => {
+                                    const item = order.order_items?.[0];
 
-                                            <p className="mt-1 text-sm text-zinc-500">
-                                                {Number(
-                                                    order.total_amount,
-                                                ).toFixed(2)}{" "}
-                                                {order.currency}
-                                            </p>
+                                    const product = Array.isArray(
+                                        item?.products,
+                                    )
 
-                                            <p className="mt-1 text-xs text-zinc-600">
-                                                Purchased{" "}
-                                                {new Date(
-                                                    order.created_at,
-                                                ).toLocaleDateString(
-                                                    "en-GB"
-                                                )}
-                                            </p>
-                                        </div>
+                                        ? item.products[0]
+                                        : item?.products
 
-                                        <DownloadProductButton
-                                        slug={product.slug}
-                                        />
-                                    </div>
-                                </article>
-                            )
-                           })} 
-                        </div>
-                    )}
+                                    if (!product) {
+                                        return null;
+                                    }
+
+                                    return (
+                                        <article
+                                            key={order.id}
+                                            className="rounded-lg border border-zinc-800 bg-zinc-950/60 p-5"
+                                        >
+                                            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                                <div>
+                                                    <Link
+                                                        href={`/products/${product.slug}`}
+                                                        className="font-medium text-white transition hover:text-zinc-300"
+                                                    >
+                                                        {product.title}
+                                                    </Link>
+
+                                                    <p className="mt-1 text-sm text-zinc-500">
+                                                        {Number(
+                                                            order.total_amount,
+                                                        ).toFixed(2)}{" "}
+                                                        {order.currency}
+                                                    </p>
+
+                                                    <p className="mt-1 text-xs text-zinc-600">
+                                                        Purchased{" "}
+                                                        {new Date(
+                                                            order.created_at,
+                                                        ).toLocaleDateString(
+                                                            "en-GB"
+                                                        )}
+                                                    </p>
+                                                </div>
+
+                                                <DownloadProductButton
+                                                    slug={product.slug}
+                                                />
+                                            </div>
+                                        </article>
+                                    )
+                                })}
+                            </div>
+                        )}
                     </section>
                 </div>
             </section>
         </main>
-    )
-
+    );
 }
