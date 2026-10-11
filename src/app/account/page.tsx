@@ -123,6 +123,24 @@ export default async function AccountPage() {
                             if (!product) {
                                 return null;
                             }
+
+                            return (
+                                <article
+                                key={order.id}
+                                className="rounded-lg border border-zinc-800 bg-zinc-950/60 p-5"
+                                >
+                                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                        <div>
+                                            <Link
+                                            href={`/products/${product.slug}`}
+                                            className="font-medium text-white transition hover:text-zinc-300"
+                                            >
+                                                {product.title}
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </article>
+                            )
                            })} 
                         </div>
                     )}
