@@ -8,20 +8,22 @@ import { createClient } from "@/lib/supabase/client";
 export default function LogoutButton() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     async function handleLogout() {
         setLoading(true);
+        setError("");
 
         const supabase = createClient();
 
-        const { error } = await supabase.auth.signOut();
+        const { error: signOutError } = await supabase.auth.signOut();
 
-        if (error) {
-            console.error("Failed to log out:", error);
+        if (signOutError) {
+            console.error("Failed to log out:", signOutError);
+            setError("Could not log out. Please try again");
             setLoading(false);
             return;
         }
-
     }
 
         router.push("/shop")
