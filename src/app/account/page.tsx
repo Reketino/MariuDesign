@@ -145,7 +145,14 @@ export default async function AccountPage() {
                                                 {order.currency}
                                             </p>
 
-                                            
+                                            <p className="mt-1 text-xs text-zinc-600">
+                                                Purchased{" "}
+                                                {new Date(
+                                                    order.created_at,
+                                                ).toLocaleDateString(
+                                                    "en-GB"
+                                                )}
+                                            </p>
                                         </div>
                                     </div>
                                 </article>
