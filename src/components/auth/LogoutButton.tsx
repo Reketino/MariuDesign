@@ -40,6 +40,11 @@ export default function LogoutButton() {
                 {loading ? "Logging out..." : "Log out"}
             </button>
 
+            {error && (
+                <p role="alert" className="mt-3 text-sm text-red-400">
+                    {error}
+                </p>
+            )}
             </div>
         );
 }
