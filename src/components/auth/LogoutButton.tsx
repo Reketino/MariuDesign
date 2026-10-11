@@ -24,13 +24,12 @@ export default function LogoutButton() {
             setLoading(false);
             return;
         }
-    }
 
         router.replace("/shop")
         router.refresh();
-
-        return (
-            <div>
+    }
+    return (
+        <div>
             <button
                 type="button"
                 onClick={handleLogout}
@@ -40,6 +39,11 @@ export default function LogoutButton() {
                 {loading ? "Logging out..." : "Log out"}
             </button>
 
-            </div>
-        );
+            {error && (
+                <p role="alert" className="mt-3 text-sm text-red-400">
+                    {error}
+                </p>
+            )}
+        </div>
+    );
 }
