@@ -86,7 +86,33 @@ export default async function AccountPage() {
                                 Your products
                             </h2>
                         </div>
+
+                        <span className="text-sm text-zinc-500">
+                            {purchases.length}{" "}
+                            {purchases.length === 1
+                            ? "purchase"
+                            : "purchases"}
+                        </span>
                     </div>
+                    
+                    {purchases.length === 0 ? (
+                        <div className="mt-8 rounded-lg border border-dashed border-zinc-800 p-8 text-center">
+                            <p className="text-sm text-zinc-500">
+                                You have not purchased any products yet.
+                            </p>
+
+                            <Link 
+                            href="/shop"
+                            className="mt-4 inline-flex text-sm font-medium text-white transition hover:text-zinc-300"
+                            >
+                                Browse the store
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className="mt-6 space-y-4">
+                            
+                        </div>
+                    )}
                     </section>
                 </div>
             </section>
