@@ -137,6 +137,15 @@ export default async function AccountPage() {
                                             >
                                                 {product.title}
                                             </Link>
+
+                                            <p className="mt-1 text-sm text-zinc-500">
+                                                {Number(
+                                                    order.total_amount,
+                                                ).toFixed(2)}{" "}
+                                                {order.currency}
+                                            </p>
+
+                                            
                                         </div>
                                     </div>
                                 </article>
