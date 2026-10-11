@@ -30,6 +30,7 @@ export default function LogoutButton() {
         router.refresh();
 
         return (
+            <div>
             <button
                 type="button"
                 onClick={handleLogout}
@@ -38,5 +39,7 @@ export default function LogoutButton() {
             >
                 {loading ? "Logging out..." : "Log out"}
             </button>
+
+            </div>
         );
 }
