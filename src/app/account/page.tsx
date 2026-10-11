@@ -110,7 +110,20 @@ export default async function AccountPage() {
                         </div>
                     ) : (
                         <div className="mt-6 space-y-4">
-                            
+                           {purchases.map((order) => {
+                            const item = order.order_items?.[0];
+
+                            const product = Array.isArray(
+                                item?.products,
+                            )
+
+                            ? item.products[0]
+                            : item?.products
+
+                            if (!product) {
+                                return null;
+                            }
+                           })} 
                         </div>
                     )}
                     </section>
