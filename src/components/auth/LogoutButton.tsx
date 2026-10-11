@@ -26,7 +26,7 @@ export default function LogoutButton() {
         }
     }
 
-        router.push("/shop")
+        router.replace("/shop")
         router.refresh();
 
         return (
