@@ -24,13 +24,12 @@ export default function LogoutButton() {
             setLoading(false);
             return;
         }
-    }
 
         router.replace("/shop")
         router.refresh();
-
-        return (
-            <div>
+    }
+    return (
+        <div>
             <button
                 type="button"
                 onClick={handleLogout}
@@ -45,6 +44,6 @@ export default function LogoutButton() {
                     {error}
                 </p>
             )}
-            </div>
-        );
+        </div>
+    );
 }
