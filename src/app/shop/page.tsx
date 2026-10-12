@@ -5,6 +5,8 @@ import { createClient } from "@/lib/supabase/server";
 
 import type { ProductImage } from "@/types/products";
 
+import PublicHeader from "@/components/layout/PublicHeader";
+
 import {
     getProductImage,
     getProductImageUrl,
@@ -58,6 +60,10 @@ export default async function ShopPage() {
             created_at
             )
         `)
+        .order("created_at", {
+            referencedTable: "product_prices",
+            ascending: false,
+        })
         .eq("status", "published")
         .order("created_at", {
             ascending: false,
@@ -73,35 +79,7 @@ export default async function ShopPage() {
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
-            <header className="border-b border-zinc-800">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-                    <Link
-                        href="/"
-                        className="text-lg font-semibold tracking-tight"
-                    >
-                        Mariudesign
-                    </Link>
-
-                    <nav
-                        aria-label="Main navigation"
-                        className="flex items-center gap-6"
-                    >
-                        <Link
-                            href="/"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Home
-                        </Link>
-
-                        <Link
-                            href="/login"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Log in
-                        </Link>
-                    </nav>
-                </div>
-            </header>
+            <PublicHeader />
 
             <section className="mx-auto max-w-7xl px-6 py-16 lg:py-24">
                 <header className="max-w-2xl">
