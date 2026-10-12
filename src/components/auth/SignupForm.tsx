@@ -25,6 +25,9 @@ export default function SignupForm() {
         setError("");
         setSuccess("");
 
+        const normalizedUserName = username.trim().toLowerCase();
+        const normalizedEmail = email.trim();
+
         if (password.length < 6) {
             setError("Password must be at least 6 characters.");
             return;
