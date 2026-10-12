@@ -9,6 +9,7 @@ import type { ProductImage } from "@/types/products";
 import { getProductImageUrl } from "@/components/admin/products/utils/productImage";
 import DownloadProductButton from "@/components/admin/products/DownloadProductButton";
 import BuyProductButton from "@/components/products/BuyProductButton";
+import PublicHeader from "@/components/layout/PublicHeader";
 
 type ProductPageData = {
     id: string;
@@ -74,6 +75,10 @@ export default async function ProductPage({
             created_at
         )
     `)
+        .order("created_at", {
+            referencedTable: "product_prices",
+            ascending: false,
+        })
         .eq("slug", slug)
         .eq("status", "published")
         .single();
@@ -116,35 +121,7 @@ export default async function ProductPage({
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
-            <header className="border-b border-zinc-800">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-                    <Link
-                        href="/"
-                        className="text-lg font-semibold tracking-tight"
-                    >
-                        Mariudesign
-                    </Link>
-
-                    <nav
-                        aria-label="Main navigation"
-                        className="flex items-center gap-6"
-                    >
-                        <Link
-                            href="/shop"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Store
-                        </Link>
-
-                        <Link
-                            href="/login"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Log in
-                        </Link>
-                    </nav>
-                </div>
-            </header>
+            <PublicHeader />
 
             <section className="mx-auto max-w-7xl px-6 py-10 lg:py-16">
                 <Link
@@ -279,7 +256,6 @@ export default async function ProductPage({
                                     />
                                 )
                             )}
-
 
                             <p className="mt-3 text-center text-xs text-zinc-500">
                                 Secure digital download.
