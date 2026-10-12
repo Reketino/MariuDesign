@@ -49,13 +49,17 @@ export default function SignupForm() {
             const supabase = createClient();
 
             const { data, error } = await supabase.auth.signUp({
-                email,
-                password
+                email: normalizedEmail,
+                password,
+                options: {
+                    data: {
+                        username: normalizedUserName,
+                    },
+                },
             });
 
             if (error) {
                 setError(error.message);
-                setLoading(false);
                 return;
             }
 
@@ -66,7 +70,7 @@ export default function SignupForm() {
             }
 
             setSuccess(
-                "Account created. Please check your email to confirrm account."
+                "Account created. Please check your email to confirm your account."
             );
         } catch {
             setError("Something went wrong. Please try again.")
@@ -77,6 +81,40 @@ export default function SignupForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+                <label
+                    htmlFor="username"
+                    className="mb-2 block text-sm font-medium text-zinc-300"
+                >
+                    Username
+                </label>
+
+                <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    autoComplete="username"
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                    placeholder="username"
+                    minLength={3}
+                    maxLength={20}
+                    pattern="[A-Za-z0-9_]{3,20}"
+                    title="Use 3-20 letters, numbers, or underscores."
+                    className="
+                w-full rounded-lg border border-zinc-700 
+                bg-zinc-950 px-4 py-3 text-sm text-white 
+                outline-none transition placeholder:text-zinc-600 
+                focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500
+                "
+                    required
+                />
+
+                <p className="mt-2 text-xs text-zinc-500">
+                    3-20 characters. Letters, numbers, and underscores only.
+                </p>
+            </div>
+
             <div>
                 <label
                     htmlFor="email"
@@ -96,6 +134,7 @@ export default function SignupForm() {
                     className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
                     required
                 />
+                 </div>
 
                 <div>
                     <label
@@ -139,7 +178,7 @@ export default function SignupForm() {
                         required
                     />
                 </div>
-            </div>
+           
 
             {error && (
                 <div
@@ -150,12 +189,21 @@ export default function SignupForm() {
                 </div>
             )}
 
+            {success && (
+                <div
+                    role="status"
+                    className="rounded-lg border border-emerald-900/50 bg-emerald-950/30 px-4 py-3 text-sm text-emerald-300"
+                >
+                    {success}
+                </div>
+            )}
+
             <button
                 type="submit"
                 disabled={loading}
                 className="w-full rounded-lg bg-white px-4 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
             >
-                {loading ? "Logging in..." : "Log in"}
+                {loading ? "Creating account..." : "Create account"}
             </button>
         </form>
     )
