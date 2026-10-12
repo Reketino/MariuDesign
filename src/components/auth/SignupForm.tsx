@@ -144,7 +144,6 @@ export default function SignupForm() {
             >
                 {loading ? "Logging in..." : "Log in"}
             </button>
-
         </form>
     )
 }
