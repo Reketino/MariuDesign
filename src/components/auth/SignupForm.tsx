@@ -8,6 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 export default function SignupForm() {
     const router = useRouter();
 
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
