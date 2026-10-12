@@ -28,6 +28,11 @@ export default function SignupForm() {
         const normalizedUserName = username.trim().toLowerCase();
         const normalizedEmail = email.trim();
 
+        if (!/^[a-z0-9_]{3,20}$/.test(normalizedUserName)) {
+            setError("Username must be 3–20 characters and contain only letters, numbers, and underscores.");
+            return;
+        }
+
         if (password.length < 6) {
             setError("Password must be at least 6 characters.");
             return;
