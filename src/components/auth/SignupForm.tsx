@@ -8,6 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 export default function SignupForm() {
     const router = useRouter();
 
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,6 +25,14 @@ export default function SignupForm() {
         setError("");
         setSuccess("");
 
+        const normalizedUserName = username.trim().toLowerCase();
+        const normalizedEmail = email.trim();
+
+        if (!/^[a-z0-9_]{3,20}$/.test(normalizedUserName)) {
+            setError("Username must be 3–20 characters and contain only letters, numbers, and underscores.");
+            return;
+        }
+
         if (password.length < 6) {
             setError("Password must be at least 6 characters.");
             return;
@@ -36,30 +45,34 @@ export default function SignupForm() {
 
         setLoading(true);
 
-        const supabase = createClient();
+        try {
+            const supabase = createClient();
 
-        const { data, error } = await supabase.auth.signUp({
-            email,
-            password
-        });
+            const { data, error } = await supabase.auth.signUp({
+                email,
+                password
+            });
 
-        if (error) {
-            setError(error.message);
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
+
+            if (data.session) {
+                router.push("/shop");
+                router.refresh();
+                return;
+            }
+
+            setSuccess(
+                "Account created. Please check your email to confirrm account."
+            );
+        } catch {
+            setError("Something went wrong. Please try again.")
+        } finally {
             setLoading(false);
-            return;
         }
-
-        if (data.session) {
-            router.push("/shop");
-            router.refresh();
-            return;
-        }
-
-        setSuccess(
-            "Account created. Please check your email to confirrm account."
-        );
-
-        setLoading(false);
     }
 
     return (
@@ -144,7 +157,6 @@ export default function SignupForm() {
             >
                 {loading ? "Logging in..." : "Log in"}
             </button>
-
         </form>
     )
 }
