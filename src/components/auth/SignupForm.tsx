@@ -45,30 +45,34 @@ export default function SignupForm() {
 
         setLoading(true);
 
-        const supabase = createClient();
+        try {
+            const supabase = createClient();
 
-        const { data, error } = await supabase.auth.signUp({
-            email,
-            password
-        });
+            const { data, error } = await supabase.auth.signUp({
+                email,
+                password
+            });
 
-        if (error) {
-            setError(error.message);
+            if (error) {
+                setError(error.message);
+                setLoading(false);
+                return;
+            }
+
+            if (data.session) {
+                router.push("/shop");
+                router.refresh();
+                return;
+            }
+
+            setSuccess(
+                "Account created. Please check your email to confirrm account."
+            );
+        } catch {
+            setError("Something went wrong. Please try again.")
+        } finally {
             setLoading(false);
-            return;
         }
-
-        if (data.session) {
-            router.push("/shop");
-            router.refresh();
-            return;
-        }
-
-        setSuccess(
-            "Account created. Please check your email to confirrm account."
-        );
-
-        setLoading(false);
     }
 
     return (
