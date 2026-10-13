@@ -21,7 +21,8 @@ export default async function PublicHeader() {
             console.error("Failed to fetch header profile:", error);
         }
 
-        
+        username = profile?.username ?? null;
+        role = profile?.role ?? null;
     }
 
     return (
