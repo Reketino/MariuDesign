@@ -215,6 +215,22 @@ export default async function ShopPage() {
                                             </div>
                                         </div>
                                     </Link>
+
+                                    {isAdmin && (
+                                        <div className="border-t border-zinc-800 p-4">
+                                            <Link
+                                            href={`/admin/products/${product.id}`}
+                                            className="
+                                            flex w-full items-center justify-center
+                                            rounded-lg border border-zinc-700 px-4
+                                            py-2.5 text-sm font-medium text-white
+                                            transition hover:border-zinc-500 hover:bg-zinc-800
+                                            "
+                                            >
+                                                Edit product
+                                            </Link>
+                                        </div>
+                                    )}
                                 </article>
                             );
                         })}
