@@ -83,6 +83,16 @@ export default async function AccountPage() {
                                      ? `@${profile.username}`                                    
                                      : "Username not set"}
                                 </p>
+
+                                {profile?.role === "admin" && (
+                                    <span className="
+                                    rounded-full border border-sky-500/30 bg-sky-500/10
+                                    px-2 py-0.5 text-xs font-medium text-sky-300
+                                    "
+                                    >
+                                        Admin
+                                    </span>
+                                )}
                             </div>
     
                         <p className="mt-2 break-all text-sm text-zinc-400">
