@@ -91,6 +91,22 @@ export default async function ProductPage({
 
     const { data: { user } } = await supabase.auth.getUser();
 
+    let isAdmin = false;
+
+    if (user) {
+        const { data: profile, error: profileError } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", user.id)
+            .maybeSingle();
+
+            if (profileError) {
+                console.error("Failed to fetch product page profile:", profileError);
+            }
+
+            
+    }
+
     let hasPurchased = false;
 
     if (user) {
