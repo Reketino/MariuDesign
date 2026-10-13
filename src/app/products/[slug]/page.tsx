@@ -100,11 +100,11 @@ export default async function ProductPage({
             .eq("id", user.id)
             .maybeSingle();
 
-            if (profileError) {
-                console.error("Failed to fetch product page profile:", profileError);
-            }
+        if (profileError) {
+            console.error("Failed to fetch product page profile:", profileError);
+        }
 
-            isAdmin = profile?.role === "admin"
+        isAdmin = profile?.role === "admin"
     }
 
     let hasPurchased = false;
@@ -204,20 +204,20 @@ export default async function ProductPage({
                         )}
 
                         <div className="mt-3 flex flex-wrap items-center gap-3">
-                        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                            {productData.title}
-                        </h1>
-                        
-                        {isAdmin && (
-                            <span className="
+                            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                                {productData.title}
+                            </h1>
+
+                            {isAdmin && (
+                                <span className="
                             rounded-full border border-sky-500/30 
                             bg-sky-500/10 px-2 py-0.5 
                             text-xs font-medium text-sky-300
                             "
-                            >
-                                Admin
-                            </span>
-                        )}
+                                >
+                                    Admin
+                                </span>
+                            )}
                         </div>
 
 
@@ -274,6 +274,21 @@ export default async function ProductPage({
                         </div>
 
                         <div className="mt-10 space-y-3">
+                            {isAdmin && (
+                                <div className="flex flex-wrap gap-3">
+                                    <Link
+                                        href={`/admin/products/${productData.id}`}
+                                        className="
+                                    inline-flex flex-1 items-center justify-center
+                                    rounded-lg border border-zinc-700 px-4 py-3
+                                    text-sm font-medium text-white transition
+                                    hover:border-zinc-500 hover:bg-zinc-900
+                                    "
+                                    >
+                                        Edit product
+                                    </Link>
+                                </div>
+                            )}
                             {hasPurchased ? (
                                 <DownloadProductButton slug={productData.slug} />
                             ) : (

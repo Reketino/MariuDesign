@@ -48,29 +48,29 @@ export default async function PublicHeader() {
 
                     {user ? (
                         <>
-                        <Link
-                            href="/account"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Account
-                        </Link>
+                            <Link
+                                href="/account"
+                                className="text-sm text-zinc-400 transition hover:text-white"
+                            >
+                                Account
+                            </Link>
 
-                        {username && (
-                            <span className="hidden text-sm font-medium text-white sm:inline">
-                            @{username}
-                            </span>
-                        )}
+                            {username && (
+                                <span className="hidden text-sm font-medium text-white sm:inline">
+                                    {username}
+                                </span>
+                            )}
 
-                        {role === "admin" && (
-                            <span className="
+                            {role === "admin" && (
+                                <span className="
                             rounded-full border border-sky-500/30
                             bg-sky-500/10 px-2 py-0.5
                             text-xs font-medium text-sky-300
                             "
-                            >
-                                Admin
-                            </span>
-                        )}
+                                >
+                                    Admin
+                                </span>
+                            )}
                         </>
                     ) : (
                         <Link

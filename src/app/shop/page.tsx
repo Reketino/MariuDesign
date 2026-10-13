@@ -34,6 +34,20 @@ type ShopProduct = {
 export default async function ShopPage() {
     const supabase = await createClient();
 
+    const { data: { user } } = await supabase.auth.getUser();
+
+    let isAdmin = false;
+
+    if (user) {
+        const { data: profile } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", user.id)
+            .maybeSingle();
+
+        isAdmin = profile?.role === "admin";
+    }
+
     const { data: products, error } = await supabase
         .from("products")
         .select(`
@@ -96,6 +110,21 @@ export default async function ShopPage() {
                         Mariudesign.
                     </p>
                 </header>
+
+                {isAdmin && (
+                    <div className="mt-8">
+                        <Link
+                            href="/admin/products/new"
+                            className="
+                        inline-flex rounded-lg bg-white
+                        px-5 py-3 text-sm font-medium text-zinc-950
+                        transition hover:bg-zinc-200
+                        "
+                        >
+                            Create product
+                        </Link>
+                    </div>
+                )}
 
                 {shopProducts.length === 0 ? (
                     <div className="mt-16 rounded-xl border border-zinc-800 bg-zinc-900/40 px-6 py-16 text-center">
@@ -186,6 +215,22 @@ export default async function ShopPage() {
                                             </div>
                                         </div>
                                     </Link>
+
+                                    {isAdmin && (
+                                        <div className="border-t border-zinc-800 p-4">
+                                            <Link
+                                                href={`/admin/products/${product.id}`}
+                                                className="
+                                            flex w-full items-center justify-center
+                                            rounded-lg border border-zinc-700 px-4
+                                            py-2.5 text-sm font-medium text-white
+                                            transition hover:border-zinc-500 hover:bg-zinc-800
+                                            "
+                                            >
+                                                Edit product
+                                            </Link>
+                                        </div>
+                                    )}
                                 </article>
                             );
                         })}
