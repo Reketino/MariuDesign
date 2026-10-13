@@ -287,18 +287,6 @@ export default async function ProductPage({
                                     >
                                         Edit product
                                     </Link>
-
-                                    <Link
-                                        href="/admin/products/new"
-                                        className="
-                                    inline-flex flex-1 items-center justify-center
-                                    rounded-lg border border-zinc-700 px-4 py-3
-                                    text-sm font-medium text-white transition
-                                    hover:border-zinc-500 hover:bg-zinc-900
-                                    "
-                                    >
-                                        Create product
-                                    </Link>
                                 </div>
                             )}
                             {hasPurchased ? (
