@@ -11,11 +11,11 @@ export default async function PublicHeader() {
     let role: string | null = null;
 
     if (user) {
-        const { data: profile, error} = await supabase
-        .from("profiles")
-        .select("username, role")
-        .eq("id", user.id)
-        .maybeSingle();
+        const { data: profile, error } = await supabase
+            .from("profiles")
+            .select("username, role")
+            .eq("id", user.id)
+            .maybeSingle();
 
         if (error) {
             console.error("Failed to fetch header profile:", error);
