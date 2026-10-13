@@ -16,6 +16,16 @@ export default async function AccountPage() {
         redirect("/login");
     }
 
+    const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("username, role")
+        .eq("id", user.id)
+        .maybeSingle();
+
+        if (profileError) {
+            console.error("Failed to fetch account profile:", profileError);
+        }
+
     const { data: orders, error } = await supabase
         .from("orders")
         .select(`
