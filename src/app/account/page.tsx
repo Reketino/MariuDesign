@@ -22,9 +22,9 @@ export default async function AccountPage() {
         .eq("id", user.id)
         .maybeSingle();
 
-        if (profileError) {
-            console.error("Failed to fetch account profile:", profileError);
-        }
+    if (profileError) {
+        console.error("Failed to fetch account profile:", profileError);
+    }
 
     const { data: orders, error } = await supabase
         .from("orders")
@@ -80,8 +80,8 @@ export default async function AccountPage() {
                             <div className="flex flex-wrap items-center gap-2">
                                 <p className="text-sm font-medium text-white">
                                     {profile?.username
-                                     ? `@${profile.username}`                                    
-                                     : "Username not set"}
+                                        ? `@${profile.username}`
+                                        : "Username not set"}
                                 </p>
 
                                 {profile?.role === "admin" && (
@@ -94,10 +94,10 @@ export default async function AccountPage() {
                                     </span>
                                 )}
                             </div>
-    
-                        <p className="mt-2 break-all text-sm text-zinc-400">
-                            {user.email}
-                        </p>
+
+                            <p className="mt-2 break-all text-sm text-zinc-400">
+                                {user.email}
+                            </p>
 
                         </div>
                         <div className="mt-6">
