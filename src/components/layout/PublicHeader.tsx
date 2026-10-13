@@ -10,6 +10,19 @@ export default async function PublicHeader() {
     let username: string | null = null;
     let role: string | null = null;
 
+    if (user) {
+        const { data: profile, error} = await supabase
+        .from("profiles")
+        .select("username, role")
+        .eq("id", user.id)
+        .maybeSingle();
+
+        if (error) {
+            console.error("Failed to fetch header profile:", error);
+        }
+
+        
+    }
 
     return (
         <header className="border-b border-zinc-800">
