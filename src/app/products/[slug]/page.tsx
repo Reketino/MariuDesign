@@ -104,7 +104,7 @@ export default async function ProductPage({
                 console.error("Failed to fetch product page profile:", profileError);
             }
 
-            
+            isAdmin = profile?.role === "admin"
     }
 
     let hasPurchased = false;
