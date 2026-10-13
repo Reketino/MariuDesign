@@ -76,10 +76,13 @@ export default async function AccountPage() {
                             Account details
                         </p>
 
+                        <div className="mt-4">
+    
                         <p className="mt-2 break-all text-sm text-zinc-400">
                             {user.email}
                         </p>
 
+                        </div>
                         <div className="mt-6">
                             <LogoutButton />
                         </div>
