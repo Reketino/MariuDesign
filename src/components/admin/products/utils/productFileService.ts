@@ -15,7 +15,7 @@ type DeleteProductFileParams = {
 
 const STORAGE_BUCKET = "product_files";
 
-const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj"] as const;
+const ALLOWED_EXTENSIONS = [".stl", ".3mf", ".obj", ".zip"] as const;
 
 type AllowedExtension = (typeof ALLOWED_EXTENSIONS)[number];
 
@@ -37,7 +37,7 @@ function validateFile(file: File): AllowedExtension {
   const extension = getFileExtension(file.name);
 
   if (!isAllowedExtension(extension)) {
-    throw new Error("Only STL, 3MF, and OBJ files are supported.");
+    throw new Error("Only STL, 3MF, and OBJ and ZIP files are supported.");
   }
 
   return extension;
