@@ -91,6 +91,22 @@ export default async function ProductPage({
 
     const { data: { user } } = await supabase.auth.getUser();
 
+    let isAdmin = false;
+
+    if (user) {
+        const { data: profile, error: profileError } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", user.id)
+            .maybeSingle();
+
+            if (profileError) {
+                console.error("Failed to fetch product page profile:", profileError);
+            }
+
+            isAdmin = profile?.role === "admin"
+    }
+
     let hasPurchased = false;
 
     if (user) {
@@ -187,9 +203,22 @@ export default async function ProductPage({
                             </p>
                         )}
 
+                        <div className="mt-3 flex flex-wrap items-center gap-3">
                         <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                             {productData.title}
                         </h1>
+                        
+                        {isAdmin && (
+                            <span className="
+                            rounded-full border border-sky-500/30 
+                            bg-sky-500/10 px-2 py-0.5 
+                            text-xs font-medium text-sky-300
+                            "
+                            >
+                                Admin
+                            </span>
+                        )}
+                        </div>
 
 
                         {price && (
