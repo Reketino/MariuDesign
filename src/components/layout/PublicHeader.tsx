@@ -7,6 +7,10 @@ export default async function PublicHeader() {
 
     const { data: { user } } = await supabase.auth.getUser();
 
+    let username: string | null = null;
+    let role: string | null = null;
+
+
     return (
         <header className="border-b border-zinc-800">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
