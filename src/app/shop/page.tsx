@@ -34,6 +34,20 @@ type ShopProduct = {
 export default async function ShopPage() {
     const supabase = await createClient();
 
+    const { data: { user }} = await supabase.auth.getUser();
+
+    let isAdmin = false;
+
+    if (user) {
+        const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .maybeSingle();
+
+        isAdmin = profile?.role === "admin";
+    }
+
     const { data: products, error } = await supabase
         .from("products")
         .select(`
