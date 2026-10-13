@@ -16,6 +16,16 @@ export default async function AccountPage() {
         redirect("/login");
     }
 
+    const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("username, role")
+        .eq("id", user.id)
+        .maybeSingle();
+
+    if (profileError) {
+        console.error("Failed to fetch account profile:", profileError);
+    }
+
     const { data: orders, error } = await supabase
         .from("orders")
         .select(`
@@ -66,10 +76,30 @@ export default async function AccountPage() {
                             Account details
                         </p>
 
-                        <p className="mt-4 break-all text-sm text-white">
-                            {user.email}
-                        </p>
+                        <div className="mt-4">
+                            <div className="flex flex-wrap items-center gap-2">
+                                <p className="text-sm font-medium text-white">
+                                    {profile?.username
+                                        ? `@${profile.username}`
+                                        : "Username not set"}
+                                </p>
 
+                                {profile?.role === "admin" && (
+                                    <span className="
+                                    rounded-full border border-sky-500/30 bg-sky-500/10
+                                    px-2 py-0.5 text-xs font-medium text-sky-300
+                                    "
+                                    >
+                                        Admin
+                                    </span>
+                                )}
+                            </div>
+
+                            <p className="mt-2 break-all text-sm text-zinc-400">
+                                {user.email}
+                            </p>
+
+                        </div>
                         <div className="mt-6">
                             <LogoutButton />
                         </div>
