@@ -76,7 +76,7 @@ export default async function AccountPage() {
                             Account details
                         </p>
 
-                        <p className="mt-4 break-all text-sm text-white">
+                        <p className="mt-2 break-all text-sm text-zinc-400">
                             {user.email}
                         </p>
 
