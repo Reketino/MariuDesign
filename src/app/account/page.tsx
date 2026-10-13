@@ -77,6 +77,13 @@ export default async function AccountPage() {
                         </p>
 
                         <div className="mt-4">
+                            <div className="flex flex-wrap items-center gap-2">
+                                <p className="text-sm font-medium text-white">
+                                    {profile?.username
+                                     ? `@${profile.username}`                                    
+                                     : "Username not set"}
+                                </p>
+                            </div>
     
                         <p className="mt-2 break-all text-sm text-zinc-400">
                             {user.email}
