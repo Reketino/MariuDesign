@@ -34,16 +34,16 @@ type ShopProduct = {
 export default async function ShopPage() {
     const supabase = await createClient();
 
-    const { data: { user }} = await supabase.auth.getUser();
+    const { data: { user } } = await supabase.auth.getUser();
 
     let isAdmin = false;
 
     if (user) {
         const { data: profile } = await supabase
-        .from("profiles")
-        .select("role")
-        .eq("id", user.id)
-        .maybeSingle();
+            .from("profiles")
+            .select("role")
+            .eq("id", user.id)
+            .maybeSingle();
 
         isAdmin = profile?.role === "admin";
     }
@@ -114,8 +114,8 @@ export default async function ShopPage() {
                 {isAdmin && (
                     <div className="mt-8">
                         <Link
-                        href="/admin/products/new"
-                        className="
+                            href="/admin/products/new"
+                            className="
                         inline-flex rounded-lg bg-white
                         px-5 py-3 text-sm font-medium text-zinc-950
                         transition hover:bg-zinc-200
@@ -219,8 +219,8 @@ export default async function ShopPage() {
                                     {isAdmin && (
                                         <div className="border-t border-zinc-800 p-4">
                                             <Link
-                                            href={`/admin/products/${product.id}`}
-                                            className="
+                                                href={`/admin/products/${product.id}`}
+                                                className="
                                             flex w-full items-center justify-center
                                             rounded-lg border border-zinc-700 px-4
                                             py-2.5 text-sm font-medium text-white
