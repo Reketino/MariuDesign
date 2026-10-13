@@ -111,6 +111,21 @@ export default async function ShopPage() {
                     </p>
                 </header>
 
+                {isAdmin && (
+                    <div className="mt-8">
+                        <Link
+                        href="/admin/products/new"
+                        className="
+                        inline-flex rounded-lg bg-white
+                        px-5 py-3 text-sm font-medium text-zinc-950
+                        transition hover:bg-zinc-200
+                        "
+                        >
+                            Create product
+                        </Link>
+                    </div>
+                )}
+
                 {shopProducts.length === 0 ? (
                     <div className="mt-16 rounded-xl border border-zinc-800 bg-zinc-900/40 px-6 py-16 text-center">
                         <h2 className="text-lg font-medium text-white">
