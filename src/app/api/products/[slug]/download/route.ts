@@ -34,10 +34,7 @@ export async function GET(_request: Request, { params }: RouteContext) {
     .single();
 
   if (productError || !product) {
-    return NextResponse.json(
-      { error: "Product not found." },
-      { status: 404 },
-    );
+    return NextResponse.json({ error: "Product not found." }, { status: 404 });
   }
 
   const { data: paidOrder, error: orderError } = await supabaseAdmin
@@ -65,16 +62,12 @@ export async function GET(_request: Request, { params }: RouteContext) {
     );
   }
 
-  const { data: productFile, error: fileError } = await supabase
+  const { data: productFiles, error: fileError } = await supabase
     .from("product_files")
     .select(`id, file_name, storage_path, version`)
     .eq("product_id", product.id)
     .eq("file_type", "product")
-    .order("created_at", {
-      ascending: false,
-    })
-    .limit(1)
-    .maybeSingle();
+    .order("created_at", { ascending: false });
 
   if (fileError) {
     console.error("Failed to fetch product file:", fileError);
@@ -85,29 +78,46 @@ export async function GET(_request: Request, { params }: RouteContext) {
     );
   }
 
-  if (!productFile) {
+  if (!productFiles || productFiles.length === 0) {
     return NextResponse.json(
       { error: "No download file is available for this product." },
       { status: 404 },
     );
   }
 
-  const { data: signedUrl, error: signedUrlError } = await supabase.storage
-    .from(STORAGE_BUCKET)
-    .createSignedUrl(productFile.storage_path, 60);
+  const files = await Promise.all(
+    productFiles.map(async (file) => {
+      const { data: signedUrl, error: signedUrlError } = await supabase.storage
+        .from(STORAGE_BUCKET)
+        .createSignedUrl(file.storage_path, 60);
 
-  if (signedUrlError || !signedUrl) {
-    console.error("Failed to create signed download URL:", signedUrlError);
+      if (signedUrlError || !signedUrl) {
+        console.error(
+          `Failed to create download link for ${file.file_name}:`,
+          signedUrlError,
+        );
 
+        throw new Error(`Failed to create download link for ${file.file_name}`);
+      }
+
+      return {
+        id: file.id,
+        fileName: file.file_name,
+        version: file.version,
+        url: signedUrl.signedUrl,
+      };
+    }),
+  ).catch((signedUrlError: unknown) => {
+    console.error("Failed to create product download links:", signedUrlError);
+    return null;
+  });
+
+  if (!files) {
     return NextResponse.json(
-      { error: "Failed to create download link." },
+      { error: "Failed to create download links." },
       { status: 500 },
     );
   }
 
-  return NextResponse.json({
-    url: signedUrl.signedUrl,
-    fileName: productFile.file_name,
-    version: productFile.version,
-  });
+  return NextResponse.json({ files });
 }
