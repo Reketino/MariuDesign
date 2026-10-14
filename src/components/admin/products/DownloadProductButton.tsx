@@ -13,6 +13,23 @@ type DownloadProductButtonProps = {
     slug: string;
 }
 
+function getFileLabel(fileName:string) {
+    const extension = fileName.split(".").pop()?.toLowerCase();
+
+    switch (extension) {
+        case "zip":
+            return "ZIP archive";
+        case "3mf":
+            return "3D model (.3mf)";
+        case "stl":
+            return "3D model (.stl)";
+        case "obj":
+            return "3D model (.obj)";
+        default:
+            return "Product file";
+    }
+}
+
 export default function DownloadProductButton({
     slug,
 }: DownloadProductButtonProps) {
