@@ -144,7 +144,8 @@ export default function ProductTable({
                                             className="group flex items-center gap-4"
                                         >
                                             {productImage && (
-                                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950">
+                                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg 
+                                                border border-zinc-800 bg-zinc-950">
                                                     <Image
                                                         src={getProductImageUrl(productImage.storage_path)}
                                                         alt={productImage.alt_text ?? product.title}
