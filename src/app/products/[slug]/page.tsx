@@ -176,7 +176,9 @@ export default async function ProductPage({
                                 {images.map((image) => (
                                     <div
                                         key={image.id}
-                                        className="relative aspect-square overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900"
+                                        className="
+                                        relative aspect-square overflow-hidden rounded-lg 
+                                        border border-zinc-800 bg-zinc-900"
                                     >
                                         <Image
                                             src={getProductImageUrl(
