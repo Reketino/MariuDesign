@@ -252,7 +252,10 @@ export default async function CheckoutSuccessPage({
 
                     <Link
                         href={`/products/${product.slug}`}
-                        className="mt-8 inline-flex rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                        className="
+                        mt-8 inline-flex rounded-lg bg-white px-5 py-3 
+                        text-sm font-medium text-zinc-950 transition 
+                        hover:bg-zinc-200"
                     >
                         View product
                     </Link>
@@ -303,7 +306,13 @@ export default async function CheckoutSuccessPage({
 
                     <Link
                         href={`/products/${product.slug}`}
-                        className="mt-8 flex w-full items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200">
+                        className="
+                        mt-8 flex w-full items-center justify-center 
+                        rounded-lg bg-white px-5 py-3 
+                        text-sm font-medium text-zinc-950 
+                        transition hover:bg-zinc-200
+                        "
+                    >
                         Download your product
                     </Link>
 

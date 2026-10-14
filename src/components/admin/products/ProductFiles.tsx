@@ -99,7 +99,7 @@ export default function ProductFiles({
                         </p>
 
                         <p className="mt-1 text-xs text-zinc-600">
-                            STL, 3MF, or OBJ
+                            STL, 3MF, OBJ, or ZIP
                         </p>
                     </div>
                 </label>
@@ -108,7 +108,7 @@ export default function ProductFiles({
                     id="product-files"
                     type="file"
                     multiple
-                    accept=".stl,.3mf,.obj"
+                    accept=".stl,.3mf,.obj,.zip"
                     onChange={handleFileChange}
                     className="sr-only"
                 />

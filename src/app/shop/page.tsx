@@ -153,7 +153,11 @@ export default async function ShopPage() {
                             return (
                                 <article
                                     key={product.id}
-                                    className="group overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/40 transition hover:border-zinc-700 hover:bg-zinc-900/70"
+                                    className="
+                                    group overflow-hidden rounded-xl 
+                                    border border-zinc-800 bg-zinc-900/40 
+                                    transition hover:border-zinc-700 hover:bg-zinc-900/70
+                                    "
                                 >
                                     <Link
                                         href={`/products/${product.slug}`}

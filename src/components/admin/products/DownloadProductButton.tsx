@@ -119,45 +119,45 @@ export default function DownloadProductButton({
     }
 
 
-return (
-       <div className="space-y-3">
-        {files.map((file) => (
-            <div
-                key={file.id}
-                className="flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 sm:flex-row sm:items-center sm:justify-between"
-            >
-                <div className="min-w-0">
-                    <p className="wrap-break-word text-sm font-medium text-white">
-                        {file.fileName}
-                    </p>
-                    <p className="mt-1 text-xs text-zinc-400">
-                        Version {file.version}
-                    </p>
-                </div>
+    return (
+        <div className="space-y-3">
+            {files.map((file) => (
+                <div
+                    key={file.id}
+                    className="flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 sm:flex-row sm:items-center sm:justify-between"
+                >
+                    <div className="min-w-0">
+                        <p className="wrap-break-word text-sm font-medium text-white">
+                            {file.fileName}
+                        </p>
+                        <p className="mt-1 text-xs text-zinc-400">
+                            Version {file.version}
+                        </p>
+                    </div>
 
-                <button
-                    type="button"
-                    onClick={() => handleDownload(file)}
-                    disabled={downloadingFileId !== null}
-                    className="
+                    <button
+                        type="button"
+                        onClick={() => handleDownload(file)}
+                        disabled={downloadingFileId !== null}
+                        className="
                     shrink-0 rounded-lg bg-white px-5 py-3 text-sm 
                     font-medium text-zinc-950 transition 
                     hover:bg-zinc-200 disabled:cursor-not-allowed 
                     disabled:opacity-50
                     "
-                >
-                    {downloadingFileId === file.id
-                        ? "Preparing download..."
-                        : `Download ${file.fileName}`}
-                </button>
-            </div>
-        ))}
+                    >
+                        {downloadingFileId === file.id
+                            ? "Preparing download..."
+                            : `Download ${file.fileName}`}
+                    </button>
+                </div>
+            ))}
 
-        {error && (
-            <p role="alert" className="text-sm text-red-400">
-                {error}
-            </p>
-        )}
-    </div>
-);
+            {error && (
+                <p role="alert" className="text-sm text-red-400">
+                    {error}
+                </p>
+            )}
+        </div>
+    );
 }

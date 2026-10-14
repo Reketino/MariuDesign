@@ -432,7 +432,12 @@ export default function ProductForm({
                         type="button"
                         onClick={handleDelete}
                         disabled={loading || deleting}
-                        className="rounded-lg border border-red-500/30 px-4 py-2.5 text-sm font-medium text-red-400 transition hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="
+                        rounded-lg border border-red-500/30 px-4 py-2.5 
+                        text-sm font-medium text-red-400 transition 
+                        hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-300 
+                        disabled:cursor-not-allowed disabled:opacity-50
+                        "
                     >
                         {deleting ? "Deleting..." : "Delete product"}
                     </button>
@@ -444,7 +449,11 @@ export default function ProductForm({
                     <button
                         type="button"
                         onClick={() => router.back()}
-                        className="rounded-lg border border-zinc-700 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+                        className="
+                        rounded-lg border border-zinc-700 px-4 py-2.5 
+                        text-sm font-medium text-zinc-300 hover:text-white
+                        transition hover:border-zinc-500 
+                        "
                     >
                         Cancel
                     </button>
@@ -452,7 +461,12 @@ export default function ProductForm({
                     <button
                         type="submit"
                         disabled={loading}
-                        className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="
+                        rounded-lg bg-white px-5 py-2.5 
+                        text-sm font-medium text-zinc-950 
+                        transition hover:bg-zinc-200 
+                        disabled:cursor-not-allowed disabled:opacity-50
+                        "
                     >
                         {loading
                             ? isEditing
