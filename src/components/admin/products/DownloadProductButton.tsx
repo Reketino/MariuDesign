@@ -13,7 +13,7 @@ type DownloadProductButtonProps = {
     slug: string;
 }
 
-function getFileLabel(fileName:string) {
+function getFileLabel(fileName: string) {
     const extension = fileName.split(".").pop()?.toLowerCase();
 
     switch (extension) {
@@ -130,22 +130,48 @@ export default function DownloadProductButton({
     if (files.length === 0) {
         return (
             <p className="text-sm text-zinc-400">
-                No download files are avaliabel for this product.
+                No download files are available for this product.
             </p>
         );
     }
 
 
     return (
-        <div className="space-y-3">
+        <div className="divide-y divide-zinc-800/80">
             {files.map((file) => (
                 <div
                     key={file.id}
-                    className="flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 sm:flex-row sm:items-center sm:justify-between"
-                >
-                    <div className="min-w-0">
-                        <p className="wrap-break-word text-sm font-medium text-white">
-                            {file.fileName}
+                    className="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
+                    <div className="
+                    flex size-10 shrink-0 items-center justify-center
+                    rounded-lg border border-zinc-800 bg-zinc-900
+                    "
+                    >
+                        <svg
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            className="size-5 text-zinc-400"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                            />
+
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M14 2v6h6M8 13h8M8 17h5"
+                            />
+                        </svg>
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                        <p className=" text-sm font-medium text-zinc-100">
+                            {getFileLabel(file.fileName)}
                         </p>
                         <p className="mt-1 text-xs text-zinc-400">
                             Version {file.version}
@@ -157,15 +183,30 @@ export default function DownloadProductButton({
                         onClick={() => handleDownload(file)}
                         disabled={downloadingFileId !== null}
                         className="
-                    shrink-0 rounded-lg bg-white px-5 py-3 text-sm 
-                    font-medium text-zinc-950 transition 
-                    hover:bg-zinc-200 disabled:cursor-not-allowed 
-                    disabled:opacity-50
+                        inline-flex shrink-0 items-center gap-2 rounded-lg 
+                        border border-zinc-700 px-3 py-2 
+                        text-xs font-medium text-zinc-200 
+                        transition hover:border-zinc-500 hover:bg-zinc-900 
+                        disabled:cursor-not-allowed disabled:opacity-50
                     "
                     >
                         {downloadingFileId === file.id
-                            ? "Preparing download..."
-                            : `Download ${file.fileName}`}
+                            ? "Preparing..."
+                            : "Download"}
+                        <svg
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.7"
+                            className="size-4"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
+                            />
+                        </svg>
                     </button>
                 </div>
             ))}
