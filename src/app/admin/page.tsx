@@ -93,6 +93,18 @@ export default function AdminPage() {
                     </Link>
                 </div>
             </section>
+
+            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+            <header>
+                <h2 className="text-lg font-semibold text-white">
+                    Build Guides & Part List
+                </h2>
+
+                <p className="mt-1 text-sm text-zinc-500">
+                    Manage public building guides and parts lists for your products.
+                </p>
+            </header>
+            </section>
         </section>
     );
 }
