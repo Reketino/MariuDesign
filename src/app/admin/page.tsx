@@ -93,6 +93,31 @@ export default function AdminPage() {
                     </Link>
                 </div>
             </section>
+
+            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+                <header>
+                    <h2 className="text-lg font-semibold text-white">
+                        Build Guides & Part List
+                    </h2>
+
+                    <p className="mt-1 text-sm text-zinc-500">
+                        Manage public building guides and parts lists for your products.
+                    </p>
+                </header>
+
+                <div className="mt-6">
+                    <Link
+                        href="/admin/documents"
+                        className="
+                inline-flex items-center justify-center rounded-lg
+                bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 
+                transition hover:bg-zinc-200
+                "
+                    >
+                        Manage documents
+                    </Link>
+                </div>
+            </section>
         </section>
     );
 }
