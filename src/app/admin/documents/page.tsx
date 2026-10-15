@@ -33,4 +33,26 @@ export default async function AdminDocumentsPage() {
         const productTitles = new Map(
             (products ?? []).map((product) => [product.id, product.title])
         );
+
+        return (
+            <section className="space-y-8">
+                <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                        <p className="text-sm font-medium text-zinc-500">
+                            Store / Documents
+                        </p>
+                        
+                        <h1 className="mt-1 text-3xl font-semibold tracking-tight text-white">
+                             Build Guides & Part Lists
+                        </h1>
+
+                        <p className="mt-2 max-w-2xl text-sm text-zinc-400">
+                        Manage building guides and parts lists associated with
+                        your products. These documents will be publicly
+                        accessible without requiring a purchase.
+                        </p>
+                    </div>
+                </header>
+            </section>
+        )
 }
