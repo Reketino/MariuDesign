@@ -104,6 +104,19 @@ export default function AdminPage() {
                     Manage public building guides and parts lists for your products.
                 </p>
             </header>
+
+            <div className="mt-6">
+                <Link
+                href="/admin/documents"
+                className="
+                inline-flex items-center justify-center rounded-lg
+                bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 
+                transition hover:bg-zinc-200
+                "
+                >
+                    Manage documents
+                </Link>
+            </div>
             </section>
         </section>
     );
