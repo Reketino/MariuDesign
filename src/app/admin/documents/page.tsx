@@ -29,4 +29,8 @@ export default async function AdminDocumentsPage() {
         if (documentsError) {
             throw new Error("Failed to load product documents")
         }
+
+        const productTitles = new Map(
+            (products ?? []).map((product) => [product.id, product.title])
+        );
 }
