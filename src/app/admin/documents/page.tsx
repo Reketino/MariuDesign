@@ -22,4 +22,11 @@ export default async function AdminDocumentsPage() {
                 .order("created_at", { ascending: false }),
         ]);
 
+        if (productsError) {
+            throw new Error("Failed to load products")
+        }
+
+        if (documentsError) {
+            throw new Error("Failed to load product documents")
+        }
 }
