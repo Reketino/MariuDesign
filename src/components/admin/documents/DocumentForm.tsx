@@ -155,6 +155,45 @@ export default function DocumentForm({ products }: {
                             <option value="part_list">Part List</option>
                         </select>
                     </label>
+
+                    <label className="block">
+                        <span className="mb-2 block text-sm text-zinc-300">
+                            Title
+                        </span>
+                        <input
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
+                        required
+                        maxLength={150}
+                        placeholder="e.g. Assembly Guide"
+                        className="
+                        w-full rounded-lg 
+                        border border-zinc-700 
+                        bg-zinc-950 px-3 py-2.5 
+                        text-sm text-white 
+                        placeholder:text-zinc-600"
+                        />
+                    </label>
+
+                        <label className="block">
+                        <span className="mb-2 block text-sm text-zinc-300">
+                            Description (optional)
+                        </span>
+   
+                        <textarea
+                        value={description}
+                        onChange={(event) => setDescription(event.target.value)}
+                        maxLength={2000}
+                        rows={3}
+                        placeholder="Describe what this document contains."
+                        className="
+                        w-full rounded-lg 
+                        border border-zinc-700 
+                        bg-zinc-950 px-3 py-2.5 
+                        text-sm text-white 
+                        placeholder:text-zinc-600"
+                        />
+                    </label>
             </div>
         </form>
     )
