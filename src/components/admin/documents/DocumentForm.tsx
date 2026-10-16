@@ -44,5 +44,12 @@ export default function DocumentForm({ products }: {
             return;
         }
 
+        const formData = new FormData();
+        formData.set("productId", productId);
+        formData.set("documentType", documentType);
+        formData.set("sourceType", sourceType);
+        formData.set("title", title);
+        formData.set("description", description);
+        
     }
 }
