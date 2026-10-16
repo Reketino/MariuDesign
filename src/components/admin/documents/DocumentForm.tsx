@@ -24,5 +24,10 @@ export default function DocumentForm({ products }: {
     const [file, setFile] = useState<File | null>(null);
     const [message, setMessage] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        setMessage("");
+    }
     
 }
