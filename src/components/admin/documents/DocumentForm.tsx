@@ -73,6 +73,12 @@ export default function DocumentForm({ products }: {
                 setMessage(result.error ?? "Could not save the document.");
                 return;
             }
+
+            setMessage("Document saved successfully.")
+            setTitle("");
+            setDescription("");
+            setExternalUrl("");
+            setFile(null);
         }
     }
 }
