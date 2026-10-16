@@ -60,5 +60,19 @@ export default function DocumentForm({ products }: {
         }
 
         setIsSubmitting(true);
+
+        try {
+            const response = await fetch("api/admin/documents", {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                setMessage(result.error ?? "Could not save the document.");
+                return;
+            }
+        }
     }
 }
