@@ -28,6 +28,21 @@ export default function DocumentForm({ products }: {
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setMessage("");
+
+        if (!productId) {
+            setMessage("Choose a product.");
+            return;
+        }
+
+        if (sourceType === "pdf" && !file) {
+            setMessage("Select a PDF file.")
+            return;
+        }
+
+        if (sourceType === "google_docs" && !externalUrl.trim()) {
+            setMessage("Enter a Google Docs URL.");
+            return;
+        }
+
     }
-    
 }
