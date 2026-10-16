@@ -11,5 +11,18 @@ type Product = {
 export default function DocumentForm({ products }: {
     products: Product[];
 }) {
+    const router = useRouter
+
+    const [productId, setProductId] = useState(products[0]?.id ?? "")
+    const [documentType, setDocumentType] = useState<
+    "build_guide" | "part_list"
+    >("build_guide");
+    const [sourceType, setSourceType] = useState<"pdf" | "google_docs">("pdf")
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [externalUrl, setExternalUrl] = useState("");
+    const [file, setFile] = useState<File | null>(null);
+    const [message, setMessage] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
 }
