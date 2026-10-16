@@ -11,7 +11,7 @@ type Product = {
 export default function DocumentForm({ products }: {
     products: Product[];
 }) {
-    const router = useRouter
+    const router = useRouter();
 
     const [productId, setProductId] = useState(products[0]?.id ?? "")
     const [documentType, setDocumentType] = useState<
@@ -83,6 +83,11 @@ export default function DocumentForm({ products }: {
             const fileInput = document.getElementById("document-file") as HTMLInputElement | null;
 
             if (fileInput) fileInput.value = "";
-        }
+
+            router.refresh();
+        } catch {
+            setMessage("An unexpected error occured.");
+        } finally {
+            setIsSubmitting(false);
     }
 }
