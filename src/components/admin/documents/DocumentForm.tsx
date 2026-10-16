@@ -97,7 +97,65 @@ export default function DocumentForm({ products }: {
         onSubmit={handleSubmit}
         className="space-y-5 rounded-xl border border-zinc-800 bg-zinc-900/60 p-6"
         >
+            <div>
+                <h2 className="text-lg font-semibold text-white">
+                    Add document
+                </h2>
+                <p className="mt-1 text-sm text-zinc-400">
+                    Add a public build guide or parts list to a product.
+                </p>
+            </div>
 
+            <div className="grid gap-5 sm:grid-cols-2">
+                <label className="block">
+                    <span className="mb-2 block text-sm text-zinc-500">
+                    Product
+                    </span>
+                    <select
+                    value={productId}
+                    onChange={(event) => setProductId(event.target.value)}
+                    required
+                    className="
+                    w-full rounded-lg 
+                    border border-zinc-700 
+                    bg-zinc-950 px-3 py-2.5 
+                    text-sm text-white"                 
+                    >
+                        <option value="" disabled>
+                            Select a product
+                        </option>
+                        {products.map((product) => (
+                            <option key={product.id} value={product.id}>
+                                {product.title}
+                            </option>
+                        ))}
+                    </select>
+                    </label>
+
+                    <label className="block">
+                        <span className="mb-2 block text-sm text-zinc-300">
+                            Document type
+                        </span>
+                        <select
+                        value={documentType}
+                        onChange={(event) => 
+                            setDocumentType(
+                                event.target.value as
+                                | "build_guide"
+                                | "part_list"
+                            )
+                        }
+                        className="
+                        w-full rounded-lg 
+                        border border-zinc-700 
+                        bg-zinc-950 px-3 py-2.5 
+                        text-sm text-white"
+                        >
+                            <option value="build_guide">Build Guide</option>
+                            <option value="part_list">Part List</option>
+                        </select>
+                    </label>
+            </div>
         </form>
     )
 }
