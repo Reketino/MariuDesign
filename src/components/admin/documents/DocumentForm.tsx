@@ -50,6 +50,15 @@ export default function DocumentForm({ products }: {
         formData.set("sourceType", sourceType);
         formData.set("title", title);
         formData.set("description", description);
-        
+
+        if (sourceType === "pdf" && file) {
+            formData.set("file", file);
+        }
+
+        if (sourceType === "google_docs") {
+            formData.set("externalUrl", externalUrl);
+        }
+
+        setIsSubmitting(true);
     }
 }
