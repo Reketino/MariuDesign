@@ -79,6 +79,10 @@ export default function DocumentForm({ products }: {
             setDescription("");
             setExternalUrl("");
             setFile(null);
+
+            const fileInput = document.getElementById("document-file") as HTMLInputElement | null;
+
+            if (fileInput) fileInput.value = "";
         }
     }
 }
