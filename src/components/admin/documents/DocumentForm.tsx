@@ -194,6 +194,24 @@ export default function DocumentForm({ products }: {
                         placeholder:text-zinc-600"
                         />
                     </label>
+
+                    <div>
+                        <span className="mb-2 block text-sm text-zinc-300">
+                            Document source
+                        </span>
+                        <div className="flex flex-wrap gap-4">
+                            <label className="flex items-center gap-2 text-sm text-zinc-300">
+                                <input
+                                type="radio"
+                                name="sourceType"
+                                checked={sourceType === "pdf"}
+                                onChange={() => setSourceType("pdf")}
+                                />
+                                Upload PDF
+                            </label>
+                            
+                        </div>
+                    </div>
             </div>
         </form>
     )
