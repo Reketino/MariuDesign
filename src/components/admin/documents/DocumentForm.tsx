@@ -15,7 +15,7 @@ export default function DocumentForm({ products }: {
 
     const [productId, setProductId] = useState(products[0]?.id ?? "")
     const [documentType, setDocumentType] = useState<
-    "build_guide" | "part_list"
+        "build_guide" | "part_list"
     >("build_guide");
     const [sourceType, setSourceType] = useState<"pdf" | "google_docs">("pdf")
     const [title, setTitle] = useState("");
@@ -89,5 +89,5 @@ export default function DocumentForm({ products }: {
             setMessage("An unexpected error occured.");
         } finally {
             setIsSubmitting(false);
+        }
     }
-}
