@@ -91,3 +91,13 @@ export default function DocumentForm({ products }: {
             setIsSubmitting(false);
         }
     }
+
+    return (
+        <form
+        onSubmit={handleSubmit}
+        className="space-y-5 rounded-xl border border-zinc-800 bg-zinc-900/60 p-6"
+        >
+
+        </form>
+    )
+}
