@@ -261,6 +261,12 @@ export default function DocumentForm({ products }: {
                             />
                         </label>
                     )}
+
+                    {message && (
+                        <p role="status" className="text-sm text-zinc-300">
+                            {message}
+                        </p>
+                    )}
             </div>
         </form>
     )
