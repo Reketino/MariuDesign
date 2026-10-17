@@ -85,20 +85,14 @@ export default async function AdminDocumentsPage() {
                 <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
                     <p className="text-sm text-zinc-500">Build Guides</p>
                     <p className="mt-2 text-3xl font-semibold text-white">
-                        {documents?.filter(
-                            (document) =>
-                                document.document_type === "build_guide"
-                        ).length ?? 0}
+                        {buildGuideCount}
                     </p>
                 </article>
 
                 <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
                     <p className="text-sm text-zinc-500">Part Lists</p>
                     <p className="mt-2 text-3xl font-semibold text-white">
-                        {documents?.filter(
-                            (document) =>
-                                document.document_type === "part_list"
-                        ).length ?? 0}
+                        {partListCount}
                     </p>
                 </article>
             </section>
