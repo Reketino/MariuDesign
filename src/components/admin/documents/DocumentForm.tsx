@@ -267,6 +267,17 @@ export default function DocumentForm({ products }: {
                             {message}
                         </p>
                     )}
+
+                    <button 
+                    type="submit"
+                    disabled={isSubmitting || products.length === 0}
+                    className="
+                    inline-flex items-center justify-center rounded-lg 
+                    bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 
+                    transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        {isSubmitting ? "Saving..." : "Save document"}
+                    </button>
             </div>
         </form>
     )
