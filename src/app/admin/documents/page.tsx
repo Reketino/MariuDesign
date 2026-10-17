@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DocumentForm from "@/components/admin/documents/DocumentForm";
 import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
