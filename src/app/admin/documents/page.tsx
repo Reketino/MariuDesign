@@ -35,6 +35,10 @@ export default async function AdminDocumentsPage() {
         (products ?? []).map((product) => [product.id, product.title])
     );
 
+    const buildGuideCount = documents?.filter(
+        (document) => document.document_type === "build_guide"
+    ).length ?? 0;
+
     return (
         <section className="space-y-8">
             <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
