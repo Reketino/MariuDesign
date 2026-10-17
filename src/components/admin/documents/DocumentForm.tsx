@@ -227,7 +227,7 @@ export default function DocumentForm({ products }: {
                             PDF file (max 20MB)
                         </span>
                         <input
-                            id="doucment-file"
+                            id="document-file"
                             type="file"
                             accept=".pdf,application/pdf"
                             required
