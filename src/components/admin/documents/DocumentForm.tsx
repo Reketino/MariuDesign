@@ -62,7 +62,7 @@ export default function DocumentForm({ products }: {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch("api/admin/documents", {
+            const response = await fetch("/api/admin/documents", {
                 method: "POST",
                 body: formData,
             });
