@@ -209,9 +209,58 @@ export default function DocumentForm({ products }: {
                                 />
                                 Upload PDF
                             </label>
-                            
+                                <label className="flex items-center gap-2 text-sm text-zinc-300">
+                                <input
+                                type="radio"
+                                name="sourceType"
+                                checked={sourceType === "google_docs"}
+                                onChange={() => setSourceType("google_docs")}
+                                />
+                                Google Docs link
+                            </label>
                         </div>
                     </div>
+
+                    {sourceType === "pdf" ? (
+                        <label className="block">
+                            <span className="mb-2 block text-sm text-zinc-100">
+                                PDF file (max 20MB)
+                            </span>
+                            <input
+                            id="doucment-file"
+                            type="file"
+                            accept=".pdf,application/pdf"
+                            required
+                            onChange={(event) =>
+                                setFile(event.target.files?.[0] ?? null)
+                            }
+                            className="
+                            block w-full text-sm text-zinc-300 
+                            file:mr-4 file:rounded-lg file:border-0 
+                            file:bg-zinc-800 file:px-4 file:py-2 
+                            file:text-sm file:text-white 
+                            hover:file:bg-zinc-700"
+                            />
+                        </label>
+                    ): (
+                        <label className="block">
+                            <span className="mb-2 block text-sm text-zinc-300">
+                                Google Docs URL
+                            </span>
+                            <input
+                            type="url"
+                            value={externalUrl}
+                            onChange={(event) => setExternalUrl(event.target.value)}
+                            required
+                            placeholder="https://docs.google.com/document/d/..."
+                            className="
+                            w-full rounded-lg border border-zinc-700 
+                            bg-zinc-950 px-3 py-2.5 
+                            text-sm text-white 
+                            placeholder:text-zinc-600"
+                            />
+                        </label>
+                    )}
             </div>
         </form>
     )
