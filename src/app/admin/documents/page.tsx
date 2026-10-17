@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DocumentForm from "@/components/admin/documents/DocumentForm";
 import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
@@ -33,6 +34,14 @@ export default async function AdminDocumentsPage() {
     const productTitles = new Map(
         (products ?? []).map((product) => [product.id, product.title])
     );
+
+    const buildGuideCount = documents?.filter(
+        (document) => document.document_type === "build_guide"
+    ).length ?? 0;
+
+    const partListCount = documents?.filter(
+        (document) => document.document_type === "part_list"
+    ).length ?? 0;
 
     return (
         <section className="space-y-8">
