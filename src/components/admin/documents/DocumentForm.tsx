@@ -278,7 +278,13 @@ export default function DocumentForm({ products }: {
                     >
                         {isSubmitting ? "Saving..." : "Save document"}
                     </button>
+
+                    {products.length === 0 && (
+                        <p className="text-sm text-amber-400">
+                            Create a product before adding a document.
+                        </p>
+                    )}
             </div>
         </form>
-    )
+    );
 }
