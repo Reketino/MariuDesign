@@ -151,13 +151,12 @@ export default async function AdminDocumentsPage() {
                                                 "build_guide"
                                                 ? "Build Guide"
                                                 : "Part List"}
-
+                                                </td>
                                             <td className="px-3 py-4 text-zinc-300">
                                                 {document.source_type === "pdf"
                                                     ? "PDF"
                                                     : "Google Docs"}
                                             </td>
-                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
