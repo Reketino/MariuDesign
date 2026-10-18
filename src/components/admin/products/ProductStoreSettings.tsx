@@ -49,7 +49,10 @@ export default function ProductStoreSettings({
                         onChange={(event) =>
                             onCategoryChange(event.target.value)
                         }
-                        className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
+                        className="
+                        mt-2 block w-full rounded-lg border border-zinc-700 
+                        bg-zinc-950 px-4 py-3 text-sm text-white 
+                        outline-none transition focus:border-zinc-500"
                     >
                         <option value="">
                             Uncategorized
@@ -82,7 +85,10 @@ export default function ProductStoreSettings({
                             onChange={(event) =>
                                 onStatusChange(event.target.value)
                             }
-                            className="mt-2 block w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition focus:border-zinc-500"
+                            className="
+                            mt-2 block w-full rounded-lg border border-zinc-700 
+                            bg-zinc-950 px-4 py-3 text-sm text-white 
+                            outline-none transition focus:border-zinc-500"
                         >
                             <option value="draft">
                                 Draft
