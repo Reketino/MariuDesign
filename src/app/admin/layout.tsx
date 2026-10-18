@@ -17,25 +17,25 @@ export default async function AdminLayout({
             <header className="border-b border-zinc-800 bg-zinc-950">
                 <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
                     <Link
-                    href="/admin"
-                    className="text-lg font-semibold tracking-tight">
+                        href="/admin"
+                        className="text-lg font-semibold tracking-tight">
                         Mariudesign
                     </Link>
 
-                    <div className="flex items-center gap-4"> 
+                    <div className="flex items-center gap-4">
                         <span className="hidden text-sm text-zinc-400 sm:block">
                             {user.email}
                         </span>
 
                         <Link
-                        href="/"
-                        className="
+                            href="/"
+                            className="
                         rounded-lg border border-zinc-700 px-3 py-2 
                         text-sm text-zinc-300 hover:text-white
                         transition hover:border-zinc-500 
                         "
                         >
-                         View Store   
+                            View Store
                         </Link>
                     </div>
                 </div>
@@ -44,15 +44,15 @@ export default async function AdminLayout({
             <section className="mx-auto flex max-w-7xl">
                 <aside className="hidden min-h-[calc(100vh-4rem)] w-60 shrink-0 border-r border-zinc-800 py-6 md:block">
                     <nav aria-label="Admin navigation">
-                    <ul className="space-y-1 px-3">
-                        <li>
-                            <Link
-                            href="/admin"
-                            className="block rounded-lg bg-zinc-800 px-3 py-2.5 text-sm font-medium text-white"
-                            >
-                                Dashboard   
-                            </Link>
-                        </li>
+                        <ul className="space-y-1 px-3">
+                            <li>
+                                <Link
+                                    href="/admin"
+                                    className="block rounded-lg bg-zinc-800 px-3 py-2.5 text-sm font-medium text-white"
+                                >
+                                    Dashboard
+                                </Link>
+                            </li>
 
                             <li>
                                 <Link
@@ -67,46 +67,46 @@ export default async function AdminLayout({
                                 </Link>
                             </li>
 
-                        <li>
-                            <Link
-                            href="/admin/categories"
-                            className="
+                            <li>
+                                <Link
+                                    href="/admin/categories"
+                                    className="
                             block rounded-lg px-3 py-2.5 
                             text-sm text-zinc-400 hover:text-white
                             transition hover:bg-zinc-900 
                             "
-                            >
-                              Categories  
-                            </Link>
-                        </li>
+                                >
+                                    Categories
+                                </Link>
+                            </li>
 
-                         <li>
-                            <Link
-                            href="/admin/orders"
-                            className="
+                            <li>
+                                <Link
+                                    href="/admin/orders"
+                                    className="
                             block rounded-lg px-3 py-2.5 
                             text-sm text-zinc-400 hover:text-white
                             transition hover:bg-zinc-900 
                             "
-                            >
-                              Orders 
-                            </Link>
-                        </li>
+                                >
+                                    Orders
+                                </Link>
+                            </li>
 
-                         <li>
-                            <Link
-                            href="/admin/settings"
-                            className="
+                            <li>
+                                <Link
+                                    href="/admin/settings"
+                                    className="
                             block rounded-lg px-3 py-2.5 
                             text-sm text-zinc-400 hover:text-white
                             transition hover:bg-zinc-900 
                             "
-                            >
-                              Settings
-                            </Link>
-                        </li>
-                    </ul>
-                    </nav>   
+                                >
+                                    Settings
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
                 </aside>
 
                 <main className="min-w-0 flex-1 p-6 lg:p-8">
