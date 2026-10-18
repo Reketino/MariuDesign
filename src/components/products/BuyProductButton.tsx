@@ -65,7 +65,11 @@ export default function BuyProductButton({
                 type="button"
                 onClick={handleCheckout}
                 disabled={isLoading}
-                className="w-full rounded-lg bg-white px-5 py-3.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+                className="
+                w-full rounded-lg bg-white px-5 py-3.5 
+                text-sm font-medium text-zinc-950 transition 
+                hover:bg-zinc-200 disabled:cursor-not-allowed 
+                disabled:opacity-50"
             >
                 {isLoading
                     ? "Opening checkout..."
