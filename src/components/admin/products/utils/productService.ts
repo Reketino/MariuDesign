@@ -36,16 +36,13 @@ export async function saveProduct({
       .update(productData)
       .eq("id", productId);
 
+    if (error) {
+      if (error.code === "23505") {
+        throw new Error("A product with this slug already exists.");
+      }
 
-        if (error) {
-            if (error.code === "23505") {
-                throw new Error(
-                    "A product with this slug already exists.",
-                );
-            }
-
-            throw new Error(error.message);
-          }
+      throw new Error(error.message);
+    }
     return productId;
   }
 
@@ -55,15 +52,13 @@ export async function saveProduct({
     .select("id")
     .single();
 
-    if (error) {
-        if (error.code === "23505") {
-            throw new Error(
-                "A product with this slug already exists.",
-            );
-        }
-        throw new Error(error.message);
+  if (error) {
+    if (error.code === "23505") {
+      throw new Error("A product with this slug already exists.");
     }
-    return data.id;
+    throw new Error(error.message);
+  }
+  return data.id;
 }
 
 export async function deleteProduct({
