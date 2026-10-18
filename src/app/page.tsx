@@ -41,7 +41,8 @@ export default function HomePage() {
                     <div className="mt-8 flex gap-4">
                         <Link
                             href="/shop"
-                            className="rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                            className="rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 
+                            transition hover:bg-zinc-200"
                         >
                             Browse designs
                         </Link>
