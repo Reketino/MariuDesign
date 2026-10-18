@@ -86,7 +86,10 @@ export default function ProductTable({
 
                     <Link
                         href="/admin/products/new"
-                        className="mt-6 inline-flex rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                        className="
+                        mt-6 inline-flex rounded-lg bg-white 
+                        px-4 py-2.5 text-sm font-medium text-zinc-950 
+                        transition hover:bg-zinc-200"
                     >
                         Add your first product
                     </Link>
