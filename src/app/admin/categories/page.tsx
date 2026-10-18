@@ -35,7 +35,10 @@ export default async function CategoriesPage() {
 
                 <Link
                     href="/admin/categories/new"
-                    className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    className="
+                    inline-flex items-center justify-center rounded-lg 
+                    bg-white px-4 py-2.5 text-sm font-medium 
+                    text-zinc-950 transition hover:bg-zinc-200"
                 >
                     Add category
                 </Link>
@@ -81,17 +84,17 @@ export default async function CategoriesPage() {
 
                                         <td className="px-6 py-5">
                                             <div className="flex items-center justify-end gap-4">
-                                            <Link
-                                                href={`/admin/categories/${category.id}`}
-                                                className="text-sm font-medium text-zinc-400 transition hover:text-white"
-                                            >
-                                                Edit
-                                            </Link>
+                                                <Link
+                                                    href={`/admin/categories/${category.id}`}
+                                                    className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                                >
+                                                    Edit
+                                                </Link>
 
-                                            <DeleteCategoryButton
-                                                categoryId={category.id}
-                                                categoryName={category.name}
-                                            />
+                                                <DeleteCategoryButton
+                                                    categoryId={category.id}
+                                                    categoryName={category.name}
+                                                />
                                             </div>
                                         </td>
                                     </tr>
@@ -120,7 +123,10 @@ export default async function CategoriesPage() {
 
                         <Link
                             href="/admin/categories/new"
-                            className="mt-6 inline-flex rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                            className="
+                            mt-6 inline-flex rounded-lg bg-white 
+                            px-4 py-2.5 text-sm font-medium 
+                            text-zinc-950 transition hover:bg-zinc-200"
                         >
                             Add your first category
                         </Link>

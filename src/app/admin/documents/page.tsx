@@ -17,9 +17,7 @@ export default async function AdminDocumentsPage() {
 
             supabaseAdmin
                 .from("product_documents")
-                .select(
-                    "id, product_id, document_type, title, description, source_type, external_url, created_at"
-                )
+                .select("id, product_id, document_type, title, description, source_type, external_url, created_at")
                 .order("created_at", { ascending: false }),
         ]);
 
@@ -96,6 +94,8 @@ export default async function AdminDocumentsPage() {
                     </p>
                 </article>
             </section>
+
+            <DocumentForm products={products ?? []} />
 
             <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
                 <header>
