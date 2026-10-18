@@ -21,9 +21,7 @@ export default function DeleteCategoryButton({
     const [error, setError] = useState("");
 
     async function handleDelete() {
-        const confirmed = window.confirm(
-            `Are you sure you want to delete "${categoryName}"?`
-        );
+        const confirmed = window.confirm(`Are you sure you want to delete "${categoryName}"?`);
 
         if (!confirmed) {
             return;
@@ -55,7 +53,11 @@ export default function DeleteCategoryButton({
                 type="button"
                 onClick={handleDelete}
                 disabled={loading}
-                className="text-sm font-medium text-red-400 transition hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
+                className="
+                text-sm font-medium text-red-400 
+                transition hover:text-red-300 
+                disabled:cursor-not-allowed 
+                disabled:opacity-50"
             >
                 {loading ? "Deleting..." : "Delete"}
             </button>
