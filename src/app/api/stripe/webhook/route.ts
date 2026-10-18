@@ -13,12 +13,8 @@ export async function POST(request: Request) {
     console.error("Missing STRIPE_WEBHOOK_SECRET");
 
     return NextResponse.json(
-      {
-        error: "Webhook configuration error.",
-      },
-      {
-        status: 500,
-      },
+      { error: "Webhook configuration error." },
+      { status: 500 },
     );
   }
   const body = await request.text();
@@ -27,12 +23,8 @@ export async function POST(request: Request) {
 
   if (!signature) {
     return NextResponse.json(
-      {
-        error: "Missing Stripe signature.",
-      },
-      {
-        status: 400,
-      },
+      { error: "Missing Stripe signature." },
+      { status: 400 },
     );
   }
 
@@ -66,12 +58,8 @@ export async function POST(request: Request) {
           );
 
           return NextResponse.json(
-            {
-              error: "Missing order metadata.",
-            },
-            {
-              status: 400,
-            },
+            { error: "Missing order metadata." },
+            { status: 400 },
           );
         }
 
@@ -87,12 +75,8 @@ export async function POST(request: Request) {
           console.error("Failed to mark order as paid:", error);
 
           return NextResponse.json(
-            {
-              error: "Failed to update order.",
-            },
-            {
-              status: 500,
-            },
+            { error: "Failed to update order." },
+            { status: 500 },
           );
         }
 
@@ -123,12 +107,8 @@ export async function POST(request: Request) {
           console.error("Failed to mark expired order:", error);
 
           return NextResponse.json(
-            {
-              error: "Failed to update expired order.",
-            },
-            {
-              status: 500,
-            },
+            { error: "Failed to update expired order." },
+            { status: 500 },
           );
         }
 
@@ -148,12 +128,8 @@ export async function POST(request: Request) {
     console.error("Stripe webhook processing failed:", error);
 
     return NextResponse.json(
-      {
-        error: "Webhook processing failed.",
-      },
-      {
-        status: 500,
-      },
+      { error: "Webhook processing failed." },
+      { status: 500 },
     );
   }
 }
