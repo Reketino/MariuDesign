@@ -45,14 +45,13 @@ export default async function PublicHeader() {
                         Store
                     </Link>
 
-                    <Link href="/build-guides"className={linkClass}>
+                    <Link href="/build-guides" className={linkClass}>
                         Build Guides
-                    </Link> 
+                    </Link>
 
                     <Link href="/part-lists" className={linkClass}>
-                    Part Lists
+                        Part Lists
                     </Link>
-        
 
                     {user ? (
                         <>
