@@ -25,6 +25,8 @@ export default async function PublicHeader() {
         role = profile?.role ?? null;
     }
 
+    const linkClass = "whitespace-nowrap text-sm text-zinc-400 transition hover:text-white"
+
     return (
         <header className="border-b border-zinc-800">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
@@ -37,21 +39,23 @@ export default async function PublicHeader() {
 
                 <nav
                     aria-label="Main navigation"
-                    className="flex items-center gap-6"
+                    className="flex flex-wrap items-center justify-end gap-x-5 gap-y-3"
                 >
-                    <Link
-                        href="/shop"
-                        className="text-sm text-zinc-400 transition hover:text-white"
-                    >
+                    <Link href="/shop" className={linkClass}>
                         Store
+                    </Link>
+
+                    <Link href="/build-guides" className={linkClass}>
+                        Build Guides
+                    </Link>
+
+                    <Link href="/part-lists" className={linkClass}>
+                        Part Lists
                     </Link>
 
                     {user ? (
                         <>
-                            <Link
-                                href="/account"
-                                className="text-sm text-zinc-400 transition hover:text-white"
-                            >
+                            <Link href="/account" className={linkClass}>
                                 Account
                             </Link>
 
@@ -73,10 +77,7 @@ export default async function PublicHeader() {
                             )}
                         </>
                     ) : (
-                        <Link
-                            href="/login"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
+                        <Link href="/login" className={linkClass}>
                             Log in
                         </Link>
                     )}
