@@ -37,4 +37,8 @@ export async function GET(
         );
     }
 
+    const product = Array.isArray(document.products)
+    ? document.products[0]
+    : document.products;
+
 }
