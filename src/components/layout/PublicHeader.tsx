@@ -77,10 +77,7 @@ export default async function PublicHeader() {
                             )}
                         </>
                     ) : (
-                        <Link
-                            href="/login"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
+                        <Link href="/login" className={linkClass}>
                             Log in
                         </Link>
                     )}
