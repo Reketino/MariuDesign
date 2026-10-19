@@ -55,6 +55,11 @@ export default async function PublicHeader() {
                         Build Guides
                     </Link> 
 
+                    <Link href="/part-lists" className={linkClass}>
+                    Part Lists
+                    </Link>
+        
+
                     {user ? (
                         <>
                             <Link
