@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { error } from "console";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -19,5 +20,16 @@ export async function GET(
     .select("id, document_type, source_type, storage_path, external_url, products!inner(id, status)")
     .eq("id", id)
     .maybeSingle();
+
+    if (documentError) {
+        console.error("Failed to fetch public document:", documentError);
+
+        return NextResponse.json(
+            { error: "Could not load document." },
+            { status: 500 }
+        );
+    }
+
+    
 
 }
