@@ -30,6 +30,11 @@ export async function GET(
         );
     }
 
-    
+    if (!document) {
+        return NextResponse.json(
+            { error: "Document not found." },
+            { status: 404 }
+        );
+    }
 
 }
