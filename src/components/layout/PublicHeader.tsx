@@ -25,6 +25,8 @@ export default async function PublicHeader() {
         role = profile?.role ?? null;
     }
 
+    const linkClass = "whitespace-nowrap text-sm text-zinc-400 transition hover:text-white"
+
     return (
         <header className="border-b border-zinc-800">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
@@ -45,6 +47,13 @@ export default async function PublicHeader() {
                     >
                         Store
                     </Link>
+
+                    <Link 
+                    href="/build-guides"
+                    className={linkClass}
+                    >
+                        Build Guides
+                    </Link> 
 
                     {user ? (
                         <>
