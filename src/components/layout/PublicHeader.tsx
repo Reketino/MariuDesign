@@ -43,7 +43,7 @@ export default async function PublicHeader() {
                 >
                     <Link
                         href="/shop"
-                        className="text-sm text-zinc-400 transition hover:text-white"
+                        className={linkClass}
                     >
                         Store
                     </Link>
