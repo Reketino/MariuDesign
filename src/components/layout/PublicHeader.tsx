@@ -55,10 +55,7 @@ export default async function PublicHeader() {
 
                     {user ? (
                         <>
-                            <Link
-                                href="/account"
-                                className="text-sm text-zinc-400 transition hover:text-white"
-                            >
+                            <Link href="/account" className={linkClass}>
                                 Account
                             </Link>
 
