@@ -41,17 +41,11 @@ export default async function PublicHeader() {
                     aria-label="Main navigation"
                     className="flex flex-wrap items-center justify-end gap-x-5 gap-y-3"
                 >
-                    <Link
-                        href="/shop"
-                        className={linkClass}
-                    >
+                    <Link href="/shop" className={linkClass}>
                         Store
                     </Link>
 
-                    <Link 
-                    href="/build-guides"
-                    className={linkClass}
-                    >
+                    <Link href="/build-guides"className={linkClass}>
                         Build Guides
                     </Link> 
 
