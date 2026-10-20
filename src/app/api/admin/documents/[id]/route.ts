@@ -57,4 +57,11 @@ export async function GET(
         }
         return NextResponse.redirect(document.external_url);
     }
+
+    if (document.source_type !== "pdf" || !document.storage_path) {
+        return NextResponse.json(
+            { error: "Document file is unavaliable" }, 
+            {status: 404 }
+        );
+    }
 }
