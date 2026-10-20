@@ -69,4 +69,13 @@ export async function GET(
     await supabaseAdmin.storage
     .from("product-documents")
     .createSignedUrl(document.storage_path, 60);
+
+    if (signedUrlError || !signedUrlData?.signedUrl) {
+        console.error("Failed to create signed document URL:", signedUrlError);
+
+        return NextResponse.json(
+            { error: "Could not open document." },
+            { status: 500 }
+        );
+    }
 }
