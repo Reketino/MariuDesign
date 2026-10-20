@@ -64,4 +64,9 @@ export async function GET(
             {status: 404 }
         );
     }
+
+    const { data: signedUrlData, error: signedUrlError } =
+    await supabaseAdmin.storage
+    .from("product-documents")
+    .createSignedUrl(document.storage_path, 60);
 }
