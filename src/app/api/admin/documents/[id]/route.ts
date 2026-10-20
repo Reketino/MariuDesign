@@ -41,4 +41,11 @@ export async function GET(
     ? document.products[0]
     : document.products;
 
+    if (!product || product.status !== "published") {
+        return NextResponse.json(
+            { error: "Document not found." },
+            { status: 404 }
+        );
+    }
+
 }
