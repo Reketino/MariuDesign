@@ -48,4 +48,13 @@ export async function GET(
         );
     }
 
+    if (document.source_type === "google docs") {
+        if (!document.external_url) {
+            return NextResponse.json(
+                { error: "Document URL is missing" },
+                { status: 404 }
+            );
+        }
+        return NextResponse.redirect(document.external_url);
+    }
 }
