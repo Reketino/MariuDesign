@@ -21,4 +21,9 @@ export default async function BuildGuidesPage() {
         .eq("document_type", "build_guide")
         .eq("products.status", "published")
         .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Failed to load build guides:", error);
+            throw new Error("Failed to load build guides");
+        }
 }
