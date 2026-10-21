@@ -44,6 +44,20 @@ export default async function BuildGuidesPage() {
                         the product.
                     </p>
                 </header>
+
+                {documents && documents.length > 0 ? (
+                    <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        {documents.map((document) => {
+                            const product = Array.isArray(document.products)
+                            ? document.products[0]
+                            : document.products;
+
+                            if (!product) return null;
+
+                            
+                        })}
+                    </section>
+                )}
             </main>
         )
 }
