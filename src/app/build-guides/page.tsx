@@ -85,7 +85,16 @@ export default async function BuildGuidesPage() {
                                     >
                                         Open guide
                                         </Link>
-                                        
+
+                                        <Link
+                                        href={`/products/${product.slug}`}
+                                        className="
+                                        inline-flex rounded-lg border border-zinc-700 
+                                        px-4 py-2 text-sm font-medium text-white transition 
+                                        hover:bg-zinc-800"
+                                        >
+                                            View product
+                                        </Link>
                                 </article>
                             )
                         })}
