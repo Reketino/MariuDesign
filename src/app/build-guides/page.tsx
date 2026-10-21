@@ -54,7 +54,14 @@ export default async function BuildGuidesPage() {
 
                             if (!product) return null;
 
-                            
+                            return(
+                                <article
+                                key={document.id}
+                                className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5"
+                                >
+                                    
+                                </article>
+                            )
                         })}
                     </section>
                 )}
