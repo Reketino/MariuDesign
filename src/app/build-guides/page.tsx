@@ -59,6 +59,10 @@ export default async function BuildGuidesPage() {
                                 key={document.id}
                                 className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5"
                                 >
+                                    <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+                                        {product.title}
+                                    </p>
+
                                     
                                 </article>
                             )
