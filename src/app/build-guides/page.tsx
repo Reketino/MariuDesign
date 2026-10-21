@@ -63,7 +63,9 @@ export default async function BuildGuidesPage() {
                                         {product.title}
                                     </p>
 
-                                    
+                                    <h2 className="mt-2 text-lg font-semibold text-white">
+                                        {document.title}
+                                    </h2>
                                 </article>
                             )
                         })}
