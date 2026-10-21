@@ -96,8 +96,14 @@ export default async function BuildGuidesPage() {
                                             View product
                                         </Link>
                                 </article>
-                            )
+                            );
                         })}
+                    </section>
+                ) : (
+                    <section className="rounded-xl border border-dashed border-zinc-700 p-10 text-center">
+                        <h2 className="text-lg font-semibold text-white">
+                            No build guides yet
+                        </h2>
                     </section>
                 )}
             </main>
