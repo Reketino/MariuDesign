@@ -66,6 +66,12 @@ export default async function BuildGuidesPage() {
                                     <h2 className="mt-2 text-lg font-semibold text-white">
                                         {document.title}
                                     </h2>
+
+                                    {document.description && (
+                                        <p className="mt-2 text-sm text-zinc-400">
+                                            {document.description}
+                                        </p>
+                                    )}
                                 </article>
                             )
                         })}
