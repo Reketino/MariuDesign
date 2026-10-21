@@ -104,8 +104,13 @@ export default async function BuildGuidesPage() {
                         <h2 className="text-lg font-semibold text-white">
                             No build guides yet
                         </h2>
+
+                        <p className="mt-2 text-sm text-zinc-400">
+                            Build guides will appear here when they are available.
+                        </p>
+
                     </section>
                 )}
             </main>
-        )
+        );
 }
