@@ -95,6 +95,7 @@ export default async function BuildGuidesPage() {
                                     >
                                         View product
                                     </Link>
+                                    </div>
                             </article>
                         );
                     })}
