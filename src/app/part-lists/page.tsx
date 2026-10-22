@@ -16,4 +16,9 @@ export default async function PartListsPage() {
         .eq("document_type", "part_list")
         .eq("products.status", "published")
         .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Failed to load part lists:", error);
+            throw new Error("Failed to load part lists");
+        }
 }
