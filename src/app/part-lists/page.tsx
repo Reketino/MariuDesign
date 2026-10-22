@@ -67,7 +67,19 @@ export default async function PartListsPage() {
                                         </p>
                                     )}
 
-                                    
+                                    <div className="mt-5 flex flex-wrap gap-3">
+                                        <Link 
+                                        href={`/api/documents/${document.id}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="
+                                        inline-flex rounded-lg bg-white px-4 py-2 
+                                        text-sm font-medium text-zinc-950 transition 
+                                        hover:bg-zinc-200"
+                                        >
+                                            Open part list
+                                        </Link>
+                                    </div>
                                 </article>
                             )
                         })}
