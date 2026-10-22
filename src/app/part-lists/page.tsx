@@ -99,8 +99,12 @@ export default async function PartListsPage() {
                         <h2 className="text-lg font-semibold text-white">
                              No part lists yet
                         </h2>
+
+                        <p className="mt-2 text-sm text-zinc-400">
+                            Part lists will appear here when they are available.
+                        </p>
                     </section>
                 )}
             </main>
-        )
+        );
 }
