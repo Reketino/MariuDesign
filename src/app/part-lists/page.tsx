@@ -21,4 +21,25 @@ export default async function PartListsPage() {
             console.error("Failed to load part lists:", error);
             throw new Error("Failed to load part lists");
         }
+
+        return (
+            <main className="mx-auto max-w-7xl space-y-8 px-6 py-12">
+                <header>
+                    <p className="text-sm font-medium text-zinc-500">
+                        Resources
+                    </p>
+
+                    <h1 className="mt-1 text-3xl font-semibold tracking-tight text-white">
+                        Part Lists
+                    </h1>
+
+                    <p className="mt-2 max-w-2xl text-sm text-zinc-400">
+                    Browse the parts and materials needed for our products.
+                    These lists are available without purchasing the product.
+                    </p>
+                </header>
+
+                
+            </main>
+        )
 }
