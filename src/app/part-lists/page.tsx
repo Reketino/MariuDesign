@@ -95,7 +95,11 @@ export default async function PartListsPage() {
                         })}
                     </section>
                 ) : (
-                    
+                    <section className="rounded-xl border border-dashed border-zinc-700 p-10 text-center">
+                        <h2 className="text-lg font-semibold text-white">
+                             No part lists yet
+                        </h2>
+                    </section>
                 )}
             </main>
         )
