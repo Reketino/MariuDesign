@@ -48,6 +48,28 @@ export default async function PartListsPage() {
 
                             if (!product) return null;
                             
+                            return (
+                                <article
+                                key={document.id}
+                                className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5"
+                                >
+                                    <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+                                        {product.title}
+                                    </p>
+
+                                    <h2 className="mt-2 text-lg font-semibold text-white">
+                                        {document.title}
+                                    </h2>
+
+                                    {document.description && (
+                                        <p className="mt-2 text-sm text-zinc-400">
+                                            {document.description}
+                                        </p>
+                                    )}
+
+                                    
+                                </article>
+                            )
                         })}
                     </section>
                 )}
