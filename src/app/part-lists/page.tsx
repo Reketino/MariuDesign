@@ -91,9 +91,11 @@ export default async function PartListsPage() {
                                         </Link>
                                     </div>
                                 </article>
-                            )
+                            );
                         })}
                     </section>
+                ) : (
+                    
                 )}
             </main>
         )
