@@ -79,6 +79,16 @@ export default async function PartListsPage() {
                                         >
                                             Open part list
                                         </Link>
+
+                                        <Link
+                                        href={`/products/${product.slug}`}
+                                        className="
+                                        inline-flex rounded-lg border border-zinc-700 
+                                        px-4 py-2 text-sm font-medium text-white transition 
+                                        hover:bg-zinc-800"
+                                        >
+                                            View product
+                                        </Link>
                                     </div>
                                 </article>
                             )
