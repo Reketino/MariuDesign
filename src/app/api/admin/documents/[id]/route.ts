@@ -55,5 +55,26 @@ export async function DELETE(
         if (storageError) {
             console.error("Failed to delete document file:", storageError);
         }
+
+        return NextResponse.json(
+            { error: "Could not delete the documennt file." },
+            { status: 500 }
+        );
     }
+}
+
+const { error: deleteError } = await supabaseAdmin
+.from("product_documents")
+.delete()
+.eq("id", id);
+
+if (deleteError) {
+    console.error("Failed to delete document record:", deleteError);
+
+    return NextResponse.json(
+        {
+            error: "The file may have been removed, but the document record could not be deleted. Please check the admin documents page."
+        },
+        { status: 500 }
+    );
 }
