@@ -23,4 +23,5 @@ export async function DELETE(
         );
     }
     
+    const { id } = await params;
 }
