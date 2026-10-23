@@ -35,7 +35,7 @@ export async function DELETE(_request: Request, { params }: RouteContext) {
   }
 
   if (!document) {
-    return NextResponse.json({ error: "Document not found." }, { status: 400 });
+    return NextResponse.json({ error: "Document not found." }, { status: 404 });
   }
 
   if (document.source_type === "pdf" && document.storage_path) {
