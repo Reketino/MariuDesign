@@ -30,4 +30,13 @@ export async function DELETE(
     .select("id, source_type, storage_path")
     .eq("id", id)
     .maybeSingle();
+
+    if (fetchError) { 
+        console.error("Failed to fetch document:", fetchError) 
+
+        return NextResponse.json(
+            { error: "Could not load document." },
+            { status: 500 }
+        );
+    }
 }
