@@ -46,5 +46,14 @@ export async function DELETE(
             { status: 400 }
         );
     }
-    
+
+    if (document.source_type === "pdf" && document.storage_path) {
+        const { error: storageError } = await supabaseAdmin.storage
+        .from("product-documents")
+        .remove([document.storage_path]);
+
+        if (storageError) {
+            console.error("Failed to delete document file:", storageError);
+        }
+    }
 }
