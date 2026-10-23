@@ -24,4 +24,10 @@ export async function DELETE(
     }
     
     const { id } = await params;
+
+    const {data: document, error: fetchError} = await supabaseAdmin
+    .from("product_documents")
+    .select("id, source_type, storage_path")
+    .eq("id", id)
+    .maybeSingle();
 }
