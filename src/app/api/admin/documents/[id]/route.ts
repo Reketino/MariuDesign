@@ -39,4 +39,12 @@ export async function DELETE(
             { status: 500 }
         );
     }
+
+    if (!document) {
+        return NextResponse.json(
+            { error: "Document not found." },
+            { status: 400 }
+        );
+    }
+    
 }
