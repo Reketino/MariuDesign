@@ -54,10 +54,9 @@ export async function DELETE(
 
         if (storageError) {
             console.error("Failed to delete document file:", storageError);
-        }
-
+        
         return NextResponse.json(
-            { error: "Could not delete the documennt file." },
+            { error: "Could not delete the document file." },
             { status: 500 }
         );
     }
