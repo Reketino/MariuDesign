@@ -39,6 +39,12 @@ export default function DocumentActions({
             }
 
             router.refresh();
-        }
+        } catch (error) {
+            setErrorMessage(
+                error instanceof Error
+                ? error.message
+                : "An unexpected error occurred."
+            );
+        } 
     }
 }
