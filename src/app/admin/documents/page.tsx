@@ -2,6 +2,7 @@ import Link from "next/link";
 import DocumentForm from "@/components/admin/documents/DocumentForm";
 import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import DocumentActions from "@/components/admin/documents/DocumentActions";
 
 export const dynamic = "force-dynamic";
 
