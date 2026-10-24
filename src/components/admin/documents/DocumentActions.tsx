@@ -16,5 +16,12 @@ export default function DocumentActions({
     const [isDeleting, setIsDeleting] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
-    
+    async function handleDelete() {
+        const confirmed = window.confirm(
+            `Are you sure you want to delete "${documentTitle}"?\n\nThis action 
+            cannot be undone.`
+        );
+
+        
+    }
 }
