@@ -22,6 +22,8 @@ export default function DocumentActions({
             cannot be undone.`
         );
 
-        
+        if (!confirmed) return;
+        setIsDeleting(true);
+        setErrorMessage("");
     }
 }
