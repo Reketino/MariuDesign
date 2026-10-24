@@ -45,6 +45,9 @@ export default function DocumentActions({
                 ? error.message
                 : "An unexpected error occurred."
             );
-        } 
+        } finally {
+            setIsDeleting(false);
+        }
     }
+    
 }
