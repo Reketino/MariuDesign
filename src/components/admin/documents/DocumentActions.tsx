@@ -25,5 +25,14 @@ export default function DocumentActions({
         if (!confirmed) return;
         setIsDeleting(true);
         setErrorMessage("");
+
+        try {
+            const response = await fetch(
+                `/api/admin/documents/${documentId}`,
+                {method: "Delete"}
+            );
+
+            const result = await response.json();
+        }
     }
 }
