@@ -93,5 +93,25 @@ export async function POST(request: Request) {
     );
   }
 
+  const productId = body.productId;
+
+  if (
+    typeof productId !== "string" ||
+    !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      productId,
+    )
+  ) {
+    return NextResponse.json(
+      { error: "A valid productId is required" },
+      { status: 400 },
+    );
+  }
+
+  const { data: product, error: productError } = await supabaseAdmin
+  .from("products")
+  .select("id, status")
+  .eq("id", productId)
+  .maybeSingle();
+
   
 }
