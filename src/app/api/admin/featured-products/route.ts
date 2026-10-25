@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { error } from "console";
 
 export const dynamic = "force-dynamic";
 
@@ -20,4 +21,14 @@ async function isAdmin() {
     .single();
 
     return !profileError && profile?.role === "admin";
+}
+
+export async function GET() {
+    if (!(await isAdmin())) {
+        return NextResponse.json(
+            { error: "Unauthorized" },
+            { status: 401 },
+        );
+    }
+    
 }
