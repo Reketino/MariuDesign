@@ -126,6 +126,10 @@ export default async function AdminDocumentsPage() {
                                     <th className="px-3 py-3 font-medium">
                                         Source
                                     </th>
+
+                                    <th className="px-3 py-3 font-medium">
+                                        Actions
+                                    </th>
                                 </tr>
                             </thead>
 
