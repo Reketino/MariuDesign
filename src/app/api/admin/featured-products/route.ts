@@ -113,5 +113,13 @@ export async function POST(request: Request) {
   .eq("id", productId)
   .maybeSingle();
 
+  if (productError) {
+    console.error("Failed to validate product:", productError);
+
+    return NextResponse.json(
+      { error: "Could not validate product" },
+      { status: 500 },
+    );
+  }
   
 }
