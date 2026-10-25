@@ -129,5 +129,11 @@ export async function POST(request: Request) {
     );
   }
 
+  const { data: existing, error: existingError } = await supabaseAdmin
+  .from("homepage_featured_products")
+  .select("id")
+  .eq("product_id", productId)
+  .maybeSingle();
+
   
 }
