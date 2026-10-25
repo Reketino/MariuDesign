@@ -61,4 +61,79 @@ export async function GET() {
       )
     `)
     .order("position", { ascending: true });
+
+    if (error) {
+      console.error("Failed to fetch featured products:", error);
+
+      return NextResponse.json(
+        { error: "Could not fetch featured products" },
+        { status: 500 },
+      );
+    }
+
+    return NextResponse.json({ products: data });
+}
+
+export async function POST(request: Request) {
+  if (!(await isAdmin())) {
+    return NextResponse.json(
+      { error: "Unauthorized" },
+      { status: 401 },
+    );
+  }
+
+  let body: { productId?: unknown };
+
+  try {
+    body = await request.json()
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid JSON body" },
+      { status: 400 },
+    );
+  }
+
+  const productId = body.productId;
+
+  if (
+    typeof productId !== "string" ||
+    !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      productId,
+    )
+  ) {
+    return NextResponse.json(
+      { error: "A valid productId is required" },
+      { status: 400 },
+    );
+  }
+
+  const { data: product, error: productError } = await supabaseAdmin
+  .from("products")
+  .select("id, status")
+  .eq("id", productId)
+  .maybeSingle();
+
+  if (productError) {
+    console.error("Failed to validate product:", productError);
+
+    return NextResponse.json(
+      { error: "Could not validate product" },
+      { status: 500 },
+    );
+  }
+
+  if (!product || product.status !== "published") {
+    return NextResponse.json(
+      { error: "Only published products can be featured" },
+      { status: 400 },
+    );
+  }
+
+  const { data: existing, error: existingError } = await supabaseAdmin
+  .from("homepage_featured_products")
+  .select("id")
+  .eq("product_id", productId)
+  .maybeSingle();
+
+  
 }
