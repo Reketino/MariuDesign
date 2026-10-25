@@ -64,5 +64,10 @@ export async function GET() {
 
     if (error) {
       console.error("Failed to fetch featured products:", error);
+
+      return NextResponse.json(
+        { error: "Could not fetch featured products" },
+        { status: 500 },
+      );
     }
 }
