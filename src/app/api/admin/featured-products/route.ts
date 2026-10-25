@@ -135,5 +135,9 @@ export async function POST(request: Request) {
   .eq("product_id", productId)
   .maybeSingle();
 
-  
+  if (existingError) {
+    console.error("Failed to check featured product:", existingError);
+
+    
+  }
 }
