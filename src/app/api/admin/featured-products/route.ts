@@ -121,5 +121,13 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   }
+
+  if (!product || product.status !== "published") {
+    return NextResponse.json(
+      { error: "Only published products can be featured" },
+      { status: 400 },
+    );
+  }
+
   
 }
