@@ -165,8 +165,8 @@ export default async function AdminDocumentsPage() {
 
                                         <td className="px-3 py-4">
                                             <DocumentActions
-                                            documentId={document.id}
-                                            documentTitle={document.title}
+                                                documentId={document.id}
+                                                documentTitle={document.title}
                                             />
                                         </td>
                                     </tr>
