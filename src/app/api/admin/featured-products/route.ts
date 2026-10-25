@@ -61,4 +61,8 @@ export async function GET() {
       )
     `)
     .order("position", { ascending: true });
+
+    if (error) {
+      console.error("Failed to fetch featured products:", error);
+    }
 }
