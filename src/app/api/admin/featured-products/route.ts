@@ -12,4 +12,12 @@ async function isAdmin() {
     if (userError || !user) {
         return false;
     }
+
+    const { data: profile, error: profileError } = await supabase
+    .from("profile")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
+    return !profileError && profile?.role === "admin";
 }
