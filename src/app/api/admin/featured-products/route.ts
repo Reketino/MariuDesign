@@ -30,5 +30,35 @@ export async function GET() {
             { status: 401 },
         );
     }
-    
+
+      const { data, error } = await supabaseAdmin
+    .from("homepage_featured_products")
+    .select(`
+      id,
+      product_id,
+      position,
+      created_at,
+      products (
+        id,
+        title,
+        slug,
+        status,
+        product_images (
+          id,
+          image_url,
+          position
+        ),
+        product_prices (
+          id,
+          amount,
+          currency
+        ),
+        categories (
+          id,
+          name,
+          slug
+        )
+      )
+    `)
+    .order("position", { ascending: true });
 }
