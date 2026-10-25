@@ -73,3 +73,14 @@ export async function GET() {
 
     return NextResponse.json({ products: data });
 }
+
+export async function POST(request: Request) {
+  if (!(await isAdmin())) {
+    return NextResponse.json(
+      { error: "Unauthorized" },
+      { status: 401 },
+    );
+  }
+
+  
+}
