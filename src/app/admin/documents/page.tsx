@@ -126,6 +126,10 @@ export default async function AdminDocumentsPage() {
                                     <th className="px-3 py-3 font-medium">
                                         Source
                                     </th>
+
+                                    <th className="px-3 py-3 font-medium">
+                                        Actions
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -157,6 +161,13 @@ export default async function AdminDocumentsPage() {
                                             {document.source_type === "pdf"
                                                 ? "PDF"
                                                 : "Google Docs"}
+                                        </td>
+
+                                        <td className="px-3 py-4">
+                                            <DocumentActions
+                                                documentId={document.id}
+                                                documentTitle={document.title}
+                                            />
                                         </td>
                                     </tr>
                                 ))}
