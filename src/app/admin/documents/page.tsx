@@ -162,6 +162,13 @@ export default async function AdminDocumentsPage() {
                                                 ? "PDF"
                                                 : "Google Docs"}
                                         </td>
+
+                                        <td className="px-3 py-4">
+                                            <DocumentActions
+                                            documentId={document.id}
+                                            documentTitle={document.title}
+                                            />
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
