@@ -27,3 +27,7 @@ type FeaturedProduct = {
         currency: string;
     }[];
 };
+
+type FeaturedProductsProps = {
+    products: FeaturedProduct[];
+};
