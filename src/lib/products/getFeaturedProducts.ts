@@ -20,5 +20,9 @@ export async function getFeaturedProducts() {
         .eq("products.status", "published")
         .order("positions", { ascending: true });
 
+        if (error) {
+            console.error("Failed to fetch featured prodiucts:", error);
+            return [];
+        }
         
 }
