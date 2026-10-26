@@ -138,6 +138,17 @@ export async function POST(request: Request) {
   if (existingError) {
     console.error("Failed to check featured product:", existingError);
 
-    
+    return NextResponse.json(
+      { error: "Could not check featured product" },
+      { status: 500 },
+    );
   }
+
+  if (existing) {
+    return NextResponse.json(
+      { error: "Product is already featured" },
+      { status: 409 },
+    );
+  }
+  
 }
