@@ -209,4 +209,11 @@ export async function DELETE(request: Request) {
       { status: 400 },
     );
   }
+
+  const { error } = await supabaseAdmin
+  .from("homepage_featured_products")
+  .delete()
+  .eq("product_id", productId);
+
+  
 }
