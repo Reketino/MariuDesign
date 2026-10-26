@@ -36,4 +36,6 @@ export default function FeaturedProduct({
     products,
 }: FeaturedProductsProps) {
     const router = useRouter();
+
+    
 }
