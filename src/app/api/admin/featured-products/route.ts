@@ -167,5 +167,7 @@ export async function POST(request: Request) {
     );
   }
 
+  const nextPosition = (lastProduct?.position ?? -1) + 1
+
   
 }
