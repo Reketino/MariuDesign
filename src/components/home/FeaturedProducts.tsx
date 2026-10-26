@@ -37,5 +37,8 @@ export default function FeaturedProduct({
 }: FeaturedProductsProps) {
     const router = useRouter();
 
-    
+    const items: CircularCarouselItem[] = products.flatMap((product) => {
+        const mainImage = getProductImage(product.product_images);
+        
+    })
 }
