@@ -158,5 +158,14 @@ export async function POST(request: Request) {
   .limit(1)
   .maybeSingle();
 
+  if (positionError) {
+    console.error("Failed to determine position:", positionError);
+
+    return NextResponse.json(
+      { error: "Could not determine product position" },
+      { status: 500 },
+    );
+  }
+
   
 }
