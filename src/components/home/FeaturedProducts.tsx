@@ -31,3 +31,9 @@ type FeaturedProduct = {
 type FeaturedProductsProps = {
     products: FeaturedProduct[];
 };
+
+export default function FeaturedProduct({
+    products,
+}: FeaturedProductsProps) {
+    const router = useRouter();
+}
