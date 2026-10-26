@@ -215,5 +215,14 @@ export async function DELETE(request: Request) {
   .delete()
   .eq("product_id", productId);
 
-  
+  if (error) {
+    console.error("Failed to remove featured product:", error);
+
+    return NextResponse.json(
+      { error: "Could not remove featured product" },
+      { status: 500 },
+    );
+  }
+
+  return NextResponse.json({ success: true });
 }
