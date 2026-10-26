@@ -24,5 +24,19 @@ export async function getFeaturedProducts() {
             console.error("Failed to fetch featured prodiucts:", error);
             return [];
         }
-        
+
+        return (data ?? [])
+        .filter((item) => item.products !== null)
+        .map((item) => {
+            const product = item.products;
+
+            return {
+                ...product,
+                position: item.position,
+                product_images: [...(product.product_images ?? [])].sort(
+                    (a, b) => a.sort_order - b.sort_order,
+                ),
+                product_prices: product.product_prices ?? [],
+            };
+        })
 }
