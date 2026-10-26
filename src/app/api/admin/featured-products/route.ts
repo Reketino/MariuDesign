@@ -169,5 +169,11 @@ export async function POST(request: Request) {
 
   const nextPosition = (lastProduct?.position ?? -1) + 1
 
+  const { data, error } = await supabaseAdmin
+  .from("homepage_featured_products")
+  .insert({ product_id: productId, position: nextPosition })
+  .select("id, product_id, positions")
+  .single();
+
   
 }
