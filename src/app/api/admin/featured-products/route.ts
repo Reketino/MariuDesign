@@ -150,5 +150,13 @@ export async function POST(request: Request) {
       { status: 409 },
     );
   }
+
+  const { data: lastProduct, error: positionError } = await supabaseAdmin
+  .from("homepage_featured_products")
+  .select("position")
+  .order("position", { ascending: false })
+  .limit(1)
+  .maybeSingle();
+
   
 }
