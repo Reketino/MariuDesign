@@ -175,5 +175,14 @@ export async function POST(request: Request) {
   .select("id, product_id, positions")
   .single();
 
-  
+  if (error) {
+    console.error("Failed to add featured product:", error);
+
+    return NextResponse.json(
+      { error: "Could not add featured product" },
+      { status: 500 },
+    );
+  }
+
+  return NextResponse.json({ product: data}, { status: 201 });
 }
