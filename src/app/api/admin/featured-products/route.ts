@@ -197,4 +197,16 @@ export async function DELETE(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const productId = searchParams.get("productId");
+
+  if (
+    !productId ||
+    !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      productId,
+    )
+  ) {
+    return NextResponse.json(
+      { error: "A valid productId is required" },
+      { status: 400 },
+    );
+  }
 }
