@@ -25,18 +25,14 @@ export async function getFeaturedProducts() {
             return [];
         }
 
-        return (data ?? [])
-        .filter((item) => item.products !== null)
-        .map((item) => {
-            const product = item.products;
-
-            return {
-                ...product,
-                position: item.position,
-                product_images: [...(product.product_images ?? [])].sort(
-                    (a, b) => a.sort_order - b.sort_order,
-                ),
-                product_prices: product.product_prices ?? [],
-            };
-        })
+        return (data ?? []).flatMap((item) => 
+        (item.products ?? []).map((product) => ({
+            ...product,
+            position: item.position,
+            product_images: [...(product.product_images ?? [])].sort(
+                (a, b) => a.sort_order - b.sort_order,
+            ),
+            product_prices: product.product_prices ?? [],
+        })),
+        );
 }
