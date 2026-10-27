@@ -33,38 +33,40 @@ type FeaturedProductsProps = {
     products: FeaturedProduct[];
 };
 
-export default function FeaturedProduct({
-    products,
+export default function FeaturedProducts({
+  products,
 }: FeaturedProductsProps) {
-    const router = useRouter();
+  const router = useRouter();
 
-    const items: CircularCarouselItem[] = products.flatMap((product) => {
-        const mainImage = getProductImage(product.product_images);
+  const productsWithImages = products.flatMap((product) => {
+    const mainImage = getProductImage(product.product_images);
 
-        if (!mainImage) {
-            return [];
-        }
-
-        const price = product.product_prices[0];
-
-        return [
-            {
-                src: getProductImageUrl(mainImage.storage_path),
-                alt: mainImage.alt_text ?? product.title,
-                title: product.title,
-                subtitle: price
-                    ? new Intl.NumberFormat("en-US", {
-                        style: "currency",
-                        currency: price.currency.toUpperCase(),
-                    }).format(price.amount)
-                    : undefined,
-            },
-        ];
-    });
-
-    if (items.length === 0) {
-        return null;
+    if (!mainImage) {
+      return [];
     }
+
+    const price = product.product_prices[0];
+
+    const item: CircularCarouselItem = {
+      src: getProductImageUrl(mainImage.storage_path),
+      alt: mainImage.alt_text ?? product.title,
+      title: product.title,
+      subtitle: price
+        ? new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: price.currency.toUpperCase(),
+          }).format(price.amount)
+        : undefined,
+    };
+
+    return [{ product, item }];
+  });
+
+  if (productsWithImages.length === 0) {
+    return null;
+  }
+
+  const items = productsWithImages.map(({ item }) => item);
 
     return (
         <section className="w-full bg-black px-4 py-16 sm:px-6 lg:px-8">
