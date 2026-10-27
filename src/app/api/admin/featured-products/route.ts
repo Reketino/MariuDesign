@@ -16,15 +16,13 @@ async function isAdmin() {
 
 export async function GET() {
   if (!(await isAdmin())) {
-    return NextResponse.json(
-      { error: "Unauthorized" },
-      { status: 401 },
-    );
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const { data, error } = await supabaseAdmin
     .from("homepage_featured_products")
-    .select(`
+    .select(
+      `
       id,
       product_id,
       position,
@@ -52,7 +50,8 @@ export async function GET() {
           slug
         )
       )
-    `)
+    `,
+    )
     .order("position", { ascending: true });
 
   if (error) {
@@ -69,10 +68,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   if (!(await isAdmin())) {
-    return NextResponse.json(
-      { error: "Unauthorized" },
-      { status: 401 },
-    );
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   let body: { productId?: unknown };
@@ -80,10 +76,7 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
-      { error: "Invalid JSON body" },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
   const productId = body.productId;
@@ -185,10 +178,7 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   if (!(await isAdmin())) {
-    return NextResponse.json(
-      { error: "Unauthorized" },
-      { status: 401 },
-    );
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const { searchParams } = new URL(request.url);
