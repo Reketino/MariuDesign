@@ -43,5 +43,8 @@ export default function FeaturedProduct({
         if (!mainImage) {
             return[];
         }
+
+        const price = product.product_prices[0];
+        
     })
 }
