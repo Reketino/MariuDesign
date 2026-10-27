@@ -34,39 +34,39 @@ type FeaturedProductsProps = {
 };
 
 export default function FeaturedProducts({
-  products,
+    products,
 }: FeaturedProductsProps) {
-  const router = useRouter();
+    const router = useRouter();
 
-  const productsWithImages = products.flatMap((product) => {
-    const mainImage = getProductImage(product.product_images);
+    const productsWithImages = products.flatMap((product) => {
+        const mainImage = getProductImage(product.product_images);
 
-    if (!mainImage) {
-      return [];
+        if (!mainImage) {
+            return [];
+        }
+
+        const price = product.product_prices[0];
+
+        const item: CircularCarouselItem = {
+            src: getProductImageUrl(mainImage.storage_path),
+            alt: mainImage.alt_text ?? product.title,
+            title: product.title,
+            subtitle: price
+                ? new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: price.currency.toUpperCase(),
+                }).format(price.amount)
+                : undefined,
+        };
+
+        return [{ product, item }];
+    });
+
+    if (productsWithImages.length === 0) {
+        return null;
     }
 
-    const price = product.product_prices[0];
-
-    const item: CircularCarouselItem = {
-      src: getProductImageUrl(mainImage.storage_path),
-      alt: mainImage.alt_text ?? product.title,
-      title: product.title,
-      subtitle: price
-        ? new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: price.currency.toUpperCase(),
-          }).format(price.amount)
-        : undefined,
-    };
-
-    return [{ product, item }];
-  });
-
-  if (productsWithImages.length === 0) {
-    return null;
-  }
-
-  const items = productsWithImages.map(({ item }) => item);
+    const items = productsWithImages.map(({ item }) => item);
 
     return (
         <section className="w-full bg-black px-4 py-16 sm:px-6 lg:px-8">
@@ -101,12 +101,10 @@ export default function FeaturedProducts({
                         draggable
                         captions
                         onItemClick={(_, index) => {
-                            const product = products.filter((product) =>
-                                getProductImage(product.product_images),
-                            )[index];
+                            const selectedProduct = productsWithImages[index]?.product; 
 
-                            if (product) {
-                                router.push(`/products/${product.slug}`);
+                            if (selectedProduct) {
+                                router.push(`/products/${selectedProduct.slug}`);
                             }
                         }}
                     />
