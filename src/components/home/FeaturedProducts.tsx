@@ -45,6 +45,19 @@ export default function FeaturedProduct({
         }
 
         const price = product.product_prices[0];
-        
-    })
+
+        return [
+            {
+                src: getProductImageUrl(mainImage.storage_path),
+                alt: mainImage.alt_text ?? product.title,
+                title: product.title,
+                subtitle: price
+                ? new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: price.currency.toUpperCase(),
+                }).format(price.amount)
+                : undefined,
+            },
+        ];
+    });
 }
