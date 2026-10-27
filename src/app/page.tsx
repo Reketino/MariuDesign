@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import { getFeaturedProducts } from "@/lib/products/getFeaturedProducts";
+
 export default function HomePage() {
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
