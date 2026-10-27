@@ -89,7 +89,22 @@ export default function FeaturedProduct({
                     </button>
                 </div>
 
-                
+                <div className="h-110 w-full sm:h-130">
+                    <CircularCarousel
+                    items={items}
+                    preset="cylinder"
+                    autoplay="drift"
+                    speed={0.3}
+                    pauseOnHover
+                    draggable
+                    captions
+                    onItemClick={(_, index) => {
+                        const product = products.filter((product) =>
+                        getProductImage(product.product_images),
+                        )[index];
+                    }}
+                    />
+                </div>
             </div>
         </section>
     )
