@@ -14,7 +14,7 @@ export async function getFeaturedProducts() {
         description,
         status,
         categories(id, name, slug),
-        product_images(id, storage_path, alt_text, sort_order),
+        product_images(id, product_id, storage_path, alt_text, sort_order),
         product_prices(id, amount, currency)
         )
         `,
