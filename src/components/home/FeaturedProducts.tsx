@@ -17,6 +17,7 @@ type FeaturedProduct = {
     position: number;
     product_images: {
         id: string;
+        product_id: string;
         storage_path: string;
         alt_text: string | null;
         sort_order: number;
@@ -77,6 +78,7 @@ export default function FeaturedProduct({
                         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                             Featured designs
                         </h2>
+
                     </div>
                 </div>
             </div>
