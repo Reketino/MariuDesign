@@ -1,6 +1,11 @@
 import Link from "next/link";
 
-export default function HomePage() {
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import { getFeaturedProducts } from "@/lib/products/getFeaturedProducts";
+
+export default async function HomePage() {
+    const products = await getFeaturedProducts();
+
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
             <header className="border-b border-zinc-800">
@@ -49,6 +54,8 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+
+            <FeaturedProducts products={products} />
         </main>
     );
 }
