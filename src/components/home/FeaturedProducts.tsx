@@ -102,10 +102,14 @@ export default function FeaturedProduct({
                         const product = products.filter((product) =>
                         getProductImage(product.product_images),
                         )[index];
+
+                        if (product) {
+                            router.push(`/products/${product.slug}`);
+                        }
                     }}
                     />
                 </div>
             </div>
         </section>
-    )
+    );
 }
