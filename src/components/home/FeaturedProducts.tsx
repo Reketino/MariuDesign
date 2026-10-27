@@ -60,4 +60,8 @@ export default function FeaturedProduct({
             },
         ];
     });
+
+    if (items.length === 0) {
+        return null;
+    }
 }
