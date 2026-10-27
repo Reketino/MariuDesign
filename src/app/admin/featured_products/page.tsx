@@ -24,4 +24,8 @@ export default async function FeaturedProductsPage() {
    `)
 .eq("status", "published")
 .order("created_at", { ascending: false });
+
+if (error) {
+    console.error("Failed to fetch products:", error);
+}
 }
