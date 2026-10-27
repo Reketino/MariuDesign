@@ -101,7 +101,7 @@ export default function FeaturedProducts({
                         draggable
                         captions
                         onItemClick={(_, index) => {
-                            const selectedProduct = productsWithImages[index]?.product; 
+                            const selectedProduct = productsWithImages[index]?.product;
 
                             if (selectedProduct) {
                                 router.push(`/products/${selectedProduct.slug}`);
