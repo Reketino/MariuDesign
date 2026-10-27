@@ -78,9 +78,18 @@ export default function FeaturedProduct({
                         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                             Featured designs
                         </h2>
-
                     </div>
+
+                    <button
+                    type="button"
+                    onClick={() => router.push("/shop")}
+                    className="shrink-0 text-sm text-zinc-400 transition hover:text-white"
+                    >
+                        View all products
+                    </button>
                 </div>
+
+                
             </div>
         </section>
     )
