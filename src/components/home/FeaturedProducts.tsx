@@ -64,4 +64,22 @@ export default function FeaturedProduct({
     if (items.length === 0) {
         return null;
     }
+
+    return (
+        <section className="w-full bg-black px-4 py-16 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+                <div className="mb-10 flex items-end justify-between gap-4">
+                    <div>
+                        <p className="text-sm font-medium uppercase tracking-[0.25em] text-zinc-500">
+                            Curated collection
+                        </p>
+
+                        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                            Featured designs
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
 }
