@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import CircularCarousel from "@/components/CircularCarousel";
 import type { CircularCarouselItem } from "@/components/CircularCarousel";
 import {
-  getProductImage,
-  getProductImageUrl,
+    getProductImage,
+    getProductImageUrl,
 } from "@/components/admin/products/utils/productImage";
 
 type FeaturedProduct = {
@@ -42,7 +42,7 @@ export default function FeaturedProduct({
         const mainImage = getProductImage(product.product_images);
 
         if (!mainImage) {
-            return[];
+            return [];
         }
 
         const price = product.product_prices[0];
@@ -53,11 +53,11 @@ export default function FeaturedProduct({
                 alt: mainImage.alt_text ?? product.title,
                 title: product.title,
                 subtitle: price
-                ? new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: price.currency.toUpperCase(),
-                }).format(price.amount)
-                : undefined,
+                    ? new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: price.currency.toUpperCase(),
+                    }).format(price.amount)
+                    : undefined,
             },
         ];
     });
@@ -81,9 +81,9 @@ export default function FeaturedProduct({
                     </div>
 
                     <button
-                    type="button"
-                    onClick={() => router.push("/shop")}
-                    className="shrink-0 text-sm text-zinc-400 transition hover:text-white"
+                        type="button"
+                        onClick={() => router.push("/shop")}
+                        className="shrink-0 text-sm text-zinc-400 transition hover:text-white"
                     >
                         View all products
                     </button>
@@ -91,22 +91,22 @@ export default function FeaturedProduct({
 
                 <div className="h-110 w-full sm:h-130">
                     <CircularCarousel
-                    items={items}
-                    preset="cylinder"
-                    autoplay="drift"
-                    speed={0.3}
-                    pauseOnHover
-                    draggable
-                    captions
-                    onItemClick={(_, index) => {
-                        const product = products.filter((product) =>
-                        getProductImage(product.product_images),
-                        )[index];
+                        items={items}
+                        preset="cylinder"
+                        autoplay="drift"
+                        speed={0.3}
+                        pauseOnHover
+                        draggable
+                        captions
+                        onItemClick={(_, index) => {
+                            const product = products.filter((product) =>
+                                getProductImage(product.product_images),
+                            )[index];
 
-                        if (product) {
-                            router.push(`/products/${product.slug}`);
-                        }
-                    }}
+                            if (product) {
+                                router.push(`/products/${product.slug}`);
+                            }
+                        }}
                     />
                 </div>
             </div>
