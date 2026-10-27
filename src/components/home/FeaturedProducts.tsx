@@ -39,6 +39,9 @@ export default function FeaturedProduct({
 
     const items: CircularCarouselItem[] = products.flatMap((product) => {
         const mainImage = getProductImage(product.product_images);
-        
+
+        if (!mainImage) {
+            return[];
+        }
     })
 }
