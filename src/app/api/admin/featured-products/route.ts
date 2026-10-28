@@ -289,5 +289,14 @@ export async function PATCH(request: Request) {
     ),
   );
 
-  
+  const updateError = results.find((result) => result.error)?.error;
+
+  if (updateError) {
+    console.error("Failed to reorder featured products:", updateError);
+
+    return NextResponse.json(
+      { error: "Could not reorder featured products" },
+      { status: 500 },
+    );
+  }
 }
