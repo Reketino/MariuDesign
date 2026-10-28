@@ -21,3 +21,8 @@ type ManagerProduct = Pick<Product, "id" | "title" | "slug" | "status"> & {
     product_images: ProductImage[] | null;
     product_prices: ProductPrice[] | null;
 };
+
+type Props = {
+    products: ManagerProduct[];
+    initialFeaturedProducts: FeaturedProduct[];
+}
