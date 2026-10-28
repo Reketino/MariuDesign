@@ -270,5 +270,15 @@ export async function PATCH(request: Request) {
     (product) => product.product_id,
   );
 
+  if (
+    productIds.length !== currentIds.length ||
+    !currentIds.every((id) => productIds.includes(id))
+  ) {
+    return NextResponse.json(
+      { error: "Product IDs must match the currently featured products" },
+      { status: 400 },
+    );
+  }
+
   
 }
