@@ -299,4 +299,6 @@ export async function PATCH(request: Request) {
       { status: 500 },
     );
   }
+
+  return NextResponse.json({ success: true });
 }
