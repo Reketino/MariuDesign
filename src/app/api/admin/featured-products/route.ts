@@ -280,5 +280,14 @@ export async function PATCH(request: Request) {
     );
   }
 
+  const results = await Promise.all(
+    productIds.map((productId, position) =>
+    supabaseAdmin
+    .from("homepage_featured_products")
+    .update({ position })
+    .eq("product_id", productId),
+    ),
+  );
+
   
 }
