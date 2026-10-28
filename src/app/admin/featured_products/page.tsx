@@ -48,6 +48,17 @@ const { data: FeaturedProducts, error: featuredError } = await supabase
 if (featuredError) {
   console.error("Failed to fetch featured products:", featuredError);
 
-  
+  return (
+    <div className="p-8">
+      <h1 className="text-2xl font-semibold text-white">
+        Featured Products
+      </h1>
+      <p className="mt-4 text-red-400">
+        Could not load featured products. Please try again later.
+      </p>
+    </div>
+  );
 }
+
+
 }
