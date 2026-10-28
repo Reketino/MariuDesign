@@ -212,3 +212,85 @@ export async function DELETE(request: Request) {
 
   return NextResponse.json({ success: true });
 }
+
+export async function PATCH(request: Request) {
+  if (!(await isAdmin())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  let body: { productIds?: unknown };
+
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+
+  const { productIds } = body;
+
+  const isValidUuid = (value: unknown): value is string =>
+    typeof value === "string" &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      value,
+    );
+
+  if (
+    !Array.isArray(productIds) ||
+    !productIds.every(isValidUuid) ||
+    new Set(productIds).size !== productIds.length
+  ) {
+    return NextResponse.json(
+      { error: "A valid array of unique product IDs is required" },
+      { status: 400 },
+    );
+  }
+
+  const { data: featuredProducts, error: fetchError } = await supabaseAdmin
+    .from("homepage_featured_products")
+    .select("product_id");
+
+  if (fetchError) {
+    console.error("Failed to fetch featured products:", fetchError);
+
+    return NextResponse.json(
+      { error: "Could not fetch featured products" },
+      { status: 500 },
+    );
+  }
+
+  const currentIds = (featuredProducts ?? []).map(
+    (product) => product.product_id,
+  );
+
+  if (
+    productIds.length !== currentIds.length ||
+    !currentIds.every((id) => productIds.includes(id))
+  ) {
+    return NextResponse.json(
+      { error: "Product IDs must match the currently featured products" },
+      { status: 400 },
+    );
+  }
+
+  const results = await Promise.all(
+    productIds.map((productId, position) =>
+      supabaseAdmin
+        .from("homepage_featured_products")
+        .update({ position })
+        .eq("product_id", productId),
+    ),
+  );
+
+  const updateError = results.find((result) => result.error)?.error;
+
+  if (updateError) {
+    console.error("Failed to reorder featured products:", updateError);
+
+    return NextResponse.json(
+      { error: "Could not reorder featured products" },
+      { status: 500 },
+    );
+  }
+
+  return NextResponse.json({ success: true });
+}
