@@ -33,7 +33,12 @@ if (error) {
         <h1 className="text-2xl font-semibold text-white">
           Featured Products
         </h1>
+        <p className="mt-4 text-red-400">
+          Could not load products. Please try again later.
+        </p>
       </div>
-    )
+    );
 }
+
+
 }
