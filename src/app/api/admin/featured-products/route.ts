@@ -266,5 +266,9 @@ export async function PATCH(request: Request) {
     );
   }
 
+  const currentIds = (featuredProducts ?? []).map(
+    (product) => product.product_id,
+  );
+
   
 }
