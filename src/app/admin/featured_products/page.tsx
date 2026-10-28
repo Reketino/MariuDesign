@@ -27,5 +27,13 @@ export default async function FeaturedProductsPage() {
 
 if (error) {
     console.error("Failed to fetch products:", error);
+
+    return (
+      <div className="p-8">
+        <h1 className="text-2xl font-semibold text-white">
+          Featured Products
+        </h1>
+      </div>
+    )
 }
 }
