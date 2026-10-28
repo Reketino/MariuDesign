@@ -11,3 +11,8 @@ type ProductPrice = {
     amount: number;
     currency: string;
 };
+
+type FeaturedProduct = {
+    product_id: string;
+    position: number;
+};
