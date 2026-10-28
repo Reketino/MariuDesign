@@ -252,4 +252,19 @@ export async function PATCH(request: Request) {
       { status: 400 },
     );
   }
+
+  const { data: featuredProducts, error: fetchError } = await supabaseAdmin
+  .from("homepage_featured_products")
+  .select("product_id");
+
+  if (fetchError) {
+    console.error("Failed to fetch featured products:", fetchError);
+
+    return NextResponse.json(
+      { error: "Could not fetch featured products" },
+      { status: 500 },
+    );
+  }
+
+  
 }
