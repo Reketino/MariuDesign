@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { error } from "console";
 
 export const dynamic = "force-dynamic";
 
@@ -211,4 +212,25 @@ export async function DELETE(request: Request) {
   }
 
   return NextResponse.json({ success: true });
+}
+
+export async function PATCH(request: Request) {
+  if (!(await isAdmin())) {
+    return NextResponse.json(
+      { error: "Unauthorized" },
+      { status: 401 },
+    );
+  }
+
+  let body: { productsIds?: unknown };
+
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid JSON body" },
+      { status: 400 },
+    );
+  }
+  
 }
