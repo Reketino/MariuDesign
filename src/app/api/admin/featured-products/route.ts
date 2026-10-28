@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 
 import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { error } from "console";
-
 
 export const dynamic = "force-dynamic";
 
@@ -217,10 +215,7 @@ export async function DELETE(request: Request) {
 
 export async function PATCH(request: Request) {
   if (!(await isAdmin())) {
-    return NextResponse.json(
-      { error: "Unauthorized" },
-      { status: 401 },
-    );
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   let body: { productIds?: unknown };
@@ -228,19 +223,16 @@ export async function PATCH(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
-      { error: "Invalid JSON body" },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
   const { productIds } = body;
 
   const isValidUuid = (value: unknown): value is string =>
     typeof value === "string" &&
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-    value,
-  );
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      value,
+    );
 
   if (
     !Array.isArray(productIds) ||
@@ -254,8 +246,8 @@ export async function PATCH(request: Request) {
   }
 
   const { data: featuredProducts, error: fetchError } = await supabaseAdmin
-  .from("homepage_featured_products")
-  .select("product_id");
+    .from("homepage_featured_products")
+    .select("product_id");
 
   if (fetchError) {
     console.error("Failed to fetch featured products:", fetchError);
@@ -282,10 +274,10 @@ export async function PATCH(request: Request) {
 
   const results = await Promise.all(
     productIds.map((productId, position) =>
-    supabaseAdmin
-    .from("homepage_featured_products")
-    .update({ position })
-    .eq("product_id", productId),
+      supabaseAdmin
+        .from("homepage_featured_products")
+        .update({ position })
+        .eq("product_id", productId),
     ),
   );
 
