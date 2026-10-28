@@ -16,3 +16,8 @@ type FeaturedProduct = {
     product_id: string;
     position: number;
 };
+
+type ManagerProduct = Pick<Product, "id" | "title" | "slug" | "status"> & {
+    product_images: ProductImage[] | null;
+    product_prices: ProductPrice[] | null;
+};
