@@ -223,7 +223,7 @@ export async function PATCH(request: Request) {
     );
   }
 
-  let body: { productsIds?: unknown };
+  let body: { productIds?: unknown };
 
   try {
     body = await request.json();
