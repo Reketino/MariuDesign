@@ -4,6 +4,7 @@ import { requireAdmin } from "@/lib/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { error } from "console";
 
+
 export const dynamic = "force-dynamic";
 
 async function isAdmin() {
@@ -232,5 +233,23 @@ export async function PATCH(request: Request) {
       { status: 400 },
     );
   }
-  
+
+  const { productIds } = body;
+
+  const isValidUuid = (value: unknown): value is string =>
+    typeof value === "string" &&
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+    value,
+  );
+
+  if (
+    !Array.isArray(productIds) ||
+    !productIds.every(isValidUuid) ||
+    new Set(productIds).size !== productIds.length
+  ) {
+    return NextResponse.json(
+      { error: "A valid array of unique product IDs is required" },
+      { status: 400 },
+    );
+  }
 }
