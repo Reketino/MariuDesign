@@ -40,5 +40,14 @@ if (error) {
     );
 }
 
+const { data: FeaturedProducts, error: featuredError } = await supabase
+.from("homepage_featured_products")
+.select("product_id, position")
+.order("position", { ascending: true });
 
+if (featuredError) {
+  console.error("Failed to fetch featured products:", featuredError);
+
+  
+}
 }
