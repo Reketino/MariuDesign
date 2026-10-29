@@ -44,4 +44,8 @@ function getImages(images: ProductImage[] | null) {
     if (!images?.length) {
         return null;
     }
+
+    return [...images]
+    .filter((image) => image.sort_order >= 0)
+    .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null;
 }
