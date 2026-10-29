@@ -59,4 +59,6 @@ export default function FeaturedProductsManager({
     );
     const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
     const [savingOrder, setSavingOrder] = useState(false);
+    const [message, setMessage] = useState<string | null>(null);
+    
 }
