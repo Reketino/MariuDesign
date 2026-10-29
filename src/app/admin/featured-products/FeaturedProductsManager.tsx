@@ -356,10 +356,10 @@ export default function FeaturedProductsManager({
                                             disabled={index === 0 || busy}
                                             aria-label={`Move ${product.title} up`}
                                             className="
-                  rounded-lg border border-zinc-700 px-3 py-2 
-                  text-sm transition hover:bg-zinc-800 
-                  disabled:cursor-not-allowed disabled:opacity-30
-                  "
+                                            rounded-lg border border-zinc-700 px-3 py-2 
+                                            text-sm transition hover:bg-zinc-800 
+                                            disabled:cursor-not-allowed disabled:opacity-30
+                                            "
                                         >
                                             ↑
                                         </button>
@@ -372,10 +372,10 @@ export default function FeaturedProductsManager({
                                             }
                                             aria-label={`Move ${product.title} down`}
                                             className="
-                  rounded-lg border border-zinc-700 px-3 py-2 
-                  text-sm transition hover:bg-zinc-800 
-                  disabled:cursor-not-allowed disabled:opacity-30
-                  "
+                                            rounded-lg border border-zinc-700 px-3 py-2 
+                                            text-sm transition hover:bg-zinc-800 
+                                            disabled:cursor-not-allowed disabled:opacity-30
+                                            "
                                         >
                                             ↓
                                         </button>
@@ -385,11 +385,11 @@ export default function FeaturedProductsManager({
                                             onClick={() => void removeProduct(product.id)}
                                             disabled={busy}
                                             className="
-                  rounded-lg border border-red-900 px-3 py-2 
-                  text-sm text-red-300 transition 
-                  hover:bg-red-950/50 disabled:cursor-not-allowed 
-                  disabled:opacity-50
-                  "
+                                            rounded-lg border border-red-900 px-3 py-2 
+                                            text-sm text-red-300 transition 
+                                          hover:bg-red-950/50 disabled:cursor-not-allowed 
+                                            disabled:opacity-50
+                                            "
                                         >
                                             {loadingProductId === product.id ? "Removing..." : "Remove"}
                                         </button>
@@ -455,12 +455,12 @@ export default function FeaturedProductsManager({
                                             onClick={() => void addProduct(product.id)}
                                             disabled={busy}
                                             className="
-                  w-full rounded-lg bg-white px-4 py-2.5 
-                  text-sm font-medium text-zinc-950 
-                  transition hover:bg-zinc-200 
-                  disabled:cursor-not-allowed 
-                  disabled:opacity-50
-                  "
+                                            w-full rounded-lg bg-white px-4 py-2.5 
+                                            text-sm font-medium text-zinc-950 
+                                            transition hover:bg-zinc-200 
+                                            disabled:cursor-not-allowed 
+                                            disabled:opacity-50
+                                            "
                                         >
                                             {loadingProductId === product.id
                                                 ? "Adding..."
