@@ -62,8 +62,8 @@ export default async function FeaturedProductsPage() {
 
   return (
     <FeaturedProductsManager
-    products={products ?? []}
-    initialFeaturedProducts={FeaturedProducts ?? []}
+      products={products ?? []}
+      initialFeaturedProducts={FeaturedProducts ?? []}
     />
   );
 }
