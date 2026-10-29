@@ -41,7 +41,7 @@ export default async function FeaturedProductsPage() {
     );
   }
 
-  const { data: FeaturedProducts, error: featuredError } = await supabase
+  const { data: featuredProducts, error: featuredError } = await supabase
     .from("homepage_featured_products")
     .select("product_id, position")
     .order("position", { ascending: true });
@@ -64,7 +64,7 @@ export default async function FeaturedProductsPage() {
   return (
     <FeaturedProductsManager
       products={products ?? []}
-      initialFeaturedProducts={FeaturedProducts ?? []}
+      initialFeaturedProducts={featuredProducts ?? []}
     />
   );
 }
