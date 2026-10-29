@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { title } from "process";
+import FeaturedProductsManager from "./FeaturedProductsManager";
 
 export const dynamic = "force-dynamic";
 
@@ -60,4 +60,10 @@ export default async function FeaturedProductsPage() {
     );
   }
 
+  return (
+    <FeaturedProductsManager
+      products={products ?? []}
+      initialFeaturedProducts={FeaturedProducts ?? []}
+    />
+  );
 }
