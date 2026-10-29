@@ -49,3 +49,13 @@ function getImages(images: ProductImage[] | null) {
     .filter((image) => image.sort_order >= 0)
     .sort((a, b) => a.sort_order - b.sort_order)[0] ?? null;
 }
+
+export default function FeaturedProductsManager({
+    products,
+    initialFeaturedProducts,
+}: Props) {
+    const [featuredProducts, setFeaturedProducts] = useState(
+        [...initialFeaturedProducts].sort((a, b) => a.position - b.position),
+    );
+    
+}
