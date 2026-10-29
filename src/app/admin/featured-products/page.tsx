@@ -41,7 +41,8 @@ export default async function FeaturedProductsPage() {
     );
   }
 
-  const { data: featuredProducts, error: featuredError } = await supabase
+  const { data: featuredProducts, error: featuredError } = 
+  await supabaseAdmin
     .from("homepage_featured_products")
     .select("product_id, position")
     .order("position", { ascending: true });
