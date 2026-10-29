@@ -58,5 +58,5 @@ export default function FeaturedProductsManager({
         [...initialFeaturedProducts].sort((a, b) => a.position - b.position),
     );
     const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
-    
+    const [savingOrder, setSavingOrder] = useState(false);
 }
