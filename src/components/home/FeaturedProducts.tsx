@@ -52,10 +52,10 @@ export default function FeaturedProducts({
             alt: mainImage.alt_text ?? product.title,
             title: product.title,
             subtitle: price
-                ? new Intl.NumberFormat("en-US", {
+                ? new Intl.NumberFormat("nb-No", {
                     style: "currency",
                     currency: price.currency.toUpperCase(),
-                }).format(price.amount)
+                }).format(price.amount / 100)
                 : undefined,
         };
 

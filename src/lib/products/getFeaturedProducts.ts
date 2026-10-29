@@ -27,14 +27,19 @@ export async function getFeaturedProducts() {
     return [];
   }
 
-  return (data ?? []).flatMap((item) =>
-    (item.products ?? []).map((product) => ({
+  return (data ?? []).flatMap((item) => {
+    const products = Array.isArray(item.products)
+      ? item.products
+      : item.products
+        ? [item.products]
+        : [];
+
+    return products.map((product) => ({
       ...product,
-      position: item.position,
       product_images: [...(product.product_images ?? [])].sort(
         (a, b) => a.sort_order - b.sort_order,
       ),
       product_prices: product.product_prices ?? [],
-    })),
-  );
+    }));
+  });
 }

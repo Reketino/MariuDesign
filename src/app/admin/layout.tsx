@@ -69,6 +69,19 @@ export default async function AdminLayout({
 
                             <li>
                                 <Link
+                                    href="/admin/featured-products"
+                                    className="
+                                    block rounded-lg px-3 py-2.5
+                                    text-sm text-zinc-400 hover:text-white
+                                    transition hover:bg-zinc-900
+                                    "
+                                >
+                                    Featured Products
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
                                     href="/admin/categories"
                                     className="
                             block rounded-lg px-3 py-2.5 

@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import FeaturedProductsManager from "./FeaturedProductsManager";
 
 export const dynamic = "force-dynamic";
@@ -40,7 +41,8 @@ export default async function FeaturedProductsPage() {
     );
   }
 
-  const { data: FeaturedProducts, error: featuredError } = await supabase
+  const { data: featuredProducts, error: featuredError } = 
+  await supabaseAdmin
     .from("homepage_featured_products")
     .select("product_id, position")
     .order("position", { ascending: true });
@@ -63,7 +65,7 @@ export default async function FeaturedProductsPage() {
   return (
     <FeaturedProductsManager
       products={products ?? []}
-      initialFeaturedProducts={FeaturedProducts ?? []}
+      initialFeaturedProducts={featuredProducts ?? []}
     />
   );
 }
