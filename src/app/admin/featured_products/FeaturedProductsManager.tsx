@@ -39,3 +39,9 @@ function formatPrice(prices: ProductPrice[] | null) {
         currency: price.currency.toUpperCase(),
     }).format(price.amount / 100);
 }
+
+function getImages(images: ProductImage[] | null) {
+    if (!images?.length) {
+        return null;
+    }
+}
