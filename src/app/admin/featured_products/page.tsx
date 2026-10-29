@@ -1,5 +1,4 @@
 import { createClient } from "@/lib/supabase/server";
-import { title } from "process";
 
 export const dynamic = "force-dynamic";
 
