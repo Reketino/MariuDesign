@@ -34,4 +34,8 @@ function formatPrice(prices: ProductPrice[] | null) {
         return "No price set";
     }
     
+    return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: price.currency.toUpperCase(),
+    }).format(price.amount / 100);
 }
