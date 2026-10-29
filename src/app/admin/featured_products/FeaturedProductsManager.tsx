@@ -25,4 +25,13 @@ type ManagerProduct = Pick<Product, "id" | "title" | "slug" | "status"> & {
 type Props = {
     products: ManagerProduct[];
     initialFeaturedProducts: FeaturedProduct[];
+};
+
+function formatPrice(prices: ProductPrice[] | null) {
+    const price = prices?.[0];
+
+    if (!price) {
+        return "No price set";
+    }
+    
 }
