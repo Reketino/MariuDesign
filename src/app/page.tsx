@@ -10,7 +10,9 @@ export default async function HomePage() {
         createClient(),
     ]);
 
-   
+    const { data: {user}, error } = await supabase.auth.getUser();
+    
+    
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
