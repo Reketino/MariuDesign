@@ -4,7 +4,7 @@ import FeaturedProducts from "@/components/home/FeaturedProducts";
 import { getFeaturedProducts } from "@/lib/products/getFeaturedProducts";
 
 export default async function HomePage() {
-    const products = await getFeaturedProducts();
+    const [products, supabase] = await getFeaturedProducts();
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
