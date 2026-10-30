@@ -5,7 +5,8 @@ import { supabaseAdmin } from "../supabase/admin";
 export async function getFeaturedProducts() {
   const { data, error } = await supabaseAdmin
     .from("homepage_featured_products")
-     .select(`
+    .select(
+      `
         position,
         products!inner (
             id,
@@ -26,8 +27,9 @@ export async function getFeaturedProducts() {
                 currency
             )
         )
-    `)
-    
+    `,
+    )
+
     .eq("products.status", "published")
     .order("position", { ascending: true });
 
