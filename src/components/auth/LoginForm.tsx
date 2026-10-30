@@ -87,7 +87,13 @@ export default function LoginForm() {
                         type="button"
                         onClick={handleGoogleSignIn}
                         disabled={googleLoading || loading}
-                        className="flex w-full items-center justify-center gap-3 rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm font-medium transition hover:border-zinc-500 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60"
+                        className="
+                        flex w-full items-center justify-center 
+                        gap-3 rounded-xl border border-zinc-700 
+                        bg-zinc-950 px-4 py-3 text-sm font-medium transition 
+                        hover:border-zinc-500 hover:bg-zinc-800 
+                        disabled:cursor-not-allowed disabled:opacity-60
+                        "
                     >
                         <svg
                             aria-hidden="true"
@@ -96,19 +102,37 @@ export default function LoginForm() {
                         >
                             <path
                                 fill="#EA4335"
-                                d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 3.01 13.22l7.98 6.19C12.87 13.72 18.01 9.5 24 9.5Z"
+                                d="
+                                M24 9.5c3.54 0 6.71 1.22 9.21 
+                                3.6l6.85-6.85C35.9 2.38 30.47 0 24 
+                                0 14.62 0 6.51 5.38 3.01 13.22l7.98 
+                                6.19C12.87 13.72 18.01 9.5 24 9.5Z
+                                "
                             />
                             <path
                                 fill="#4285F4"
-                                d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.76 7.18l7.73 6C44.42 37.99 46.98 31.8 46.98 24.55Z"
+                                d="
+                                M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 
+                                2.96-2.26 5.48-4.76 7.18l7.73 6C44.42 37.99 
+                                46.98 31.8 46.98 24.55Z
+                                "
                             />
                             <path
                                 fill="#FBBC05"
-                                d="M10.99 28.59A14.4 14.4 0 0 1 10.22 24c0-1.59.27-3.13.77-4.59l-7.98-6.19A23.9 23.9 0 0 0 0 24c0 3.87.93 7.52 3.01 10.78l7.98-6.19Z"
+                                d="
+                                M10.99 28.59A14.4 14.4 0 0 1 10.22 
+                                24c0-1.59.27-3.13.77-4.59l-7.98-6.19A23.9 
+                                23.9 0 0 0 0 24c0 3.87.93 7.52 3.01 
+                                10.78l7.98-6.19Z
+                                "
                             />
                             <path
                                 fill="#34A853"
-                                d="M24 48c6.48 0 11.93-2.13 15.91-5.8l-7.73-6c-2.15 1.45-4.89 2.3-8.18 2.3-5.99 0-11.13-4.22-13.01-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z"
+                                d="
+                                M24 48c6.48 0 11.93-2.13 15.91-5.8l-7.73-6c-2.15 
+                                1.45-4.89 2.3-8.18 2.3-5.99 0-11.13-4.22-13.01-9.91l-7.98 
+                                6.19C6.51 42.62 14.62 48 24 48Z
+                                "
                             />
                         </svg>
 
@@ -145,7 +169,12 @@ export default function LoginForm() {
                                 value={email}
                                 onChange={(event) => setEmail(event.target.value)}
                                 required
-                                className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-400 focus:ring-2 focus:ring-zinc-700"
+                                className="
+                                w-full rounded-xl border border-zinc-700 
+                                bg-zinc-950 px-4 py-3 text-sm text-white 
+                                outline-none transition placeholder:text-zinc-600 
+                                focus:border-zinc-400 focus:ring-2 focus:ring-zinc-700
+                                "
                             />
                         </div>
 
@@ -175,14 +204,23 @@ export default function LoginForm() {
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                                 required
-                                className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-zinc-400 focus:ring-2 focus:ring-zinc-700"
+                                className="
+                                w-full rounded-xl border border-zinc-700 
+                                bg-zinc-950 px-4 py-3 text-sm text-white 
+                                outline-none transition placeholder:text-zinc-600 
+                                focus:border-zinc-400 focus:ring-2 focus:ring-zinc-700
+                                "
                             />
                         </div>
 
                         {error && (
                             <p
                                 role="alert"
-                                className="rounded-xl border border-red-900/70 bg-red-950/40 px-4 py-3 text-sm text-red-300"
+                                className="
+                                rounded-xl border border-red-900/70 
+                                bg-red-950/40 px-4 py-3 
+                                text-sm text-red-300
+                                "
                             >
                                 {error}
                             </p>
@@ -191,7 +229,12 @@ export default function LoginForm() {
                         <button
                             type="submit"
                             disabled={loading || googleLoading}
-                            className="w-full rounded-xl bg-white px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-60"
+                            className="
+                            w-full rounded-xl bg-white px-4 py-3 
+                            text-sm font-semibold text-zinc-950 
+                            transition hover:bg-zinc-200 
+                            disabled:cursor-not-allowed disabled:opacity-60
+                            "
                         >
                             {loading ? "Signing in..." : "Sign in"}
                         </button>
