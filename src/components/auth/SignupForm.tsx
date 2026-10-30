@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
 
@@ -74,6 +74,31 @@ export default function SignupForm() {
             );
         } catch {
             setError("Something went wrong. Please try again.")
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    async function handleGoogleSignUp() {
+        setError("");
+        setSuccess("");
+        setLoading(true);
+
+        try {
+            const supabase = createClient();
+
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: "google",
+                options: {
+                    redirectTo: `${window.location.origin}/auth/callback/?next=/shop`
+                },
+            });
+
+            if (error) {
+                setError("Unable to continue with Google. Please try again.");
+            }
+        } catch {
+            setError("Something went wrong please try again.");
         } finally {
             setLoading(false);
         }
