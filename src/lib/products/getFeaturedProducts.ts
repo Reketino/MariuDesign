@@ -47,6 +47,7 @@ export async function getFeaturedProducts() {
 
     return products.map((product) => ({
       ...product,
+      position: item.position,
       product_images: [...(product.product_images ?? [])].sort(
         (a, b) => a.sort_order - b.sort_order,
       ),
