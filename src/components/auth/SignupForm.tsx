@@ -85,7 +85,7 @@ export default function SignupForm() {
         setLoading(true);
         
         try {
-            const ssupabase = createClient();
+            const supabase = createClient();
 
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "google",
@@ -95,8 +95,10 @@ export default function SignupForm() {
             });
 
             if (error) {
-                setError("Unable to continue with Google. Please try again.")
+                setError("Unable to continue with Google. Please try again.");
             }
+        } catch {
+
         }
     }
 
