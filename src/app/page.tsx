@@ -2,9 +2,15 @@ import Link from "next/link";
 
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import { getFeaturedProducts } from "@/lib/products/getFeaturedProducts";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function HomePage() {
-    const products = await getFeaturedProducts();
+    const [products, supabase] = await Promise.all([
+        getFeaturedProducts(),
+        createClient(),
+    ]);
+
+   
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
