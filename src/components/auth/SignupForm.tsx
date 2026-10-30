@@ -39,7 +39,7 @@ export default function SignupForm() {
         }
 
         if (password !== confirmPassword) {
-            setError("password do not match.");
+            setError("Passwords do not match.");
             return;
         }
 
