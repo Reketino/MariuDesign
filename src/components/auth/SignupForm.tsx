@@ -98,7 +98,7 @@ export default function SignupForm() {
                 setError("Unable to continue with Google. Please try again.");
             }
         } catch {
-            setError("Something went wrong please try again.");
+            setError("Something went wrong. Please try again.");
         } finally {
             setLoading(false);
         }
