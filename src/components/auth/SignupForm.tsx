@@ -120,6 +120,17 @@ export default function SignupForm() {
             >
                 {loading ? "Connecting to Google..." : "Continue with Google"}
             </button>
+
+            <div className="flex items-center gap-4">
+                <div className="h-px flex-1 bg-zinc-800" />
+
+                <span className="text-xs uppercase tracking-wider text-zinc-500">
+                    Or register with email
+                </span>
+
+                <div className="h-px flex-1 bg-zinc-800" />
+            </div>
+
             <div>
                 <label
                     htmlFor="username"
