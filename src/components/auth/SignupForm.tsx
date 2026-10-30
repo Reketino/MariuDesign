@@ -106,6 +106,20 @@ export default function SignupForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
+            <button
+            type="button"
+            onClick={handleGoogleSignUp}
+            disabled={loading}
+            className="
+            flex w-full items-center justify-center gap-3
+            rounded-lg border border-zinc-700 bg-zinc-950
+            px-3 py-4 text-sm font-medium text-white
+            transition hover:border-zinc-500 hover:bg-zinc-900
+            disabled:cursor-not-allowed disabled:opacity-50
+            "
+            >
+                {loading ? "Connecting to Google..." : "Continue with Google"}
+            </button>
             <div>
                 <label
                     htmlFor="username"
