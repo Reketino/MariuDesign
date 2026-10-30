@@ -107,10 +107,10 @@ export default function SignupForm() {
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
             <button
-            type="button"
-            onClick={handleGoogleSignUp}
-            disabled={loading}
-            className="
+                type="button"
+                onClick={handleGoogleSignUp}
+                disabled={loading}
+                className="
             flex w-full items-center justify-center gap-3
             rounded-lg border border-zinc-700 bg-zinc-950
             px-3 py-4 text-sm font-medium text-white
