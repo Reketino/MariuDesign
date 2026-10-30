@@ -99,7 +99,9 @@ export default function SignupForm() {
             }
         } catch {
             setError("Something went wrong please try again.");
-        } 
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (
