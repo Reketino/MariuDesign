@@ -79,6 +79,13 @@ export default function SignupForm() {
         }
     }
 
+    async function handleGoogleSignUp() {
+        setError("");
+        setSuccess("");
+        setLoading(true);
+        
+    }
+
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
             <div>
