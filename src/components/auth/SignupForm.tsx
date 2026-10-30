@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
 
@@ -84,6 +84,17 @@ export default function SignupForm() {
         setSuccess("");
         setLoading(true);
         
+        try {
+            const ssupabase = createClient();
+
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: "google",
+                options: {
+                    redirectTo: `${window.location.origin}/auth/callback/?next=/shop`
+                },
+            });
+            
+        }
     }
 
     return (
