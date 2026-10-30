@@ -93,7 +93,10 @@ export default function SignupForm() {
                     redirectTo: `${window.location.origin}/auth/callback/?next=/shop`
                 },
             });
-            
+
+            if (error) {
+                setError("Unable to continue with Google. Please try again.")
+            }
         }
     }
 
