@@ -41,17 +41,22 @@ export default function LoginForm() {
         setError("");
         setGoogleLoading(true);
 
-        const supabase = createClient();
+        try {
+            const supabase = createClient();
 
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "google",
-            options: {
-                redirectTo: `${window.location.origin}/auth/callback?next=/account`,
-            },
-        });
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: "google",
+                options: {
+                    redirectTo: `${window.location.origin}/auth/callback?next=/account`,
+                },
+            });
 
-        if (error) {
-            setError(error.message);
+            if (error) {
+                setError("Unable to sign in with Google. Please try again.");
+            }
+        } catch {
+            setError("Something went wrong. Please try again.");
+        } finally {
             setGoogleLoading(false);
         }
     }
