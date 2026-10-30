@@ -83,7 +83,7 @@ export default function SignupForm() {
         setError("");
         setSuccess("");
         setLoading(true);
-        
+
         try {
             const supabase = createClient();
 
