@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
 
@@ -90,7 +90,7 @@ export default function SignupForm() {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "google",
                 options: {
-                    redirectTo: `${window.location.origin}/auth/callback/?next=/shop`
+                    redirectTo: `${window.location.origin}/auth/callback?next=/shop`,
                 },
             });
 
@@ -98,7 +98,7 @@ export default function SignupForm() {
                 setError("Unable to continue with Google. Please try again.");
             }
         } catch {
-            setError("Something went wrong please try again.");
+            setError("Something went wrong. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -106,6 +106,31 @@ export default function SignupForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
+            <button
+                type="button"
+                onClick={handleGoogleSignUp}
+                disabled={loading}
+                className="
+            flex w-full items-center justify-center gap-3
+            rounded-lg border border-zinc-700 bg-zinc-950
+            px-3 py-4 text-sm font-medium text-white
+            transition hover:border-zinc-500 hover:bg-zinc-900
+            disabled:cursor-not-allowed disabled:opacity-50
+            "
+            >
+                {loading ? "Connecting to Google..." : "Continue with Google"}
+            </button>
+
+            <div className="flex items-center gap-4">
+                <div className="h-px flex-1 bg-zinc-800" />
+
+                <span className="text-xs uppercase tracking-wider text-zinc-500">
+                    Or register with email
+                </span>
+
+                <div className="h-px flex-1 bg-zinc-800" />
+            </div>
+
             <div>
                 <label
                     htmlFor="username"
