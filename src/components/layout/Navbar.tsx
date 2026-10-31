@@ -9,7 +9,7 @@ const navigationLinks = [
 ];
 
 export default async function Navbar() {
-    const supbase = createClient();
+    const supbase = await createClient();
 
     const { data: { user} } = await supbase.auth.getUser();
 
