@@ -32,7 +32,10 @@ export default async function HomePage() {
                         Mariudesign
                     </Link>
 
-                    <nav aria-label="Main navigation">
+                    <nav 
+                        aria-label="Main navigation"
+                        className="flex items-center gap-6"
+                    >
                         <Link
                             href="/login"
                             className="text-sm text-zinc-400 transition hover:text-white"
