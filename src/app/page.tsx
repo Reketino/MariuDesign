@@ -42,6 +42,30 @@ export default async function HomePage() {
                         >
                             Store
                         </Link>
+
+                        {user ? (
+                            <>
+                            <Link
+                                href="/account"
+                                className="text-sm text-zinc-400 transition hover:text-white"
+                            >
+                                Account
+                            </Link>
+
+                            {username && (
+                                <span className="text-sm font-medium text-white">
+                                        {username}
+                                    </span>
+                                )}
+                            </>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="text-sm text-zinc-400 transition hover:text-white"
+                            >
+                                Log in
+                            </Link>
+                        )}
                     </nav>
                 </div>
             </header>
@@ -64,10 +88,7 @@ export default async function HomePage() {
                     <div className="mt-8 flex gap-4">
                         <Link
                             href="/shop"
-                            className="
-                            rounded-lg bg-white px-5 py-3 text-sm font-medium 
-                            text-zinc-950 transition hover:bg-zinc-200
-                            "
+                            className="rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
                         >
                             Browse designs
                         </Link>
