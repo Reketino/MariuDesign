@@ -16,6 +16,11 @@ export default async function HomePage() {
         console.error("Failed to fetch authenticated user:", error);
     }
 
+    const username =
+    user?.user_metadata?.username ??
+    user?.email?.split("@")[0] ??
+    null;
+
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
             <header className="border-b border-zinc-800">
