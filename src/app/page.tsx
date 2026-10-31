@@ -37,10 +37,10 @@ export default async function HomePage() {
                         className="flex items-center gap-6"
                     >
                         <Link
-                            href="/login"
+                            href="/shop"
                             className="text-sm text-zinc-400 transition hover:text-white"
                         >
-                            Log in
+                            Store
                         </Link>
                     </nav>
                 </div>
