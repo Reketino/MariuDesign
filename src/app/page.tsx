@@ -12,7 +12,9 @@ export default async function HomePage() {
 
     const { data: {user}, error } = await supabase.auth.getUser();
     
-    
+    if (error) {
+        console.error("Failed to fetch authenticated user:", error);
+    }
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
