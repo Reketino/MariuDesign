@@ -11,14 +11,14 @@ const navigationLinks = [
 export default async function Navbar() {
     const supbase = await createClient();
 
-    const { data: { user} } = await supbase.auth.getUser();
+    const { data: { user } } = await supbase.auth.getUser();
 
     const username =
-    user?.user_metadata?.username
-    user?.email?.split("@")[0] ??
-    null;
+        user?.user_metadata?.username
+        user?.email?.split("@")[0] ??
+        null;
 
-     return (
+    return (
         <header className="border-b border-zinc-800 bg-zinc-950">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
                 <Link
