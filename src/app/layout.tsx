@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className={`${Jim_Nightshade}min-h-full flex flex-col`}>{children}</body>
+      <body className={`${JimNightshade.variable}min-h-full flex flex-col`}>{children}</body>
     </html>
   );
 }
