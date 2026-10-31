@@ -10,9 +10,16 @@ export default async function HomePage() {
         createClient(),
     ]);
 
-    const { data: {user}, error } = await supabase.auth.getUser();
-    
-    
+    const { data: { user }, error } = await supabase.auth.getUser();
+
+    if (error) {
+        console.error("Failed to fetch authenticated user:", error);
+    }
+
+    const username =
+        user?.user_metadata?.username ??
+        user?.email?.split("@")[0] ??
+        null;
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
@@ -25,13 +32,40 @@ export default async function HomePage() {
                         Mariudesign
                     </Link>
 
-                    <nav aria-label="Main navigation">
+                    <nav
+                        aria-label="Main navigation"
+                        className="flex items-center gap-6"
+                    >
                         <Link
-                            href="/login"
+                            href="/shop"
                             className="text-sm text-zinc-400 transition hover:text-white"
                         >
-                            Log in
+                            Store
                         </Link>
+
+                        {user ? (
+                            <>
+                                <Link
+                                    href="/account"
+                                    className="text-sm text-zinc-400 transition hover:text-white"
+                                >
+                                    Account
+                                </Link>
+
+                                {username && (
+                                    <span className="text-sm font-medium text-white">
+                                        {username}
+                                    </span>
+                                )}
+                            </>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="text-sm text-zinc-400 transition hover:text-white"
+                            >
+                                Log in
+                            </Link>
+                        )}
                     </nav>
                 </div>
             </header>
@@ -54,10 +88,7 @@ export default async function HomePage() {
                     <div className="mt-8 flex gap-4">
                         <Link
                             href="/shop"
-                            className="
-                            rounded-lg bg-white px-5 py-3 text-sm font-medium 
-                            text-zinc-950 transition hover:bg-zinc-200
-                            "
+                            className="rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
                         >
                             Browse designs
                         </Link>
