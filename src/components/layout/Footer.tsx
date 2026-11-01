@@ -26,6 +26,16 @@ export default function Footer() {
                             High-quality digital designs for your next
                             3D print.
                         </p>
+
+                        <ul className="mt-4 space-y-3">
+                            {footerLinks.map((link) => (
+                                <Link
+                                href={link.href}
+                                className="text-sm text-zinc-400 transition hover:text-white">
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </ul>
                     </section>
                 </div>
             </div>
