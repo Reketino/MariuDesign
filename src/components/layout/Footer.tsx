@@ -65,6 +65,10 @@ export default function Footer() {
                         >
                             Reketino
                         </Link>
+
+                        <span className="text-[10px] tracking-[0.25em] text-zinc-600">
+                            DEVELOPER & CREATOR
+                        </span>
                     </div>
                 </div>
             </div>
