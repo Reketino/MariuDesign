@@ -31,7 +31,7 @@ export default function Footer() {
                             <h2 className="text-sm font-semibold text-white">
                                 Explore
                             </h2>
-                        </nav>
+                        
 
                         <ul className="mt-4 space-y-3">
                             {footerLinks.map((link) => (
@@ -42,6 +42,7 @@ export default function Footer() {
                                 </Link>
                             ))}
                         </ul>
+                        </nav>
                     </section>
                 </div>
             </div>
