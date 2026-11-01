@@ -36,11 +36,13 @@ export default function Footer() {
 
                         <ul className="mt-4 space-y-3">
                             {footerLinks.map((link) => (
+                                <li key={link.href}>
                                 <Link
                                     href={link.href}
                                     className="text-sm text-zinc-400 transition hover:text-white">
                                     {link.label}
                                 </Link>
+                                </li>
                             ))}
                         </ul>
                     </nav>
