@@ -50,6 +50,12 @@ export default function Footer() {
                     <p className="text-xs text-zinc-500">
                         @ {currentYear} MariuDesign. All rights reserved.
                     </p>
+
+                    <div className="flex flex-col sm:items-end">
+                        <span className="text-xs text-zinc-500">
+                            Designed & developed by
+                        </span>
+                    </div>
                 </div>
             </div>
         </footer>
