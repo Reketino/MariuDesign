@@ -55,6 +55,16 @@ export default function Footer() {
                         <span className="text-xs text-zinc-500">
                             Designed & developed by
                         </span>
+
+                        <Link
+                        href="https://github.com/Reketino"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Reketino on GitHub"
+                        className="font-(family-name:--font-signature) text-4xl font-bold text-white transition hover:text-zinc-400"
+                        >
+                            Reketino
+                        </Link>
                     </div>
                 </div>
             </div>
