@@ -45,6 +45,12 @@ export default function Footer() {
                         </ul>
                         </nav>
                 </div>
+
+                <div className="mt-10 flex flex-col gap-6 border-t border-zinc-800 pt-6 sm:flex-row sm:items-end sm:justify-between">
+                    <p className="text-xs text-zinc-500">
+                        @ {currentYear} MariuDesign. All rights reserved.
+                    </p>
+                </div>
             </div>
         </footer>
     )
