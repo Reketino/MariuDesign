@@ -16,8 +16,8 @@ export default function Footer() {
                 <div className="grid gap-10 sm:grid-cols-2">
                     <section>
                         <Link
-                        href="/"
-                        className="text-lg font-semibold tracking-tight text-white"
+                            href="/"
+                            className="text-lg font-semibold tracking-tight text-white"
                         >
                             MariuDesign
                         </Link>
@@ -26,24 +26,26 @@ export default function Footer() {
                             High-quality digital designs for your next
                             3D print.
                         </p>
-                        </section>
+                    </section>
 
-                        <nav aria-label="Footer navigation">
-                            <h2 className="text-sm font-semibold text-white">
-                                Explore
-                            </h2>
-                        
+                    <nav aria-label="Footer navigation">
+                        <h2 className="text-sm font-semibold text-white">
+                            Explore
+                        </h2>
+
 
                         <ul className="mt-4 space-y-3">
                             {footerLinks.map((link) => (
-                                <Link
-                                href={link.href}
-                                className="text-sm text-zinc-400 transition hover:text-white">
-                                    {link.label}
-                                </Link>
+                                <li key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-sm text-zinc-400 transition hover:text-white">
+                                        {link.label}
+                                    </Link>
+                                </li>
                             ))}
                         </ul>
-                        </nav>
+                    </nav>
                 </div>
 
                 <div className="mt-10 flex flex-col gap-6 border-t border-zinc-800 pt-6 sm:flex-row sm:items-end sm:justify-between">
@@ -57,17 +59,21 @@ export default function Footer() {
                         </span>
 
                         <Link
-                        href="https://github.com/Reketino"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Reketino on GitHub"
-                        className="font-(family-name:--font-signature) text-4xl font-bold text-white transition hover:text-zinc-400"
+                            href="https://github.com/Reketino"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Reketino on GitHub"
+                            className="font-(family-name:--font-signature) text-5xl text-white transition hover:text-zinc-400"
                         >
                             Reketino
                         </Link>
+
+                        <span className="text-[10px] tracking-[0.25em] text-zinc-600">
+                            DEVELOPER & CREATOR
+                        </span>
                     </div>
                 </div>
             </div>
         </footer>
-    )
+    );
 }
