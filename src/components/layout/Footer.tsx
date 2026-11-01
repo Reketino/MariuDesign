@@ -63,7 +63,7 @@ export default function Footer() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Reketino on GitHub"
-                            className="font-(family-name:--font-signature) text-4xl font-bold text-white transition hover:text-zinc-400"
+                            className="font-(family-name:--font-signature) text-5xl text-white transition hover:text-zinc-400"
                         >
                             Reketino
                         </Link>
