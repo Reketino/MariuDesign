@@ -36,11 +36,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navbar />
 
         <div className="flex-1">
-        {children}
+          {children}
         </div>
 
         <Footer />
-        </body>
+      </body>
     </html>
   );
 }
