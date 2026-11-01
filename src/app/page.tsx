@@ -23,53 +23,6 @@ export default async function HomePage() {
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
-            <header className="border-b border-zinc-800">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-                    <Link
-                        href="/"
-                        className="text-lg font-semibold tracking-tight"
-                    >
-                        Mariudesign
-                    </Link>
-
-                    <nav
-                        aria-label="Main navigation"
-                        className="flex items-center gap-6"
-                    >
-                        <Link
-                            href="/shop"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Store
-                        </Link>
-
-                        {user ? (
-                            <>
-                                <Link
-                                    href="/account"
-                                    className="text-sm text-zinc-400 transition hover:text-white"
-                                >
-                                    Account
-                                </Link>
-
-                                {username && (
-                                    <span className="text-sm font-medium text-white">
-                                        {username}
-                                    </span>
-                                )}
-                            </>
-                        ) : (
-                            <Link
-                                href="/login"
-                                className="text-sm text-zinc-400 transition hover:text-white"
-                            >
-                                Log in
-                            </Link>
-                        )}
-                    </nav>
-                </div>
-            </header>
-
             <section className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
                 <div className="max-w-3xl">
                     <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
