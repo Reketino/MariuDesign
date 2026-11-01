@@ -17,9 +17,9 @@ export default function Footer() {
                     <section>
                         <Link
                         href="/"
-                        className=""
+                        className="text-lg font-semibold tracking-tight text-white"
                         >
-
+                            MariuDesign
                         </Link>
                     </section>
                 </div>
