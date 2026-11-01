@@ -26,6 +26,7 @@ export default function Footer() {
                             High-quality digital designs for your next
                             3D print.
                         </p>
+                        </section>
 
                         <nav aria-label="Footer navigation">
                             <h2 className="text-sm font-semibold text-white">
@@ -43,7 +44,6 @@ export default function Footer() {
                             ))}
                         </ul>
                         </nav>
-                    </section>
                 </div>
             </div>
         </footer>
