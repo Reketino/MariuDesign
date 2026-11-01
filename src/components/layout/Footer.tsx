@@ -27,6 +27,12 @@ export default function Footer() {
                             3D print.
                         </p>
 
+                        <nav aria-label="Footer navigation">
+                            <h2 className="text-sm font-semibold text-white">
+                                Explore
+                            </h2>
+                        </nav>
+
                         <ul className="mt-4 space-y-3">
                             {footerLinks.map((link) => (
                                 <Link
