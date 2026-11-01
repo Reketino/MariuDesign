@@ -21,6 +21,11 @@ export default function Footer() {
                         >
                             MariuDesign
                         </Link>
+
+                        <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-400">
+                            High-quality digital designs for your next
+                            3D print.
+                        </p>
                     </section>
                 </div>
             </div>
