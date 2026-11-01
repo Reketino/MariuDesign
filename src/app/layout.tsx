@@ -38,7 +38,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="flex-1">
         {children}
         </div>
-        
+
+        <Footer />
         </body>
     </html>
   );
