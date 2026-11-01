@@ -7,3 +7,6 @@ const footerLinks = [
     { label: "My account", href: "/account" },
 ];
 
+export default function Footer() {
+    const currentYear = new Date().getFullYear();
+}
