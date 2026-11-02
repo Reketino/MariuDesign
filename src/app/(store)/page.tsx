@@ -1,123 +1,40 @@
 import Link from "next/link";
 
-export default function AdminPage() {
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import { getFeaturedProducts } from "@/lib/products/getFeaturedProducts";
+
+export default async function HomePage() {
+    const products = await getFeaturedProducts();
+
     return (
-        <section className="space-y-8">
-            <header>
-                <p className="text-sm font-medium text-zinc-500">
-                    Overview
-                </p>
-
-                <h1 className="mt-1 text-3xl font-semibold tracking-tight text-white">
-                    Dashboard
-                </h1>
-
-                <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-                    Manage your products, categories, orders and store
-                    settings from one place.
-                </p>
-            </header>
-
-            <section
-                aria-label="Store overview"
-                className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-            >
-                <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-                    <p className="text-sm text-zinc-500">
-                        Products
+        <main className="bg-zinc-950 text-zinc-100">
+            <section className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
+                <div className="max-w-3xl">
+                    <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
+                        3D Printable Designs
                     </p>
 
-                    <p className="mt-2 text-3xl font-semibold text-white">
-                        0
+                    <h1 className="mt-4 text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+                        Digital designs for your next 3D print.
+                    </h1>
+
+                    <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
+                        Explore and download high-quality 3D printable
+                        models designed by Mariudesign.
                     </p>
 
-                    <p className="mt-1 text-sm text-zinc-500">
-                        Products in your store
-                    </p>
-                </article>
-
-                <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-                    <p className="text-sm text-zinc-500">
-                        Categories
-                    </p>
-
-                    <p className="mt-2 text-3xl font-semibold text-white">
-                        0
-                    </p>
-
-                    <p className="mt-1 text-sm text-zinc-500">
-                        Product categories
-                    </p>
-                </article>
-
-                <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
-                    <p className="text-sm text-zinc-500">
-                        Orders
-                    </p>
-
-                    <p className="mt-2 text-3xl font-semibold text-white">
-                        0
-                    </p>
-
-                    <p className="mt-1 text-sm text-zinc-500">
-                        Completed and pending orders
-                    </p>
-                </article>
-            </section>
-
-            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
-                <header>
-                    <h2 className="text-lg font-semibold text-white">
-                        Products
-                    </h2>
-
-                    <p className="mt-1 text-sm text-zinc-500">
-                        Add your first 3D model to the store.
-                    </p>
-                </header>
-
-                <div className="mt-6 rounded-lg border border-dashed border-zinc-700 p-8 text-center">
-                    <p className="text-sm text-zinc-400">
-                        No products have been added yet.
-                    </p>
-
-                    <Link
-                        href="/admin/products/new"
-                        className="
-                        mt-4 inline-flex rounded-lg bg-white px-4 py-2.5 
-                        text-sm font-medium text-zinc-950 
-                        transition hover:bg-zinc-200
-                        "
-                    >
-                        Add your first product
-                    </Link>
+                    <div className="mt-8 flex gap-4">
+                        <Link
+                            href="/shop"
+                            className="rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                        >
+                            Browse designs
+                        </Link>
+                    </div>
                 </div>
             </section>
 
-            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
-                <header>
-                    <h2 className="text-lg font-semibold text-white">
-                        Build Guides & Part List
-                    </h2>
-
-                    <p className="mt-1 text-sm text-zinc-500">
-                        Manage public building guides and parts lists for your products.
-                    </p>
-                </header>
-
-                <div className="mt-6">
-                    <Link
-                        href="/admin/documents"
-                        className="
-                inline-flex items-center justify-center rounded-lg
-                bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 
-                transition hover:bg-zinc-200
-                "
-                    >
-                        Manage documents
-                    </Link>
-                </div>
-            </section>
-        </section>
+            <FeaturedProducts products={products} />
+        </main>
     );
 }
