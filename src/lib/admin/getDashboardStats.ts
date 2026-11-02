@@ -44,4 +44,17 @@ export async function getDashboardStats() {
       .select("id", { count: "exact", head: true })
       .eq("document_type", "part_list"),
   ]);
+
+  const result = [
+    productsResult,
+    publishedProductsResult,
+    categoriesResult,
+    ordersResult,
+    paidOrdersResult,
+    pendingOrdersResult,
+    buildGuidesResult,
+    partListsResult,
+  ];
+
+  
 }
