@@ -56,5 +56,10 @@ export async function getDashboardStats() {
     partListsResult,
   ];
 
-  
+  const failedQuery = result.find((result) => result.error);
+
+  if (failedQuery?.error) {
+    console.error("Failed to fetch dashboard statistics:", failedQuery.error);
+    throw new Error("Could not load dashboard statistics.");
+  }
 }
