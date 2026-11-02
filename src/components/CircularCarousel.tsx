@@ -411,8 +411,8 @@ const CircularCarousel = ({
   const cameraRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const wakeRef = useRef<() => void>(() => {});
-  const measureRef = useRef<() => void>(() => {});
+  const wakeRef = useRef<() => void>(() => { });
+  const measureRef = useRef<() => void>(() => { });
   const activeRef = useRef(0);
   const [active, setActive] = useState(0);
   const [ready, setReady] = useState(false);
@@ -917,7 +917,7 @@ const CircularCarousel = ({
       setDragging(true);
       try {
         rootRef.current?.setPointerCapture(event.pointerId);
-      } catch {}
+      } catch { }
     }
     const perPixel = 180 / (Math.PI * s.radius * state.fit);
     state.angle = press.angle + (delta - press.origin) * perPixel * (s.layout.inward ? -1 : 1);
