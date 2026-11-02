@@ -303,7 +303,7 @@ const Digits = ({ value }: { value: number }) => (
       .map((digit, index) => (
         <span key={index} className="inline-block h-[1em] overflow-hidden">
           <span
-            className="flex flex-col transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+            className="flex flex-col transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
             style={{ transform: `translateY(${-Number(digit) * 10}%)` }}
           >
             {'0123456789'.split('').map(n => (
