@@ -53,8 +53,6 @@ export default async function AccountPage() {
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
-            <PublicHeader />
-
             <section className="mx-auto max-w-5xl px-6 py-12 lg:py-16">
                 <div>
                     <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">

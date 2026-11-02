@@ -93,8 +93,6 @@ export default async function ShopPage() {
 
     return (
         <main className="min-h-screen bg-zinc-950 text-zinc-100">
-            <PublicHeader />
-
             <section className="mx-auto max-w-7xl px-6 py-16 lg:py-24">
                 <header className="max-w-2xl">
                     <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
