@@ -6,3 +6,9 @@ import Footer from "@/components/layout/Footer";
 type StoreLayoutProps = {
     children: ReactNode;
 };
+
+export default function StoreLayout({
+    children,
+}: StoreLayoutProps) {
+    
+}
