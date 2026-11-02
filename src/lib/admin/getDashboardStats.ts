@@ -62,4 +62,15 @@ export async function getDashboardStats() {
     console.error("Failed to fetch dashboard statistics:", failedQuery.error);
     throw new Error("Could not load dashboard statistics.");
   }
+
+  return {
+    products: productsResult.count ?? 0,
+    publishedProducts: publishedProductsResult.count ?? 0,
+    categories: categoriesResult.count ?? 0,
+    orders: ordersResult.count ?? 0,
+    paidOrders: paidOrdersResult.count ?? 0,
+    pendingOrders: pendingOrdersResult.count ?? 0,
+    buildGuides: buildGuidesResult.count ?? 0,
+    partLists: partListsResult.count ?? 0,
+  };
 }
