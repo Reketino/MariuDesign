@@ -20,5 +20,5 @@ export default function StoreLayout({
 
             <Footer />
         </div>
-    )
+    );
 }
