@@ -303,7 +303,7 @@ const Digits = ({ value }: { value: number }) => (
       .map((digit, index) => (
         <span key={index} className="inline-block h-[1em] overflow-hidden">
           <span
-            className="flex flex-col transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+            className="flex flex-col transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
             style={{ transform: `translateY(${-Number(digit) * 10}%)` }}
           >
             {'0123456789'.split('').map(n => (
@@ -411,8 +411,8 @@ const CircularCarousel = ({
   const cameraRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const wakeRef = useRef<() => void>(() => {});
-  const measureRef = useRef<() => void>(() => {});
+  const wakeRef = useRef<() => void>(() => { });
+  const measureRef = useRef<() => void>(() => { });
   const activeRef = useRef(0);
   const [active, setActive] = useState(0);
   const [ready, setReady] = useState(false);
@@ -917,7 +917,7 @@ const CircularCarousel = ({
       setDragging(true);
       try {
         rootRef.current?.setPointerCapture(event.pointerId);
-      } catch {}
+      } catch { }
     }
     const perPixel = 180 / (Math.PI * s.radius * state.fit);
     state.angle = press.angle + (delta - press.origin) * perPixel * (s.layout.inward ? -1 : 1);
