@@ -92,7 +92,13 @@ function StatCard({
                     {label}
                 </p>
 
-                <span className="flex size-9 items-center justify-center rounded-lg border border-white/[0.07] bg-white/[0.03] text-zinc-400 transition-colors group-hover:text-white">
+                <span className="
+                flex size-9 items-center justify-center 
+                rounded-lg border border-white/[0.07] 
+                bg-white/3 text-zinc-400 transition-colors 
+                group-hover:text-white
+                "
+                >
                     <StatIcon icon={icon} />
                 </span>
             </div>
@@ -163,7 +169,12 @@ export default async function AdminPage() {
 
                 <Link
                     href="/"
-                    className="inline-flex w-fit items-center gap-2 rounded-lg border border-white/10 bg-white/4 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-white/20 hover:bg-white/8 hover:text-white"
+                    className="
+                    inline-flex w-fit items-center gap-2 rounded-lg 
+                    border border-white/10 bg-white/4 px-4 py-2.5 
+                    text-sm font-medium text-zinc-300 transition 
+                    hover:border-white/20 hover:bg-white/8 hover:text-white
+                    "
                 >
                     View store
                     <ArrowIcon />
@@ -209,7 +220,11 @@ export default async function AdminPage() {
                     <article className="rounded-xl border border-white/[0.07] bg-[#111111] p-6">
                         <div className="flex items-start justify-between gap-4">
                             <div>
-                                <span className="flex size-10 items-center justify-center rounded-lg border border-white/[0.07] bg-white/3 text-zinc-300">
+                                <span className="
+                                flex size-10 items-center justify-center rounded-lg 
+                                border border-white/[0.07] bg-white/3 text-zinc-300
+                                "
+                                >
                                     <StatIcon icon="products" />
                                 </span>
 
@@ -240,7 +255,11 @@ export default async function AdminPage() {
                                         ? "/admin/products/new"
                                         : "/admin/products"
                                 }
-                                className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                                className="
+                                inline-flex items-center gap-2 rounded-lg 
+                                bg-white px-4 py-2.5 text-sm font-medium 
+                                text-zinc-950 transition hover:bg-zinc-200
+                                "
                             >
                                 {stats.products === 0
                                     ? "Add product"
@@ -253,7 +272,10 @@ export default async function AdminPage() {
                     <article className="rounded-xl border border-white/[0.07] bg-[#111111] p-6">
                         <div className="flex items-start justify-between gap-4">
                             <div>
-                                <span className="flex size-10 items-center justify-center rounded-lg border border-white/[0.07] bg-white/3 text-zinc-300">
+                                <span className="
+                                flex size-10 items-center justify-center 
+                                rounded-lg border border-white/[0.07] 
+                                bg-white/3 text-zinc-300">
                                     <StatIcon icon="guides" />
                                 </span>
 
@@ -278,7 +300,11 @@ export default async function AdminPage() {
 
                             <Link
                                 href="/admin/documents"
-                                className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                                className="
+                                inline-flex items-center gap-2 rounded-lg 
+                                bg-white px-4 py-2.5 text-sm font-medium 
+                                text-zinc-950 transition hover:bg-zinc-200
+                                "
                             >
                                 Manage documents
                                 <ArrowIcon />
@@ -319,7 +345,11 @@ export default async function AdminPage() {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className="group flex items-center justify-between rounded-xl border border-white/[0.07] bg-[#111111] p-4 transition hover:border-white/16 hover:bg-[#161616]"
+                            className="
+                            group flex items-center justify-between rounded-xl 
+                            border border-white/[0.07] bg-[#111111] p-4 
+                            transition hover:border-white/16 hover:bg-[#161616]
+                            "
                         >
                             <div>
                                 <p className="text-sm font-medium text-zinc-200 transition group-hover:text-white">
