@@ -86,7 +86,16 @@ export default async function AdminPage() {
                     </p>
                 </header>
 
-                
+                <div className="mt-6 rounded-lg border border-dashed border-zinc-700 p-8 text-center">
+                    {stats.products === 0 ? (
+                        <>
+                        <p className="text-sm text-zinc-400">
+                            No products have been added yet.
+                        </p>
+                        
+                        </>
+                    )}
+                </div>
                 </section>
                 </section>
     );
