@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { getDashboardStats } from "@/lib/admin/getDashboardStats";
-import { stat } from "fs";
+
 
 export default async function AdminPage() {
     const stats = await getDashboardStats();
