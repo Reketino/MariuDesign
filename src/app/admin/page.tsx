@@ -124,6 +124,15 @@ export default async function AdminPage() {
                     )}
                 </div>
                 </section>
+
+                
+            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+                <header>
+                    <h2 className="text-lg font-semibold text-white">
+                        Build Guides & Part Lists
+                    </h2>
+                    </header>
+                    </section>
                 </section>
     );
 }
