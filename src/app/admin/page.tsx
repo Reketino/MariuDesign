@@ -2,7 +2,8 @@ import Link from "next/link";
 
 import { getDashboardStats } from "@/lib/admin/getDashboardStats";
 
-export default function AdminPage() {
+export default async function AdminPage() {
+   
     return (
         <section className="space-y-8">
             <header>
