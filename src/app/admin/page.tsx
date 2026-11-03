@@ -55,6 +55,14 @@ export default async function AdminPage() {
                 aria-label="Store overview"
                 className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
             >
+                {overviewCards.map((card) => (
+                    <article
+                    key={card.label}
+                    className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5"
+                    >
+                        
+                    </article>
+                ))}
                 <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
                     <p className="text-sm text-zinc-500">
                         Products
