@@ -63,7 +63,13 @@ export default async function AdminPage() {
                         <p className="text-sm text-zinc-500">
                             {card.label}
                         </p>
+
+                        <p className="mt-2 text-3xl font-semibold text-white">
+                            {card.value}
+                        </p>
+
                         
+
                     </article>
                 ))}
                 <article className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5">
