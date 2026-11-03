@@ -76,6 +76,16 @@ export default async function AdminPage() {
                 </section>
 
                 <section className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+                <header>
+                    <h2 className="text-lg font-semibold text-white">
+                        Products
+                    </h2>
+
+                    <p className="mt-1 text-sm text-zinc-500">
+                        Add and manage your 3D models
+                    </p>
+                </header>
+
                 
                 </section>
                 </section>
