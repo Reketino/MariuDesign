@@ -109,6 +109,17 @@ export default async function AdminPage() {
                             You currently have {stats.products} products 
                             in your store.
                         </p>
+
+                        <Link 
+                        href="/admin/products"
+                        className="
+                        mt-4 inline-flex rounded-lg bg-white 
+                        x-4 py-2.5 text-sm font-medium 
+                        text-zinc-950 transition 
+                        hover:bg-zinc-200"
+                        >
+                            Manage products
+                        </Link>
                         </>
                     )}
                 </div>
