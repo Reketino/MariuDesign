@@ -132,6 +132,10 @@ export default async function AdminPage() {
                         Build Guides & Part Lists
                     </h2>
                     </header>
+
+                    <p className="mt-1 text-sm text-zinc-500">
+                        Manage public building guides and parts lists for your products.
+                    </p>
                     </section>
                 </section>
     );
