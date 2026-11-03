@@ -1,9 +1,38 @@
 import Link from "next/link";
 
 import { getDashboardStats } from "@/lib/admin/getDashboardStats";
+import { stat } from "fs";
 
 export default async function AdminPage() {
     const stats = await getDashboardStats();
+
+    const overviewCards = [
+        {
+            label: "Products",
+            value: stats.products,
+            description: `${stats.publishedProducts} published`,
+        },
+        {
+            label: "Categories",
+            value: stats.categories,
+            description: "Product categories",
+        },
+            {
+            label: "Orders",
+            value: stats.orders,
+            description: `${stats.paidOrders} paid - ${stats.pendingOrders} pending`,
+        },
+        {
+            label: "Build Guides",
+            value: stats.buildGuides,
+            description: "Available building guides",
+        },
+        {
+            label: "Part Lists",
+            value: stats.partLists,
+            description: "Available parts lists",
+        },
+    ];
    
     return (
         <section className="space-y-8">
