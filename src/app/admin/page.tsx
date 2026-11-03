@@ -60,6 +60,9 @@ export default async function AdminPage() {
                     key={card.label}
                     className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5"
                     >
+                        <p className="text-sm text-zinc-500">
+                            {card.label}
+                        </p>
                         
                     </article>
                 ))}
