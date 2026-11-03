@@ -68,7 +68,9 @@ export default async function AdminPage() {
                             {card.value}
                         </p>
 
-                        
+                        <p className="mt-1 text-sm text-zinc-500">
+                            {card.description}
+                        </p>
 
                     </article>
                 ))}
