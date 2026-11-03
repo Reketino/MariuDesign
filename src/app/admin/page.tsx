@@ -103,6 +103,13 @@ export default async function AdminPage() {
                             Add your first product
                         </Link>
                         </>
+                    ) : (
+                        <>
+                        <p className="text-sm text-zinc-400">
+                            You currently have {stats.products} products 
+                            in your store.
+                        </p>
+                        </>
                     )}
                 </div>
                 </section>
