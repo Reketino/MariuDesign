@@ -42,7 +42,6 @@ const navigationGroups = [
                 href: "/admin/documents",
                 icon: "documents",
             },
-
-        ]
-    }
-]
+        ],
+    },
+] as const;
