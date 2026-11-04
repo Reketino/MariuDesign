@@ -151,7 +151,21 @@ className="sticky top-0 flex h-[calc(100vh-4rem)] flex-col px-4 py-7">
             <h2 className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
                 {group.label}
             </h2>
-            
+
+            <ul className="space-y-1">
+                {group.items.map((item) => {
+                    const active = isActiveRoute(
+                        pathname,
+                        item.href
+                    );
+
+                    return (
+                        <li key={item.href}>
+                            
+                        </li>
+                    )
+                })}
+            </ul>
         </section>
     ))}
 </nav>
