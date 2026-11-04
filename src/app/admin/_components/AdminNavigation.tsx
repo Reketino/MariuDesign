@@ -88,6 +88,12 @@ const icons = {
                 <path d="M6 2h9l5 5v15H6z" />
                 <path d="M14 2v6h6M9 13h8M9 17h8" />
         </>
+    ),
+    documents: (
+        <>
+                <path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+                <path d="M14 3v6h5M9 13h7M9 17h7" />
+        </>
     )
 }
 }
