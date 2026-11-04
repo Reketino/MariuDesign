@@ -28,9 +28,9 @@ const navigationGroups = [
                 icon: "featured",
             },
             {
-                label: "",
-                href: "",
-                icon: "",
+                label: "Categories",
+                href: "/admin/categories",
+                icon: "categories",
             },
             {
                 label: "",
