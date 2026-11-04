@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { requireAdmin } from "@/lib/auth/requireAdmin";
+import AdminNavigation from "./_components/AdminNavigation";
 
 type AdminLayoutProps = {
     children: ReactNode;
