@@ -142,7 +142,20 @@ export default function AdminNavigation() {
 
  return (
 <>
-
+<aside className="hidden w-64 shrink-0 border-r border-white/[0.07] lg:block">
+<nav
+aria-label="Admin navigation"
+className="sticky top-0 flex h-[calc(100vh-4rem)] flex-col px-4 py-7">
+    {navigationGroups.map((group) => (
+        <section key={group.label} className="mb-8">
+            <h2 className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
+                {group.label}
+            </h2>
+            
+        </section>
+    ))}
+</nav>
+</aside>
 </>
  );
 }
