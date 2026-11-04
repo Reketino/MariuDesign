@@ -63,5 +63,11 @@ const icons = {
             <rect x="3" y="13" width="8" height="8" rx="1.5" />
         </>
     ),
+    products: (
+        <>
+            <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+            <path d="m3 8 9 5 9-5M3 8v8l9 5 9-5V8" />
+        </>
+    )
 }
 }
