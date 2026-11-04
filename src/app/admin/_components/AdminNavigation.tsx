@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import CategoriesPage from "../categories/page";
 
 const navigationGroups = [
     {
@@ -111,6 +110,21 @@ const icons = {
                 />
 
         </>
-    )
-}
+    ),
+};
+
+return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="size-4.5 shrink-0"
+        >
+            {icons[name]}
+        </svg>
+);
 }
