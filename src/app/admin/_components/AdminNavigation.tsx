@@ -212,7 +212,27 @@ export default function AdminNavigation() {
                             pathname,
                             item.href
                         );
-                        
+
+                        return (
+                            <li key={item.href} className="shrink-0">
+                                <Link
+                                href={item.href}
+                                aria-current= {active ? "page" : undefined}
+                                className={`
+                                    flex items-center gap-2 rounded-lg
+                                     px-3 py-2 text-xs transition-colors
+                                     ${
+                                        active
+                                        ? "bg-white/10 text-white"
+                                        : "text-zinc-500 hover:bg-white/5 hover:text-white"
+                                     }
+                                    `}
+                                    >
+                                        <NavigationIcon name={item.icon} />
+                                        {item.label}
+                                    </Link>
+                            </li>
+                        )
                     })
                     )}
                 </ul>
