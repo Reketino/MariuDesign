@@ -202,38 +202,37 @@ export default function AdminNavigation() {
             </aside>
 
             <nav
-            aria-label="Mobile admin navigation"
-            className="border-b border-white/[0.07] px-4 py-3 lg:hidden"
+                aria-label="Mobile admin navigation"
+                className="border-b border-white/[0.07] px-4 py-3 lg:hidden"
             >
                 <ul className="flex gap-2 overflow-x-auto pb-1">
-                    {navigationGroups.flatMap((group) => 
-                    group.items.map((item) => {
-                        const active = isActiveRoute(
-                            pathname,
-                            item.href
-                        );
+                    {navigationGroups.flatMap((group) =>
+                        group.items.map((item) => {
+                            const active = isActiveRoute(
+                                pathname,
+                                item.href
+                            );
 
-                        return (
-                            <li key={item.href} className="shrink-0">
-                                <Link
-                                href={item.href}
-                                aria-current= {active ? "page" : undefined}
-                                className={`
+                            return (
+                                <li key={item.href} className="shrink-0">
+                                    <Link
+                                        href={item.href}
+                                        aria-current={active ? "page" : undefined}
+                                        className={`
                                     flex items-center gap-2 rounded-lg
                                      px-3 py-2 text-xs transition-colors
-                                     ${
-                                        active
-                                        ? "bg-white/10 text-white"
-                                        : "text-zinc-500 hover:bg-white/5 hover:text-white"
-                                     }
+                                     ${active
+                                                ? "bg-white/10 text-white"
+                                                : "text-zinc-500 hover:bg-white/5 hover:text-white"
+                                            }
                                     `}
                                     >
                                         <NavigationIcon name={item.icon} />
                                         {item.label}
                                     </Link>
-                            </li>
-                        );
-                    })
+                                </li>
+                            );
+                        })
                     )}
                 </ul>
             </nav>
