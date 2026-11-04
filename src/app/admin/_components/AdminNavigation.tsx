@@ -190,6 +190,13 @@ className="sticky top-0 flex h-[calc(100vh-4rem)] flex-col px-4 py-7">
             </ul>
         </section>
     ))}
+
+    <div className="mt-auto rounded-xl border border-white/6 bg-white/2 p-4">
+    <p className="text-xs font-medium text-zinc-300">
+        MariuDesign
+    </p>
+    
+    </div>
 </nav>
 </aside>
 </>
