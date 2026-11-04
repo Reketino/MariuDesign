@@ -46,10 +46,10 @@ const navigationGroups = [
     },
 ] as const;
 
-type navigationIcon =
+type NavigationIconName =
 (typeof navigationGroups)[number]["items"][number]["icon"];
 
-function navigationIcon({
+function NavigationIcon({
     name,
 }: {
     name: NavigationIconName;
