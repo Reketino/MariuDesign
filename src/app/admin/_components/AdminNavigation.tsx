@@ -175,7 +175,14 @@ className="sticky top-0 flex h-[calc(100vh-4rem)] flex-col px-4 py-7">
                                 }
                             `}
                             >
-                                
+                                {active && (
+                                    <span className="absolute bottom-2 left-0 top-2 w-0.5 rounded-full bg-white" />
+                                )}
+
+                                <NavigationIcon
+                                name={item.icon}
+                                />
+                                {item.label}
                             </Link>
                         </li>
                     )
