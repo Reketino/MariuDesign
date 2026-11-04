@@ -232,7 +232,7 @@ export default function AdminNavigation() {
                                         {item.label}
                                     </Link>
                             </li>
-                        )
+                        );
                     })
                     )}
                 </ul>
