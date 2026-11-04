@@ -127,6 +127,7 @@ return (
             {icons[name]}
         </svg>
 );
+}
 
 function isActiveRoute(pathname: string, href: string) {
     if (href === "/admin") {
@@ -135,4 +136,7 @@ function isActiveRoute(pathname: string, href: string) {
 
     return pathname === href || pathname.startsWith(`${href}/`);
 }
+
+export default function AdminNavigation() {
+
 }
