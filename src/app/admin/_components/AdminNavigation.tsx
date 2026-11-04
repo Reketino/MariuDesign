@@ -195,7 +195,9 @@ className="sticky top-0 flex h-[calc(100vh-4rem)] flex-col px-4 py-7">
     <p className="text-xs font-medium text-zinc-300">
         MariuDesign
     </p>
-    
+    <p className="mt-1 text-xs leading-5 text-zinc-600">
+        Store administration
+    </p>
     </div>
 </nav>
 </aside>
