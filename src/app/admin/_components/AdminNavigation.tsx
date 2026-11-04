@@ -82,6 +82,12 @@ const icons = {
                 <rect x="3" y="14" width="7" height="7" rx="1.5" />
                 <rect x="14" y="14" width="7" height="7" rx="1.5" />
         </>
+    ),
+    orders: (
+        <>
+                <path d="M6 2h9l5 5v15H6z" />
+                <path d="M14 2v6h6M9 13h8M9 17h8" />
+        </>
     )
 }
 }
