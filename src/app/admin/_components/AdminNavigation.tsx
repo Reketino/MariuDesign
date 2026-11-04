@@ -48,3 +48,11 @@ const navigationGroups = [
 
 type navigationIcon =
 (typeof navigationGroups)[number]["items"][number]["icon"];
+
+function navigationIcon({
+    name,
+}: {
+    name: NavigationIconName;
+}) {
+
+}
