@@ -23,9 +23,9 @@ const navigationGroups = [
                 icon: "products",
             },
             {
-                label: "",
-                href: "",
-                icon: "",
+                label: "Featured Products",
+                href: "/admin/featured-products",
+                icon: "featured",
             },
             {
                 label: "",
