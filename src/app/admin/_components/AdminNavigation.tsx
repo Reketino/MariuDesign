@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import CategoriesPage from "../categories/page";
 
 const navigationGroups = [
     {
@@ -47,10 +46,10 @@ const navigationGroups = [
     },
 ] as const;
 
-type navigationIcon =
+type NavigationIconName =
 (typeof navigationGroups)[number]["items"][number]["icon"];
 
-function navigationIcon({
+function NavigationIcon({
     name,
 }: {
     name: NavigationIconName;
@@ -111,6 +110,97 @@ const icons = {
                 />
 
         </>
-    )
+    ),
+};
+
+return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="size-4.5 shrink-0"
+        >
+            {icons[name]}
+        </svg>
+);
 }
+
+function isActiveRoute(pathname: string, href: string) {
+    if (href === "/admin") {
+        return pathname === href;
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+export default function AdminNavigation() {
+ const pathname = usePathname();
+
+ return (
+<>
+<aside className="hidden w-64 shrink-0 border-r border-white/[0.07] lg:block">
+<nav
+aria-label="Admin navigation"
+className="sticky top-0 flex h-[calc(100vh-4rem)] flex-col px-4 py-7">
+    {navigationGroups.map((group) => (
+        <section key={group.label} className="mb-8">
+            <h2 className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
+                {group.label}
+            </h2>
+
+            <ul className="space-y-1">
+                {group.items.map((item) => {
+                    const active = isActiveRoute(
+                        pathname,
+                        item.href
+                    );
+
+                    return (
+                        <li key={item.href}>
+                            <Link
+                            href={item.href}
+                            aria-current={active ? "page" : undefined}
+                            className={`
+                                    group relative flex items-center gap-3
+                                    rounded-lg px-3 py-2.5 text-sm
+                                    transition-colors
+                                ${
+                                    active
+                                    ? "bg-white/8 font-medium text-white"
+                                    : "text-zinc-500 hover:bg-white/4 hover:text-zinc-200"
+                                }
+                            `}
+                            >
+                                {active && (
+                                    <span className="absolute bottom-2 left-0 top-2 w-0.5 rounded-full bg-white" />
+                                )}
+
+                                <NavigationIcon
+                                name={item.icon}
+                                />
+                                {item.label}
+                            </Link>
+                        </li>
+                    )
+                })}
+            </ul>
+        </section>
+    ))}
+
+    <div className="mt-auto rounded-xl border border-white/6 bg-white/2 p-4">
+    <p className="text-xs font-medium text-zinc-300">
+        MariuDesign
+    </p>
+    <p className="mt-1 text-xs leading-5 text-zinc-600">
+        Store administration
+    </p>
+    </div>
+</nav>
+</aside>
+</>
+ );
 }
