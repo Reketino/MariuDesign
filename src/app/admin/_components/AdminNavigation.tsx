@@ -138,5 +138,11 @@ function isActiveRoute(pathname: string, href: string) {
 }
 
 export default function AdminNavigation() {
+ const pathname = usePathname();
 
+ return (
+<>
+
+</>
+ );
 }
