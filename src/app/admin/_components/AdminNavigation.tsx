@@ -2,3 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+const navigationGroups = [
+    {
+        label: "Workspace",
+        items: [
+            {
+                label: "Dashboard",
+                href: "/admin",
+                icon: "dashboard",
+            },
+        ],
+    },
+]
