@@ -14,4 +14,35 @@ const navigationGroups = [
             },
         ],
     },
+    {
+        label: "Store",
+        items: [
+            {
+                label: "Products",
+                href: "/admin/products",
+                icon: "products",
+            },
+            {
+                label: "",
+                href: "",
+                icon: "",
+            },
+            {
+                label: "",
+                href: "",
+                icon: "",
+            },
+            {
+                label: "",
+                href: "",
+                icon: "",
+            },
+            {
+                label: "",
+                href: "",
+                icon: "",
+            },
+
+        ]
+    }
 ]
