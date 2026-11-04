@@ -33,9 +33,9 @@ const navigationGroups = [
                 icon: "categories",
             },
             {
-                label: "",
-                href: "",
-                icon: "",
+                label: "Orders",
+                href: "/admin/orders",
+                icon: "orders",
             },
             {
                 label: "",
