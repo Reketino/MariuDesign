@@ -161,7 +161,22 @@ className="sticky top-0 flex h-[calc(100vh-4rem)] flex-col px-4 py-7">
 
                     return (
                         <li key={item.href}>
-                            
+                            <Link
+                            href={item.href}
+                            aria-current={active ? "page" : undefined}
+                            className={`
+                                    group relative flex items-center gap-3
+                                    rounded-lg px-3 py-2.5 text-sm
+                                    transition-colors
+                                ${
+                                    active
+                                    ? "bg-white/8 font-medium text-white"
+                                    : "text-zinc-500 hover:bg-white/4 hover:text-zinc-200"
+                                }
+                            `}
+                            >
+                                
+                            </Link>
                         </li>
                     )
                 })}
