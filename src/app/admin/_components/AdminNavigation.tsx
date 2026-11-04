@@ -45,3 +45,6 @@ const navigationGroups = [
         ],
     },
 ] as const;
+
+type navigationIcon =
+(typeof navigationGroups)[number]["items"][number]["icon"];
