@@ -57,7 +57,6 @@ export default async function AdminLayout({
                             >
                              Admin   
                             </span>
-                            View Store
                         </Link>
                     </div>
 
