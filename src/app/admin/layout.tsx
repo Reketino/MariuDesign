@@ -44,6 +44,10 @@ export default async function AdminLayout({
                             >
                                 M
                             </span>
+
+                            <span className="text-sm font-semibold tracking-tight text-white">
+                                MariuDesign
+                            </span>
                             View Store
                         </Link>
                     </div>
