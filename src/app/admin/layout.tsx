@@ -14,9 +14,10 @@ export default async function AdminLayout({
     const { user } = await requireAdmin();
 
     return (
-        <div className="min-h-screen bg-zinc-950 text-zinc-100">
-            <header className="border-b border-zinc-800 bg-zinc-950">
-                <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+        <div className="min-h-screen bg-[#090909] text-zinc-100">
+            <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#090909]/95 backdrop-blur-xl">
+                <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-5 sm:px-8">
+                    <div className="flex items-center gap-10">
                     <Link
                         href="/admin"
                         className="text-lg font-semibold tracking-tight">
@@ -36,97 +37,42 @@ export default async function AdminLayout({
                         transition hover:border-zinc-500 
                         "
                         >
-                            View Store
+                            <span className="
+                            flex size-8 items-center justify-center 
+                            rounded-lg border border-white/10 
+                            bg-white/5 text-sm font-semibold text-white"
+                            >
+                                M
+                            </span>
+
+                            <span className="text-sm font-semibold tracking-tight text-white">
+                                MariuDesign
+                            </span>
+
+                            <span className="
+                            hidden rounded-md border border-white/8 
+                            px-2 py-1 text-[9px] font-medium uppercase 
+                            tracking-wider text-zinc-500 sm:block
+                            "
+                            >
+                             Admin   
+                            </span>
                         </Link>
+                    </div>
+
+                    <div className="flex items-center gap-3 sm:gap-5">
+                        <div className="hidden text-right sm:block">
+                            <p className="text-xs font-medium text-zinc-300">
+                                Administrator
+                            </p>
+                        </div>
+                    </div>
+
                     </div>
                 </div>
             </header>
 
-            <section className="mx-auto flex max-w-7xl">
-                <aside className="hidden min-h-[calc(100vh-4rem)] w-60 shrink-0 border-r border-zinc-800 py-6 md:block">
-                    <nav aria-label="Admin navigation">
-                        <ul className="space-y-1 px-3">
-                            <li>
-                                <Link
-                                    href="/admin"
-                                    className="block rounded-lg bg-zinc-800 px-3 py-2.5 text-sm font-medium text-white"
-                                >
-                                    Dashboard
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    href="/admin/products"
-                                    className="
-                                    block rounded-lg px-3 py-2.5 
-                                    text-sm text-zinc-400 hover:text-white
-                                    transition hover:bg-zinc-900 
-                                    "
-                                >
-                                    Products
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    href="/admin/featured-products"
-                                    className="
-                                    block rounded-lg px-3 py-2.5
-                                    text-sm text-zinc-400 hover:text-white
-                                    transition hover:bg-zinc-900
-                                    "
-                                >
-                                    Featured Products
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    href="/admin/categories"
-                                    className="
-                            block rounded-lg px-3 py-2.5 
-                            text-sm text-zinc-400 hover:text-white
-                            transition hover:bg-zinc-900 
-                            "
-                                >
-                                    Categories
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    href="/admin/orders"
-                                    className="
-                            block rounded-lg px-3 py-2.5 
-                            text-sm text-zinc-400 hover:text-white
-                            transition hover:bg-zinc-900 
-                            "
-                                >
-                                    Orders
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    href="/admin/settings"
-                                    className="
-                            block rounded-lg px-3 py-2.5 
-                            text-sm text-zinc-400 hover:text-white
-                            transition hover:bg-zinc-900 
-                            "
-                                >
-                                    Settings
-                                </Link>
-                            </li>
-                        </ul>
-                    </nav>
-                </aside>
-
-                <main className="min-w-0 flex-1 p-6 lg:p-8">
-                    {children}
-                </main>
-            </section>
+            {children}
         </div>
-    )
+    );
 }
