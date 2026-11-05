@@ -117,7 +117,11 @@ export default async function AdminLayout({
             <div className=",x-auto flex max-w-[1600px]">
                 <AdminNavigation />
 
-                
+                <div className="min-w-0 flex-1">
+                    <main className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-8 sm:py-10">
+                        {children}
+                    </main>
+                </div>
             </div>
         </div>
     );
