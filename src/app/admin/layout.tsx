@@ -17,6 +17,7 @@ export default async function AdminLayout({
         <div className="min-h-screen bg-[#090909] text-zinc-100">
             <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#090909]/95 backdrop-blur-xl">
                 <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-5 sm:px-8">
+                    <div className="flex items-center gap-10">
                     <Link
                         href="/admin"
                         className="text-lg font-semibold tracking-tight">
@@ -38,6 +39,7 @@ export default async function AdminLayout({
                         >
                             View Store
                         </Link>
+                    </div>
                     </div>
                 </div>
             </header>
