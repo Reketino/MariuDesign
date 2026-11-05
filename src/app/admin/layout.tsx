@@ -65,7 +65,12 @@ export default async function AdminLayout({
                             <p className="text-xs font-medium text-zinc-300">
                                 Administrator
                             </p>
+
+                            <p className="mt-0.5 text-[11px] text-zinc-600">
+                                {user.email}
+                            </p>
                         </div>
+                        
                     </div>
 
                     </div>
