@@ -48,6 +48,15 @@ export default async function AdminLayout({
                             <span className="text-sm font-semibold tracking-tight text-white">
                                 MariuDesign
                             </span>
+
+                            <span className="
+                            hidden rounded-md border border-white/8 
+                            px-2 py-1 text-[9px] font-medium uppercase 
+                            tracking-wider text-zinc-500 sm:block
+                            "
+                            >
+                             Admin   
+                            </span>
                             View Store
                         </Link>
                     </div>
