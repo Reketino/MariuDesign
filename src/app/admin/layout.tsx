@@ -81,6 +81,10 @@ export default async function AdminLayout({
                         >
                             {user.email?.charAt(0).toUpperCase() ?? "A"}
                         </div>
+
+                        <span className="h-5 w-px bg-white/10" />
+
+                        
                     </div>
 
                     </div>
