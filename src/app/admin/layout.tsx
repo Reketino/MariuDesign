@@ -84,7 +84,18 @@ export default async function AdminLayout({
 
                         <span className="h-5 w-px bg-white/10" />
 
-                        
+                        <Link
+                        href="/admin"
+                        className="
+                        inline-flex items-center gap-2 rounded-lg border 
+                        border-white/8 bg-white/3 px-3 py-2 
+                        text-xs font-medium text-zinc-400 transition 
+                        hover:border-white/20 hover:bg-white/[0.07] 
+                        hover:text-white
+                        "
+                        >
+                           View store 
+                        </Link>
                     </div>
 
                     </div>
