@@ -60,6 +60,13 @@ export default async function AdminLayout({
                         </Link>
                     </div>
 
+                    <div className="flex items-center gap-3 sm:gap-5">
+                        <div className="hidden text-right sm:block">
+                            <p className="text-xs font-medium text-zinc-300">
+                                Administrator
+                            </p>
+                        </div>
+                    </div>
 
                     </div>
                 </div>
