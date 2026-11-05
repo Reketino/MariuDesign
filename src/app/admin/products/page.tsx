@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import ProductTable from "@/components/admin/products/ProductTable";
-
 import { createClient } from "@/lib/supabase/server";
 
 export default async function ProductsPage() {
@@ -42,7 +41,7 @@ export default async function ProductsPage() {
     }
 
     return (
-        <section className="space-y-8">
+        <main className="space-y-8">
             <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <p className="text-sm font-medium text-zinc-500">
@@ -67,6 +66,6 @@ export default async function ProductsPage() {
             </header>
 
             <ProductTable products={products ?? []} />
-        </section>
+        </main>
     );
 }
