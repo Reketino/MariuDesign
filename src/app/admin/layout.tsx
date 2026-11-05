@@ -70,7 +70,17 @@ export default async function AdminLayout({
                                 {user.email}
                             </p>
                         </div>
-                        
+
+                        <div 
+                        aria-hidden="true"
+                        className="
+                        flex size-8 items-center justify-center rounded-full 
+                        border border-white/10 bg-white/5 
+                        text-xs font-medium text-zinc-300
+                        "
+                        >
+                            {user.email?.charAt(0).toUpperCase() ?? "A"}
+                        </div>
                     </div>
 
                     </div>
