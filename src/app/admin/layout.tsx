@@ -114,7 +114,11 @@ export default async function AdminLayout({
                 </div>
             </header>
 
-            {children}
+            <div className=",x-auto flex max-w-[1600px]">
+                <AdminNavigation />
+
+                
+            </div>
         </div>
     );
 }
