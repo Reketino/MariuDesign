@@ -14,7 +14,7 @@ export default async function AdminLayout({
     const { user } = await requireAdmin();
 
     return (
-        <div className="min-h-screen bg-zinc-950 text-zinc-100">
+        <div className="min-h-screen bg-[#090909] text-zinc-100">
             <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#090909]/95 backdrop-blur-xl">
                 <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-5 sm:px-8">
                     <Link
