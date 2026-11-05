@@ -37,9 +37,18 @@ export default async function AdminLayout({
                         transition hover:border-zinc-500 
                         "
                         >
+                            <span className="
+                            flex size-8 items-center justify-center 
+                            rounded-lg border border-white/10 
+                            bg-white/5 text-sm font-semibold text-white"
+                            >
+                                M
+                            </span>
                             View Store
                         </Link>
                     </div>
+
+
                     </div>
                 </div>
             </header>
