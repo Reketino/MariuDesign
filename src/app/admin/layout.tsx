@@ -94,7 +94,19 @@ export default async function AdminLayout({
                         hover:text-white
                         "
                         >
-                           View store 
+                           View store
+
+                           <svg
+                           viewBox="0 0 24 24"
+                           fill="none"
+                           strokeWidth="1.7"
+                           strokeLinecap="round"
+                           strokeLinejoin="round"
+                           aria-hidden="true"
+                           className="size-3.5"
+                           >
+                            <path d="M7 17 17 7M7 7h10v10" />
+                            </svg> 
                         </Link>
                     </div>
 
