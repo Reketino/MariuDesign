@@ -110,6 +110,10 @@ export default async function ProductsPage() {
                         Products in your catalog
                     </p>
                     </article>
+
+                    <article className="rounded-xl border border-white/[0.07] bg-[#111111] p-5">
+                    
+                    </article>
                 </div>
             </section>
 
