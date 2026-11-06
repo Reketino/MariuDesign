@@ -41,13 +41,13 @@ export default async function ProductsPage() {
         throw new Error("Failed to load products");
     }
 
-    const productsList = products ?? [];
+    const productList = products ?? [];
 
-    const publishedProducts = productsList.filter(
+    const publishedProducts = productList.filter(
         (product) => product.status === "published"
     ).length;
 
-    const draftProducts = productsList.filter(
+    const draftProducts = productList.filter(
         (product) => product.status === "draft"
     ).length;
 
@@ -94,6 +94,24 @@ export default async function ProductsPage() {
                     Add product 📦
                 </Link>
             </header>
+
+            <section aria-label="Product statistics">
+                <div className="grid gap-3 sm:grid-cols-3">
+                    <article className="rounded-xl border border-white/[0.07] bg-[#111111] p-5">
+                    <p className="text-sm text-zinc-400">
+                        Total products
+                    </p>
+
+                    <p className="mt-3 text-3xl font-semibold tracking-tight text-white tabular-nums">
+                        {String(productList.length).padStart(2, "0")}
+                    </p>
+
+                    <p className="mt-1 text-xs text-zinc-600">
+                        Products in your catalog
+                    </p>
+                    </article>
+                </div>
+            </section>
 
             <ProductTable products={products ?? []} />
         </main>
