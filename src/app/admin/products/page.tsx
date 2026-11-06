@@ -47,7 +47,9 @@ export default async function ProductsPage() {
         (product) => product.status === "published"
     ).length;
 
-    
+    const draftProducts = productsList.filter(
+        (product) => product.status === "draft"
+    ).length;
 
 
     return (
