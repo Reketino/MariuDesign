@@ -130,7 +130,13 @@ export default async function ProductsPage() {
                         Drafts
                     </p>
 
-                    
+                    <p className="mt-3 text-3xl font-semibold tracking-tight text-white tabular-nums">
+                        {String(draftProducts).padStart(2, "0")}
+                    </p>
+
+                    <p className="mt-1 text-xs text-zinc-600">
+                        Not yet published
+                    </p>
                     </article>
                 </div>
             </section>
