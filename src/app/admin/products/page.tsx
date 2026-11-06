@@ -115,6 +115,14 @@ export default async function ProductsPage() {
                     <p className="text-sm text-zinc-400">
                         Published
                     </p>
+
+                    <p className="mt-3 text-3xl font-semibold tracking-tight text-white tabular-nums">
+                        {String(publishedProducts).padStart(2, "0")}
+                    </p>
+
+                    <p className="mt-1 text-xs text-zinc-600">
+                        Visible in your store
+                    </p>
                     </article>
                 </div>
             </section>
