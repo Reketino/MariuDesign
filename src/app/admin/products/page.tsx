@@ -151,8 +151,12 @@ export default async function ProductsPage() {
                             Product catalog
                         </h2>
 
-                        
+                        <p className="mt-1 text-xs text-zinc-500">
+                            View and manage all your products.
+                        </p>
                     </div>
+
+                    
                 </header>
             </section>
 
