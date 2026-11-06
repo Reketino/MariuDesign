@@ -156,11 +156,15 @@ export default async function ProductsPage() {
                         </p>
                     </div>
 
-                    
+                    <span className="w-fit rounded-full border border-white/8 px-3 py-1 text-xs text-zinc-500">
+                    {productList.length}{" "}
+                    {productList.length === 1 ? "product" : "products"}
+                    </span>
                 </header>
-            </section>
-
+        
+        
             <ProductTable products={products ?? []} />
+            </section>
         </main>
     );
 }
