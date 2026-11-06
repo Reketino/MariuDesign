@@ -141,6 +141,21 @@ export default async function ProductsPage() {
                 </div>
             </section>
 
+            <section className="product-list-heading">
+                <header className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <h2
+                        id="product-list-heading"
+                        className="text-sm font-medium text-zinc-200"
+                        >
+                            Product catalog
+                        </h2>
+
+                        
+                    </div>
+                </header>
+            </section>
+
             <ProductTable products={products ?? []} />
         </main>
     );
