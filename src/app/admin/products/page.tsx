@@ -55,7 +55,7 @@ export default async function ProductsPage() {
         <main className="space-y-9 pb-12">
             <header className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
                 <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
+                    <p className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                         Store managment 🛒
                     </p>
 
