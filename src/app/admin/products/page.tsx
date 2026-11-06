@@ -41,6 +41,9 @@ export default async function ProductsPage() {
         throw new Error("Failed to load products");
     }
 
+    const productsList = products ?? [];
+    
+
     return (
         <main className="space-y-8">
             <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
