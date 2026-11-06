@@ -105,6 +105,10 @@ export default async function ProductsPage() {
                     <p className="mt-3 text-3xl font-semibold tracking-tight text-white tabular-nums">
                         {String(productList.length).padStart(2, "0")}
                     </p>
+
+                    <p className="mt-1 text-xs text-zinc-600">
+                        Products in your catalog
+                    </p>
                     </article>
                 </div>
             </section>
