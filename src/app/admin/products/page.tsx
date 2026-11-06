@@ -63,8 +63,9 @@ export default async function ProductsPage() {
                         Products 📦
                     </h1>
 
-                    <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-                        Manage the 3D models available in your store.
+                    <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-400">
+                        Manage your 3D models, product information and 
+                        publishing status.
                     </p>
                 </div>
 
