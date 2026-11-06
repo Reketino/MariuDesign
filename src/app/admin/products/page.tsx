@@ -71,7 +71,12 @@ export default async function ProductsPage() {
 
                 <Link
                     href="/admin/products/new"
-                    className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    className="
+                    inline-flex w-fit items-center 
+                    gap-2 rounded-lg bg-white px-4 py-2.5 
+                    text-sm font-medium text-zinc-950 
+                    transition hover:bg-zinc-200
+                    "
                 >
                     Add product 📦
                 </Link>
