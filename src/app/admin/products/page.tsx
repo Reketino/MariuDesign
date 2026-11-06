@@ -95,6 +95,12 @@ export default async function ProductsPage() {
                 </Link>
             </header>
 
+            <section aria-label="Product statistics">
+                <div className="grid gap-3 sm:grid-cols-3">
+                    
+                </div>
+            </section>
+
             <ProductTable products={products ?? []} />
         </main>
     );
