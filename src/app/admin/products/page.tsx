@@ -97,7 +97,11 @@ export default async function ProductsPage() {
 
             <section aria-label="Product statistics">
                 <div className="grid gap-3 sm:grid-cols-3">
-                    
+                    <article className="rounded-xl border border-white/[0.07] bg-[#111111] p-5">
+                    <p className="text-sm text-zinc-400">
+                        Total products
+                    </p>
+                    </article>
                 </div>
             </section>
 
