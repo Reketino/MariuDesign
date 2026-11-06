@@ -37,30 +37,60 @@ export default async function ProductsPage() {
         });
 
     if (error) {
+        console.error("Failed to fetch products:", error);
         throw new Error("Failed to load products");
     }
 
+    const productsList = products ?? [];
+
+    const publishedProducts = productsList.filter(
+        (product) => product.status === "published"
+    ).length;
+
+    const draftProducts = productsList.filter(
+        (product) => product.status === "draft"
+    ).length;
+
     return (
-        <main className="space-y-8">
-            <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <main className="space-y-9 pb-12">
+            <header className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
                 <div>
-                    <p className="text-sm font-medium text-zinc-500">
-                        Store 🛒
+                    <p className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                        Store managment 🛒
                     </p>
 
                     <h1 className="mt-1 text-3xl font-semibold tracking-tight text-white">
                         Products 📦
                     </h1>
 
-                    <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-                        Manage the 3D models available in your store.
+                    <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-400">
+                        Manage your 3D models, product information and 
+                        publishing status.
                     </p>
                 </div>
 
                 <Link
                     href="/admin/products/new"
-                    className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                    className="
+                    inline-flex w-fit items-center 
+                    gap-2 rounded-lg bg-white px-4 py-2.5 
+                    text-sm font-medium text-zinc-950 
+                    transition hover:bg-zinc-200
+                    "
                 >
+                    <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                    className="size-4"
+                    >
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                    
                     Add product 📦
                 </Link>
             </header>
