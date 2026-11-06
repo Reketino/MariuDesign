@@ -42,7 +42,13 @@ export default async function ProductsPage() {
     }
 
     const productsList = products ?? [];
+
+    const publishedProducts = productsList.filter(
+        (product) => product.status === "published"
+    ).length;
+
     
+
 
     return (
         <main className="space-y-8">
