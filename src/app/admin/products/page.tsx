@@ -165,7 +165,6 @@ export default async function ProductsPage() {
                 <div className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
                 <ProductTable products={productList} />
                 </div>
-            
             </section>
         </main>
     );
