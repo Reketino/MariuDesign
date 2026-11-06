@@ -112,7 +112,9 @@ export default async function ProductsPage() {
                     </article>
 
                     <article className="rounded-xl border border-white/[0.07] bg-[#111111] p-5">
-                    
+                    <p className="text-sm text-zinc-400">
+                        Published
+                    </p>
                     </article>
                 </div>
             </section>
