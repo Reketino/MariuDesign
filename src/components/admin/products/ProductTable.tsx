@@ -61,6 +61,19 @@ function getStatusClasses(status: string) {
     }
 }
 
+function ProductPlaceholder() {
+    return (
+        <div className="
+        flex size-12 shrink-0 items-center justify-center 
+        rounded-lg border border-white/[0.07] bg-white/3 
+        text-zinc-600
+        "
+        >
+
+        </div>
+    )
+}
+
 export default function ProductTable({
     products,
 }: ProductTableProps) {
