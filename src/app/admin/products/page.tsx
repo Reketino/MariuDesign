@@ -51,9 +51,8 @@ export default async function ProductsPage() {
         (product) => product.status === "draft"
     ).length;
 
-
     return (
-        <main className="space-y-8">
+        <main className="space-y-9 pb-12">
             <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                     <p className="text-sm font-medium text-zinc-500">
