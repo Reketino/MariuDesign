@@ -139,7 +139,7 @@ export default function ProductTable({
         return <EmptyProducts />
     }
     return (
-        <section className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
+        <section className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
             <div className="overflow-x-auto">
                 <table className="w-full min-w-200 text-left">
                     <thead className="border-b border-zinc-800 bg-zinc-900">
