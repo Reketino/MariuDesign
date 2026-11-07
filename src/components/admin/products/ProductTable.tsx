@@ -80,7 +80,7 @@ function ProductPlaceholder() {
             className="size-5"
             >
                 <path d="m12 3 9 5-9 5-9-5 9-5Z" />
-                
+                <path d="m3 8 9 5 9-5M3 8v8l9 5 9-5V8" />
             </svg>
         </div>
     )
