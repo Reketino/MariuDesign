@@ -83,6 +83,30 @@ function ProductPlaceholder() {
                 <path d="m3 8 9 5 9-5M3 8v8l9 5 9-5V8" />
             </svg>
         </div>
+    );
+}
+
+function EmptyPrroducts() {
+    return (
+        <section className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
+            <div className="flex flex-col items-center px-6 py-20 text-center">
+                <span className="flex size-14 items-center justify-center rounded-xl border border-white/8 bg-white/3 text-zinc-400">
+                <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="size-6"
+                >
+                    <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+                    <path d="m3 8 9 5 9-5M3 8v8l9 5 9-5V8" />
+                </svg>
+                </span>
+            </div>
+        </section>
     )
 }
 
