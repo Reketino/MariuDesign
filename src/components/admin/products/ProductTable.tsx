@@ -260,9 +260,11 @@ export default function ProductTable({
                                     </td>
 
                                     <td className="px-6 py-5">
-                                        <span className="text-sm text-zinc-500">
+                                        <time 
+                                        dateTime={product.created_at}
+                                        className="text-sm text-zinc-500">
                                             {formatDate(product.created_at)}
-                                        </span>
+                                        </time>
                                     </td>
 
                                     <td className="px-6 py-5">
