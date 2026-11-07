@@ -156,7 +156,9 @@ export default function ProductTable({
                                 Category
                             </th>
 
-                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                            <th                             
+                            scope="col"
+                            className="px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
                                 Status
                             </th>
 
