@@ -105,6 +105,12 @@ function EmptyPrroducts() {
                     <path d="m3 8 9 5 9-5M3 8v8l9 5 9-5V8" />
                 </svg>
                 </span>
+
+                <h3 className="mt-5 text-base font-semibold text-white">
+                    No products yet
+                </h3>
+
+                
             </div>
         </section>
     )
