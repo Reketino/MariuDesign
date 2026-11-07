@@ -209,7 +209,17 @@ export default function ProductTable({
                                                 >
                                                     <Image
                                                     src={imageUrl}
+                                                    alt={
+                                                        productImage?.alt_text ??
+                                                        product.title
+                                                    }
+                                                    fill
+                                                    sizes="48px"
+                                                    className="object-cover transition-transform duration-300 group-hover/product:scale-105"
+                                                    />
                                                 </div>
+                                            ): (
+                                                <ProductPlaceholder />
                                             )}
                                             <div>
                                                 <p className="font-medium text-white transition group-hover:text-zinc-300">
