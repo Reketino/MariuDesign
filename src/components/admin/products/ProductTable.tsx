@@ -114,7 +114,19 @@ function EmptyPrroducts() {
                     Your product catalog is currently empty. Add your first 
                     3D model to get started.
                 </p>
-                
+
+                <Link 
+                href="/admin/products/new"
+                className="
+                mt-6 inline-flex items-center gap-2 
+                rounded-lg bg-white px-4 py-2.5 
+                text-sm font-medium text-zinc-950 
+                transition hover:bg-zinc-200
+                "
+                >
+                    <span aria-hidden="true">+</span>
+                    Add your first product
+                </Link>
             </div>
         </section>
     )
