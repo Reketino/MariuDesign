@@ -86,7 +86,7 @@ function ProductPlaceholder() {
     );
 }
 
-function EmptyPrroducts() {
+function EmptyProducts() {
     return (
         <section className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
             <div className="flex flex-col items-center px-6 py-20 text-center">
@@ -136,39 +136,8 @@ export default function ProductTable({
     products,
 }: ProductTableProps) {
     if (products.length === 0) {
-        return (
-            <section className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
-                <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900">
-                        <span className="text-xl text-zinc-500">
-                            +
-                        </span>
-                    </div>
-
-                    <h2 className="mt-5 text-lg font-semibold text-white">
-                        No products yet
-                    </h2>
-
-
-                    <p className="mt-2 max-w-md text-sm leading-6 text-zinc-500">
-                        You have not added any 3D models to your store yet.
-                        Create your first product to get started.
-                    </p>
-
-                    <Link
-                        href="/admin/products/new"
-                        className="
-                        mt-6 inline-flex rounded-lg bg-white 
-                        px-4 py-2.5 text-sm font-medium text-zinc-950 
-                        transition hover:bg-zinc-200"
-                    >
-                        Add your first product
-                    </Link>
-                </div>
-            </section>
-        );
+        return <EmptyProducts />
     }
-
     return (
         <section className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
             <div className="overflow-x-auto">
