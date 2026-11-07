@@ -176,7 +176,7 @@ export default function ProductTable({
                         </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-zinc-800">
+                    <tbody className="divide-y divide-white/5">
                         {products.map((product) => {
                             const category = getCategory(
                                 product.categories,
