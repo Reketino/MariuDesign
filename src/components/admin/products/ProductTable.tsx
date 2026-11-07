@@ -186,6 +186,10 @@ export default function ProductTable({
                                 product.product_images,
                             );
 
+                            const imageUrl = productImage
+                            ? getProductImageUrl(productImage.storage_path)
+                            : null
+
                             return (
                                 <tr
                                     key={product.id}
@@ -194,21 +198,19 @@ export default function ProductTable({
                                     <td className="px-6 py-4">
                                         <Link
                                             href={`/admin/products/${product.id}`}
-                                            className="group flex items-center gap-4"
+                                            className="group/product flex w-fit items-center gap-4"
                                         >
-                                            {productImage && (
-                                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg 
-                                                border border-zinc-800 bg-zinc-950">
+                                            {imageUrl ? (
+                                                <div className="
+                                                relative size-12 shrink-0 overflow-hidden 
+                                                rounded-lg border border-white/8 
+                                                bg-[#090909]
+                                                "
+                                                >
                                                     <Image
-                                                        src={getProductImageUrl(productImage.storage_path)}
-                                                        alt={productImage.alt_text ?? product.title}
-                                                        fill
-                                                        sizes="48px"
-                                                        className="object-cover transition group-hover:scale-105"
-                                                    />
+                                                    src={imageUrl}
                                                 </div>
                                             )}
-
                                             <div>
                                                 <p className="font-medium text-white transition group-hover:text-zinc-300">
                                                     {product.title}
