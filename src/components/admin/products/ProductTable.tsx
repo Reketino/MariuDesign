@@ -69,7 +69,18 @@ function ProductPlaceholder() {
         text-zinc-600
         "
         >
-
+            <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="size-5"
+            >
+                
+            </svg>
         </div>
     )
 }
