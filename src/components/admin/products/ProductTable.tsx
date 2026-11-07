@@ -69,8 +69,66 @@ function ProductPlaceholder() {
         text-zinc-600
         "
         >
-
+            <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="size-5"
+            >
+                <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+                <path d="m3 8 9 5 9-5M3 8v8l9 5 9-5V8" />
+            </svg>
         </div>
+    );
+}
+
+function EmptyProducts() {
+    return (
+        <section className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
+            <div className="flex flex-col items-center px-6 py-20 text-center">
+                <span className="flex size-14 items-center justify-center rounded-xl border border-white/8 bg-white/3 text-zinc-400">
+                <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="size-6"
+                >
+                    <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+                    <path d="m3 8 9 5 9-5M3 8v8l9 5 9-5V8" />
+                </svg>
+                </span>
+
+                <h3 className="mt-5 text-base font-semibold text-white">
+                    No products yet
+                </h3>
+
+                <p className="mt-2 max-w-sm text-sm leading-6 text-zinc-500">
+                    Your product catalog is currently empty. Add your first 
+                    3D model to get started.
+                </p>
+
+                <Link 
+                href="/admin/products/new"
+                className="
+                mt-6 inline-flex items-center gap-2 
+                rounded-lg bg-white px-4 py-2.5 
+                text-sm font-medium text-zinc-950 
+                transition hover:bg-zinc-200
+                "
+                >
+                    <span aria-hidden="true">+</span>
+                    Add your first product
+                </Link>
+            </div>
+        </section>
     )
 }
 
@@ -78,44 +136,13 @@ export default function ProductTable({
     products,
 }: ProductTableProps) {
     if (products.length === 0) {
-        return (
-            <section className="rounded-xl border border-zinc-800 bg-zinc-900/60">
-                <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900">
-                        <span className="text-xl text-zinc-500">
-                            +
-                        </span>
-                    </div>
-
-                    <h2 className="mt-5 text-lg font-semibold text-white">
-                        No products yet
-                    </h2>
-
-
-                    <p className="mt-2 max-w-md text-sm leading-6 text-zinc-500">
-                        You have not added any 3D models to your store yet.
-                        Create your first product to get started.
-                    </p>
-
-                    <Link
-                        href="/admin/products/new"
-                        className="
-                        mt-6 inline-flex rounded-lg bg-white 
-                        px-4 py-2.5 text-sm font-medium text-zinc-950 
-                        transition hover:bg-zinc-200"
-                    >
-                        Add your first product
-                    </Link>
-                </div>
-            </section>
-        );
+        return <EmptyProducts />
     }
-
     return (
-        <section className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
+        <section className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
             <div className="overflow-x-auto">
-                <table className="w-full min-w-200 text-left">
-                    <thead className="border-b border-zinc-800 bg-zinc-900">
+                <table className="w-full min-w-212.5 text-left">
+                    <thead className="border-b border-white/[0.07] bg-white/2">
                         <tr>
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
                                 Product
