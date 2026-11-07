@@ -170,7 +170,7 @@ export default function ProductTable({
 
                             <th                             
                             scope="col"
-                            className="px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
+                            className="px-6 py-4 text-right text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
                                 Actions
                             </th>
                         </tr>
