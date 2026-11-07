@@ -189,9 +189,9 @@ export default function ProductTable({
                             return (
                                 <tr
                                     key={product.id}
-                                    className="transition hover:bg-zinc-900"
+                                    className="group transition-colors hover:bg-white/2.5"
                                 >
-                                    <td className="px-6 py-5">
+                                    <td className="px-6 py-4">
                                         <Link
                                             href={`/admin/products/${product.id}`}
                                             className="group flex items-center gap-4"
