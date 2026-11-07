@@ -12,6 +12,16 @@ export type ProductImage = {
   sort_order: number;
 };
 
+export type ProductFile = {
+  id: string;
+  product_id: string;
+  file_type: string;
+  file_name: string;
+  storage_path: string;
+  version: string;
+  created_at: string;
+};
+
 export type Product = {
   id: string;
   title: string;
@@ -38,12 +48,4 @@ export type ProductFormData = {
   product_files: ProductFile[] | null;
 };
 
-export type ProductFile = {
-  id: string;
-  product_id: string;
-  file_type: string;
-  file_name: string;
-  storage_path: string;
-  version: string;
-  created_at: string;
-};
+
