@@ -267,11 +267,15 @@ export default function ProductTable({
                                         </time>
                                     </td>
 
-                                    <td className="px-6 py-5">
-                                        <div className="flex items-center justify-end gap-4">
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center justify-end gap-3">
                                             <Link
                                                 href={`/admin/products/${product.id}`}
-                                                className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                                className="
+                                                rounded-md px-2 py-1.5 text-xs font-medium 
+                                                text-zinc-500 transition hover:bg-white/5 
+                                                hover:text-white
+                                                "
                                             >
                                                 Edit
                                             </Link>
