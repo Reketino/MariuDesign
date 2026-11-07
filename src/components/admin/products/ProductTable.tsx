@@ -110,6 +110,10 @@ function EmptyPrroducts() {
                     No products yet
                 </h3>
 
+                <p className="mt-2 max-w-sm text-sm leading-6 text-zinc-500">
+                    Your product catalog is currently empty. Add your first 
+                    3D model to get started.
+                </p>
                 
             </div>
         </section>
