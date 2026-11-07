@@ -221,12 +221,12 @@ export default function ProductTable({
                                             ): (
                                                 <ProductPlaceholder />
                                             )}
-                                            <div>
-                                                <p className="font-medium text-white transition group-hover:text-zinc-300">
+                                            <div className="min-w-0">
+                                                <p className="font-medium text-zinc-200 transition-colors group-hover/product:text-white">
                                                     {product.title}
                                                 </p>
 
-                                                <p className="mt-1 text-sm text-zinc-500">
+                                                <p className="mt-1 max-w-55 truncate text-xs text-zinc-600">
                                                     /{product.slug}
                                                 </p>
                                             </div>
