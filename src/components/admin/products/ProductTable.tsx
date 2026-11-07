@@ -292,6 +292,20 @@ export default function ProductTable({
                     </tbody>
                 </table>
             </div>
+
+            <footer className="flex items-center justify-between border-t border-white/6 px-6 py-4">
+            <p className="text-xs text-zinc-500">
+                Showing{" "}
+                <span className="font-medium text-zinc-300">
+                    {products.length}
+                </span>{" "}
+                {products.length === 1 ? "product" : "products"}
+            </p>
+
+            <span className="text-xs text-zinc-600">
+                Product catalog
+            </span>
+            </footer>
         </section>
     );
 }
