@@ -141,8 +141,8 @@ export default function ProductTable({
     return (
         <section className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#111111]">
             <div className="overflow-x-auto">
-                <table className="w-full min-w-200 text-left">
-                    <thead className="border-b border-zinc-800 bg-zinc-900">
+                <table className="w-full min-w-212.5 text-left">
+                    <thead className="border-b border-white/[0.07] bg-white/2">
                         <tr>
                             <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
                                 Product
