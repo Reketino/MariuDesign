@@ -79,6 +79,7 @@ function ProductPlaceholder() {
             aria-hidden="true"
             className="size-5"
             >
+                <path d="m12 3 9 5-9 5-9-5 9-5Z" />
                 
             </svg>
         </div>
