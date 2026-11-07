@@ -144,29 +144,39 @@ export default function ProductTable({
                 <table className="w-full min-w-212.5 text-left">
                     <thead className="border-b border-white/[0.07] bg-white/2">
                         <tr>
-                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                            <th 
+                            scope="col"
+                            className="px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
                                 Product
                             </th>
 
-                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                            <th                             
+                            scope="col"
+                            className="px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
                                 Category
                             </th>
 
-                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                            <th                             
+                            scope="col"
+                            className="px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
                                 Status
                             </th>
 
-                            <th className="px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                            <th                             
+                            scope="col"
+                            className="px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
                                 Created
                             </th>
 
-                            <th className="px-6 py-4 text-right font-medium uppercase tracking-wider text-zinc-500">
+                            <th                             
+                            scope="col"
+                            className="px-6 py-4 text-right text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
                                 Actions
                             </th>
                         </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-zinc-800">
+                    <tbody className="divide-y divide-white/5">
                         {products.map((product) => {
                             const category = getCategory(
                                 product.categories,
@@ -176,35 +186,47 @@ export default function ProductTable({
                                 product.product_images,
                             );
 
+                            const imageUrl = productImage
+                            ? getProductImageUrl(productImage.storage_path)
+                            : null
+
                             return (
                                 <tr
                                     key={product.id}
-                                    className="transition hover:bg-zinc-900"
+                                    className="group transition-colors hover:bg-white/2.5"
                                 >
-                                    <td className="px-6 py-5">
+                                    <td className="px-6 py-4">
                                         <Link
                                             href={`/admin/products/${product.id}`}
-                                            className="group flex items-center gap-4"
+                                            className="group/product flex w-fit items-center gap-4"
                                         >
-                                            {productImage && (
-                                                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg 
-                                                border border-zinc-800 bg-zinc-950">
+                                            {imageUrl ? (
+                                                <div className="
+                                                relative size-12 shrink-0 overflow-hidden 
+                                                rounded-lg border border-white/8 
+                                                bg-[#090909]
+                                                "
+                                                >
                                                     <Image
-                                                        src={getProductImageUrl(productImage.storage_path)}
-                                                        alt={productImage.alt_text ?? product.title}
-                                                        fill
-                                                        sizes="48px"
-                                                        className="object-cover transition group-hover:scale-105"
+                                                    src={imageUrl}
+                                                    alt={
+                                                        productImage?.alt_text ??
+                                                        product.title
+                                                    }
+                                                    fill
+                                                    sizes="48px"
+                                                    className="object-cover transition-transform duration-300 group-hover/product:scale-105"
                                                     />
                                                 </div>
+                                            ): (
+                                                <ProductPlaceholder />
                                             )}
-
-                                            <div>
-                                                <p className="font-medium text-white transition group-hover:text-zinc-300">
+                                            <div className="min-w-0">
+                                                <p className="font-medium text-zinc-200 transition-colors group-hover/product:text-white">
                                                     {product.title}
                                                 </p>
 
-                                                <p className="mt-1 text-sm text-zinc-500">
+                                                <p className="mt-1 max-w-55 truncate text-xs text-zinc-600">
                                                     /{product.slug}
                                                 </p>
                                             </div>
@@ -218,23 +240,42 @@ export default function ProductTable({
                                     </td>
 
                                     <td className="px-6 py-5">
-                                        <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium capitalize
-                                            ${getStatusClasses(product.status,)}`}>
-                                            {product.status}
+                                        <span className={`
+                                        inline-flex items-center gap-2 rounded-full 
+                                        border px-2.5 py-1 text-[11px] font-medium 
+                                        capitalize
+                                            ${getStatusClasses(product.status)}`}>
+                                                <span 
+                                                aria-hidden="true"
+                                                className={`size-1.5 rounded-full ${
+                                                    product.status.toLowerCase() === "published"
+                                                    ? "bg-emerald-400"
+                                                    : product.status.toLowerCase() === "archived"
+                                                    ? "bg-red-400"
+                                                    : "bg-zinc-500"
+                                                }`}
+                                                />
+                                                {product.status}
                                         </span>
                                     </td>
 
                                     <td className="px-6 py-5">
-                                        <span className="text-sm text-zinc-500">
+                                        <time 
+                                        dateTime={product.created_at}
+                                        className="text-sm text-zinc-500">
                                             {formatDate(product.created_at)}
-                                        </span>
+                                        </time>
                                     </td>
 
-                                    <td className="px-6 py-5">
-                                        <div className="flex items-center justify-end gap-4">
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center justify-end gap-3">
                                             <Link
                                                 href={`/admin/products/${product.id}`}
-                                                className="text-sm font-medium text-zinc-400 transition hover:text-white"
+                                                className="
+                                                rounded-md px-2 py-1.5 text-xs font-medium 
+                                                text-zinc-500 transition hover:bg-white/5 
+                                                hover:text-white
+                                                "
                                             >
                                                 Edit
                                             </Link>
@@ -251,6 +292,20 @@ export default function ProductTable({
                     </tbody>
                 </table>
             </div>
+
+            <footer className="flex items-center justify-between border-t border-white/6 px-6 py-4">
+            <p className="text-xs text-zinc-500">
+                Showing{" "}
+                <span className="font-medium text-zinc-300">
+                    {products.length}
+                </span>{" "}
+                {products.length === 1 ? "product" : "products"}
+            </p>
+
+            <span className="text-xs text-zinc-600">
+                Product catalog
+            </span>
+            </footer>
         </section>
     );
 }
