@@ -255,6 +255,7 @@ export default function ProductTable({
                                                     : "bg-zinc-500"
                                                 }`}
                                                 />
+                                                {product.status}
                                         </span>
                                     </td>
 
