@@ -55,6 +55,7 @@ export default function DeleteProductButton({
         } finally {
             setLoading(false);
         }
+    }
 
     return (
         <div className="flex flex-col items-end gap-2">
