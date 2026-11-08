@@ -19,6 +19,15 @@ export async function deleteProduct(
 ): Promise<DeleteProductResult> {
     try {
         await requireAdmin();
+
+        if (!productId) {
+            return {
+                success: false,
+                error: "Invalid product ID.",
+            };
+        }
+
+        
     }
     
 }
