@@ -1,3 +1,5 @@
+export type ProductStatus = "published" | "draft" | "archived";
+
 export type ProductCategory = {
   id: string;
   name: string;
