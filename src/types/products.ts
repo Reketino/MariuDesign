@@ -43,7 +43,7 @@ export type ProductFormData = {
   title: string;
   slug: string;
   description: string | null;
-  status: string;
+  status: ProductStatus;
   license: string | null;
   category_id: string | null;
   product_images: ProductImage[] | null;
