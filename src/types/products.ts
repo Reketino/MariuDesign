@@ -1,3 +1,5 @@
+export type ProductStatus = "published" | "draft" | "archived";
+
 export type ProductCategory = {
   id: string;
   name: string;
@@ -27,7 +29,7 @@ export type Product = {
   title: string;
   slug: string;
   description: string | null;
-  status: string;
+  status: ProductStatus;
   license: string | null;
   created_at: string;
   category_id: string | null;
@@ -41,11 +43,9 @@ export type ProductFormData = {
   title: string;
   slug: string;
   description: string | null;
-  status: string;
+  status: ProductStatus;
   license: string | null;
   category_id: string | null;
   product_images: ProductImage[] | null;
   product_files: ProductFile[] | null;
 };
-
-
