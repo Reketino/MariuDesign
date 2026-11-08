@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/client";
@@ -22,7 +21,7 @@ export default function DeleteProductButton({
 
     async function handleDelete() {
         const confirmed = window.confirm(
-            `Are you sure you want to delete "${productTitle}"?`,
+            `Are you sure you want to delete "${productTitle}"? This action cannot be undone.`,
         );
 
         if (!confirmed) {
@@ -32,21 +31,30 @@ export default function DeleteProductButton({
         setError("");
         setLoading(true);
 
-        const supabase = createClient();
+        try {
+            const supabase = createClient();
 
-        const { error } = await supabase
-            .from("products")
-            .delete()
-            .eq("id", productId)
+            const { error: deleteError } = await supabase
+                .from("products")
+                .delete()
+                .eq("id", productId)
 
-        if (error) {
-            setError(error.message)
+            if (deleteError) {
+                throw deleteError;
+            }
+
+            router.refresh();
+        } catch (error) {
+            console.error("Failed to delete product:", error);
+
+            setError(
+                error instanceof Error
+                    ? error.message
+                    : "Something went wrong while deleting the product.",
+            );
+        } finally {
             setLoading(false);
-            return;
         }
-
-        setLoading(false);
-        router.refresh();
     }
 
     return (
@@ -56,9 +64,11 @@ export default function DeleteProductButton({
                 onClick={handleDelete}
                 disabled={loading}
                 className="
-                text-sm font-medium text-red-400 
-                transition hover:text-red-300 
-                disabled:cursor-not-allowed disabled:opacity-50"
+                    rounded-md px-2 py-1.5 text-xs font-medium
+                    text-zinc-500 transition-colors
+                    hover:bg-red-500/10 hover:text-red-400
+                    disabled:cursor-not-allowed disabled:opacity-50
+                    "
             >
                 {loading ? "Deleting..." : "Delete"}
             </button>
