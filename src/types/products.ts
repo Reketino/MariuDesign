@@ -49,5 +49,3 @@ export type ProductFormData = {
   product_images: ProductImage[] | null;
   product_files: ProductFile[] | null;
 };
-
-
