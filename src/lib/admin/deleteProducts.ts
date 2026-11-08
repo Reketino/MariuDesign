@@ -47,6 +47,16 @@ export async function deleteProduct(
             .select("storage_path")
             .eq("product_id", productId),
         ]);
+
+        const queryErrors = [
+            imageResult.error,
+            filesResult.error,
+            documentsResult.error,
+        ].filter(Boolean);
+
+        if (queryErrors > 0) {
+            
+        }
     }
     
 }
