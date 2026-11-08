@@ -42,6 +42,16 @@ export default function DeleteProductButton({
         if (deleteError) {
             throw deleteError;
         }
+
+        router.refresh();
+        } catch (error) {
+            console.error("Failed to delete product:", error);
+
+            setError(
+                error instanceof Error
+                ? error.message
+                : "Something went wrong while deleting the product.",
+            );
         }
 
     return (
