@@ -29,7 +29,7 @@ export type Product = {
   title: string;
   slug: string;
   description: string | null;
-  status: string;
+  status: ProductStatus;
   license: string | null;
   created_at: string;
   category_id: string | null;
