@@ -32,25 +32,25 @@ export default function DeleteProductButton({
         setLoading(true);
 
         try {
-        const supabase = createClient();
+            const supabase = createClient();
 
-        const { error: deleteError } = await supabase
-        .from("products")
-        .delete()
-        .eq("id", productId)
+            const { error: deleteError } = await supabase
+                .from("products")
+                .delete()
+                .eq("id", productId)
 
-        if (deleteError) {
-            throw deleteError;
-        }
+            if (deleteError) {
+                throw deleteError;
+            }
 
-        router.refresh();
+            router.refresh();
         } catch (error) {
             console.error("Failed to delete product:", error);
 
             setError(
                 error instanceof Error
-                ? error.message
-                : "Something went wrong while deleting the product.",
+                    ? error.message
+                    : "Something went wrong while deleting the product.",
             );
         } finally {
             setLoading(false);
