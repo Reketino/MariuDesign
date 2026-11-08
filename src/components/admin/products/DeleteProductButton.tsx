@@ -52,6 +52,8 @@ export default function DeleteProductButton({
                 ? error.message
                 : "Something went wrong while deleting the product.",
             );
+        } finally {
+            setLoading(false);
         }
 
     return (
