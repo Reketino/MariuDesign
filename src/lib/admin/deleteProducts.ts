@@ -15,8 +15,10 @@ const STORAGE_BUCKET = [
 ] as const;
 
 export async function deleteProduct( 
-    productId: string
+    productId: string,
 ): Promise<DeleteProductResult> {
-    
+    try {
+
+    }
     
 }
