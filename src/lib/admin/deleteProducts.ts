@@ -18,7 +18,7 @@ export async function deleteProduct(
     productId: string,
 ): Promise<DeleteProductResult> {
     try {
-
+        await requireAdmin();
     }
     
 }
