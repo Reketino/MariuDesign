@@ -27,7 +27,26 @@ export async function deleteProduct(
             };
         }
 
-        
+        const [
+            imageResult,
+            filesResult,
+            documentsResult,
+        ] = await Promise.all([
+            supabaseAdmin
+            .from("product_images")
+            .select("storage_path")
+            .eq("product_id", productId),
+
+            supabaseAdmin
+            .from("product_images")
+            .select("storage_path")
+            .eq("product_id", productId),
+
+            supabaseAdmin
+            .from("product_images")
+            .select("storage_path")
+            .eq("product_id", productId),
+        ]);
     }
     
 }
