@@ -31,22 +31,18 @@ export default function DeleteProductButton({
         setError("");
         setLoading(true);
 
+        try {
         const supabase = createClient();
 
-        const { error } = await supabase
-            .from("products")
-            .delete()
-            .eq("id", productId)
+        const { error: deleteError } = await supabase
+        .from("products")
+        .delete()
+        .eq("id", productId)
 
-        if (error) {
-            setError(error.message)
-            setLoading(false);
-            return;
+        if (deleteError) {
+            throw deleteError;
         }
-
-        setLoading(false);
-        router.refresh();
-    }
+        }
 
     return (
         <div className="flex flex-col items-end gap-2">
