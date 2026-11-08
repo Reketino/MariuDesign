@@ -54,7 +54,7 @@ export async function deleteProduct(
             documentsResult.error,
         ].filter(Boolean);
 
-        if (queryErrors > 0) {
+        if (queryErrors.length > 0) {
             
         }
     }
