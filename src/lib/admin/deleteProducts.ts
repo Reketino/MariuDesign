@@ -15,7 +15,48 @@ const STORAGE_BUCKET = [
 ] as const;
 
 export async function deleteProduct( 
-    productId: string
-) {
+    productId: string,
+): Promise<DeleteProductResult> {
+    try {
+        await requireAdmin();
+
+        if (!productId) {
+            return {
+                success: false,
+                error: "Invalid product ID.",
+            };
+        }
+
+        const [
+            imageResult,
+            filesResult,
+            documentsResult,
+        ] = await Promise.all([
+            supabaseAdmin
+            .from("product_images")
+            .select("storage_path")
+            .eq("product_id", productId),
+
+            supabaseAdmin
+            .from("product_images")
+            .select("storage_path")
+            .eq("product_id", productId),
+
+            supabaseAdmin
+            .from("product_images")
+            .select("storage_path")
+            .eq("product_id", productId),
+        ]);
+
+        const queryErrors = [
+            imageResult.error,
+            filesResult.error,
+            documentsResult.error,
+        ].filter(Boolean);
+
+        if (queryErrors.length > 0) {
+            
+        }
+    }
     
 }
