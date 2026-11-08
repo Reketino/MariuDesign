@@ -13,3 +13,9 @@ const STORAGE_BUCKET = [
     "product_files",
     "product-documents",
 ] as const;
+
+export async function deleteProduct( 
+    productId: string
+) {
+    
+}
