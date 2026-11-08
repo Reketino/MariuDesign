@@ -7,3 +7,9 @@ type DeleteProductResult = {
     success: boolean;
     error?: string;
 };
+
+const STORAGE_BUCKET = [
+    "product-images",
+    "product_files",
+    "product-documents",
+] as const;
