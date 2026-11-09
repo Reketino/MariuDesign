@@ -80,7 +80,7 @@ export async function deleteProduct(
       },
     ];
 
-    const { data: deleteProduct, error: deleteError } = await supabaseAdmin
+    const { data: deletedProduct, error: deleteError } = await supabaseAdmin
       .from("products")
       .delete()
       .eq("id", productId)
@@ -99,7 +99,7 @@ export async function deleteProduct(
       };
     }
 
-    if (!deleteProduct) {
+    if (!deletedProduct) {
       return {
         success: false,
         error: "Product not found.",
