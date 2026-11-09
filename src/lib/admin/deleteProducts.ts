@@ -144,6 +144,11 @@ export async function deleteProduct(
             success: true,
         };
     } catch (error) {
-        
+        console.error("Unexpected product deletion error:", error);
+
+        return {
+            success: false,
+            error: "An unexpected error occurred.",
+        };
     }
 }
