@@ -14,13 +14,15 @@ const STORAGE_BUCKET = [
   "product-documents",
 ] as const;
 
+const UUID_REGEX =  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
 export async function deleteProduct(
   productId: string,
 ): Promise<DeleteProductResult> {
   try {
     await requireAdmin();
 
-    if (!productId) {
+    if (!UUID_REGEX.test(productId)) {
       return {
         success: false,
         error: "Invalid product ID.",
@@ -34,12 +36,12 @@ export async function deleteProduct(
         .eq("product_id", productId),
 
       supabaseAdmin
-        .from("product_images")
+        .from("product_files")
         .select("storage_path")
         .eq("product_id", productId),
 
       supabaseAdmin
-        .from("product_images")
+        .from("product_documents")
         .select("storage_path")
         .eq("product_id", productId),
     ]);
@@ -64,23 +66,23 @@ export async function deleteProduct(
         bucket: STORAGE_BUCKET[0],
         paths: (imageResult.data ?? [])
           .map((item) => item.storage_path)
-          .filter(Boolean),
+          .filter((path): path is string => Boolean(path)),
       },
       {
         bucket: STORAGE_BUCKET[1],
-        paths: (imageResult.data ?? [])
+        paths: (filesResult.data ?? [])
           .map((item) => item.storage_path)
-          .filter(Boolean),
+          .filter((path): path is string => Boolean(path)),
       },
       {
         bucket: STORAGE_BUCKET[2],
-        paths: (imageResult.data ?? [])
+        paths: (documentsResult.data ?? [])
           .map((item) => item.storage_path)
-          .filter(Boolean),
+          .filter((path): path is string => Boolean(path)),
       },
     ];
 
-    const { data: deleteProduct, error: deleteError } = await supabaseAdmin
+    const { data: deletedProduct, error: deleteError } = await supabaseAdmin
       .from("products")
       .delete()
       .eq("id", productId)
@@ -99,7 +101,7 @@ export async function deleteProduct(
       };
     }
 
-    if (!deleteProduct) {
+    if (!deletedProduct) {
       return {
         success: false,
         error: "Product not found.",
