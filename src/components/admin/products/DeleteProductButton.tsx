@@ -43,7 +43,7 @@ export default function DeleteProductButton({
                 console.error("Storage cleanup warning:", result.error);
             }
 
-            
+            router.refresh();
         } catch (error) {
             console.error("Failed to delete product:", error);
 
