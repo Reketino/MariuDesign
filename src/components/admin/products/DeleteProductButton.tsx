@@ -32,18 +32,9 @@ export default function DeleteProductButton({
         setLoading(true);
 
         try {
-            const supabase = createClient();
+            const result = await deleteProduct(productId);
 
-            const { error: deleteError } = await supabase
-                .from("products")
-                .delete()
-                .eq("id", productId)
-
-            if (deleteError) {
-                throw deleteError;
-            }
-
-            router.refresh();
+            
         } catch (error) {
             console.error("Failed to delete product:", error);
 
