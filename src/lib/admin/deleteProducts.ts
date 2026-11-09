@@ -127,5 +127,12 @@ export async function deleteProduct(
                 storageErrors.push(bucket);
             }
         }
+
+        if (storageErrors.length > 0) {
+            console.error(
+                "Product deleted, but Storage cleanup failed:",
+                storageErrors,
+            );
+        }
     }
 }
