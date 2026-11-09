@@ -94,6 +94,16 @@ export async function deleteProduct(
 
         if (deleteError) {
             console.error("Failed to delete product:", deleteError);
+
+            return {
+                success: false,
+                error:
+                deleteError.code === "23503"
+                ? "This product is connected to existing orders and cannot be deleted."
+                : "Could not delete the product."
+            };
         }
+
+        
     }
 }
