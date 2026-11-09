@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { createClient } from "@/lib/supabase/client";
+import { deleteProduct } from "@/lib/admin/deleteProducts";
 
 type DeleteProductButtonProps = {
     productId: string;
@@ -32,26 +32,22 @@ export default function DeleteProductButton({
         setLoading(true);
 
         try {
-            const supabase = createClient();
+            const result = await deleteProduct(productId);
 
-            const { error: deleteError } = await supabase
-                .from("products")
-                .delete()
-                .eq("id", productId)
+            if (!result.success) {
+                setError(result.error ?? "Could not delete product.");
+                return;
+            }
 
-            if (deleteError) {
-                throw deleteError;
+            if (result.error) {
+                console.error("Storage cleanup warning:", result.error);
             }
 
             router.refresh();
         } catch (error) {
             console.error("Failed to delete product:", error);
 
-            setError(
-                error instanceof Error
-                    ? error.message
-                    : "Something went wrong while deleting the product.",
-            );
+            setError("Something went wrong while deleting the product.");
         } finally {
             setLoading(false);
         }
