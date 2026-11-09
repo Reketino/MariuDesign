@@ -104,6 +104,11 @@ export async function deleteProduct(
             };
         }
 
-        
+        if (!deleteProduct) {
+            return {
+                success: false,
+                error: "Product not found.",
+            };
+        }
     }
 }
