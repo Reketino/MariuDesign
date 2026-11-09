@@ -57,7 +57,10 @@ export async function deleteProduct(
         if (queryErrors.length > 0) {
             console.error("Failed to fetch product storage paths:", queryErrors);
 
-            
+            return {
+                success: false,
+                error: "Could not retrieve all product files.",
+            };
         }
     }
     
