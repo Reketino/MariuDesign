@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { createClient } from "@/lib/supabase/client";
+import { deleteProduct } from "@/lib/admin/deleteProducts";
 
 type DeleteProductButtonProps = {
     productId: string;
