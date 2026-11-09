@@ -47,11 +47,7 @@ export default function DeleteProductButton({
         } catch (error) {
             console.error("Failed to delete product:", error);
 
-            setError(
-                error instanceof Error
-                    ? error.message
-                    : "Something went wrong while deleting the product.",
-            );
+            setError("Something went wrong while deleting the product.");
         } finally {
             setLoading(false);
         }
