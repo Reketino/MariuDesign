@@ -110,5 +110,7 @@ export async function deleteProduct(
                 error: "Product not found.",
             };
         }
+
+        const storageErrors: string[] = [];
     }
 }
