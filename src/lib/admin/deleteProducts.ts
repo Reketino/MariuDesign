@@ -74,7 +74,7 @@ export async function deleteProduct(
       },
       {
         bucket: STORAGE_BUCKET[2],
-        paths: (imageResult.data ?? [])
+        paths: (documentsResult.data ?? [])
           .map((item) => item.storage_path)
           .filter(Boolean),
       },
