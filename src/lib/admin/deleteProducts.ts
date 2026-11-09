@@ -91,5 +91,9 @@ export async function deleteProduct(
         .eq("id", productId)
         .select("id")
         .maybeSingle();
+
+        if (deleteError) {
+            console.error("Failed to delete product:", deleteError);
+        }
     }
 }
