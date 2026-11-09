@@ -133,6 +133,12 @@ export async function deleteProduct(
                 "Product deleted, but Storage cleanup failed:",
                 storageErrors,
             );
+
+            return {
+                success: true,
+                error: "Product deleted, but some associated files could not be removed.",
+            };
         }
+        
     }
 }
