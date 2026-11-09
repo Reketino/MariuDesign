@@ -34,7 +34,7 @@ export async function deleteProduct(
         .eq("product_id", productId),
 
       supabaseAdmin
-        .from("product_images")
+        .from("product_files")
         .select("storage_path")
         .eq("product_id", productId),
 
