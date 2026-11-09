@@ -139,6 +139,11 @@ export async function deleteProduct(
                 error: "Product deleted, but some associated files could not be removed.",
             };
         }
+
+        return {
+            success: true,
+        };
+    } catch (error) {
         
     }
 }
