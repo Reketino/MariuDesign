@@ -22,7 +22,7 @@ export async function deleteProduct(
   try {
     await requireAdmin();
 
-    if (!productId) {
+    if (!UUID_REGEX.test(productId)) {
       return {
         success: false,
         error: "Invalid product ID.",
