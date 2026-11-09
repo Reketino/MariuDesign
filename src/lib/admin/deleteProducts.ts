@@ -122,7 +122,10 @@ export async function deleteProduct(
             .from(bucket)
             .remove(paths);
 
-            
+            if (error) {
+                console.error(`Failed to clean up bucket ${bucket}:`, error);
+                storageErrors.push(bucket);
+            }
         }
     }
 }
