@@ -118,6 +118,10 @@ export async function deleteProduct(
                 continue;
             }
 
+            const  { error } = await supabaseAdmin.storage
+            .from(bucket)
+            .remove(paths);
+
             
         }
     }
