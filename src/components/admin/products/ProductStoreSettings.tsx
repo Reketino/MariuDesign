@@ -1,6 +1,6 @@
 "use client";
 
-import type { ProductCategory } from "@/types/products";
+import type { ProductCategory, ProductStatus } from "@/types/products";
 
 type ProductStoreSettingsProps = {
     categories: ProductCategory[];
@@ -8,7 +8,7 @@ type ProductStoreSettingsProps = {
     status: string;
     license: string;
     onCategoryChange: (value: string) => void;
-    onStatusChange: (value: string) => void;
+    onStatusChange: (value: ProductStatus) => void;
     onLicenseChange: (value: string) => void;
 };
 
@@ -83,7 +83,7 @@ export default function ProductStoreSettings({
                             name="status"
                             value={status}
                             onChange={(event) =>
-                                onStatusChange(event.target.value)
+                                onStatusChange(event.target.value as ProductStatus)
                             }
                             className="
                             mt-2 block w-full rounded-lg border border-zinc-700 
