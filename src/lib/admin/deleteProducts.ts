@@ -62,6 +62,15 @@ export async function deleteProduct(
                 error: "Could not retrieve all product files.",
             };
         }
+
+        const filesToDelete = [
+            {
+                bucket: STORAGE_BUCKET[0],
+                paths: (imageResult.data ?? [])
+                .map((item) => item.storage_path)
+                .filter(Boolean),
+            },
+            
+        ]
     }
-    
 }
