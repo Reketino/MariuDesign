@@ -81,8 +81,15 @@ export async function deleteProduct(
                 paths: (imageResult.data ?? [])
                 .map((item) => item.storage_path)
                 .filter(Boolean),
-            },
-            
-        ]
+            }, 
+        ];
+
+        const { data: deleteProduct, error: deleteError } =
+        await supabaseAdmin
+        .from("products")
+        .delete()
+        .eq("id", productId)
+        .select("id")
+        .maybeSingle();
     }
 }
