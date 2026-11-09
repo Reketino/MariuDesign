@@ -39,6 +39,11 @@ export default function DeleteProductButton({
                 return;
             }
 
+            if (result.error) {
+                console.error("Storage cleanup warning:", result.error);
+            }
+
+            
         } catch (error) {
             console.error("Failed to delete product:", error);
 
