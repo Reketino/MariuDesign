@@ -112,5 +112,13 @@ export async function deleteProduct(
         }
 
         const storageErrors: string[] = [];
+
+        for (const { bucket, paths } of filesToDelete) {
+            if (paths.length === 0) {
+                continue;
+            }
+
+            
+        }
     }
 }
