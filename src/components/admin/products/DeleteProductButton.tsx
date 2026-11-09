@@ -34,7 +34,11 @@ export default function DeleteProductButton({
         try {
             const result = await deleteProduct(productId);
 
-            
+            if (!result.success) {
+                setError(result.error ?? "Could not delete product.");
+                return;
+            }
+
         } catch (error) {
             console.error("Failed to delete product:", error);
 
