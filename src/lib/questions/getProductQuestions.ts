@@ -33,5 +33,11 @@ export async function getProductQuestions(
     .eq("is_hidden", false)
     .order("created_at", { ascending: false });
 
+    if (error) {
+        console.error("Failed to fetch product questions:", error);
+        throw new Error("Could not fetch product questions.");
+    }
+
+    
 
 }
