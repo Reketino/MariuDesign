@@ -23,3 +23,8 @@ export type ProductQuestionWithAnswers = ProductQuestion & {
     product_answers: ProductAnswer[];
 };
 
+export type CreateProductQuestionInput = {
+    product_id: string;
+    title: string;
+    content: string;
+};
