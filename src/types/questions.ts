@@ -18,3 +18,8 @@ export type ProductAnswer = {
     created_at: string;
     updated_at: string;
 };
+
+export type ProductQuestionWithAnswers = ProductQuestion & {
+    product_answers: ProductAnswer[];
+};
+
