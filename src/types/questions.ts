@@ -1,6 +1,7 @@
 export type ProductQuestion = {
   id: string;
   product_id: string;
+  user_id: string | null;
   title: string;
   content: string;
   is_hidden: boolean;
