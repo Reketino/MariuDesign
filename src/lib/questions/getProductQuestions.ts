@@ -2,10 +2,10 @@ import { createClient } from "@/lib/supabase/server";
 import type { ProductQuestionWithAnswers } from "@/types/questions";
 
 
-export async functin getProductQuestions(
+export async function getProductQuestions(
     productId: string,
 ): Promise<ProductQuestionWithAnswers[]> {
-    const supabase = await createClient(),
+    const supabase = await createClient();
 
     const { data, error } = await supabase
      .from("product_questions")
@@ -33,5 +33,5 @@ export async functin getProductQuestions(
     .eq("is_hidden", false)
     .order("created_at", { ascending: false });
 
-    
+
 }
