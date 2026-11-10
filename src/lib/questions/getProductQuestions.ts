@@ -38,6 +38,14 @@ export async function getProductQuestions(
         throw new Error("Could not fetch product questions.");
     }
 
-    
-
+    return (data ?? []).map((question) => ({
+        ...question,
+        product_answers: (question.product_answers ?? [])
+        .filter((answer) => !answer.is_hidden)
+        .sort(
+            (a, b) =>
+                new Date(a.created_at).getTime() -
+                new Date(b.created_at).getTime(),
+        ),
+    })) as ProductQuestionWithAnswers[];
 }
