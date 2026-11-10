@@ -28,3 +28,8 @@ export type CreateProductQuestionInput = {
     title: string;
     content: string;
 };
+
+export type CreateProductAnswerInput = {
+    question_id: string;
+    content: string;
+};
