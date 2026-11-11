@@ -36,5 +36,5 @@ export function validateAnswer(content: string): ValidationResult {
         };
     }
 
-    
+    return { success: true };
 }
