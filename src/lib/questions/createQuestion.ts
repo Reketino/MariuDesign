@@ -3,7 +3,6 @@ import { validateQuestion } from "./validation";
 
 import type { CreateProductQuestionInput } from "@/types/questions";
 
-
 type CreateQuestionResult =
   | {
       success: true;
@@ -41,18 +40,18 @@ export async function createQuestion(
   }
 
   const { data: product, error: productError } = await supabase
-  .from("products")
-  .select("id")
-  .eq("id", input.product_id)
-  .eq("status", "published")
-  .maybeSingle();
+    .from("products")
+    .select("id")
+    .eq("id", input.product_id)
+    .eq("status", "published")
+    .maybeSingle();
 
-if (productError || !product) {
-  return {
-    success: false,
-    error: "Product not found or unavailable.",
-  };
-}
+  if (productError || !product) {
+    return {
+      success: false,
+      error: "Product not found or unavailable.",
+    };
+  }
 
   const { data, error } = await supabase
     .from("product_questions")
