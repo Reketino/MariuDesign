@@ -12,3 +12,9 @@ type CreateQuestionResult =
     success: false;
     error: string;
 };
+
+export async function createQuestion(
+    input: CreateProductQuestionInput,
+): Promise<CreateQuestionResult> {
+    
+}
