@@ -18,4 +18,5 @@ export async function createQuestion(
 ): Promise<CreateQuestionResult> {
     const supabase = await createClient();
     
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
 }
