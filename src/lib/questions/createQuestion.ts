@@ -19,4 +19,13 @@ export async function createQuestion(
     const supabase = await createClient();
     
     const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+        return {
+            success: false,
+            error: "You must be logged in to ask question.",
+        };
+    }
+
+    
 }
