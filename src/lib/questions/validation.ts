@@ -1,40 +1,38 @@
-type ValidationResult =
-| { success: true}
-| {success: false; error: string };
+type ValidationResult = { success: true } | { success: false; error: string };
 
 export function validateQuestion(
-    title: string,
-    content: string,
+  title: string,
+  content: string,
 ): ValidationResult {
-    const trimmedTitle = title.trim();
-    const trimmedContent = content.trim();
+  const trimmedTitle = title.trim();
+  const trimmedContent = content.trim();
 
-    if (trimmedTitle.length < 3 || trimmedTitle.length > 150) {
-        return {
-            success: false,
-            error: "Title must be between 3 and 150 characters.",
-        };
-    }
+  if (trimmedTitle.length < 3 || trimmedTitle.length > 150) {
+    return {
+      success: false,
+      error: "Title must be between 3 and 150 characters.",
+    };
+  }
 
-    if (trimmedContent.length < 10 || trimmedContent.length > 5000) {
-        return {
-    success: false,
-    error: "Question must be between 10 and 5000 characters.",
-        }
-    }
+  if (trimmedContent.length < 10 || trimmedContent.length > 5000) {
+    return {
+      success: false,
+      error: "Question must be between 10 and 5000 characters.",
+    };
+  }
 
-    return { success: true };
+  return { success: true };
 }
 
 export function validateAnswer(content: string): ValidationResult {
-    const trimmedContent = content.trim();
+  const trimmedContent = content.trim();
 
-    if (trimmedContent.length < 2 || trimmedContent.length > 5000) {
-        return {
-            success: false,
-            error: "Answer must be between 2 and 5000 characters.",
-        };
-    }
+  if (trimmedContent.length < 2 || trimmedContent.length > 5000) {
+    return {
+      success: false,
+      error: "Answer must be between 2 and 5000 characters.",
+    };
+  }
 
-    return { success: true };
+  return { success: true };
 }
