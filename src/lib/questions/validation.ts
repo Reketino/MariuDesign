@@ -28,4 +28,13 @@ export function validateQuestion(
 
 export function validateAnswer(content: string): ValidationResult {
     const trimmedContent = content.trim();
+
+    if (trimmedContent.length < 2 || trimmedContent.length > 5000) {
+        return {
+            success: false,
+            error: "Answer must be between 2 and 5000 characters.",
+        };
+    }
+
+    
 }
