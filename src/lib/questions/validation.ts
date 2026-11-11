@@ -22,4 +22,6 @@ export function validateQuestion(
     error: "Question must be between 10 and 5000 characters.",
         }
     }
+
+    return { success: true };
 }
