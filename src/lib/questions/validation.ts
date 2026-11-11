@@ -25,3 +25,7 @@ export function validateQuestion(
 
     return { success: true };
 }
+
+export function validateAnswer(content: string): ValidationResult {
+    const trimmedContent = content.trim();
+}
