@@ -16,5 +16,10 @@ export function validateQuestion(
         };
     }
 
-    
+    if (trimmedContent.length < 10 || trimmedContent.length > 5000) {
+        return {
+    success: false,
+    error: "Question must be between 10 and 5000 characters.",
+        }
+    }
 }
