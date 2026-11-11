@@ -56,4 +56,9 @@ export async function createQuestion(
             error: "Could not create your question. Please try again.",
         };
     }
+
+    return {
+        success: true,
+        questionId: data.id,
+    };
 }
