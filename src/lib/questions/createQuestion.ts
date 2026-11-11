@@ -27,5 +27,14 @@ export async function createQuestion(
         };
     }
 
+    const validation = validateQuestion(input.title, input.content);
+
+    if (!validation.success) {
+        return {
+            success: false,
+            error: validation.error,
+        };
+    }
+
     
 }
