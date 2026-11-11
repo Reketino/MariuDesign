@@ -16,5 +16,6 @@ type CreateQuestionResult =
 export async function createQuestion(
     input: CreateProductQuestionInput,
 ): Promise<CreateQuestionResult> {
+    const supabase = await createClient();
     
 }
