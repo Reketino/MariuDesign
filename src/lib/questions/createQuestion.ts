@@ -50,5 +50,10 @@ export async function createQuestion(
 
     if (error) {
         console.error("Failed to create product questions:", error);
+
+        return {
+            success: false,
+            error: "Could not create your question. Please try again.",
+        };
     }
 }
