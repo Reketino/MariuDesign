@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { validateQuestion } from "./validation";
 
 import type { CreateProductQuestionInput } from "@/types/questions";
+import { Content } from "next/font/google";
 
 type CreateQuestionResult =
 | {
@@ -36,5 +37,18 @@ export async function createQuestion(
         };
     }
 
-    
+    const { data, error } = await supabase
+    .from("product_questions")
+    .insert({
+        product_id: input.product_id,
+        user_id: user.id,
+        title: input.title.trim(),
+        content: input.content.trim(),
+    })
+    .select("id")
+    .single();
+
+    if (error) {
+        console.error("Failed to create product questions:", error);
+    }
 }
