@@ -8,3 +8,7 @@ type CreateQuestionResult =
     success: true;
     questionId: string;
 }
+| {
+    success: false;
+    error: string;
+};
