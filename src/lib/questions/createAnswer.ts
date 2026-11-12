@@ -36,5 +36,13 @@ type CreateAnswerResult =
             };
         }
 
+        const { data: question, error: questionError } = await supabase
+        .from("product_questions")
+        .select("id")
+        .eq("id", input.question_id)
+        .eq("is_hidden", false)
+        .maybeSingle();
+
         
+
     }
