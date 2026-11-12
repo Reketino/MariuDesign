@@ -29,5 +29,12 @@ type CreateAnswerResult =
 
         const validation = validateAnswer(input.content);
 
+        if (!validation.success) {
+            return {
+                success: false,
+                error: validation.error,
+            };
+        }
+
         
     }
