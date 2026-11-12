@@ -51,7 +51,7 @@ type CreateAnswerResult =
         }
 
         const { data, error } = await supabase
-        .from("product_answer")
+        .from("product_answers")
         .insert({
             question_id: input.question_id,
             user_id: user.id,
@@ -62,12 +62,15 @@ type CreateAnswerResult =
 
         if (error) {
             console.error("Failed to create product answer:", error);
-        }
-
+        
         return {
             success: false,
             error: "Could not submit your answer. Please try again.",
         };
-        
-        
     }
+
+    return {
+        success: true,
+        answerId: data.id,
+    };
+}
