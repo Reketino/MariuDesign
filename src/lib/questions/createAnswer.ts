@@ -13,4 +13,10 @@ type CreateAnswerResult =
       error: string;
     };
 
-    
+    export async function createAnswer(
+        input: CreateProductAnswerInput,
+    ): Promise<CreateAnswerResult> {
+        const supabase = await createClient();
+
+        
+    }
