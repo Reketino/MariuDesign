@@ -27,5 +27,7 @@ type CreateAnswerResult =
             };
         }
 
+        const validation = validateAnswer(input.content);
+
         
     }
