@@ -60,4 +60,14 @@ type CreateAnswerResult =
         .select("id")
         .single();
 
+        if (error) {
+            console.error("Failed to create product answer:", error);
+        }
+
+        return {
+            success: false,
+            error: "Could not submit your answer. Please try again.",
+        };
+        
+        
     }
