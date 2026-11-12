@@ -33,3 +33,7 @@ id: string;
   created_at: string;
   updated_at: string;
 };
+
+export type ForumTopicWithReplies = ForumTopic & {
+    forum_replies: ForumReply[];
+};
