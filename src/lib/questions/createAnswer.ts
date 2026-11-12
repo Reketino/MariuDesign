@@ -43,6 +43,21 @@ type CreateAnswerResult =
         .eq("is_hidden", false)
         .maybeSingle();
 
-        
+        if (questionError || !question) {
+            return {
+                success: false,
+                error: "Question not found or unavailable.",
+            };
+        }
+
+        const { data, error } = await supabase
+        .from("product_answer")
+        .insert({
+            question_id: input.question_id,
+            user_id: user.id,
+            content: input.content.trim(),
+        })
+        .select("id")
+        .single();
 
     }
