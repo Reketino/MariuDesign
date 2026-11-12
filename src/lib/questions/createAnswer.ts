@@ -18,5 +18,14 @@ type CreateAnswerResult =
     ): Promise<CreateAnswerResult> {
         const supabase = await createClient();
 
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+        if (authError || !user) {
+            return {
+                success: false,
+                error: "You must be logged in to answer a question."
+            };
+        }
+
         
     }
