@@ -22,3 +22,14 @@ id: string;
   created_at: string;
   updated_at: string;
 };
+
+export type ForumReply = {
+id: string;
+  topic_id: string;
+  user_id: string | null;
+  content: string;
+  is_official: boolean;
+  is_hidden: boolean;
+  created_at: string;
+  updated_at: string;
+};
