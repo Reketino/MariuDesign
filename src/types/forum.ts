@@ -44,3 +44,8 @@ category_id: string;
   title: string;
   content: string;
 };
+
+export type CreateForumReplyInput = {
+ topic_id: string;
+  content: string;
+};
