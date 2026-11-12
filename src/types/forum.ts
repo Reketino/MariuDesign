@@ -37,3 +37,10 @@ id: string;
 export type ForumTopicWithReplies = ForumTopic & {
     forum_replies: ForumReply[];
 };
+
+export type CreateForumTopicInput = {
+category_id: string;
+  product_id?: string | null;
+  title: string;
+  content: string;
+};
