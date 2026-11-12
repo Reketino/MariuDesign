@@ -1,5 +1,5 @@
 export type ForumCategory = {
-id: string;
+  id: string;
   name: string;
   slug: string;
   description: string | null;
@@ -10,7 +10,7 @@ id: string;
 };
 
 export type ForumTopic = {
-id: string;
+  id: string;
   category_id: string;
   user_id: string | null;
   product_id: string | null;
@@ -21,4 +21,31 @@ id: string;
   is_hidden: boolean;
   created_at: string;
   updated_at: string;
+};
+
+export type ForumReply = {
+  id: string;
+  topic_id: string;
+  user_id: string | null;
+  content: string;
+  is_official: boolean;
+  is_hidden: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type ForumTopicWithReplies = ForumTopic & {
+  forum_replies: ForumReply[];
+};
+
+export type CreateForumTopicInput = {
+  category_id: string;
+  product_id?: string | null;
+  title: string;
+  content: string;
+};
+
+export type CreateForumReplyInput = {
+  topic_id: string;
+  content: string;
 };
