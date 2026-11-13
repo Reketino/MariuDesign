@@ -62,7 +62,7 @@ export async function GetForumTopics({
       .filter((reply) => !reply.is_hidden)
       .sort(
         (a, b) =>
-          new Date(a.created_at).getTime() - new Date(a.created_at).getTime(),
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
       ),
   })) as ForumTopicWithReplies[];
 }
