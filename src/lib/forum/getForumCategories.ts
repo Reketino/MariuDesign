@@ -3,18 +3,18 @@ import { createClient } from "@/lib/supabase/server";
 import type { ForumCategory } from "@/types/forum";
 
 export async function getForumCategories(): Promise<ForumCategory[]> {
-    const supabase = await createClient();
+  const supabase = await createClient();
 
-    const { data, error } = await supabase
+  const { data, error } = await supabase
     .from("forum_categories")
     .select("*")
     .eq("is_active", true)
     .order("sort_order", { ascending: true });
 
-    if (error) {
-        console.error("Failed to fetch forum categories:", error);
-        throw new Error("Could not fetch forum categories.");
-    }
+  if (error) {
+    console.error("Failed to fetch forum categories:", error);
+    throw new Error("Could not fetch forum categories.");
+  }
 
-    return data ?? [];
+  return data ?? [];
 }
