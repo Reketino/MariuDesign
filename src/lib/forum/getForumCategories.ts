@@ -10,4 +10,9 @@ export async function getForumCategories(): Promise<ForumCategory[]> {
     .select("*")
     .eq("is_active", true)
     .order("sort_order", { ascending: true });
+
+    if (error) {
+        console.error("Failed to fetch forum categories:", error);
+        throw new Error("Could not fetch forum categories.");
+    }
 }
