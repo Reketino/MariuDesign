@@ -15,4 +15,6 @@ export async function getForumCategories(): Promise<ForumCategory[]> {
         console.error("Failed to fetch forum categories:", error);
         throw new Error("Could not fetch forum categories.");
     }
+
+    return data ?? [];
 }
