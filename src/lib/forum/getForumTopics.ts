@@ -55,4 +55,14 @@ export async function GetForumTopics({
       throw new Error("Could not fetch forum topics.");
     }
 
+    return (data ??[]).map((topic) => ({
+      ...topic,
+      forum_replies: (topic.forum_replies ?? [])
+      .filter((reply) => !reply.is_hidden)
+      .sort(
+        (a, b) =>
+          new Date(a.created_at).getTime() -
+          new Date(a.created_at).getTime(), 
+      ),
+    })) as ForumTopicWithReplies[];
 }
