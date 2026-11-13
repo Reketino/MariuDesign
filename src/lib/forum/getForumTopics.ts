@@ -50,4 +50,9 @@ export async function GetForumTopics({
     .order("created_at", { ascending: false})
     .limit(limit);
 
+    if (error) {
+      console.error("Failed to fetch forum topics:", error);
+      throw new Error("Could not fetch forum topics.");
+    }
+
 }
