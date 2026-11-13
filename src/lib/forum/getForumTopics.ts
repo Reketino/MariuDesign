@@ -44,4 +44,10 @@ export async function GetForumTopics({
     if (categoryId) {
         query = query.eq("category_id", categoryId);
     }
+
+    const { data, error } = await query
+    .order("is_pinned", { ascending: false})
+    .order("created_at", { ascending: false})
+    .limit(limit);
+
 }
