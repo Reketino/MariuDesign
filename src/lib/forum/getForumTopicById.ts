@@ -6,4 +6,10 @@ export async function getForumTopicById(
     topicId: string,
 ): Promise<ForumTopicWithReplies | null> {
     const supabase = await createClient();
+
+   
+    return {
+        ...data,
+        forum_replies: visibleReplies,
+    } as ForumTopicWithReplies
 }
