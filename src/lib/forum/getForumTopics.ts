@@ -40,4 +40,8 @@ export async function GetForumTopics({
       )
     `)
     .eq("is_hidden", false);
+
+    if (categoryId) {
+        query = query.eq("category_id", categoryId);
+    }
 }
