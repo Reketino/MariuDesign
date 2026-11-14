@@ -44,8 +44,14 @@ export async function getForumTopicById(
     if (!data) {
         return null;
     }
+
+    const visibleReplies = (data.forum_replies ?? [])
+    .filter((reply) => !reply.is_hidden)
+    .sort(
+        (a, b) =>
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+    );
     
-   
     return {
         ...data,
         forum_replies: visibleReplies,
