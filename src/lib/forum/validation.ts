@@ -22,4 +22,6 @@ export function validateForumTopic(
             error: "Content must be between 10 and 10000 characters.",
         };
     }
+
+    return { success: true };
 }
