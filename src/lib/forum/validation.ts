@@ -37,4 +37,6 @@ export function validateForumReply(
             error: "Reply must be between 2 and 10000 characters.",
         };
     }
+
+    return { success: true };
 }
