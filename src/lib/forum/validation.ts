@@ -8,4 +8,8 @@ export function validateForumTopic(
 ): ValidationResult {
     const trimmedTitle = title.trim();
     const trimmedContent = content.trim();
+
+    if (trimmedTitle.length < 3 || trimmedTitle.length > 150 ) {
+        
+    }
 }
