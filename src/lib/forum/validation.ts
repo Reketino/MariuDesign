@@ -29,5 +29,7 @@ export function validateForumTopic(
 export function validateForumReply(
     content: string,
 ): ValidationResult {
+    const trimmedContent = content.trim();
+
     
 }
