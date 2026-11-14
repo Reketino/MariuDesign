@@ -33,7 +33,8 @@ export function validateForumReply(
 
     if (trimmedContent.length < 2 || trimmedContent.length > 10000) {
         return {
-            
+            success: false,
+            error: "Reply must be between 2 and 10000 characters.",
         }
     }
 }
