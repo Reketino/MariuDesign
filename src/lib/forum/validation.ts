@@ -25,3 +25,9 @@ export function validateForumTopic(
 
     return { success: true };
 }
+
+export function validateForumReply(
+    content: string,
+): ValidationResult {
+    
+}
