@@ -31,5 +31,7 @@ export function validateForumReply(
 ): ValidationResult {
     const trimmedContent = content.trim();
 
-    
+    if (trimmedContent.length < 2 || trimmedContent.length > 10000) {
+        
+    }
 }
