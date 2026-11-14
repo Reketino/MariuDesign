@@ -41,6 +41,9 @@ export async function getForumTopicById(
         throw new Error("Could not fetch forum topic.");
     }
 
+    if (!data) {
+        return null;
+    }
     
    
     return {
