@@ -35,6 +35,13 @@ export async function getForumTopicById(
     .eq("id", topicId)
     .eq("is_hidden", false)
     .maybeSingle();
+
+    if (error) {
+        console.error("Failed to fetch forum topic:", error);
+        throw new Error("Could not fetch forum topic.");
+    }
+
+    
    
     return {
         ...data,
