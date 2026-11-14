@@ -16,5 +16,10 @@ export function validateForumTopic(
         };
     }
 
-    
+    if (trimmedContent.length < 10 || trimmedContent.length > 10000) {
+        return {
+            success: false,
+            error: "Content must be between 10 and 10000 characters.",
+        };
+    }
 }
