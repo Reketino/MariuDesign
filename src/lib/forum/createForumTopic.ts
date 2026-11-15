@@ -14,5 +14,7 @@ export async function createForumTopic(
         error: authError,
     } = await supabase.auth.getUser();
 
-    
+    if (authError || !user) {
+        throw new Error("You must be logged in to create a topic.");
+    }
 }
