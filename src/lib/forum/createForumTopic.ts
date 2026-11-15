@@ -70,5 +70,9 @@ export async function createForumTopic(
     .select("id")
     .single();
 
+    if (insertError) {
+        console.error("Failed to create forum topic:", insertError);
+        throw new Error("Could not create forum topic.");
+    }
 
 }
