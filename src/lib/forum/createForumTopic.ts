@@ -8,6 +8,5 @@ export async function createForumTopic(
     input: CreateForumTopicInput,
 ): Promise<string> {
     const supabase = await createClient();
-
     
 }
