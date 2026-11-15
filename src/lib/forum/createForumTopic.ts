@@ -52,5 +52,11 @@ export async function createForumTopic(
         console.error("Failed to validate forum product:", productError);
         throw new Error("Could not validate forum product.");
       }
+
+      if (!product) {
+        throw new Error("The selected product is not available.");
+      }
 }
+
+
 }
