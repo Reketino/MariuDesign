@@ -47,6 +47,10 @@ export async function createForumTopic(
       .eq("id", input.product_id)
       .eq("status", "published")
       .maybeSingle();
-      
+
+      if (productError) {
+        console.error("Failed to validate forum product:", productError);
+        throw new Error("Could not validate forum product.");
+      }
 }
 }
