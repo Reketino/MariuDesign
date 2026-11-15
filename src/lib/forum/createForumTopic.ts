@@ -23,4 +23,11 @@ export async function createForumTopic(
     if (!validation.success) {
         throw new Error(validation.error);
     }
+
+    const { data: category, error: categoryError } = await supabase
+    .from("forum_categories")
+    .select("id")
+    .eq("id", input.category_id)
+    .eq("is_active", true)
+    .maybeSingle();
 }
