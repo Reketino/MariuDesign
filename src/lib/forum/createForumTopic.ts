@@ -36,5 +36,7 @@ export async function createForumTopic(
         throw new Error("Could not validate forum category.");
     }
 
-    
+    if (!category) {
+        throw new Error("The selected forum category is not available.");
+    }
 }
