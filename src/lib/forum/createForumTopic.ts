@@ -19,4 +19,8 @@ export async function createForumTopic(
     }
 
     const validation = validateForumTopic(input.title, input.content);
+
+    if (!validation.success) {
+        throw new Error(validation.error);
+    }
 }
