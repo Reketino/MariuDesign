@@ -58,5 +58,17 @@ export async function createForumTopic(
       }
 }
 
+  const { data: topic, error: insertError } = await supabase
+    .from("forum_topics")
+    .insert({
+      category_id: input.category_id,
+      product_id: input.product_id ?? null,
+      user_id: user.id,
+      title: input.title.trim(),
+      content: input.content.trim(),
+    })
+    .select("id")
+    .single();
+
 
 }
