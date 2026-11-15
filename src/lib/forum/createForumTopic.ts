@@ -9,4 +9,10 @@ export async function createForumTopic(
 ): Promise<string> {
     const supabase = await createClient();
     
+    const {
+        data: { user },
+        error: authError,
+    } = await supabase.auth.getUser();
+
+    
 }
