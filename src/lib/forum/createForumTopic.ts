@@ -30,4 +30,11 @@ export async function createForumTopic(
     .eq("id", input.category_id)
     .eq("is_active", true)
     .maybeSingle();
+
+    if (categoryError) {
+        console.error("Failed to validate forum category:", categoryError);
+        throw new Error("Could not validate forum category.");
+    }
+
+    
 }
