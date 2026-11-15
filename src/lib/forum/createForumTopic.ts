@@ -17,4 +17,6 @@ export async function createForumTopic(
     if (authError || !user) {
         throw new Error("You must be logged in to create a topic.");
     }
+
+    const validation = validateForumTopic(input.title, input.content);
 }
