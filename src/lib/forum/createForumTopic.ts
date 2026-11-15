@@ -39,4 +39,14 @@ export async function createForumTopic(
     if (!category) {
         throw new Error("The selected forum category is not available.");
     }
+
+      if (input.product_id) {
+    const { data: product, error: productError } = await supabase
+      .from("products")
+      .select("id")
+      .eq("id", input.product_id)
+      .eq("status", "published")
+      .maybeSingle();
+      
+}
 }
