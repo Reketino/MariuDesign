@@ -54,4 +54,6 @@ export async function CreateForumReply(
         console.error("Failed to create forum reply:", insertError);
         throw new Error("Could not create forum reply.");
     }
+
+    return reply.id;
 }
