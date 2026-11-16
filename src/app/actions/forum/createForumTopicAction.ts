@@ -17,5 +17,11 @@ export async function createForumTopicAction(
     const title = formData.get("title");
     const content = formData.get("content");
 
-    
+    if (
+        typeof categoryId !== "string" ||
+        typeof title !== "string" ||
+        typeof content !== "string"
+    ) {
+        
+    }
 }
