@@ -43,6 +43,8 @@ export async function createForumTopicAction(
             content,
         });
 
+        revalidatePath("/forum");
+
         
     }
 }
