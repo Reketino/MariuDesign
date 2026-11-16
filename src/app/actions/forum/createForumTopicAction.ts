@@ -27,5 +27,11 @@ export async function createForumTopicAction(
             error: "Invalid form data.",
         };
     }
-    
+
+    if (productId !== null && typeof productId !== "string") {
+        return {
+            success: false,
+            error: "Invalid product selection.",
+        };
+    }
 }
