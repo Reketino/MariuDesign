@@ -49,4 +49,9 @@ export async function CreateForumReply(
     })
     .select("id")
     .single();
+
+    if (insertError) {
+        console.error("Failed to create forum reply:", insertError);
+        throw new Error("Could not create forum reply.");
+    }
 }
