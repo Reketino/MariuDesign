@@ -12,5 +12,10 @@ type createForumTopicActionResult =
 export async function createForumTopicAction(
     formData: FormData,
 ): Promise<createForumTopicActionResult> {
+    const categoryId = formData.get("categoryId");
+    const productId = formData.get("productId");
+    const title = formData.get("title");
+    const content = formData.get("content");
+
     
 }
