@@ -18,4 +18,8 @@ export async function CreateForumReply(
     }
 
     const validation = validateForumReply(input.content);
+
+    if (!validation.success) {
+        throw new Error(validation.error);
+    }
 }
