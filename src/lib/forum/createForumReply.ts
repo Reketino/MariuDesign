@@ -36,4 +36,8 @@ export async function CreateForumReply(
         throw new Error("Could not validate forum topic.");
     }
 
+    if (!topic) {
+        throw new Error("This topic is not available for replies.");
+    }
+
 }
