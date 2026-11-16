@@ -34,4 +34,15 @@ export async function createForumTopicAction(
             error: "Invalid product selection.",
         };
     }
+
+    try {
+        const topicId = await createForumTopic({
+            category_id: categoryId,
+            product_id: productId || null,
+            title,
+            content,
+        });
+
+        
+    }
 }
