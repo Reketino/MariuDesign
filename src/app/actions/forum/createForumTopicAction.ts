@@ -52,6 +52,12 @@ export async function createForumTopicAction(
 } catch (error) {
     console.error("Failed to create forum topic:", error);
 
-    
+    return {
+        success: false,
+        error:
+        error instanceof Error
+        ? error.message
+        : "Something went wrong while creating the topic.",
+    };
 } 
 }
