@@ -31,4 +31,9 @@ export async function CreateForumReply(
     .eq("is_locked", false)
     .maybeSingle();
 
+    if (topicError) {
+        console.error("Failed to validate forum topic:", topicError);
+        throw new Error("Could not validate forum topic.");
+    }
+
 }
