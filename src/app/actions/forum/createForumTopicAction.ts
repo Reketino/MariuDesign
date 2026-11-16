@@ -45,6 +45,8 @@ export async function createForumTopicAction(
 
         revalidatePath("/forum");
 
-        
-    }
-}
+        return {
+            success: true,
+            topicId,
+        };
+} 
