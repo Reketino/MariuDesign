@@ -11,4 +11,8 @@ export async function CreateForumReply(
         data: { user },
         error: AuthError,
     } = await supabase.auth.getUser();
+
+    if (AuthError || !user) {
+        throw new Error("You must be logged in to reply.");
+    }
 }
