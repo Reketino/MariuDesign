@@ -40,4 +40,13 @@ export async function CreateForumReply(
         throw new Error("This topic is not available for replies.");
     }
 
+    const { data: reply, error: insertError } = await supabase
+    .from("forum_replies")
+    .insert({
+      topic_id: input.topic_id,
+      user_id: user.id,
+      content: input.content.trim(),
+    })
+    .select("id")
+    .single();
 }
