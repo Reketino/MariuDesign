@@ -22,4 +22,13 @@ export async function CreateForumReply(
     if (!validation.success) {
         throw new Error(validation.error);
     }
+
+     const { data: topic, error: topicError } = await supabase
+    .from("forum_topics")
+    .select("id")
+    .eq("id", input.topic_id)
+    .eq("is_hidden", false)
+    .eq("is_locked", false)
+    .maybeSingle();
+
 }
