@@ -4,26 +4,26 @@ import type { CreateForumReplyInput } from "@/types/forum";
 import { validateForumReply } from "./validation";
 
 export async function CreateForumReply(
-    input: CreateForumReplyInput,
+  input: CreateForumReplyInput,
 ): Promise<string> {
-    const supabase = await createClient();
+  const supabase = await createClient();
 
-    const {
-        data: { user },
-        error: AuthError,
-    } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error: AuthError,
+  } = await supabase.auth.getUser();
 
-    if (AuthError || !user) {
-        throw new Error("You must be logged in to reply.");
-    }
+  if (AuthError || !user) {
+    throw new Error("You must be logged in to reply.");
+  }
 
-    const validation = validateForumReply(input.content);
+  const validation = validateForumReply(input.content);
 
-    if (!validation.success) {
-        throw new Error(validation.error);
-    }
+  if (!validation.success) {
+    throw new Error(validation.error);
+  }
 
-     const { data: topic, error: topicError } = await supabase
+  const { data: topic, error: topicError } = await supabase
     .from("forum_topics")
     .select("id")
     .eq("id", input.topic_id)
@@ -31,16 +31,16 @@ export async function CreateForumReply(
     .eq("is_locked", false)
     .maybeSingle();
 
-    if (topicError) {
-        console.error("Failed to validate forum topic:", topicError);
-        throw new Error("Could not validate forum topic.");
-    }
+  if (topicError) {
+    console.error("Failed to validate forum topic:", topicError);
+    throw new Error("Could not validate forum topic.");
+  }
 
-    if (!topic) {
-        throw new Error("This topic is not available for replies.");
-    }
+  if (!topic) {
+    throw new Error("This topic is not available for replies.");
+  }
 
-    const { data: reply, error: insertError } = await supabase
+  const { data: reply, error: insertError } = await supabase
     .from("forum_replies")
     .insert({
       topic_id: input.topic_id,
@@ -50,10 +50,10 @@ export async function CreateForumReply(
     .select("id")
     .single();
 
-    if (insertError) {
-        console.error("Failed to create forum reply:", insertError);
-        throw new Error("Could not create forum reply.");
-    }
+  if (insertError) {
+    console.error("Failed to create forum reply:", insertError);
+    throw new Error("Could not create forum reply.");
+  }
 
-    return reply.id;
+  return reply.id;
 }
