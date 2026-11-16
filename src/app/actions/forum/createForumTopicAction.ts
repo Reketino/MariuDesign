@@ -5,13 +5,13 @@ import { redirect } from "next/navigation";
 
 import { createForumTopic } from "@/lib/forum/createForumTopic";
 
-type createForumTopicActionResult =
+type CreateForumTopicActionResult =
   | { success: true; topicId: string }
   | { success: false; error: string };
 
 export async function createForumTopicAction(
   formData: FormData,
-): Promise<createForumTopicActionResult> {
+): Promise<CreateForumTopicActionResult> {
   const categoryId = formData.get("categoryId");
   const productId = formData.get("productId");
   const title = formData.get("title");
