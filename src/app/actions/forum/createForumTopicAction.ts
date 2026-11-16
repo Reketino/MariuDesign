@@ -9,3 +9,8 @@ type createForumTopicActionResult =
 | { success: true; topicId: string }
 | { success: false; error: string };
 
+export async function createForumTopicAction(
+    formData: FormData,
+): Promise<createForumTopicActionResult> {
+    
+}
