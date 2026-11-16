@@ -49,4 +49,9 @@ export async function createForumTopicAction(
             success: true,
             topicId,
         };
+} catch (error) {
+    console.error("Failed to create forum topic:", error);
+
+    
 } 
+}
