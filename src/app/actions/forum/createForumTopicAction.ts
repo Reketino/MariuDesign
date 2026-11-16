@@ -22,6 +22,10 @@ export async function createForumTopicAction(
         typeof title !== "string" ||
         typeof content !== "string"
     ) {
-        
+        return {
+            success: false,
+            error: "Invalid form data.",
+        };
     }
+    
 }
