@@ -21,4 +21,13 @@ export async function createForumReplyAction(
             error: "Invalid form data."
         };
     }
+
+    try {
+        const replyId = await createForumReply({
+            topic_id: topicId,
+            content,
+        });
+
+        
+    }
 }
