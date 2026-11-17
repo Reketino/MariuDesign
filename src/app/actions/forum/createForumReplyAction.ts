@@ -28,6 +28,7 @@ export async function createForumReplyAction(
             content,
         });
 
-        
+        revalidatePath("/forum");
+        revalidatePath(`/forum/topic/${topicId}`);
     }
 }
