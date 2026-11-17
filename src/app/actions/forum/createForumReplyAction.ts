@@ -12,5 +12,7 @@ type CreateForumReplyActionResult =
 export async function createForumReplyAction(
     formData: FormData,
 ): Promise<CreateForumReplyActionResult> {
+    const topicId = formData.get("topicId");
+    const content = formData.get("content");
     
 }
