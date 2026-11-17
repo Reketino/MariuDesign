@@ -13,6 +13,15 @@ export default async function ForumPage() {
                 <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">
                     MariuDesign Community
                 </p>
+
+                <h1 className="text-4xl font-bold tracking-tight">
+                    Community Forum
+                </h1>
+
+                <p className="mt-3 max-w-2xl text-muted-foreground">
+                Ask questions, share experiences and connect with the MariuDesign
+                community.
+                </p>
                 
             </header>
          </main>
