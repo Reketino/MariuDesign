@@ -37,5 +37,13 @@ export async function createForumReplyAction(
         };
     } catch (error) {
         console.error("Failed to create forum reply:", error);
+
+        return {
+            success: false,
+            error: 
+            error instanceof Error
+            ? error.message
+            : "Something went wrong while creating the reply."
+        };
     }
 }
