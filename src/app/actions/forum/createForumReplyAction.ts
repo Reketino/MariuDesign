@@ -15,4 +15,10 @@ export async function createForumReplyAction(
     const topicId = formData.get("topicId");
     const content = formData.get("content");
     
+    if (typeof topicId !== "string" || typeof content !== "string") {
+        return {
+            success: false,
+            error: "Invalid form data."
+        };
+    }
 }
