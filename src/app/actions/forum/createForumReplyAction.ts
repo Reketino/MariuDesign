@@ -30,5 +30,12 @@ export async function createForumReplyAction(
 
         revalidatePath("/forum");
         revalidatePath(`/forum/topic/${topicId}`);
+
+        return {
+            success: true,
+            replyId,
+        };
+    } catch (error) {
+        console.error("Failed to create forum reply:", error);
     }
 }
