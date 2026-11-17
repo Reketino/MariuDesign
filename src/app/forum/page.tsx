@@ -48,6 +48,14 @@ export default async function ForumPage() {
                         ))}
                     </div>
                 </section>
+
+                <section aria-labelledby="topics-heading">
+                    <div className="mb-5 flex items-center justify-between gap-4">
+                        <h2 id="topics-heading" className="text-2xl font-semibold">
+                            Latest Discussions
+                        </h2>
+                    </div>
+                </section>
             </header>
          </main>
     )
