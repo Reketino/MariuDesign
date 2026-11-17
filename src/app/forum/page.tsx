@@ -30,8 +30,24 @@ export default async function ForumPage() {
                     >
                         Categories
                     </h2>
+
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {categories.map((category) => (
+                            <article 
+                            key={category.id}
+                            className="rounded-xl border p-5 transition-colors hover:bg-muted/50"
+                            >
+                                <h3 className="font-semibold">{category.name}</h3>
+
+                                {category.description && (
+                                    <p className="mt-2 text-sm text-muted-foreground">
+                                        {category.description}
+                                    </p>
+                                )}
+                            </article>
+                        ))}
+                    </div>
                 </section>
-                
             </header>
          </main>
     )
