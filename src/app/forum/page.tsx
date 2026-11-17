@@ -22,6 +22,15 @@ export default async function ForumPage() {
                 Ask questions, share experiences and connect with the MariuDesign
                 community.
                 </p>
+
+                <section aria-labelledby="categroies-heading" className="mb-12">
+                    <h2
+                    id="categories-heading"
+                    className="mb-5 text-2xl font-semibold"
+                    >
+                        Categories
+                    </h2>
+                </section>
                 
             </header>
          </main>
