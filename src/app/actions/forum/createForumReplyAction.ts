@@ -1,4 +1,3 @@
-
 "use server";
 
 import { revalidatePath } from "next/cache";
@@ -6,44 +5,44 @@ import { revalidatePath } from "next/cache";
 import { createForumReply } from "@/lib/forum/createForumReply";
 
 type CreateForumReplyActionResult =
-| { success: true, replyId: string }
-| { success: false; error: string };
+  | { success: true; replyId: string }
+  | { success: false; error: string };
 
 export async function createForumReplyAction(
-    formData: FormData,
+  formData: FormData,
 ): Promise<CreateForumReplyActionResult> {
-    const topicId = formData.get("topicId");
-    const content = formData.get("content");
-    
-    if (typeof topicId !== "string" || typeof content !== "string") {
-        return {
-            success: false,
-            error: "Invalid form data."
-        };
-    }
+  const topicId = formData.get("topicId");
+  const content = formData.get("content");
 
-    try {
-        const replyId = await createForumReply({
-            topic_id: topicId,
-            content,
-        });
+  if (typeof topicId !== "string" || typeof content !== "string") {
+    return {
+      success: false,
+      error: "Invalid form data.",
+    };
+  }
 
-        revalidatePath("/forum");
-        revalidatePath(`/forum/topic/${topicId}`);
+  try {
+    const replyId = await createForumReply({
+      topic_id: topicId,
+      content,
+    });
 
-        return {
-            success: true,
-            replyId,
-        };
-    } catch (error) {
-        console.error("Failed to create forum reply:", error);
+    revalidatePath("/forum");
+    revalidatePath(`/forum/topic/${topicId}`);
 
-        return {
-            success: false,
-            error: 
-            error instanceof Error
-            ? error.message
-            : "Something went wrong while creating the reply."
-        };
-    }
+    return {
+      success: true,
+      replyId,
+    };
+  } catch (error) {
+    console.error("Failed to create forum reply:", error);
+
+    return {
+      success: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Something went wrong while creating the reply.",
+    };
+  }
 }
