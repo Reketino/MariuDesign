@@ -13,4 +13,9 @@ export async function getForumCategoryBySlug(
     .eq("is_active", true)
     .maybeSingle();
 
+    if (error) {
+        console.error("Error fetching forum category:", error);
+        return null;
+    }
+
 }
