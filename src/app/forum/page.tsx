@@ -55,6 +55,31 @@ export default async function ForumPage() {
                             Latest Discussions
                         </h2>
                     </div>
+
+                    {topics.length === 0 ? (
+                <div className="rounded-xl border border-dashed p-10 text-center">
+                <h3 className="font-semibold">No discussions yet</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                Be the first to start a discussion in the community.
+                </p>
+                </div>
+                    ) : (
+                        <div className="divide-y rounded-xl border">
+                            {topics.map((topic) => (
+                                <article key={topic.id} className="p-5">
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        {topic.is_pinned && (
+                                            <span className="text-xs font-medium text-primary">
+                                                Pinned
+                                            </span>
+                                        )}
+
+                                        
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    )}
                 </section>
             </header>
          </main>
