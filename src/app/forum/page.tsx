@@ -82,7 +82,9 @@ export default async function ForumPage() {
                                     </div>
 
                                     <h3 className="mt-2 font-semibold">{topic.title}</h3>
-                                    
+                                     <p className="mt-3 text-xs text-muted-foreground">
+                                        {topic.forum_replies.length} replies
+                                     </p>
                                 </article>
                             ))}
                         </div>
