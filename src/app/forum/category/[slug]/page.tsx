@@ -3,3 +3,9 @@ import { notFound } from "next/navigation";
 
 import { getForumCategoryBySlug } from "@/lib/forum/getForumCategoryBySlug";
 import { GetForumTopics } from "@/lib/forum/getForumTopics";
+
+type ForumCategoryPageProps = {
+    params: Promise<{
+        slug: string;
+    }>;
+};
