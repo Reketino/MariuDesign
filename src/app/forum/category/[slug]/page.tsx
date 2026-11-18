@@ -9,3 +9,9 @@ type ForumCategoryPageProps = {
         slug: string;
     }>;
 };
+
+export default async function ForumCategoryPage({
+    params,
+}: ForumCategoryPageProps) {
+    
+}
