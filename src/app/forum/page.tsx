@@ -74,7 +74,9 @@ export default async function ForumPage() {
                                             </span>
                                         )}
 
-                                        
+                                        {topic.is_locked && (
+                                            
+                                        )}
                                     </div>
                                 </article>
                             ))}
