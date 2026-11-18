@@ -13,5 +13,7 @@ type ForumCategoryPageProps = {
 export default async function ForumCategoryPage({
     params,
 }: ForumCategoryPageProps) {
+    const { slug } = await params;
+    
     
 }
