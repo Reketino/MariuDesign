@@ -75,7 +75,9 @@ export default async function ForumPage() {
                                         )}
 
                                         {topic.is_locked && (
-                                            
+                                        <span className="text-xs text-muted-foreground">
+                                        Locked
+                                        </span>
                                         )}
                                     </div>
                                 </article>
