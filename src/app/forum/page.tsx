@@ -80,6 +80,9 @@ export default async function ForumPage() {
                                         </span>
                                         )}
                                     </div>
+
+                                    <h3 className="mt-2 font-semibold">{topic.title}</h3>
+                                    
                                 </article>
                             ))}
                         </div>
