@@ -1,6 +1,7 @@
 
 import { getForumCategories } from "@/lib/forum/getForumCategories";
 import { GetForumTopics } from "@/lib/forum/getForumTopics";
+import Link from "next/link";
 
 export default async function ForumPage() {
     const [categories, topics] = await Promise.all([
