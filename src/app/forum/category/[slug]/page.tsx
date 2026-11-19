@@ -83,6 +83,10 @@ export default async function ForumCategoryPage({
                     </span>
                   )}
                 </div>
+              </article>
+            ))}
+          </div>
+        )}
 
             </section>
         </main>
