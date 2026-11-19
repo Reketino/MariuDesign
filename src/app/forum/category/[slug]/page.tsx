@@ -69,7 +69,10 @@ export default async function ForumCategoryPage({
                 ) : (
                     <div className="divide-y rounded-xl border">
                         {topics.map((topic) => (
-                            <article key={topic.id} className="p-5">
+                             <Link 
+                             key={topic.id} 
+                             className="block p-5 transition-colors hover:bg-muted/50">
+                                <article>
                                 <div className="flex flex-wrap items-center gap-2">
                                     {topic.is_pinned && (
                                         <span className="text-xs font-medium text-primary">
