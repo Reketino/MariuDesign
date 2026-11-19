@@ -90,6 +90,9 @@ export default async function ForumCategoryPage({
                     {topic.content}
                 </p>
                 
+                <p className="mt-3 text-xs text-muted-foreground">
+                    {topic.forum_replies.length} replies
+                </p>
               </article>
             ))}
           </div>
