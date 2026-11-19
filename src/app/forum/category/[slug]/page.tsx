@@ -52,7 +52,9 @@ export default async function ForumCategoryPage({
             </header>
 
             <section aria-labelledby="topics-heading">
-                
+                <div className="mb-5 flex items-center justify-between gap-4">
+                    
+                </div>
             </section>
         </main>
     )
