@@ -69,36 +69,36 @@ export default async function ForumCategoryPage({
                 ) : (
                     <div className="divide-y rounded-xl border">
                         {topics.map((topic) => (
-                             <Link 
-                             key={topic.id} 
-                             href={`/forum/topic/${topic.id}`}
-                             className="block p-5 transition-colors hover:bg-muted/50"
-                             >
+                            <Link
+                                key={topic.id}
+                                href={`/forum/topic/${topic.id}`}
+                                className="block p-5 transition-colors hover:bg-muted/50"
+                            >
                                 <article>
-                                <div className="flex flex-wrap items-center gap-2">
-                                    {topic.is_pinned && (
-                                        <span className="text-xs font-medium text-primary">
-                                            Pinned
-                                        </span>
-                                    )}
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        {topic.is_pinned && (
+                                            <span className="text-xs font-medium text-primary">
+                                                Pinned
+                                            </span>
+                                        )}
 
-                                    {topic.is_locked && (
-                                        <span className="text-xs text-muted-foreground">
-                                            Locked
-                                        </span>
-                                    )}
-                                </div>
+                                        {topic.is_locked && (
+                                            <span className="text-xs text-muted-foreground">
+                                                Locked
+                                            </span>
+                                        )}
+                                    </div>
 
-                                <h3 className="mt-2 font-semibold">{topic.title}</h3>
+                                    <h3 className="mt-2 font-semibold">{topic.title}</h3>
 
-                                <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                                    {topic.content}
-                                </p>
+                                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                                        {topic.content}
+                                    </p>
 
-                                <p className="mt-3 text-xs text-muted-foreground">
-                                    {topic.forum_replies.length} replies
-                                </p>
-                            </article>
+                                    <p className="mt-3 text-xs text-muted-foreground">
+                                        {topic.forum_replies.length} replies
+                                    </p>
+                                </article>
                             </Link>
                         ))}
                     </div>
