@@ -14,7 +14,7 @@ export default async function ForumCategoryPage({
     params,
 }: ForumCategoryPageProps) {
     const { slug } = await params;
-    
+
     const category = await getForumCategoryBySlug(slug);
 
     if (!category) {
@@ -23,15 +23,15 @@ export default async function ForumCategoryPage({
 
     const topics = await GetForumTopics({
         categoryId: category.id,
-        limit: 20,   
+        limit: 20,
     });
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <header className="mb-10">
                 <Link
-                href="/forum"
-                className="mb-6 inline-flex text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    href="/forum"
+                    className="mb-6 inline-flex text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                     ← Back to Forum
                 </Link>
@@ -58,45 +58,45 @@ export default async function ForumCategoryPage({
                     </h2>
                 </div>
 
- {topics.length === 0 ? (
-          <div className="rounded-xl border border-dashed p-10 text-center">
-            <h3 className="font-semibold">No discussions yet</h3>
+                {topics.length === 0 ? (
+                    <div className="rounded-xl border border-dashed p-10 text-center">
+                        <h3 className="font-semibold">No discussions yet</h3>
 
-            <p className="mt-2 text-sm text-muted-foreground">
-              Be the first to start a discussion in this category.
-            </p>
-          </div>
-        ) : (
-          <div className="divide-y rounded-xl border">
-            {topics.map((topic) => (
-              <article key={topic.id} className="p-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  {topic.is_pinned && (
-                    <span className="text-xs font-medium text-primary">
-                      Pinned
-                    </span>
-                  )}
+                        <p className="mt-2 text-sm text-muted-foreground">
+                            Be the first to start a discussion in this category.
+                        </p>
+                    </div>
+                ) : (
+                    <div className="divide-y rounded-xl border">
+                        {topics.map((topic) => (
+                            <article key={topic.id} className="p-5">
+                                <div className="flex flex-wrap items-center gap-2">
+                                    {topic.is_pinned && (
+                                        <span className="text-xs font-medium text-primary">
+                                            Pinned
+                                        </span>
+                                    )}
 
-                  {topic.is_locked && (
-                    <span className="text-xs text-muted-foreground">
-                      Locked
-                    </span>
-                  )}
-                </div>
+                                    {topic.is_locked && (
+                                        <span className="text-xs text-muted-foreground">
+                                            Locked
+                                        </span>
+                                    )}
+                                </div>
 
-                <h3 className="mt-2 font-semibold">{topic.title}</h3>
+                                <h3 className="mt-2 font-semibold">{topic.title}</h3>
 
-                <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                    {topic.content}
-                </p>
-                
-                <p className="mt-3 text-xs text-muted-foreground">
-                    {topic.forum_replies.length} replies
-                </p>
-              </article>
-            ))}
-          </div>
-        )}
+                                <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                                    {topic.content}
+                                </p>
+
+                                <p className="mt-3 text-xs text-muted-foreground">
+                                    {topic.forum_replies.length} replies
+                                </p>
+                            </article>
+                        ))}
+                    </div>
+                )}
 
             </section>
         </main>
