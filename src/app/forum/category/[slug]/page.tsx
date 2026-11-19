@@ -50,6 +50,10 @@ export default async function ForumCategoryPage({
                     </p>
                 )}
             </header>
+
+            <section aria-labelledby="topics-heading">
+                
+            </section>
         </main>
     )
 }
