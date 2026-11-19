@@ -15,5 +15,5 @@ export default async function ForumCategoryPage({
 }: ForumCategoryPageProps) {
     const { slug } = await params;
     
-    
+    const category = await getForumCategoryBySlug(slug);
 }
