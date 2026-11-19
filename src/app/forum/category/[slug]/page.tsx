@@ -91,7 +91,7 @@ export default async function ForumCategoryPage({
 
                                     <h3 className="mt-2 font-semibold">{topic.title}</h3>
 
-                                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                                    <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
                                         {topic.content}
                                     </p>
 
