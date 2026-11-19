@@ -39,7 +39,10 @@ export default async function ForumCategoryPage({
                 <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">
                     MariuDesign Community
                 </p>
-                
+
+                <h1 className="text-4xl font-bold tracking-tight">
+                    {category.name}
+                </h1>
             </header>
         </main>
     )
