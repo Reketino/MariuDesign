@@ -71,7 +71,9 @@ export default async function ForumCategoryPage({
                         {topics.map((topic) => (
                              <Link 
                              key={topic.id} 
-                             className="block p-5 transition-colors hover:bg-muted/50">
+                             href={`/forum/topic/${topic.id}`}
+                             className="block p-5 transition-colors hover:bg-muted/50"
+                             >
                                 <article>
                                 <div className="flex flex-wrap items-center gap-2">
                                     {topic.is_pinned && (
@@ -97,6 +99,7 @@ export default async function ForumCategoryPage({
                                     {topic.forum_replies.length} replies
                                 </p>
                             </article>
+                            </Link>
                         ))}
                     </div>
                 )}
