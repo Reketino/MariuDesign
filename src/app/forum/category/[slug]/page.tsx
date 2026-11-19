@@ -53,7 +53,9 @@ export default async function ForumCategoryPage({
 
             <section aria-labelledby="topics-heading">
                 <div className="mb-5 flex items-center justify-between gap-4">
-                    
+                    <h2 id="topics-heading" className="text-2xl font-semibold">
+                        Discussions
+                    </h2>
                 </div>
             </section>
         </main>
