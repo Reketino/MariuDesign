@@ -16,4 +16,13 @@ export default async function ForumCategoryPage({
     const { slug } = await params;
     
     const category = await getForumCategoryBySlug(slug);
+
+    if (!category) {
+        notFound();
+    }
+
+    const topics = await GetForumTopics({
+        categoryId: category.id,
+        limit: 20,   
+    });
 }
