@@ -43,6 +43,12 @@ export default async function ForumCategoryPage({
                 <h1 className="text-4xl font-bold tracking-tight">
                     {category.name}
                 </h1>
+
+                {category.description && (
+                    <p className="mt-3 max-w-2xl text-muted-foreground">
+                        {category.description}
+                    </p>
+                )}
             </header>
         </main>
     )
