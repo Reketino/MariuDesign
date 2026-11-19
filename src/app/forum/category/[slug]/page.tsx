@@ -97,7 +97,6 @@ export default async function ForumCategoryPage({
                         ))}
                     </div>
                 )}
-
             </section>
         </main>
     )
