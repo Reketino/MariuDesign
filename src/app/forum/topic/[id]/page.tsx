@@ -8,3 +8,11 @@ type ForumTopicPageProps = {
         id: string;
     }>
 };
+
+export default async function ForumTopicPage({
+    params,
+}: ForumTopicPageProps) {
+    const { id } = await params;
+
+    const topic = await getForumTopicById(id);
+}
