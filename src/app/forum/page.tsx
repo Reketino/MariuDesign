@@ -78,7 +78,7 @@ export default async function ForumPage() {
                             <Link 
                             key={topic.id}
                             href={`/forum/topic/${topic.id}`} 
-                            className="block p-5 transition-colors hover:bg-muted/50"
+                            className="group block p-5 transition-colors hover:bg-muted/50"
                             >
                                 <article>
                                 <div className="flex flex-wrap items-center gap-2">
