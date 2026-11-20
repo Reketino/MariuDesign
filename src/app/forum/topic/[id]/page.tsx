@@ -90,7 +90,14 @@ export default async function ForumTopicPage({
                                 key={reply.id}
                                 className="rounded-xl border p-5"
                                 >
-                                    
+                                    <div className="flex flex-wrap items-center justify-between gap-2">
+                                        {reply.is_official && (
+                                            <span className="text-xs font-medium text-primary">
+                                                Official Reply
+                                            </span>
+                                        )}
+                                        
+                                    </div>
                                 </article>
                             )
                         })}
