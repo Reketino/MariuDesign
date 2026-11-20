@@ -95,7 +95,9 @@ export default async function ForumPage() {
                                     )}
                                 </div>
 
-                                <h3 className="mt-2 font-semibold">{topic.title}</h3>
+                                <h3 className="mt-2 font-semibold transition-colors group-hover:text-primary">
+                                    {topic.title}
+                                    </h3>
 
                                 <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
                                     {topic.content}
