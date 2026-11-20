@@ -43,6 +43,12 @@ export default async function ForumTopicPage({
                             Pinned
                         </span>
                     )}
+
+                    {topic.is_locked && (
+                        <span className="text-xs text-muted-foreground">
+                            Locked
+                        </span>
+                    )}
                 </div>
             </article>
         </main>
