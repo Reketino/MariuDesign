@@ -19,4 +19,9 @@ export default async function ForumTopicPage({
     if (!topic) {
         notFound();
     }
+
+    const formattedTopicDate = new.Intl.DateTimeFormat("en-GB", {
+        dateStyle: "long",
+        timeStyle: "short",
+    }).format(new Date(topic.created_at));
 }
