@@ -103,7 +103,10 @@ export default async function ForumTopicPage({
                                             {formattedReplyDate}
                                         </time>
                                     </div>
-                                    
+
+                                    <p className="mt-4 whitespace-pre-wrap leading-7">
+                                        {reply.content}
+                                    </p>
                                 </article>
                             )
                         })}
