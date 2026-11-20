@@ -108,11 +108,11 @@ export default async function ForumTopicPage({
                                         {reply.content}
                                     </p>
                                 </article>
-                            )
+                            );
                         })}
                     </div>
                 )}
             </section>
         </main>
-    )
+    );
 }
