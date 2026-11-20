@@ -24,4 +24,17 @@ export default async function ForumTopicPage({
         dateStyle: "long",
         timeStyle: "short",
     }).format(new Date(topic.created_at));
+
+    return (
+        <main className="mx-auto min-h-screen w-full max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+            <header className="mb-8">
+                <Link
+                href="/forum"
+                className="inline-flex text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                    ← Back to Forum
+                </Link>
+            </header>
+        </main>
+    )
 }
