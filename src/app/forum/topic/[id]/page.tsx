@@ -15,4 +15,8 @@ export default async function ForumTopicPage({
     const { id } = await params;
 
     const topic = await getForumTopicById(id);
+
+    if (!topic) {
+        notFound();
+    }
 }
