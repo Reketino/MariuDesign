@@ -59,7 +59,12 @@ export default async function ForumTopicPage({
                     Posted on {formattedTopicDate}
                 </p>
 
+                <div className="mt-8 whitespace-pre-wrap leading-7">
+                    {topic.content}
+                </div>
             </article>
+
+            
         </main>
     )
 }
