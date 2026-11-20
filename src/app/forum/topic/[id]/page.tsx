@@ -72,7 +72,13 @@ export default async function ForumTopicPage({
                 {topic.forum_replies.length === 0 ? (
                     <div className="rounded-xl border border-dashed p-8 text-center">
                         <h3 className="font-semibold">No replies yet</h3>
+
+                        <p className="mt-2 text-sm text-muted-foreground">
+                            Be the first to reply to this dicussion.
+                        </p>
                     </div>
+                ): (
+                    
                 )}
             </section>
         </main>
