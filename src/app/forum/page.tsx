@@ -75,7 +75,11 @@ export default async function ForumPage() {
                 ) : (
                     <div className="divide-y rounded-xl border">
                         {topics.map((topic) => (
-                            <article key={topic.id} className="p-5">
+                            <Link 
+                            key={topic.id}
+                            href={`/forum/topic/${topic.id}`} 
+                            className="p-5">
+                                <article>
                                 <div className="flex flex-wrap items-center gap-2">
                                     {topic.is_pinned && (
                                         <span className="text-xs font-medium text-primary">
@@ -100,6 +104,7 @@ export default async function ForumPage() {
                                     {topic.forum_replies.length} replies
                                 </p>
                             </article>
+                            </Link>
                         ))}
                     </div>
                 )}
