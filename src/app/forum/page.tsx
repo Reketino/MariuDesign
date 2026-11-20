@@ -78,7 +78,8 @@ export default async function ForumPage() {
                             <Link 
                             key={topic.id}
                             href={`/forum/topic/${topic.id}`} 
-                            className="p-5">
+                            className="block p-5 transition-colors hover:bg-muted/50"
+                            >
                                 <article>
                                 <div className="flex flex-wrap items-center gap-2">
                                     {topic.is_pinned && (
