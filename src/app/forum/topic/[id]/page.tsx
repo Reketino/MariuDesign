@@ -29,8 +29,8 @@ export default async function ForumTopicPage({
         <main className="mx-auto min-h-screen w-full max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
             <header className="mb-8">
                 <Link
-                href="/forum"
-                className="inline-flex text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    href="/forum"
+                    className="inline-flex text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                     ← Back to Forum
                 </Link>
@@ -87,8 +87,8 @@ export default async function ForumTopicPage({
 
                             return (
                                 <article
-                                key={reply.id}
-                                className="rounded-xl border p-5"
+                                    key={reply.id}
+                                    className="rounded-xl border p-5"
                                 >
                                     <div className="flex flex-wrap items-center justify-between gap-2">
                                         {reply.is_official && (
@@ -97,8 +97,8 @@ export default async function ForumTopicPage({
                                             </span>
                                         )}
                                         <time
-                                        dateTime={reply.created_at}
-                                        className="text-xs text-muted-foreground"
+                                            dateTime={reply.created_at}
+                                            className="text-xs text-muted-foreground"
                                         >
                                             {formattedReplyDate}
                                         </time>
