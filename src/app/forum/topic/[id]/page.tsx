@@ -77,8 +77,17 @@ export default async function ForumTopicPage({
                             Be the first to reply to this dicussion.
                         </p>
                     </div>
-                ): (
-                    
+                ) : (
+                    <div className="space-y-4">
+                        {topic.forum_replies.map((reply) => {
+                            const formattedReplyDate = new Intl.DateTimeFormat("en-GB", {
+                                dateStyle: "long",
+                                timeStyle: "short",
+                            }).format(new Date(reply.created_at));
+
+                            
+                        })}
+                    </div>
                 )}
             </section>
         </main>
