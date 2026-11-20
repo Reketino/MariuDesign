@@ -55,7 +55,10 @@ export default async function ForumTopicPage({
                     {topic.title}
                 </h1>
 
-                
+                <p className="mt-3 text-xs text-muted-foreground">
+                    Posted on {formattedTopicDate}
+                </p>
+
             </article>
         </main>
     )
