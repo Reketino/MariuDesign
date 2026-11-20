@@ -69,7 +69,11 @@ export default async function ForumTopicPage({
                     Replies ({topic.forum_replies.length})
                 </h2>
 
-                
+                {topic.forum_replies.length === 0 ? (
+                    <div className="rounded-xl border border-dashed p-8 text-center">
+                        <h3 className="font-semibold">No replies yet</h3>
+                    </div>
+                )}
             </section>
         </main>
     )
