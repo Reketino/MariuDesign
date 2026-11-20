@@ -35,6 +35,16 @@ export default async function ForumTopicPage({
                     ← Back to Forum
                 </Link>
             </header>
+
+            <article className="rounded-xl border p-6 sm:p-8">
+                <div className="mb-4 flex flex-wrap items-center gap-2">
+                    {topic.is_pinned && (
+                        <span className="text-xs font-medium text-primary">
+                            Pinned
+                        </span>
+                    )}
+                </div>
+            </article>
         </main>
     )
 }
