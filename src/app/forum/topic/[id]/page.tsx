@@ -64,7 +64,13 @@ export default async function ForumTopicPage({
                 </div>
             </article>
 
-            
+            <section aria-labelledby="replies-heading" className="mt-10">
+                <h2 id="replies-heading" className="mb-5 text-2xl font-semibold">
+                    Replies ({topic.forum_replies.length})
+                </h2>
+
+                
+            </section>
         </main>
     )
 }
