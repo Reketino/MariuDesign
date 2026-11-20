@@ -96,8 +96,14 @@ export default async function ForumTopicPage({
                                                 Official Reply
                                             </span>
                                         )}
-                                        
+                                        <time
+                                        dateTime={reply.created_at}
+                                        className="text-xs text-muted-foreground"
+                                        >
+                                            {formattedReplyDate}
+                                        </time>
                                     </div>
+                                    
                                 </article>
                             )
                         })}
