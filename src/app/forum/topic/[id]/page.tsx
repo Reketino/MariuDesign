@@ -85,7 +85,14 @@ export default async function ForumTopicPage({
                                 timeStyle: "short",
                             }).format(new Date(reply.created_at));
 
-                            
+                            return (
+                                <article
+                                key={reply.id}
+                                className="rounded-xl border p-5"
+                                >
+                                    
+                                </article>
+                            )
                         })}
                     </div>
                 )}
