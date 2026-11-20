@@ -74,7 +74,7 @@ export default async function ForumTopicPage({
                         <h3 className="font-semibold">No replies yet</h3>
 
                         <p className="mt-2 text-sm text-muted-foreground">
-                            Be the first to reply to this dicussion.
+                            Be the first to reply to this discussion.
                         </p>
                     </div>
                 ) : (
