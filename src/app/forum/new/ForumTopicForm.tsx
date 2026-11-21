@@ -36,4 +36,16 @@ export default function ForumTopicForm({
             router.refresh();
         });
     }
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+                <label htmlFor="categoryId" className="text-sm font-medium">
+                    Category
+                </label>
+
+                
+            </div>
+        </form>
+    )
 }
