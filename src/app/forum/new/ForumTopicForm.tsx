@@ -96,6 +96,12 @@ export default function ForumTopicForm({
                 />
             </div>
 
+            {error && (
+                <p role="alert" className="text-sm text-destructive">
+                    {error}
+                </p>
+            )}
+
             
         </form>
     )
