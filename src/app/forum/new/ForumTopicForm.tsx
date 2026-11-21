@@ -85,8 +85,18 @@ export default function ForumTopicForm({
                     Description
                 </label>
 
-                
+                <textarea
+                id="content"
+                name="content"
+                required
+                minLength={10}
+                maxLength={10000}
+                rows={8}
+                placeholder="Share the details of your discussion.."
+                />
             </div>
+
+            
         </form>
     )
 }
