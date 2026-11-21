@@ -106,7 +106,7 @@ export default function ForumTopicForm({
                 <button
                 type="button"
                 onClick={() => router.back()}
-                disabled={ispending}
+                disabled={isPending}
                 className="
                 rounded-lg border px-4 py-2 
                 text-sm font-medium transition-colors 
