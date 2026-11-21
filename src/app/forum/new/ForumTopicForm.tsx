@@ -15,7 +15,7 @@ export default function ForumTopicForm({
 }: ForumTopicFormProps) {
     const router = useRouter();
 
-    const [ispending, startTransition] = useTransition();
+    const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | null>(null);
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
