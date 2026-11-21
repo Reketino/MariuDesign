@@ -114,6 +114,19 @@ export default function ForumTopicForm({
                 >
                     Cancel
                 </button>
+
+                <button
+                type="submit"
+                disabled={isPending || categories.length === 0}
+                className="
+                rounded-lg bg-primary px-5 py-2 
+                text-sm font-medium text-primary-foreground 
+                transition-opacity hover:opacity-90 
+                disabled:cursor-not-allowed disabled:opacity-50
+                "
+                >
+                    {isPending ? "Creating..." : "Create Discussion"}
+                </button>
             </div>
         </form>
     )
