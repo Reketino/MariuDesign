@@ -54,6 +54,12 @@ export default function ForumTopicForm({
                     <option value="" disabled>
                         Select a category
                     </option>
+
+                    {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                            {category.name}
+                        </option>
+                    ))}
                 </select>
             </div>
         </form>
