@@ -27,6 +27,10 @@ export default function ForumTopicForm({
         startTransition(async () => {
             const result = await createForumTopicAction(formData);
             
+            if (!result.success) {
+                setError(result.error);
+                return;
+            }
         })
     }
 }
