@@ -24,6 +24,9 @@ export default function ForumTopicForm({
 
         const formData = new FormData(event.currentTarget);
 
-        
+        startTransition(async () => {
+            const result = await createForumTopicAction(formData);
+            
+        })
     }
 }
