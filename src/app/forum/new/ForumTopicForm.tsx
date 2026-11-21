@@ -21,5 +21,9 @@ export default function ForumTopicForm({
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setError(null);
+
+        const formData = new FormData(event.currentTarget);
+
+        
     }
 }
