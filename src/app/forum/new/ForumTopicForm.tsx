@@ -26,7 +26,7 @@ export default function ForumTopicForm({
 
         startTransition(async () => {
             const result = await createForumTopicAction(formData);
-            
+
             if (!result.success) {
                 setError(result.error);
                 return;
@@ -45,11 +45,11 @@ export default function ForumTopicForm({
                 </label>
 
                 <select
-                id="categoryId"
-                name="categoryId"
-                required
-                defaultValue=""
-                className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
+                    id="categoryId"
+                    name="categoryId"
+                    required
+                    defaultValue=""
+                    className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
                 >
                     <option value="" disabled>
                         Select a category
@@ -69,14 +69,14 @@ export default function ForumTopicForm({
                 </label>
 
                 <input
-                id="title"
-                name="title"
-                type="text"
-                required
-                minLength={3}
-                maxLength={150}
-                placeholder="What would you like to discuss?"
-                className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
+                    id="title"
+                    name="title"
+                    type="text"
+                    required
+                    minLength={3}
+                    maxLength={150}
+                    placeholder="What would you like to discuss?"
+                    className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
                 />
             </div>
 
@@ -86,13 +86,13 @@ export default function ForumTopicForm({
                 </label>
 
                 <textarea
-                id="content"
-                name="content"
-                required
-                minLength={10}
-                maxLength={10000}
-                rows={8}
-                placeholder="Share the details of your discussion.."
+                    id="content"
+                    name="content"
+                    required
+                    minLength={10}
+                    maxLength={10000}
+                    rows={8}
+                    placeholder="Share the details of your discussion.."
                 />
             </div>
 
@@ -104,10 +104,10 @@ export default function ForumTopicForm({
 
             <div className="flex items-center justify-end gap-3">
                 <button
-                type="button"
-                onClick={() => router.back()}
-                disabled={isPending}
-                className="
+                    type="button"
+                    onClick={() => router.back()}
+                    disabled={isPending}
+                    className="
                 rounded-lg border px-4 py-2 
                 text-sm font-medium transition-colors 
                 hover:bg-muted disabled:opacity-50
@@ -117,9 +117,9 @@ export default function ForumTopicForm({
                 </button>
 
                 <button
-                type="submit"
-                disabled={isPending || categories.length === 0}
-                className="
+                    type="submit"
+                    disabled={isPending || categories.length === 0}
+                    className="
                 rounded-lg bg-primary px-5 py-2 
                 text-sm font-medium text-primary-foreground 
                 transition-opacity hover:opacity-90 
