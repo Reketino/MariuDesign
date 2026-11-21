@@ -16,4 +16,5 @@ export default function ForumTopicForm({
     const router = useRouter();
 
     const [ispending, startTransition] = useTransition();
+    const [error, setError] = useState<string | null>(null);
 }
