@@ -9,3 +9,9 @@ import type { ForumCategory } from "@/types/forum";
 type ForumTopicFormProps = {
     categories: ForumCategory[];
 };
+
+export default function ForumTopicForm({
+    categories,
+}: ForumTopicFormProps) {
+    const router = useRouter();
+}
