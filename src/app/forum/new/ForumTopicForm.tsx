@@ -17,4 +17,8 @@ export default function ForumTopicForm({
 
     const [ispending, startTransition] = useTransition();
     const [error, setError] = useState<string | null>(null);
+
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        
+    }
 }
