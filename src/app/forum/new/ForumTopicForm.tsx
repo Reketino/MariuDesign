@@ -62,6 +62,12 @@ export default function ForumTopicForm({
                     ))}
                 </select>
             </div>
+
+            <div className="space-y-2">
+                <label htmlFor="title" className="text-sm font-medium">
+                    Title
+                </label>
+            </div>
         </form>
     )
 }
