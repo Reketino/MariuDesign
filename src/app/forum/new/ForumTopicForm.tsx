@@ -110,7 +110,8 @@ export default function ForumTopicForm({
                 className="
                 rounded-lg border px-4 py-2 
                 text-sm font-medium transition-colors 
-                hover:bg-muted disabled:opacity-50"
+                hover:bg-muted disabled:opacity-50
+                "
                 >
                     Cancel
                 </button>
