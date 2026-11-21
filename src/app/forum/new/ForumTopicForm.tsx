@@ -130,5 +130,5 @@ export default function ForumTopicForm({
                 </button>
             </div>
         </form>
-    )
+    );
 }
