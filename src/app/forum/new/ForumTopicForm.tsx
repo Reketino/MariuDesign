@@ -19,6 +19,7 @@ export default function ForumTopicForm({
     const [error, setError] = useState<string | null>(null);
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        
+        event.preventDefault();
+        setError(null);
     }
 }
