@@ -31,6 +31,9 @@ export default function ForumTopicForm({
                 setError(result.error);
                 return;
             }
+
+            router.push(`/forum/topic/${result.topicId}`);
+            router.refresh();
         })
     }
 }
