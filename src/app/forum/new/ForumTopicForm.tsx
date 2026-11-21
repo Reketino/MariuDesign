@@ -79,6 +79,14 @@ export default function ForumTopicForm({
                 className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
                 />
             </div>
+
+            <div className="space-y-2">
+                <label htmlFor="content" className="text-sm font-medium">
+                    Description
+                </label>
+
+                
+            </div>
         </form>
     )
 }
