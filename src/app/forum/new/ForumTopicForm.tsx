@@ -44,7 +44,14 @@ export default function ForumTopicForm({
                     Category
                 </label>
 
-                
+                <select
+                id="categoryId"
+                name="categoryId"
+                required
+                defaultValue=""
+                className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
+                >
+                </select>
             </div>
         </form>
     )
