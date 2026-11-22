@@ -122,7 +122,11 @@ export default function ForumTopicForm({
           type="button"
           onClick={() => router.back()}
           disabled={isPending}
-          className="rounded-lg border border-neutral-700 px-4 py-2.5 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-900 disabled:opacity-50"
+          className="rounded-lg border border-neutral-700 
+          px-4 py-2.5 text-sm font-medium text-neutral-300 
+          transition-colors hover:bg-neutral-900 
+          disabled:opacity-50
+          "
         >
           Cancel
         </button>
