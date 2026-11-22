@@ -96,6 +96,7 @@ export default function ForumTopicForm({
                     maxLength={10000}
                     rows={8}
                     placeholder="Share the details of your discussion.."
+                    className={`${fieldClassName} resize-y`}
                 />
             </div>
 
