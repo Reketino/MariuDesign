@@ -1,42 +1,39 @@
+
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import { getForumCategories } from "@/lib/forum/getForumCategories";
 import ForumTopicForm from "./ForumTopicForm";
 
 export default async function NewForumTopicPage() {
-    const categories = await getForumCategories();
+  const categories = await getForumCategories();
 
-    if (categories.length === 0) {
-        notFound();
-    }
+  return (
+    <main className="mx-auto min-h-screen w-full max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      <header className="mb-10">
+        <Link
+          href="/forum"
+          className="mb-8 inline-flex items-center gap-2 rounded-lg border border-neutral-700 px-4 py-2 text-sm font-medium text-neutral-200 transition-colors hover:border-neutral-500 hover:bg-neutral-900"
+        >
+          <span aria-hidden="true">←</span>
+          Back to Forum
+        </Link>
 
-    return (
-        <main className="mx-auto min-h-screen w-full max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-            <header className="mb-10">
-                <Link
-                    href="/forum"
-                    className="mb-6 inline-flex text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                    ← Back to Forum
-                </Link>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-neutral-400">
+          MariuDesign Community
+        </p>
 
-                <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">
-                    MariuDesign Community
-                </p>
+        <h1 className="text-4xl font-bold tracking-tight text-white">
+          Start a Discussion
+        </h1>
 
-                <h1 className="text-4xl font-bold tracking-tight">
-                    Start a Discussion
-                </h1>
+        <p className="mt-3 max-w-xl text-neutral-400">
+          Share your thoughts, ask questions and connect with the community.
+        </p>
+      </header>
 
-                <p className="mt-3 text-muted-foreground">
-                    Share your thoughts, ask questions and connect with the community
-                </p>
-            </header>
-
-            <section className="rounded-xl border p-6 sm:p-8">
-                <ForumTopicForm categories={categories} />
-            </section>
-        </main>
-    )
+      <section className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 text-neutral-100 shadow-lg sm:p-8">
+        <ForumTopicForm categories={categories} />
+      </section>
+    </main>
+  );
 }
