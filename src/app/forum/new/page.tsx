@@ -14,7 +14,12 @@ export default async function NewForumTopicPage() {
     return (
         <main className="mx-auto min-h-screen w-full max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
             <header className="mb-10">
-                
+                <Link 
+                href="/forum"
+                className="mb-6 inline-flex text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                    ← Back to Forum
+                </Link>
             </header>
         </main>
     )
