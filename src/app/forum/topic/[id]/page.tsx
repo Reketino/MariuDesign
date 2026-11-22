@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getForumTopicById } from "@/lib/forum/getForumTopicById";
+import { createClient } from "@/lib/supabase/server";
 
 type ForumTopicPageProps = {
     params: Promise<{
@@ -29,6 +30,12 @@ export default async function ForumTopicPage({
     const formattedTopicDate = dateFormatter.format(
         new Date(topic.created_at)
     );
+
+    const supabase = await createClient();
+
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
