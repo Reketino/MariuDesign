@@ -37,6 +37,9 @@ export default function ForumTopicForm({
         });
     }
 
+    const fieldClassName = 
+    "w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
