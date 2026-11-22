@@ -33,6 +33,10 @@ export default async function ForumTopicPage({
 
     const supabase = await createClient();
 
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+
     return (
         <main className="mx-auto min-h-screen w-full max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
             <header className="mb-10">
