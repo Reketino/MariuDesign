@@ -79,7 +79,7 @@ export default function ForumTopicForm({
                     minLength={3}
                     maxLength={150}
                     placeholder="What would you like to discuss?"
-                    className="w-full rounded-lg border bg-background px-3 py-2 text-sm"
+                    className={fieldClassName}
                 />
             </div>
 
