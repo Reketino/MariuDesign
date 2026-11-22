@@ -33,6 +33,10 @@ export default async function NewForumTopicPage() {
                     Share your thoughts, ask questions and connect with the community
                 </p>
             </header>
+
+            <section className="rounded-xl border p-6 sm:p-8">
+                <ForumTopicForm categories={categories} />
+            </section>
         </main>
     )
 }
