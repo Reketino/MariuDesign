@@ -20,6 +20,12 @@ export default async function NewForumTopicPage() {
                 >
                     ← Back to Forum
                 </Link>
+
+                <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">
+                    MariuDesign Community
+                </p>
+
+                
             </header>
         </main>
     )
