@@ -25,6 +25,10 @@ export default async function NewForumTopicPage() {
                     MariuDesign Community
                 </p>
 
+                <h1 className="text-4xl font-bold tracking-tight">
+                    Start a Discussion
+                </h1>
+
                 
             </header>
         </main>
