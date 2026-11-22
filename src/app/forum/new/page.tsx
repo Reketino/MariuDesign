@@ -29,7 +29,9 @@ export default async function NewForumTopicPage() {
                     Start a Discussion
                 </h1>
 
-                
+                <p className="mt-3 text-muted-foreground">
+                    Share your thoughts, ask questions and connect with the community
+                </p>
             </header>
         </main>
     )
