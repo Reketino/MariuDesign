@@ -7,4 +7,8 @@ import ForumTopicForm from "./ForumTopicForm";
 export default async function NewForumTopicPage() {
     const categories = await getForumCategories();
     
+    if (categories.length === 0) {
+        notFound();
+    }
+    
 }
