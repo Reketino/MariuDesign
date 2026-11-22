@@ -64,8 +64,8 @@ export default async function ForumPage() {
                     </h2>
 
                     <Link
-                    href="/forum/new"
-                    className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                        href="/forum/new"
+                        className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
                     >
                         New Discussion
                     </Link>
