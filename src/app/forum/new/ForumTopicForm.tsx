@@ -134,7 +134,12 @@ export default function ForumTopicForm({
         <button
           type="submit"
           disabled={isPending || categories.length === 0}
-          className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-neutral-950 transition-colors hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-50"
+          className="
+          rounded-lg bg-white px-5 py-2.5 text-sm 
+          font-semibold text-neutral-950 transition-colors 
+          hover:bg-neutral-200 disabled:cursor-not-allowed 
+          disabled:opacity-50
+          "
         >
           {isPending ? "Creating..." : "Create Discussion"}
         </button>
