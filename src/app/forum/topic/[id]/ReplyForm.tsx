@@ -19,6 +19,9 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setError(null);
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
     }
     
 }
