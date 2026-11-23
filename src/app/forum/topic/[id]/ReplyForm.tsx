@@ -32,7 +32,10 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
                 setError(result.error);
                 return;
             }
-        })
+
+            form.reset();
+            router.refresh();
+        });
     }
     
 }
