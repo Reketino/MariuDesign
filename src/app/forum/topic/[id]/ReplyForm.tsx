@@ -89,7 +89,4 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
             </div>
         </form>
     )
-
-
-    
 }
