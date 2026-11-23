@@ -67,6 +67,12 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
                 className={`${fieldClassName} resize-y`}
                 />
             </div>
+
+            {error && (
+                <p role="alert" className="text-sm text-red-400">
+                    {error}
+                </p>
+            )}
         </form>
     )
 
