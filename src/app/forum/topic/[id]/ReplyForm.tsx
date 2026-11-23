@@ -11,5 +11,7 @@ type ReplyFormProps = {
 };
 
 export default function ReplyForm({ topicId }: ReplyFormProps) {
+    const router = useRouter();
+
     
 }
