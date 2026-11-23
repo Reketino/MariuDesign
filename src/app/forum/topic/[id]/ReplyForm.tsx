@@ -50,21 +50,21 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
         <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
                 <label
-                htmlFor="reply-content"
-                className="block text-sm font-medium text-neutral-200"
+                    htmlFor="reply-content"
+                    className="block text-sm font-medium text-neutral-200"
                 >
                     Your Reply
                 </label>
 
                 <textarea
-                id="reply-content"
-                name="content"
-                required
-                minLength={2}
-                maxLength={10000}
-                rows={5}
-                placeholder="Write your reply..."
-                className={`${fieldClassName} resize-y`}
+                    id="reply-content"
+                    name="content"
+                    required
+                    minLength={2}
+                    maxLength={10000}
+                    rows={5}
+                    placeholder="Write your reply..."
+                    className={`${fieldClassName} resize-y`}
                 />
             </div>
 
@@ -76,9 +76,9 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
 
             <div className="flex justify-end">
                 <button
-                type="submit"
-                disabled={isPending}
-                className="
+                    type="submit"
+                    disabled={isPending}
+                    className="
                 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold 
                 text-neutral-950 transition-colors hover:bg-neutral-200 
                 disabled:cursor-not-allowed disabled:opacity-50
