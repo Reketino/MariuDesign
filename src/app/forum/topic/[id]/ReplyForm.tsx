@@ -13,5 +13,7 @@ type ReplyFormProps = {
 export default function ReplyForm({ topicId }: ReplyFormProps) {
     const router = useRouter();
 
+    const [isPending, startTransition] = useTransition();
+    const [error, setError] = useState<string | null>(null);
     
 }
