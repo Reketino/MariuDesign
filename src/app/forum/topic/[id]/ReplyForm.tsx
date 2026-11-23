@@ -25,7 +25,9 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
 
         formData.set("topicId", topicId);
 
-        
+        startTransition(async () => {
+            const result = await createForumReplyAction(formData);
+        })
     }
     
 }
