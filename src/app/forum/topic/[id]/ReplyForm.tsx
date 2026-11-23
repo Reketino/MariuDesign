@@ -37,5 +37,9 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
             router.refresh();
         });
     }
+
+    const fieldClassName = "w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-3 text-sm text-white placeholder:text-neutral-500 transition-colors focus-visible:border-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+
+    
     
 }
