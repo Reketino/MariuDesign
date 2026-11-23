@@ -73,6 +73,20 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
                     {error}
                 </p>
             )}
+
+            <div className="flex justify-end">
+                <button
+                type="submit"
+                disabled={isPending}
+                className="
+                rounded-lg bg-white px-5 py-2.5 text-sm font-semibold 
+                text-neutral-950 transition-colors hover:bg-neutral-200 
+                disabled:cursor-not-allowed disabled:opacity-50
+                "
+                >
+                    {isPending ? "Posting..." : "Post Reply"}
+                </button>
+            </div>
         </form>
     )
 
