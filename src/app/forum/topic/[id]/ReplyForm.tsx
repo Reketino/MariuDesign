@@ -46,6 +46,19 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
     focus-visible:ring-2 focus-visible:ring-primary
     `;
 
+    return (
+        <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-2">
+                <label
+                htmlFor="reply-content"
+                className="block text-sm font-medium text-neutral-200"
+                >
+                    Your Reply
+                </label>
+            </div>
+        </form>
+    )
+
 
     
 }
