@@ -55,6 +55,17 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
                 >
                     Your Reply
                 </label>
+
+                <textarea
+                id="reply-content"
+                name="content"
+                required
+                minLength={2}
+                maxLength={10000}
+                rows={5}
+                placeholder="Write your reply..."
+                className={`${fieldClassName} resize-y`}
+                />
             </div>
         </form>
     )
