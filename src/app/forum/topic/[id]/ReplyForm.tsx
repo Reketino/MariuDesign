@@ -22,6 +22,8 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
 
         const form = event.currentTarget;
         const formData = new FormData(form);
+
+        formData.set("topicId", topicId)
     }
     
 }
