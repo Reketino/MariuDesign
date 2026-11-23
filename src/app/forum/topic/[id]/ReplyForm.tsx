@@ -8,4 +8,8 @@ import { createForumReplyAction } from "@/app/actions/forum/createForumReplyActi
 
 type ReplyFormProps = {
     topicId: string;
+};
+
+export default function ReplyForm({ topicId }: ReplyFormProps) {
+    
 }
