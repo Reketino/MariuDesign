@@ -65,9 +65,9 @@ export async function getForumTopicById(
 
   if (uniqueUserIds.length > 0) {
     const { data: profiles, error: profileError } = await supabase
-    .from("forum_profiles")
-    .select("id, username")
-    .in("id", uniqueUserIds);
+      .from("forum_profiles")
+      .select("id, username")
+      .in("id", uniqueUserIds);
 
     if (profileError) {
       console.error("Failed to fetch forum usernames:", profileError);
@@ -83,13 +83,11 @@ export async function getForumTopicById(
   return {
     ...data,
     author_username: data.user_id
-    ? usernameMap.get(data.user_id) ?? null
-    : null,
+      ? (usernameMap.get(data.user_id) ?? null)
+      : null,
     forum_replies: visibleReplies.map((reply) => ({
       ...reply,
-      username: reply.user_id
-      ? usernameMap.get(reply.user_id) ?? null
-      : null,
+      username: reply.user_id ? (usernameMap.get(reply.user_id) ?? null) : null,
     })),
   };
 }
