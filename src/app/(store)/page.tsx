@@ -35,6 +35,18 @@ export default async function HomePage() {
             </section>
 
             <FeaturedProducts products={products} />
+
+            <section className="border-y border-zinc-800 bg-zinc-900/30">
+            <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between lg:py-24">
+                <div className="max-w-2xl">
+                    <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
+                        MariuDesign Forum
+                    </p>
+
+                    
+                </div>
+            </div>
+            </section>
         </main>
     );
 }
