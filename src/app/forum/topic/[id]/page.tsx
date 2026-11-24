@@ -151,9 +151,9 @@ export default async function ForumTopicPage({
                     </div>
                 )}
             </section>
-            <section 
-            id="reply-form-heading"
-            className="mb-5 text-xl font-semibold text-white"
+            <section
+                id="reply-form-heading"
+                className="mb-5 text-xl font-semibold text-white"
             >
                 {topic.is_locked ? (
                     <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
