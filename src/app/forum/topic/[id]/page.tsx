@@ -80,6 +80,13 @@ export default async function ForumTopicPage({
                     Posted on {formattedTopicDate}
                 </time>
 
+                <p className="mt-2 text-sm text-neutral-400">
+                    Started by{" "}
+                    <span className="font-medium text-neutral-200">
+                        {topic.author_username ?? "Unknown user"}
+                    </span>
+                </p>
+
                 <div className="mt-8 border-t border-neutral-800 pt-8">
                     <p className="whitespace-pre-wrap text-base leading-8 text-neutral-300">
                         {topic.content}
@@ -125,7 +132,12 @@ export default async function ForumTopicPage({
                                 >
                                     <div className="flex flex-wrap items-center justify-between gap-3">
                                         {reply.is_official ? (
-                                            <span className="rounded-md border border-neutral-700 bg-neutral-900 px-2.5 py-1 text-xs font-medium text-neutral-200">
+                                            <span className="
+                                            rounded-md border border-neutral-700 
+                                            bg-neutral-900 px-2.5 py-1 text-xs 
+                                            font-medium text-neutral-200
+                                            "
+                                            >
                                                 Official Reply
                                             </span>
                                         ) : (
@@ -148,6 +160,52 @@ export default async function ForumTopicPage({
                                 </article>
                             );
                         })}
+                    </div>
+                )}
+            </section>
+            <section
+                id="reply-form-heading"
+                className="mb-5 text-xl font-semibold text-white"
+            >
+                {topic.is_locked ? (
+                    <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
+                        <h3 className="font-semibold text-neutral-100">
+                            Discussion Locked
+                        </h3>
+
+                        <p className="mt-2 text-sm text-neutral-400">
+                            This discussion is locked and no longer accepts replies.
+                        </p>
+                    </div>
+                ) : user ? (
+                    <div className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 sm:p-8">
+                        <h2 className="mb-5 text-xl font-semibold text-white">
+                            Join the Discussion
+                        </h2>
+
+                        <ReplyForm topicId={topic.id} />
+                    </div>
+                ) : (
+                    <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
+                        <h3 className="font-semibold text-neutral-400">
+                            Want to join the discussion?
+                        </h3>
+
+                        <p className="mt-2 text-sm text-neutral-400">
+                            Sign in to reply to this discussion.
+                        </p>
+
+                        <Link
+                            href={`/login?next=/forum/topic/${topic.id}`}
+                            className="
+                        mt-5 inline-flex rounded-lg bg-white 
+                        px-4 py-2.5 text-sm font-semibold 
+                        text-neutral-950 transition-colors 
+                        hover:bg-neutral-200
+                        "
+                        >
+                            Sign In
+                        </Link>
                     </div>
                 )}
             </section>

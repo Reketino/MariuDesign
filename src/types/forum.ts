@@ -35,6 +35,7 @@ export type ForumReply = {
 };
 
 export type ForumTopicWithReplies = ForumTopic & {
+  author_username: string | null;
   forum_replies: ForumReply[];
 };
 
