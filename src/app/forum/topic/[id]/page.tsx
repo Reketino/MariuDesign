@@ -131,21 +131,13 @@ export default async function ForumTopicPage({
                                     className="rounded-xl border border-neutral-800 bg-neutral-950 p-5 sm:p-6"
                                 >
                                     <div className="flex flex-wrap items-center justify-between gap-3">
-                                        {reply.is_official ? (
-                                            <span className="
-                                            rounded-md border border-neutral-700 
-                                            bg-neutral-900 px-2.5 py-1 text-xs 
-                                            font-medium text-neutral-200
-                                            "
-                                            >
-                                                Official Reply
+                                        <div className="flex flex-wrap items-center gap-2">
+                                            <span className="text-sm font-semibold text-neutral-200">
+                                                {reply.username ?? "Unknown user"}
                                             </span>
-                                        ) : (
-                                            <span className="text-xs font-medium text-neutral-500">
-                                                Community Reply
-                                            </span>
-                                        )}
 
+                                            
+                                        </div>
                                         <time
                                             dateTime={reply.created_at}
                                             className="text-xs text-neutral-500"
