@@ -54,6 +54,11 @@ export async function getForumTopicById(
         new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
     );
 
+  const userIds = [
+    data.user_id,
+    ...visibleReplies.map((reply) => reply.user_id),
+  ].filter((id): id is string => id != null);
+
   return {
     ...data,
     forum_replies: visibleReplies,
