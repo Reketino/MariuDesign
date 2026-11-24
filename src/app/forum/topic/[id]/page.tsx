@@ -81,7 +81,7 @@ export default async function ForumTopicPage({
                 </time>
 
                 <p className="mt-2 text-sm text-neutral-400">
-                    
+                    Started by{" "}
                 </p>
 
                 <div className="mt-8 border-t border-neutral-800 pt-8">
