@@ -6,6 +6,7 @@ const navigationLinks = [
     { label: "Store", href: "/shop" },
     { label: "Build Guides", href: "/build-guides" },
     { label: "Part Lists", href: "/part-lists" },
+    { label: "Forum", href: "/forum "},
 ];
 
 export default async function Navbar() {
