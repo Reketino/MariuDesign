@@ -47,10 +47,10 @@ export default function ReplyForm({ topicId }: ReplyFormProps) {
     `;
 
     return (
-        <form 
-        onSubmit={handleSubmit} 
-        aria-busy={isPending}
-        className="space-y-5"
+        <form
+            onSubmit={handleSubmit}
+            aria-busy={isPending}
+            className="space-y-5"
         >
             <div className="space-y-2">
                 <label
