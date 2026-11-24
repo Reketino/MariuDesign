@@ -63,6 +63,13 @@ export async function getForumTopicById(
 
   const usernameMap = new Map<string, string>();
 
+  if (uniqueUserIds.length > 0) {
+    const { data: profiles, error: profileError } = await supabase
+    .from("forum_profiles")
+    .select("id, username")
+    .in("id", uniqueUserIds);
+  }
+
   return {
     ...data,
     forum_replies: visibleReplies,
