@@ -61,6 +61,7 @@ export default async function HomePage() {
                     "
                     >
                         Explore the Forum
+                        <span aria-hidden="true">→</span>
                     </Link>
                 </div>
             </div>
