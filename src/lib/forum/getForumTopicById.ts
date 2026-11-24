@@ -59,6 +59,8 @@ export async function getForumTopicById(
     ...visibleReplies.map((reply) => reply.user_id),
   ].filter((id): id is string => id != null);
 
+  const uniqueUserIds = [...new Set(userIds)];
+
   return {
     ...data,
     forum_replies: visibleReplies,
