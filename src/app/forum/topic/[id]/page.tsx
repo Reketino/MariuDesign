@@ -82,6 +82,9 @@ export default async function ForumTopicPage({
 
                 <p className="mt-2 text-sm text-neutral-400">
                     Started by{" "}
+                    <span className="font-medium text-neutral-200">
+                        {topic.author_username ?? "Unknown user"}
+                    </span>
                 </p>
 
                 <div className="mt-8 border-t border-neutral-800 pt-8">
