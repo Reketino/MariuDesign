@@ -37,7 +37,7 @@ export default async function HomePage() {
             <FeaturedProducts products={products} />
 
             <section className="border-y border-zinc-800 bg-zinc-900/30">
-            <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-20 md:flex-row md:items-center md:justify-between lg:py-24">
+            <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-16 md:flex-row md:items-center md:justify-between lg:py-20">
                 <div className="max-w-2xl">
                     <p className="text-xl font-semibold text-white">
                         MariuDesign Forum
