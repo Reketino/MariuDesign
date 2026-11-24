@@ -54,8 +54,40 @@ export async function getForumTopicById(
         new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
     );
 
+  const userIds = [
+    data.user_id,
+    ...visibleReplies.map((reply) => reply.user_id),
+  ].filter((id): id is string => id != null);
+
+  const uniqueUserIds = [...new Set(userIds)];
+
+  const usernameMap = new Map<string, string>();
+
+  if (uniqueUserIds.length > 0) {
+    const { data: profiles, error: profileError } = await supabase
+      .from("forum_profiles")
+      .select("id, username")
+      .in("id", uniqueUserIds);
+
+    if (profileError) {
+      console.error("Failed to fetch forum usernames:", profileError);
+    } else {
+      profiles?.forEach((profile) => {
+        if (profile.username) {
+          usernameMap.set(profile.id, profile.username);
+        }
+      });
+    }
+  }
+
   return {
     ...data,
-    forum_replies: visibleReplies,
-  } as ForumTopicWithReplies;
+    author_username: data.user_id
+      ? (usernameMap.get(data.user_id) ?? null)
+      : null,
+    forum_replies: visibleReplies.map((reply) => ({
+      ...reply,
+      username: reply.user_id ? (usernameMap.get(reply.user_id) ?? null) : null,
+    })),
+  };
 }
