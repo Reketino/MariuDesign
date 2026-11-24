@@ -157,9 +157,12 @@ export default async function ForumTopicPage({
                         <h3 className="font-semibold text-neutral-100">
                             Discussion Locked
                         </h3>
+
+                        <p className="mt-2 text-sm text-neutral-400">
+                            This discussion is locked and no longer accepts replies.
+                        </p>
                     </div>
                 )}
-                
             </section>
         </main>
     );
