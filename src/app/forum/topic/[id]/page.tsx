@@ -136,7 +136,16 @@ export default async function ForumTopicPage({
                                                 {reply.username ?? "Unknown user"}
                                             </span>
 
-                                            
+                                            {reply.is_official && (
+                                                <span className="
+                                                rounded-md border border-neutral-700 
+                                                bg-neutral-900 px-2 py-1 text-xs 
+                                                font-medium text-neutral-300
+                                                "
+                                                >
+                                                    Official
+                                                </span>
+                                            )}
                                         </div>
                                         <time
                                             dateTime={reply.created_at}
