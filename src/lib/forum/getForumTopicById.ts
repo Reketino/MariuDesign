@@ -61,6 +61,8 @@ export async function getForumTopicById(
 
   const uniqueUserIds = [...new Set(userIds)];
 
+  const usernameMap = new Map<string, string>();
+
   return {
     ...data,
     forum_replies: visibleReplies,
