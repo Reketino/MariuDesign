@@ -162,6 +162,14 @@ export default async function ForumTopicPage({
                             This discussion is locked and no longer accepts replies.
                         </p>
                     </div>
+                ) : user ? (
+                    <div className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6 sm:p-8">
+                        <h2 className="mb-5 text-xl font-semibold text-white">
+                            Join the Discussion
+                        </h2>
+
+                        
+                    </div>
                 )}
             </section>
         </main>
