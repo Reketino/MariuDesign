@@ -164,8 +164,9 @@ export default async function ForumTopicPage({
                     </div>
                 )}
             </section>
+
             <section
-                id="reply-form-heading"
+                aria-label="Reply section"
                 className="mt-10"
             >
                 {topic.is_locked ? (
