@@ -180,7 +180,17 @@ export default async function ForumTopicPage({
                             Sign in to reply to this discussion.
                         </p>
 
-                        
+                        <Link
+                        href="/login"
+                        className="
+                        mt-5 inline-flex rounded-lg bg-white 
+                        px-4 py-2.5 text-sm font-semibold 
+                        text-neutral-950 transition-colors 
+                        hover:bg-neutral-200
+                        "
+                        >
+                            Sign In
+                        </Link>
                     </div>
                 )}
             </section>
