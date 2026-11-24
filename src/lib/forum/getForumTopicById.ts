@@ -91,5 +91,5 @@ export async function getForumTopicById(
       ? usernameMap.get(reply.user_id) ?? null
       : null,
     })),
-  } as ForumTopicWithReplies;
+  };
 }
