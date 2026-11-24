@@ -132,7 +132,12 @@ export default async function ForumTopicPage({
                                 >
                                     <div className="flex flex-wrap items-center justify-between gap-3">
                                         {reply.is_official ? (
-                                            <span className="rounded-md border border-neutral-700 bg-neutral-900 px-2.5 py-1 text-xs font-medium text-neutral-200">
+                                            <span className="
+                                            rounded-md border border-neutral-700 
+                                            bg-neutral-900 px-2.5 py-1 text-xs 
+                                            font-medium text-neutral-200
+                                            "
+                                            >
                                                 Official Reply
                                             </span>
                                         ) : (
