@@ -49,6 +49,20 @@ export default async function HomePage() {
                             creation? Join the discussion.
                     </p>
                 </div>
+
+                <div className="shrink-0">
+                    <Link
+                    href="/forum"
+                    className="
+                    inline-flex items-center gap-2 rounded-lg 
+                    border border-zinc-700 bg-white px-5 
+                    py-3 text-sm font-medium text-zinc-950 
+                    transition hover:bg-zinc-200
+                    "
+                    >
+                        Explore the Forum
+                    </Link>
+                </div>
             </div>
             </section>
         </main>
