@@ -168,6 +168,13 @@ export default async function ForumTopicPage({
                             Join the Discussion
                         </h2>
 
+                        <ReplyForm topicId={topic.id} />
+                    </div>
+                ) : (
+                    <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
+                        <h3 className="font-semibold text-neutral-400">
+                            Want to join the discussion?
+                        </h3>
                         
                     </div>
                 )}
