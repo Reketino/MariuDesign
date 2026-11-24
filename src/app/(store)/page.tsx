@@ -43,7 +43,11 @@ export default async function HomePage() {
                         MariuDesign Forum
                     </p>
 
-                    
+                    <p className="mt-5 max-w-xl leading-7 text-zinc-400">
+                            Have questions about a design, need help with
+                            your 3D printer or want to share your latest
+                            creation? Join the discussion.
+                    </p>
                 </div>
             </div>
             </section>
