@@ -82,6 +82,9 @@ export async function getForumTopicById(
 
   return {
     ...data,
+    author_username: data.user_id
+    ? usernameMap.get(data.user_id) ?? null
+    : null,
     forum_replies: visibleReplies,
   } as ForumTopicWithReplies;
 }
