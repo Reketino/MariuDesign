@@ -68,6 +68,10 @@ export async function getForumTopicById(
     .from("forum_profiles")
     .select("id, username")
     .in("id", uniqueUserIds);
+
+    if (profileError) {
+      console.error("Failed to fetch forum usernames:", profileError);
+    }
   }
 
   return {
