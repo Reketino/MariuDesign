@@ -184,7 +184,7 @@ export default async function ForumTopicPage({
                         </p>
 
                         <Link
-                            href="/login"
+                            href={`/login?next=/forum/topic/${topic.id}`}
                             className="
                         mt-5 inline-flex rounded-lg bg-white 
                         px-4 py-2.5 text-sm font-semibold 
