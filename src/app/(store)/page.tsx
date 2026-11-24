@@ -35,6 +35,37 @@ export default async function HomePage() {
             </section>
 
             <FeaturedProducts products={products} />
+
+            <section className="border-y border-zinc-800 bg-zinc-900/30">
+                <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-16 md:flex-row md:items-center md:justify-between lg:py-20">
+                    <div className="max-w-2xl">
+                        <p className="text-xl font-semibold text-white">
+                            MariuDesign Forum
+                        </p>
+
+                        <p className="mt-3 max-w-xl leading-7 text-zinc-400">
+                            Have questions about a design, need help with
+                            your 3D printer or want to share your latest
+                            creation? Join the discussion.
+                        </p>
+                    </div>
+
+                    <div className="shrink-0">
+                        <Link
+                            href="/forum"
+                            className="
+                    inline-flex items-center gap-2 rounded-lg 
+                    border border-zinc-700 bg-white px-5 
+                    py-3 text-sm font-medium text-zinc-950 
+                    transition hover:bg-zinc-200
+                    "
+                        >
+                            Explore the Forum
+                            <span aria-hidden="true">→</span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
         </main>
     );
 }
