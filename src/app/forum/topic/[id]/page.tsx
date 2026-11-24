@@ -175,6 +175,11 @@ export default async function ForumTopicPage({
                         <h3 className="font-semibold text-neutral-400">
                             Want to join the discussion?
                         </h3>
+
+                        <p className="mt-2 text-sm text-neutral-400">
+                            Sign in to reply to this discussion.
+                        </p>
+
                         
                     </div>
                 )}
