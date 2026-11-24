@@ -152,6 +152,13 @@ export default async function ForumTopicPage({
                 )}
             </section>
             <section className="mt-10">
+                {topic.is_locked ? (
+                    <div className="rounded-xl border border-neutral-800 bg-neutral-950 p-6">
+                        <h3 className="font-semibold text-neutral-100">
+                            Discussion Locked
+                        </h3>
+                    </div>
+                )}
                 
             </section>
         </main>
