@@ -71,6 +71,12 @@ export async function getForumTopicById(
 
     if (profileError) {
       console.error("Failed to fetch forum usernames:", profileError);
+    } else {
+      profiles?.forEach((profile) => {
+        if (profile.username) {
+          usernameMap.set(profile.id, profile.username);
+        }
+      });
     }
   }
 
