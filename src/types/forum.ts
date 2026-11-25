@@ -1,3 +1,5 @@
+export type UserRole = "user" | "admin"
+
 export type ForumCategory = {
   id: string;
   name: string;
