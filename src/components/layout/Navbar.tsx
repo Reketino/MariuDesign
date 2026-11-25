@@ -49,15 +49,15 @@ function NavigationLinks({
 
                             {role === "admin" && (
                                 <span className="                
-                    pointer-events-none absolute left-1/2 top-full z-50
-                    mt-2 -translate-x-1/2
-                    rounded-md border border-amber-500/30
-                    bg-zinc-950 px-2 py-1
-                    text-xs font-semibold text-amber-400
-                    opacity-0 transition-opacity duration-200
-                    group-hover:opacity-100
-                    "
-                    >
+                                        pointer-events-none absolute left-1/2 top-full z-50
+                                        mt-2 -translate-x-1/2
+                                        rounded-md border border-amber-500/30
+                                      bg-zinc-950 px-2 py-1
+                                        text-xs font-semibold text-amber-400
+                                        opacity-0 transition-opacity duration-200
+                                        group-hover:opacity-100
+                                    "
+                                >
                                     Admin
                                 </span>
                             )}
