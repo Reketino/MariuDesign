@@ -46,6 +46,17 @@ function NavigationLinks({
                     {username && (
                         <span className="text-sm font-medium text-white">
                             {username}
+
+                            {role === "admin" && (
+                                <span className="
+                                rounded-md border border-amber-500/30 
+                                bg-amber-500/10 px-2 py-0.5 text-xs 
+                                font-semibold text-amber-400
+                                "
+                                >
+                                    Admin
+                                </span>
+                            )}
                         </span>
                     )}
                 </>
