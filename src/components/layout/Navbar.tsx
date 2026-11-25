@@ -74,7 +74,7 @@ export default async function Navbar() {
 
     return (
         <header className="relative z-50 border-b border-zinc-800 bg-zinc-950">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
                 <Link
                     href="/"
                     className="text-lg font-semibold tracking-tight text-white"
