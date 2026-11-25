@@ -81,14 +81,14 @@ export default async function Navbar() {
 
     if (user) {
         const { data: profile } = await supbase
-        .from("profiles")
-        .select("username, role")
-        .eq("id", user.id)
-        .single();
+            .from("profiles")
+            .select("username, role")
+            .eq("id", user.id)
+            .single();
 
         username = profile?.username ??
-        user.email?.split("@")[0] ??
-        null;
+            user.email?.split("@")[0] ??
+            null;
 
         role = profile?.role === "admin" ? "admin" : "user";
     }
