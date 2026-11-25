@@ -39,6 +39,12 @@ function NavigationLinks({
             >
                 Account
                   </Link>
+
+                  {username && (
+                    <span className="text-sm font-medium text-white">
+                        {username}
+                    </span>
+                  )}
             </>
         )}
         </>
