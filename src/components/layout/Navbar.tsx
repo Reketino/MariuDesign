@@ -19,6 +19,7 @@ type NavbarProps = {
 
 function NavigationLinks({
     username,
+    role,
     isLoggedIn,
 }: NavbarProps) {
     return (
