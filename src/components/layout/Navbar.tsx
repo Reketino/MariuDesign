@@ -67,6 +67,11 @@ export default async function Navbar() {
         user?.email?.split("@")[0] ??
         null;
 
+    const navigationProps: NavbarProps = {
+        username,
+        isLoggedIn: Boolean(user),
+    };
+
     return (
         <header className="border-b border-zinc-800 bg-zinc-950">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
