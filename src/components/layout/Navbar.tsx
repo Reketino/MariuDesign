@@ -46,9 +46,15 @@ function NavigationLinks({
                     </span>
                   )}
             </>
+        ) : (
+            <Link href="/login"
+            className="text-sm text-zinc-400 transition-colors hover:text-white"
+            >
+                Log in
+            </Link>
         )}
         </>
-    )
+    );
 }
 
 export default async function Navbar() {
