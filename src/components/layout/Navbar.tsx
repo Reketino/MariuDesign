@@ -21,38 +21,38 @@ function NavigationLinks({
 }: NavbarProps) {
     return (
         <>
-        {navigationLinks.map((link) => (
-            <Link 
-            key={link.href}
-            href={link.href}
-            className="text-sm text-zinc-400 transition-colors hover:text-white"
-            >
-                {link.label}
-            </Link>
-        ))}
+            {navigationLinks.map((link) => (
+                <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                    {link.label}
+                </Link>
+            ))}
 
-        {isLoggedIn ? (
-            <>
-            <Link 
-                href="/account"
-                className="text-sm text-zinc-400 transition-colors hover:text-white"
-            >
-                Account
-                  </Link>
+            {isLoggedIn ? (
+                <>
+                    <Link
+                        href="/account"
+                        className="text-sm text-zinc-400 transition-colors hover:text-white"
+                    >
+                        Account
+                    </Link>
 
-                  {username && (
-                    <span className="text-sm font-medium text-white">
-                        {username}
-                    </span>
-                  )}
-            </>
-        ) : (
-            <Link href="/login"
-            className="text-sm text-zinc-400 transition-colors hover:text-white"
-            >
-                Log in
-            </Link>
-        )}
+                    {username && (
+                        <span className="text-sm font-medium text-white">
+                            {username}
+                        </span>
+                    )}
+                </>
+            ) : (
+                <Link href="/login"
+                    className="text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                    Log in
+                </Link>
+            )}
         </>
     );
 }
@@ -64,7 +64,7 @@ export default async function Navbar() {
 
     const username =
         user?.user_metadata?.username
-        user?.email?.split("@")[0] ??
+    user?.email?.split("@")[0] ??
         null;
 
     const navigationProps: NavbarProps = {
@@ -83,12 +83,12 @@ export default async function Navbar() {
                     Mariudesign
 
                     <Image
-                    src="/logo/MARIUDESIGN-logo1.png"
-                    alt="MariuDesign"
-                    width={190}
-                    height={64}
-                    priority
-                    className="h-12 w-38.75 object-contain object-left sm:h-14 sm:w-47.5"
+                        src="/logo/MARIUDESIGN-logo1.png"
+                        alt="MariuDesign"
+                        width={190}
+                        height={64}
+                        priority
+                        className="h-12 w-38.75 object-contain object-left sm:h-14 sm:w-47.5"
                     />
                 </Link>
 
@@ -113,8 +113,8 @@ export default async function Navbar() {
                     </summary>
 
                     <nav
-                    aria-label="Mobile navigation"
-                    className="
+                        aria-label="Mobile navigation"
+                        className="
                     absolute right-0 top-full mt-3 
                     flex min-w-52 flex-col gap-5 
                     rounded-xl border border-zinc-800 
