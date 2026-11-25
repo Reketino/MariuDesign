@@ -90,7 +90,7 @@ export default async function Navbar() {
         user.email?.split("@")[0] ??
         null;
 
-        
+        role = profile?.role === "admin" ? "admin" : "user";
     }
 
     const navigationProps: NavbarProps = {
