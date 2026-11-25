@@ -77,8 +77,8 @@ export default async function Navbar() {
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
                 <Link
                     href="/"
-                    className="text-lg font-semibold tracking-tight text-white"
                     aria-label="MariuDesign home"
+                     className="text-lg font-semibold tracking-tight text-white"
                 >
                     <Image
                         src="/logo/MARIUDESIGN-logo1.png"
