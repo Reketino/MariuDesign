@@ -109,6 +109,7 @@ export default async function Navbar() {
                     "
                     >
                         Menu
+                        <span aria-hidden="true">☰</span>
                     </summary>
                 </details>
             </div>
