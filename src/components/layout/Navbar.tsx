@@ -80,8 +80,6 @@ export default async function Navbar() {
                     className="text-lg font-semibold tracking-tight text-white"
                     aria-label="MariuDesign home"
                 >
-                    Mariudesign
-
                     <Image
                         src="/logo/MARIUDESIGN-logo1.png"
                         alt="MariuDesign"
