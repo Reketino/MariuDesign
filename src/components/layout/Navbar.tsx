@@ -10,6 +10,13 @@ const navigationLinks = [
     { label: "Forum", href: "/forum " },
 ];
 
+type NavbarProps = {
+    username: string | null;
+    isLoggedIn: boolean;
+};
+
+
+
 export default async function Navbar() {
     const supbase = await createClient();
 
