@@ -82,7 +82,7 @@ export default async function Navbar() {
                     <img
                         src="/logo/MARIUDESIGN-logo.svg"
                         alt="MariuDesign"
-                        className="h-12 w-38.75 object-contain object-left sm:h-14 sm:w-47.5"
+                        className="h-12 w-auto sm:h-14"
                     />
                 </Link>
 
