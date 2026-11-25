@@ -95,6 +95,7 @@ export default async function Navbar() {
 
     const navigationProps: NavbarProps = {
         username,
+        role,
         isLoggedIn: Boolean(user),
     };
 
