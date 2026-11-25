@@ -21,7 +21,15 @@ function NavigationLinks({
 }: NavbarProps) {
     return (
         <>
-        
+        {navigationLinks.map((link) => (
+            <Link 
+            key={link.href}
+            href={link.href}
+            className="text-sm text-zinc-400 transition-colors hover:text-white"
+            >
+                {link.label}
+            </Link>
+        ))}
         </>
     )
 }
