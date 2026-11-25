@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { createClient } from "@/lib/supabase/server";
@@ -9,6 +10,53 @@ const navigationLinks = [
     { label: "Forum", href: "/forum " },
 ];
 
+type NavbarProps = {
+    username: string | null;
+    isLoggedIn: boolean;
+};
+
+function NavigationLinks({
+    username,
+    isLoggedIn,
+}: NavbarProps) {
+    return (
+        <>
+            {navigationLinks.map((link) => (
+                <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                    {link.label}
+                </Link>
+            ))}
+
+            {isLoggedIn ? (
+                <>
+                    <Link
+                        href="/account"
+                        className="text-sm text-zinc-400 transition-colors hover:text-white"
+                    >
+                        Account
+                    </Link>
+
+                    {username && (
+                        <span className="text-sm font-medium text-white">
+                            {username}
+                        </span>
+                    )}
+                </>
+            ) : (
+                <Link href="/login"
+                    className="text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                    Log in
+                </Link>
+            )}
+        </>
+    );
+}
+
 export default async function Navbar() {
     const supbase = await createClient();
 
@@ -19,55 +67,62 @@ export default async function Navbar() {
     user?.email?.split("@")[0] ??
         null;
 
+    const navigationProps: NavbarProps = {
+        username,
+        isLoggedIn: Boolean(user),
+    };
+
     return (
-        <header className="border-b border-zinc-800 bg-zinc-950">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+        <header className="relative z-50 border-b border-zinc-800 bg-zinc-950">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
                 <Link
                     href="/"
                     className="text-lg font-semibold tracking-tight text-white"
                     aria-label="MariuDesign home"
                 >
                     Mariudesign
+
+                    <Image
+                        src="/logo/MARIUDESIGN-logo1.png"
+                        alt="MariuDesign"
+                        width={190}
+                        height={64}
+                        priority
+                        className="h-12 w-38.75 object-contain object-left sm:h-14 sm:w-47.5"
+                    />
                 </Link>
 
                 <nav
                     aria-label="Main navigation"
-                    className="flex items-center gap-6"
+                    className="hidden items-center gap-6 md:flex"
                 >
-                    {navigationLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-
-                    {user ? (
-                        <>
-                            <Link
-                                href="/account"
-                                className="text-sm text-zinc-400 transition hover:text-white"
-                            >
-                                Account
-                            </Link>
-
-                            {username && (
-                                <span className="text-sm font-medium text-white">
-                                    {username}
-                                </span>
-                            )}
-                        </>
-                    ) : (
-                        <Link
-                            href="/login"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Log in
-                        </Link>
-                    )}
+                    <NavigationLinks {...navigationProps} />
                 </nav>
+
+                <details className="relative md:hidden">
+                    <summary className="
+                    flex cursor-pointer list-none items-center gap-2 
+                    rounded-lg border border-zinc-700 px-3 py-2 
+                    text-sm text-zinc-300 transition-colors 
+                    hover:bg-zinc-900 
+                    [&::-webkit-details-marker]:hidden
+                    "
+                    >
+                        Menu
+                        <span aria-hidden="true">☰</span>
+                    </summary>
+
+                    <nav
+                        aria-label="Mobile navigation"
+                        className="
+                    absolute right-0 top-full mt-3 
+                    flex min-w-52 flex-col gap-5 
+                    rounded-xl border border-zinc-800 
+                    bg-zinc-950 p-5 shadow-xl"
+                    >
+                        <NavigationLinks {...navigationProps} />
+                    </nav>
+                </details>
             </div>
         </header>
     );
