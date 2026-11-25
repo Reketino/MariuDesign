@@ -94,7 +94,7 @@ export default async function Navbar() {
 
                 <nav
                     aria-label="Main navigation"
-                    className="flex items-center gap-6"
+                    className="hidden items-center gap-6 md:flex"
                 >
                     {navigationLinks.map((link) => (
                         <Link
