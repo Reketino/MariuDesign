@@ -81,7 +81,7 @@ export default async function Navbar() {
                      className="shrink-0"
                 >
                     <Image
-                        src="/logo/MARIUDESIGN-logo1.png"
+                        src="/logo/MARIUDESIGN-logo.svg"
                         alt="MariuDesign"
                         width={190}
                         height={64}
