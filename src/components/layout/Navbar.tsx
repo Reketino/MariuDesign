@@ -96,39 +96,7 @@ export default async function Navbar() {
                     aria-label="Main navigation"
                     className="hidden items-center gap-6 md:flex"
                 >
-                    {navigationLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-
-                    {user ? (
-                        <>
-                            <Link
-                                href="/account"
-                                className="text-sm text-zinc-400 transition hover:text-white"
-                            >
-                                Account
-                            </Link>
-
-                            {username && (
-                                <span className="text-sm font-medium text-white">
-                                    {username}
-                                </span>
-                            )}
-                        </>
-                    ) : (
-                        <Link
-                            href="/login"
-                            className="text-sm text-zinc-400 transition hover:text-white"
-                        >
-                            Log in
-                        </Link>
-                    )}
+                    <NavigationLinks {...navigationProps} />
                 </nav>
             </div>
         </header>
