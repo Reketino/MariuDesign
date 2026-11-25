@@ -9,13 +9,17 @@ const navigationLinks = [
     { label: "Forum", href: "/forum " },
 ];
 
+type UserRole = "user" | "admin"
+
 type NavbarProps = {
     username: string | null;
+    role: UserRole;
     isLoggedIn: boolean;
 };
 
 function NavigationLinks({
     username,
+    role,
     isLoggedIn,
 }: NavbarProps) {
     return (
@@ -40,8 +44,23 @@ function NavigationLinks({
                     </Link>
 
                     {username && (
-                        <span className="text-sm font-medium text-white">
-                            {username}
+                        <span className="group relative inline-flex items-center text-sm font-medium text-white">
+                            <span>{username}</span>
+
+                            {role === "admin" && (
+                                <span className="                
+                                        pointer-events-none absolute left-1/2 top-full z-50
+                                        mt-2 -translate-x-1/2
+                                        rounded-md border border-amber-500/30
+                                      bg-zinc-950 px-2 py-1
+                                        text-xs font-semibold text-amber-400
+                                        opacity-0 transition-opacity duration-200
+                                        group-hover:opacity-100
+                                    "
+                                >
+                                    Admin
+                                </span>
+                            )}
                         </span>
                     )}
                 </>
@@ -61,13 +80,26 @@ export default async function Navbar() {
 
     const { data: { user } } = await supbase.auth.getUser();
 
-    const username =
-        user?.user_metadata?.username
-    user?.email?.split("@")[0] ??
-        null;
+    let username: string | null = null;
+    let role: UserRole = "user";
+
+    if (user) {
+        const { data: profile } = await supbase
+            .from("profiles")
+            .select("username, role")
+            .eq("id", user.id)
+            .single();
+
+        username = profile?.username ??
+            user.email?.split("@")[0] ??
+            null;
+
+        role = profile?.role === "admin" ? "admin" : "user";
+    }
 
     const navigationProps: NavbarProps = {
         username,
+        role,
         isLoggedIn: Boolean(user),
     };
 
