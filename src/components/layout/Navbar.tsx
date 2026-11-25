@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { createClient } from "@/lib/supabase/server";
@@ -80,12 +79,11 @@ export default async function Navbar() {
                     aria-label="MariuDesign home"
                      className="shrink-0"
                 >
-                    <Image
+                    <img
                         src="/logo/MARIUDESIGN-logo.svg"
                         alt="MariuDesign"
                         width={190}
                         height={64}
-                        priority
                         className="h-12 w-38.75 object-contain object-left sm:h-14 sm:w-47.5"
                     />
                 </Link>
