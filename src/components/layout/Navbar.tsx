@@ -44,7 +44,7 @@ function NavigationLinks({
                     </Link>
 
                     {username && (
-                        <span className="text-sm font-medium text-white">
+                        <span className="inline-flex items-center gap-2 text-sm font-medium text-white">
                             {username}
 
                             {role === "admin" && (
