@@ -78,7 +78,7 @@ export default async function Navbar() {
                 <Link
                     href="/"
                     aria-label="MariuDesign home"
-                     className="text-lg font-semibold tracking-tight text-white"
+                     className="shrink-0"
                 >
                     <Image
                         src="/logo/MARIUDESIGN-logo1.png"
