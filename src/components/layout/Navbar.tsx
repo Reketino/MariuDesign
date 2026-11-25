@@ -79,6 +79,14 @@ export default async function Navbar() {
     let username: string | null = null;
     let role: UserRole = "user";
 
+    if (user) {
+        const { data: profile } = await supbase
+        .from("profiles")
+        .select("username, role")
+        .eq("id", user.id)
+        .single();
+    }
+
     const navigationProps: NavbarProps = {
         username,
         isLoggedIn: Boolean(user),
