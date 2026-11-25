@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { createClient } from "@/lib/supabase/server";
@@ -77,18 +76,13 @@ export default async function Navbar() {
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
                 <Link
                     href="/"
-                    className="text-lg font-semibold tracking-tight text-white"
                     aria-label="MariuDesign home"
+                    className="shrink-0"
                 >
-                    Mariudesign
-
-                    <Image
-                        src="/logo/MARIUDESIGN-logo1.png"
+                    <img
+                        src="/logo/MARIUDESIGN-logo.svg"
                         alt="MariuDesign"
-                        width={190}
-                        height={64}
-                        priority
-                        className="h-12 w-38.75 object-contain object-left sm:h-14 sm:w-47.5"
+                        className="h-12 w-auto sm:h-14"
                     />
                 </Link>
 
