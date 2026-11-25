@@ -9,6 +9,8 @@ const navigationLinks = [
     { label: "Forum", href: "/forum " },
 ];
 
+type UserRole = "user" | "admin";
+
 type NavbarProps = {
     username: string | null;
     isLoggedIn: boolean;
