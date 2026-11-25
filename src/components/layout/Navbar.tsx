@@ -77,7 +77,7 @@ export default async function Navbar() {
     const { data: { user } } = await supbase.auth.getUser();
 
     let username: string | null = null;
-    
+    let role: UserRole = "user";
 
     const navigationProps: NavbarProps = {
         username,
