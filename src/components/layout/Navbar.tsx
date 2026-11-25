@@ -98,6 +98,19 @@ export default async function Navbar() {
                 >
                     <NavigationLinks {...navigationProps} />
                 </nav>
+
+                <details className="relative md:hidden">
+                    <summary className="
+                    flex cursor-pointer list-none items-center gap-2 
+                    rounded-lg border border-zinc-700 px-3 py-2 
+                    text-sm text-zinc-300 transition-colors 
+                    hover:bg-zinc-900 
+                    [&::-webkit-details-marker]:hidden
+                    "
+                    >
+                        Menu
+                    </summary>
+                </details>
             </div>
         </header>
     );
