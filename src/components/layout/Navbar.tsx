@@ -85,6 +85,12 @@ export default async function Navbar() {
         .select("username, role")
         .eq("id", user.id)
         .single();
+
+        username = profile?.username ??
+        user.email?.split("@")[0] ??
+        null;
+
+        
     }
 
     const navigationProps: NavbarProps = {
