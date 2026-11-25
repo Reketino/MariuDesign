@@ -81,6 +81,15 @@ export default async function Navbar() {
                     aria-label="MariuDesign home"
                 >
                     Mariudesign
+
+                    <Image
+                    src="/logo/MARIUDESIGN-logo1.png"
+                    alt="MariuDesign"
+                    width={190}
+                    height={64}
+                    priority
+                    className="h-12 w-38.75 object-contain object-left sm:h-14 sm:w-47.5"
+                    />
                 </Link>
 
                 <nav
