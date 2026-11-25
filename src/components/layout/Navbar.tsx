@@ -111,6 +111,17 @@ export default async function Navbar() {
                         Menu
                         <span aria-hidden="true">☰</span>
                     </summary>
+
+                    <nav
+                    aria-label="Mobile navigation"
+                    className="
+                    absolute right-0 top-full mt-3 
+                    flex min-w-52 flex-col gap-5 
+                    rounded-xl border border-zinc-800 
+                    bg-zinc-950 p-5 shadow-xl"
+                    >
+                        <NavigationLinks {...navigationProps} />
+                    </nav>
                 </details>
             </div>
         </header>
