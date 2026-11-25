@@ -15,7 +15,16 @@ type NavbarProps = {
     isLoggedIn: boolean;
 };
 
-
+function NavigationLinks({
+    username,
+    isLoggedIn,
+}: NavbarProps) {
+    return (
+        <>
+        
+        </>
+    )
+}
 
 export default async function Navbar() {
     const supbase = await createClient();
