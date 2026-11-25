@@ -30,6 +30,17 @@ function NavigationLinks({
                 {link.label}
             </Link>
         ))}
+
+        {isLoggedIn ? (
+            <>
+            <Link 
+                href="/account"
+                className="text-sm text-zinc-400 transition-colors hover:text-white"
+            >
+                Account
+                  </Link>
+            </>
+        )}
         </>
     )
 }
