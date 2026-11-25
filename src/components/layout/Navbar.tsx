@@ -76,10 +76,8 @@ export default async function Navbar() {
 
     const { data: { user } } = await supbase.auth.getUser();
 
-    const username =
-        user?.user_metadata?.username
-    user?.email?.split("@")[0] ??
-        null;
+    let username: string | null = null;
+    
 
     const navigationProps: NavbarProps = {
         username,
