@@ -64,7 +64,7 @@ export default async function Navbar() {
 
     const username =
         user?.user_metadata?.username
-    user?.email?.split("@")[0] ??
+        user?.email?.split("@")[0] ??
         null;
 
     return (
