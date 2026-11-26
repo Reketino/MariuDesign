@@ -61,30 +61,30 @@ export async function toggleTopicPinAction(topicId: string) {
 }
 
 export async function toggleTopicLockAction(topicId: string) {
-    const supabase = await verifyAdmin();
+  const supabase = await verifyAdmin();
 
-    const { data: topic, error: fetchError } = await supabase
+  const { data: topic, error: fetchError } = await supabase
     .from("forum_topics")
     .select("is_locked")
     .eq("id", topicId)
     .single();
 
-    if (fetchError || !topic) {
-      throw new Error("Could not find topic.");
-    }
-    
-    const { error: updateError } = await supabase
+  if (fetchError || !topic) {
+    throw new Error("Could not find topic.");
+  }
+
+  const { error: updateError } = await supabase
     .from("forum_topics")
     .update({ is_locked: !topic.is_locked })
-    .eq("id", topicId)
+    .eq("id", topicId);
 
-    if (updateError) {
-      console.error("Failed to update topic lock:", updateError);
-      throw new Error("Could not update topic.");
-    }
+  if (updateError) {
+    console.error("Failed to update topic lock:", updateError);
+    throw new Error("Could not update topic.");
+  }
 
-    revalidatePath("/forum");
-    revalidatePath(`/forum/topic/${topicId}`);;
+  revalidatePath("/forum");
+  revalidatePath(`/forum/topic/${topicId}`);
 
-    return;
+  return;
 }
