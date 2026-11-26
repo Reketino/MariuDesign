@@ -81,9 +81,10 @@ export async function getForumTopicById(
       console.error("Failed to fetch forum usernames:", profileError);
     } else {
       profiles?.forEach((profile) => {
-        if (profile.username) {
-          usernameMap.set(profile.id, profile.username);
-        }
+        profileMap.set(profile.id, {
+          username: profile.username,
+          role: profile.role === "admin" ? "admin" : "user"
+        });
       });
     }
   }
