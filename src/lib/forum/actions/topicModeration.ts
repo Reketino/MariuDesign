@@ -34,4 +34,9 @@ export async function toggleTopicPinAction(topicId: string) {
     .select("is_pinned")
     .eq("id", topicId)
     .single();
+
+    if (fetchError || !topic) {
+        throw new Error("Could not find topic.");
+    }
+    
 }
