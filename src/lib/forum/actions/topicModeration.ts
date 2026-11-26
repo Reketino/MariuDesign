@@ -73,4 +73,10 @@ export async function toggleTopicLockAction(topicId: string) {
       throw new Error("Could not find topic.");
     }
     
+    const { error: updateError } = await supabase
+    .from("forum_topics")
+    .update({ is_locked: !topic.is_locked })
+    .eq("id", topicId)
+
+    
 }
