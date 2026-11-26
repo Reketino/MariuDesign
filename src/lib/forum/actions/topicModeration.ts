@@ -39,4 +39,10 @@ export async function toggleTopicPinAction(topicId: string) {
         throw new Error("Could not find topic.");
     }
     
+    const { error: updateError } = await supabase
+    .from("forum_topics")
+    .update({
+        is_pinned: !topic.is_pinned,
+    })
+    .eq("id", topicId);
 }
