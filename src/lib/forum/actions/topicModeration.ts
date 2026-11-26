@@ -86,5 +86,5 @@ export async function toggleTopicLockAction(topicId: string) {
     revalidatePath("/forum");
     revalidatePath(`/forum/topic/${topicId}`);;
 
-    
+    return;
 }
