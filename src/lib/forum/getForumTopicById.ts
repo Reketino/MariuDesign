@@ -107,7 +107,11 @@ export async function getForumTopicById(
       ? profileMap.get(reply.user_id)
       : undefined;
 
-      
-    })
-  }
+      return {
+        ...reply,
+        username: profile?.username ?? null,
+        role: profile?.role ?? "user",
+      };
+    }),
+  };
 }
