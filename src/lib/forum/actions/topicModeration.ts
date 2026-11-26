@@ -18,4 +18,10 @@ async function verifyAdmin() {
     .select("role")
     .eq("id", user.id)
     .single();
+
+    if (profileError || profile?.role !== "admin") {
+        throw new Error("You are not authorized to perform this action.");
+    }
+
+    return supabase;
 }
