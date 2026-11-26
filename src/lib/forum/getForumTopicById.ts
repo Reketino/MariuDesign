@@ -74,7 +74,7 @@ export async function getForumTopicById(
   if (uniqueUserIds.length > 0) {
     const { data: profiles, error: profileError } = await supabase
       .from("forum_profiles")
-      .select("id, username")
+      .select("id, username, role")
       .in("id", uniqueUserIds);
 
     if (profileError) {
