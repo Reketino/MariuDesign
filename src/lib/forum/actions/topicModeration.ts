@@ -68,5 +68,9 @@ export async function toggleTopicLockAction(topicId: string) {
     .select("is_locked")
     .eq("id", topicId)
     .single();
+
+    if (fetchError || !topic) {
+      throw new Error("Could not find topic.");
+    }
     
 }
