@@ -89,14 +89,9 @@ export async function getForumTopicById(
     }
   }
 
-  return {
-    ...data,
-    author_username: data.user_id
-      ? (usernameMap.get(data.user_id) ?? null)
-      : null,
-    forum_replies: visibleReplies.map((reply) => ({
-      ...reply,
-      username: reply.user_id ? (usernameMap.get(reply.user_id) ?? null) : null,
-    })),
-  };
+  const topicAuthorProfile = data.user_id
+  ? profileMap.get(data.user_id)
+  : undefined;
+
+  
 }
