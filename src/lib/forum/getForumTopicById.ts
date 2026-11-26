@@ -5,6 +5,11 @@ import type {
   UserRole,
 } from "@/types/forum";
 
+type ProfileInfo = {
+  username: string | null;
+  role: UserRole;
+};
+
 export async function getForumTopicById(
   topicId: string,
 ): Promise<ForumTopicWithReplies | null> {
