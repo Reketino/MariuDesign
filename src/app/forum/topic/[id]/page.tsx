@@ -106,6 +106,10 @@ export default async function ForumTopicPage({
                         Started by
                     </span>
 
+                    <span className="font-medium text-neutral-200">
+                        {topic.author_username ?? "Unknown user"}
+                    </span>
+
                     
                 </div>
                 <div className="mt-8 border-t border-neutral-800 pt-8">
