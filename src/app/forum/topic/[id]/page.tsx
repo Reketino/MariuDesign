@@ -35,7 +35,7 @@ function AdminBadge({ role }: { role: UserRole}) {
             >
                 Admin
             </span>
-    )
+    );
 }
 
 export default async function ForumTopicPage({
