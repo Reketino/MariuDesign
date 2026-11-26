@@ -110,8 +110,9 @@ export default async function ForumTopicPage({
                         {topic.author_username ?? "Unknown user"}
                     </span>
 
-                    
+                    <AdminBadge role={topic.author_role} />
                 </div>
+                
                 <div className="mt-8 border-t border-neutral-800 pt-8">
                     <p className="whitespace-pre-wrap text-base leading-8 text-neutral-300">
                         {topic.content}
