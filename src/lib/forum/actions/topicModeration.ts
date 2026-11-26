@@ -59,3 +59,7 @@ export async function toggleTopicPinAction(topicId: string) {
 
   return;
 }
+
+export async function toggleTopicLockAction(topicId: string) {
+    
+}
