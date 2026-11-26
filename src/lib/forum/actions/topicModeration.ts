@@ -61,5 +61,12 @@ export async function toggleTopicPinAction(topicId: string) {
 }
 
 export async function toggleTopicLockAction(topicId: string) {
+    const supabase = await verifyAdmin();
+
+    const { data: topic, error: fetchError } = await supabase
+    .from("forum_topics")
+    .select("is_locked")
+    .eq("id", topicId)
+    .single();
     
 }
