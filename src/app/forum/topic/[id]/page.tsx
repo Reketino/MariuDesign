@@ -101,13 +101,11 @@ export default async function ForumTopicPage({
                     Posted on {formattedTopicDate}
                 </time>
 
-                <p className="mt-2 text-sm text-neutral-400">
-                    Started by{" "}
-                    <span className="font-medium text-neutral-200">
-                        {topic.author_username ?? "Unknown user"}
+                <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
+                    <span className="text-neutral-400">
+                        
                     </span>
-                </p>
-
+                </div>
                 <div className="mt-8 border-t border-neutral-800 pt-8">
                     <p className="whitespace-pre-wrap text-base leading-8 text-neutral-300">
                         {topic.content}
