@@ -51,5 +51,6 @@ export async function toggleTopicPinAction(topicId: string) {
         throw new Error("Could not update topic.");
     }
 
-    
+    revalidatePath("/forum");
+    revalidatePath(`/forum/topic/${topicId}`);
 }
