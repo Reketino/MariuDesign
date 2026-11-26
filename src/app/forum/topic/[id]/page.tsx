@@ -7,6 +7,8 @@ import ReplyForm from "./ReplyForm";
 import { getForumTopicById } from "@/lib/forum/getForumTopicById";
 import { createClient } from "@/lib/supabase/server";
 
+import type { UserRole } from "@/types/forum";
+
 type ForumTopicPageProps = {
     params: Promise<{
         id: string;
