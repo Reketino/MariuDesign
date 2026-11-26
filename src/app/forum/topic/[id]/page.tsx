@@ -20,6 +20,12 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", {
     timeStyle: "short",
 });
 
+function AdminBadge({ role }: { role: UserRole}) {
+    if (role !== "admin") {
+        return null;
+    }
+}
+
 export default async function ForumTopicPage({
     params,
 }: ForumTopicPageProps) {
