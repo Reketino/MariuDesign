@@ -78,5 +78,8 @@ export async function toggleTopicLockAction(topicId: string) {
     .update({ is_locked: !topic.is_locked })
     .eq("id", topicId)
 
-    
+    if (updateError) {
+      console.error("Failed to update topic lock:", updateError);
+      throw new Error("Could not update topic.");
+    }
 }
