@@ -3,8 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import ReplyForm from "./ReplyForm";
+
 import { getForumTopicById } from "@/lib/forum/getForumTopicById";
 import { createClient } from "@/lib/supabase/server";
+
+import type { UserRole } from "@/types/forum";
 
 type ForumTopicPageProps = {
     params: Promise<{
@@ -16,6 +19,24 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", {
     dateStyle: "long",
     timeStyle: "short",
 });
+
+function AdminBadge({ role }: { role: UserRole }) {
+    if (role !== "admin") {
+        return null;
+    }
+
+    return (
+        <span
+            className="
+            rounded-md border border-amber-500/30
+            bg-amber-500/10 px-2 py-1
+            text-xs font-semibold text-amber-400
+            "
+        >
+            Admin
+        </span>
+    );
+}
 
 export default async function ForumTopicPage({
     params,
@@ -80,12 +101,17 @@ export default async function ForumTopicPage({
                     Posted on {formattedTopicDate}
                 </time>
 
-                <p className="mt-2 text-sm text-neutral-400">
-                    Started by{" "}
+                <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
+                    <span className="text-neutral-400">
+                        Started by
+                    </span>
+
                     <span className="font-medium text-neutral-200">
                         {topic.author_username ?? "Unknown user"}
                     </span>
-                </p>
+
+                    <AdminBadge role={topic.author_role} />
+                </div>
 
                 <div className="mt-8 border-t border-neutral-800 pt-8">
                     <p className="whitespace-pre-wrap text-base leading-8 text-neutral-300">
@@ -135,6 +161,8 @@ export default async function ForumTopicPage({
                                             <span className="text-sm font-semibold text-neutral-200">
                                                 {reply.username ?? "Unknown user"}
                                             </span>
+
+                                            <AdminBadge role={reply.role} />
 
                                             {reply.is_official && (
                                                 <span className="
