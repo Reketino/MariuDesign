@@ -93,5 +93,12 @@ export async function getForumTopicById(
   ? profileMap.get(data.user_id)
   : undefined;
 
-  
+  return {
+    ...data,
+
+    author_username:
+    topicAuthorProfile?.username ?? null,
+
+    
+  }
 }
