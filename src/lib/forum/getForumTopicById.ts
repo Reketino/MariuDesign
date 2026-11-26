@@ -99,6 +99,9 @@ export async function getForumTopicById(
     author_username:
     topicAuthorProfile?.username ?? null,
 
+    author_role:
+    topicAuthorProfile?.role ?? "user",
+
     
   }
 }
