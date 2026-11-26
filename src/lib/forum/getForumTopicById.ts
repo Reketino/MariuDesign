@@ -102,6 +102,12 @@ export async function getForumTopicById(
     author_role:
     topicAuthorProfile?.role ?? "user",
 
-    
+    forum_replies: visibleReplies.map((reply) => {
+      const profile = reply.user_id
+      ? profileMap.get(reply.user_id)
+      : undefined;
+
+      
+    })
   }
 }
