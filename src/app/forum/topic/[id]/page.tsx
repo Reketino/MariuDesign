@@ -112,7 +112,7 @@ export default async function ForumTopicPage({
 
                     <AdminBadge role={topic.author_role} />
                 </div>
-                
+
                 <div className="mt-8 border-t border-neutral-800 pt-8">
                     <p className="whitespace-pre-wrap text-base leading-8 text-neutral-300">
                         {topic.content}
@@ -161,6 +161,8 @@ export default async function ForumTopicPage({
                                             <span className="text-sm font-semibold text-neutral-200">
                                                 {reply.username ?? "Unknown user"}
                                             </span>
+
+                                            <AdminBadge role={reply.role} />
 
                                             {reply.is_official && (
                                                 <span className="
