@@ -1,9 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 
-import type { 
-  ForumTopicWithReplies, 
-  UserRole,
-} from "@/types/forum";
+import type { ForumTopicWithReplies, UserRole } from "@/types/forum";
 
 type ProfileInfo = {
   username: string | null;
@@ -83,29 +80,25 @@ export async function getForumTopicById(
       profiles?.forEach((profile) => {
         profileMap.set(profile.id, {
           username: profile.username,
-          role: profile.role === "admin" ? "admin" : "user"
+          role: profile.role === "admin" ? "admin" : "user",
         });
       });
     }
   }
 
   const topicAuthorProfile = data.user_id
-  ? profileMap.get(data.user_id)
-  : undefined;
+    ? profileMap.get(data.user_id)
+    : undefined;
 
   return {
     ...data,
 
-    author_username:
-    topicAuthorProfile?.username ?? null,
+    author_username: topicAuthorProfile?.username ?? null,
 
-    author_role:
-    topicAuthorProfile?.role ?? "user",
+    author_role: topicAuthorProfile?.role ?? "user",
 
     forum_replies: visibleReplies.map((reply) => {
-      const profile = reply.user_id
-      ? profileMap.get(reply.user_id)
-      : undefined;
+      const profile = reply.user_id ? profileMap.get(reply.user_id) : undefined;
 
       return {
         ...reply,
