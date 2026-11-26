@@ -53,4 +53,6 @@ export async function toggleTopicPinAction(topicId: string) {
 
     revalidatePath("/forum");
     revalidatePath(`/forum/topic/${topicId}`);
+
+    return;
 }
