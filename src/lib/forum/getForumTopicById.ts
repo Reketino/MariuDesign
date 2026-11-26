@@ -69,7 +69,7 @@ export async function getForumTopicById(
 
   const uniqueUserIds = [...new Set(userIds)];
 
-  const usernameMap = new Map<string, string>();
+  const profileMap = new Map<string, ProfileInfo>();
 
   if (uniqueUserIds.length > 0) {
     const { data: profiles, error: profileError } = await supabase
