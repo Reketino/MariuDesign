@@ -82,4 +82,9 @@ export async function toggleTopicLockAction(topicId: string) {
       console.error("Failed to update topic lock:", updateError);
       throw new Error("Could not update topic.");
     }
+
+    revalidatePath("/forum");
+    revalidatePath(`/forum/topic/${topicId}`);;
+
+    
 }
