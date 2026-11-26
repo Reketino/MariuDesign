@@ -45,4 +45,11 @@ export async function toggleTopicPinAction(topicId: string) {
         is_pinned: !topic.is_pinned,
     })
     .eq("id", topicId);
+
+    if (updateError) {
+        console.error("Failed to update topic pin:", updateError);
+        throw new Error("Could not update topic.");
+    }
+
+    
 }
