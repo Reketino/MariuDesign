@@ -25,3 +25,13 @@ async function verifyAdmin() {
 
     return supabase;
 }
+
+export async function toggleTopicPinAction(topicId: string) {
+    const supabase = await verifyAdmin();
+
+    const { data: topic, error: fetchError } = await supabase
+    .from("forum_topics")
+    .select("is_pinned")
+    .eq("id", topicId)
+    .single();
+}
