@@ -30,6 +30,7 @@ export type ForumReply = {
   topic_id: string;
   user_id: string | null;
   username: string | null;
+  role: UserRole;
   content: string;
   is_official: boolean;
   is_hidden: boolean;
@@ -39,6 +40,7 @@ export type ForumReply = {
 
 export type ForumTopicWithReplies = ForumTopic & {
   author_username: string | null;
+  author_role: UserRole;
   forum_replies: ForumReply[];
 };
 

@@ -1,6 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
 
-import type { ForumTopicWithReplies } from "@/types/forum";
+import type { ForumTopicWithReplies, UserRole } from "@/types/forum";
+
+type ProfileInfo = {
+  username: string | null;
+  role: UserRole;
+};
 
 export async function getForumTopicById(
   topicId: string,
@@ -61,33 +66,45 @@ export async function getForumTopicById(
 
   const uniqueUserIds = [...new Set(userIds)];
 
-  const usernameMap = new Map<string, string>();
+  const profileMap = new Map<string, ProfileInfo>();
 
   if (uniqueUserIds.length > 0) {
     const { data: profiles, error: profileError } = await supabase
       .from("forum_profiles")
-      .select("id, username")
+      .select("id, username, role")
       .in("id", uniqueUserIds);
 
     if (profileError) {
       console.error("Failed to fetch forum usernames:", profileError);
     } else {
       profiles?.forEach((profile) => {
-        if (profile.username) {
-          usernameMap.set(profile.id, profile.username);
-        }
+        profileMap.set(profile.id, {
+          username: profile.username,
+          role: profile.role === "admin" ? "admin" : "user",
+        });
       });
     }
   }
 
+  const topicAuthorProfile = data.user_id
+    ? profileMap.get(data.user_id)
+    : undefined;
+
   return {
     ...data,
-    author_username: data.user_id
-      ? (usernameMap.get(data.user_id) ?? null)
-      : null,
-    forum_replies: visibleReplies.map((reply) => ({
-      ...reply,
-      username: reply.user_id ? (usernameMap.get(reply.user_id) ?? null) : null,
-    })),
+
+    author_username: topicAuthorProfile?.username ?? null,
+
+    author_role: topicAuthorProfile?.role ?? "user",
+
+    forum_replies: visibleReplies.map((reply) => {
+      const profile = reply.user_id ? profileMap.get(reply.user_id) : undefined;
+
+      return {
+        ...reply,
+        username: profile?.username ?? null,
+        role: profile?.role ?? "user",
+      };
+    }),
   };
 }
