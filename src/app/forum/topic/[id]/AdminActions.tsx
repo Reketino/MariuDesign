@@ -12,3 +12,10 @@ type AdminActionsProps = {
     isLocked: boolean;
 };
 
+export default function AdminActions({
+    topicId,
+    isPinned,
+    isLocked,
+}: AdminActionsProps) {
+    
+}
