@@ -17,5 +17,7 @@ export default function AdminActions({
     isPinned,
     isLocked,
 }: AdminActionsProps) {
+    const [isPending, startTransition] = useTransition();
+    const [error, setError] = useState<string | null>(null);
     
 }
