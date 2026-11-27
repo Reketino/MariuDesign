@@ -5,3 +5,10 @@ import {
     toggleTopicPinAction,
     toggleTopicLockAction,
 } from "@/lib/forum/actions/topicModeration";
+
+type AdminActionsProps = {
+    topicId: string;
+    isPinned: boolean;
+    isLocked: boolean;
+};
+
